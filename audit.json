@@ -198,6 +198,49 @@
       "pluto_condition": "vacant",
       "lots": [
         {
+          "bbl": "3025020001",
+          "address": "WEST STREET",
+          "land_use": "Unknown",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "GPLC OWNER LLC",
+          "lot_area_sqft": 150004,
+          "lat": 40.7341621,
+          "lng": -73.9612505
+        },
+        {
+          "bbl": "3025020005",
+          "address": "WEST STREET",
+          "land_use": "Unknown",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "GPLC OWNER LLC",
+          "lot_area_sqft": 14586,
+          "lat": 40.7345353,
+          "lng": -73.9610121
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3024720023",
+        "address": "SAGLE STREET",
+        "land_use": "Vacant land",
+        "buildings": 0,
+        "building_area_sqft": 0,
+        "year_built": null,
+        "owner": "NORTH EAGLE STREET LAND OWNER LLC",
+        "lot_area_sqft": 12511,
+        "lat": 40.7346286,
+        "lng": -73.9609074
+      },
+      "flags": []
+    },
+    "2-noble-street": {
+      "condition": "vacant",
+      "pluto_condition": "vacant",
+      "lots": [
+        {
           "bbl": "3025670001",
           "address": "43 WEST STREET",
           "land_use": "Vacant land",

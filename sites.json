@@ -248,19 +248,64 @@
   {
     "id": "greenpoint-landing-phase-2",
     "name": "Greenpoint Landing, Phase Two",
-    "headline": "Proposed 1,060-unit housing",
+    "headline": "Three towers planned",
+    "type": "housing",
+    "category": "parcel",
+    "status": "active",
+    "condition": "vacant",
+    "neighborhood": "21 & 37 Freeman St, 209 West St · Greenpoint waterfront, north of Transmitter Park",
+    "lat": 40.7342,
+    "lng": -73.9612,
+    "bbls": [
+      "3025020001",
+      "3025020005"
+    ],
+    "why": "Vacant waterfront lots on Freeman St, Block C of Greenpoint Landing, the 22-acre, 5,500-apartment master plan that grew out of the 2005 rezoning.",
+    "history": "This waterfront corridor held some of the 50+ oil refineries that operated 1860s-1960s. WNYC's transmitter ran just south of here 1937-1990. No source ties a specific occupant to this parcel.",
+    "now": "Domain, LMXD and Park Tower Group plan three towers of 40, 30 and 9 stories with about 1,025 apartments, 300 affordable. They closed $114 million in land financing in Aug 2025 and expected to start building in summer 2026.",
+    "owner": "Park Tower Group (master developer) with The Domain Companies and LMXD.",
+    "sources": [
+      {
+        "t": "Next Greenpoint Landing phase includes 1,000 apartments across three towers · 6sqft",
+        "u": "https://www.6sqft.com/next-greenpoint-landing-phase-includes-1000-apartments-across-three-towers/"
+      },
+      {
+        "t": "Next Phase Of Greenpoint Landing Announced In Brooklyn · New York YIMBY",
+        "u": "https://newyorkyimby.com/2025/08/three-towers-announced-for-greenpoint-landing-phase-two-in-greenpoint-brooklyn.html"
+      },
+      {
+        "t": "JLL arranges $114 million capitalization for next phase of Greenpoint Landing · JLL",
+        "u": "https://www.jll.com/en-us/newsroom/jll-arranges-dollar114-million-capitalization-for-next-phase-of-greenpoint-landing"
+      },
+      {
+        "t": "Oil Refining and Greenpoint · Historic Greenpoint",
+        "u": "https://historicgreenpoint.wordpress.com/2014/04/17/oil-refining-and-greenpoint/"
+      }
+    ],
+    "image": {
+      "url": "https://newyorkyimby.com/wp-content/uploads/2025/08/tmtxuQoo.jpg",
+      "credit": "Current site photo, via New York YIMBY",
+      "isRendering": false
+    },
+    "updated": "Updated Sept 25, 2026 · lots inferred from Greenpoint Landing (GPLC Owner LLC) ownership in NYC PLUTO",
+    "last_checked": "2026-09-25"
+  },
+  {
+    "id": "2-noble-street",
+    "name": "2 Noble Street",
+    "headline": "Proposed 1,060-unit towers",
     "type": "housing",
     "category": "parcel",
     "status": "review",
     "condition": "vacant",
-    "neighborhood": "2 Noble St / 43 West St · Greenpoint waterfront, north of Transmitter Park",
+    "neighborhood": "2 Noble St / 43-45 West St · Greenpoint waterfront, south of Transmitter Park",
     "lat": 40.72772,
     "lng": -73.96106,
     "bbls": [
       "3025670001"
     ],
-    "why": "This stretch of the Greenpoint waterfront north of Transmitter Park has sat as surface parking and vacant land for years, part of the larger Greenpoint Landing megaproject site.",
-    "history": "This waterfront corridor held some of the 50+ oil refineries that operated 1860s-1960s. WNYC's transmitter ran just south of here 1937-1990. No source ties a specific occupant to this parcel.",
+    "why": "A vacant waterfront lot at the foot of Noble St, south of Transmitter Park, where TF Cornerstone plans two mixed-use towers.",
+    "history": "This waterfront corridor held some of the 50+ oil refineries that operated 1860s-1960s. No source ties a specific occupant to this parcel.",
     "now": "In May 2026 TF Cornerstone filed for a City Planning waterfront certification, not a full rezoning, for two mixed-use buildings with 1,060 apartments, 267 income-restricted. City review of the filing was ongoing as of Sept 2026.",
     "owner": "TF Cornerstone (developer, through 2 Noble North LLC).",
     "sources": [
@@ -273,10 +318,6 @@
         "u": "https://www.pincusco.com/tf-cornerstone-advances-1060-unit-greenpoint-project-with-new-ulurp-filing/"
       },
       {
-        "t": "Next Phase Of Greenpoint Landing Announced In Brooklyn · New York YIMBY",
-        "u": "https://newyorkyimby.com/2025/08/three-towers-announced-for-greenpoint-landing-phase-two-in-greenpoint-brooklyn.html"
-      },
-      {
         "t": "TF Cornerstone Files Plans for 1,060-Unit Residential Project · Commercial Observer",
         "u": "https://commercialobserver.com/2025/11/tf-cornerstone-residential-project-greenpoint-45-west-street/"
       },
@@ -285,11 +326,6 @@
         "u": "https://historicgreenpoint.wordpress.com/2014/04/17/oil-refining-and-greenpoint/"
       }
     ],
-    "image": {
-      "url": "https://newyorkyimby.com/wp-content/uploads/2025/08/tmtxuQoo.jpg",
-      "credit": "Current site photo, via New York YIMBY",
-      "isRendering": false
-    },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
     "last_checked": "2026-09-25"
   },
