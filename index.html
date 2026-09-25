@@ -441,50 +441,52 @@ const TYPE_LABEL = {park:"Park", housing:"Housing", road:"Road & bikelane", othe
 const map = L.map('map', {zoomControl:true}).setView([40.71772, -73.95756], 15);
 // Multiple keyless tile providers, tried in order. Free hotlinked tile
 // servers periodically lock down or rate-limit without notice, so if one
-// stops delivering actual tiles, the map falls back to the next automatically.
+// errors out or fails to deliver any tile within a few seconds, the map
+// falls back to the next automatically.
+const OSM_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const TILE_PROVIDERS = [
   {
-    // Esri Light Gray Canvas · white/light-gray base + a separate label layer on top.
-    // Same host as the old primary (server.arcgisonline.com), still free and keyless.
+    // CARTO Positron · light gray base with labels, keyless, retina-aware.
+    layers: [
+      { url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', options: { maxZoom: 20, subdomains: 'abcd', attribution: OSM_ATTR + ' &copy; <a href="https://carto.com/attributions">CARTO</a>' } }
+    ]
+  },
+  {
+    layers: [
+      { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', options: { maxZoom: 19, attribution: OSM_ATTR } }
+    ]
+  },
+  {
     layers: [
       { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', options: { maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, (c) OpenStreetMap contributors, and the GIS user community' } },
       { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', options: { maxZoom: 16, pane: 'overlayPane' } }
     ]
-  },
-  {
-    layers: [
-      { url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', options: { maxZoom: 19, attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, tiles by Wikimedia' } }
-    ]
-  },
-  {
-    layers: [
-      { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', options: { maxZoom: 17, subdomains: 'abc', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, SRTM | Map style: &copy; OpenTopoMap' } }
-    ]
   }
 ];
 
+const TILE_TIMEOUT_MS = 5000;
 let providerIndex = 0;
-let tileErrorCount = 0;
 let activeTileLayers = [];
+let tileTimer = null;
 
 function loadTileProvider(i){
   activeTileLayers.forEach(l => map.removeLayer(l));
   activeTileLayers = [];
-  tileErrorCount = 0;
-  const p = TILE_PROVIDERS[i];
-  p.layers.forEach(layerDef => {
+  clearTimeout(tileTimer);
+  providerIndex = i;
+  const isLast = i >= TILE_PROVIDERS.length - 1;
+  let errors = 0, loaded = 0;
+  const next = () => { if(providerIndex === i && !isLast) loadTileProvider(i + 1); };
+  TILE_PROVIDERS[i].layers.forEach(layerDef => {
     const layer = L.tileLayer(layerDef.url, layerDef.options).addTo(map);
-    layer.on('tileerror', () => {
-      tileErrorCount++;
-      if(tileErrorCount > 6 && i < TILE_PROVIDERS.length - 1){
-        providerIndex = i + 1;
-        loadTileProvider(providerIndex);
-      }
-    });
+    layer.on('tileload', () => { loaded++; clearTimeout(tileTimer); });
+    layer.on('tileerror', () => { errors++; if(errors > 4 && loaded === 0) next(); });
     activeTileLayers.push(layer);
   });
+  // A server that hangs never fires tileerror, so also give up if nothing loads in time.
+  tileTimer = setTimeout(() => { if(loaded === 0) next(); }, TILE_TIMEOUT_MS);
 }
-loadTileProvider(providerIndex);
+loadTileProvider(0);
 
 function makeIcon(site){
   return L.divIcon({
@@ -540,6 +542,7 @@ SITES.forEach(s => {
   m.bindPopup(popupHTML(s), {maxWidth: 300});
   markers[s.id] = m;
 });
+map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
 
 function renderList(filter){
   const list = document.getElementById('list');
