@@ -446,9 +446,10 @@ const map = L.map('map', {zoomControl:true}).setView([40.71772, -73.95756], 15);
 const OSM_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const TILE_PROVIDERS = [
   {
-    // CARTO Positron · light gray base with labels, keyless, retina-aware.
+    // Esri Light Gray Canvas · white/light-gray base + a separate label layer on top.
     layers: [
-      { url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', options: { maxZoom: 20, subdomains: 'abcd', attribution: OSM_ATTR + ' &copy; <a href="https://carto.com/attributions">CARTO</a>' } }
+      { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', options: { maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, (c) OpenStreetMap contributors, and the GIS user community' } },
+      { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', options: { maxZoom: 16, pane: 'overlayPane' } }
     ]
   },
   {
@@ -458,8 +459,7 @@ const TILE_PROVIDERS = [
   },
   {
     layers: [
-      { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', options: { maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, (c) OpenStreetMap contributors, and the GIS user community' } },
-      { url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', options: { maxZoom: 16, pane: 'overlayPane' } }
+      { url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', options: { maxZoom: 17, subdomains: 'abc', attribution: OSM_ATTR + ', SRTM | Map style: &copy; OpenTopoMap' } }
     ]
   }
 ];
