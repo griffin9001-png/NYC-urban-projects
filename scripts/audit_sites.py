@@ -7,6 +7,7 @@ then flags:
   - pin placement: the pin is far from every listed lot
   - missing lots: a development site with no `bbls` to check against
   - unverified condition
+  - missing or broken image (images are hotlinked, so source sites can move them)
 
 Needs network access to geosearch.planninglabs.nyc and data.cityofnewyork.us.
 Usage: python3 scripts/audit_sites.py [sites.json] [audit.json]
@@ -65,6 +66,15 @@ def pin_bbl(lat, lng):
     return feats[0]["properties"].get("addendum", {}).get("pad", {}).get("bbl")
 
 
+def image_ok(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (nyc-urban-projects-audit)"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return r.status == 200 and r.headers.get("Content-Type", "").startswith("image/")
+    except Exception:
+        return False
+
+
 def distance_m(a_lat, a_lng, b_lat, b_lng):
     dy = (a_lat - b_lat) * 111_320
     dx = (a_lng - b_lng) * 111_320 * math.cos(math.radians(a_lat))
@@ -100,6 +110,12 @@ def audit_site(site):
         pin = pluto_lot(bbl) if bbl else None
     except Exception as e:  # geosearch hiccups shouldn't sink the whole audit
         flags.append(f"pin lookup failed: {e}")
+
+    img = site.get("image")
+    if not img:
+        flags.append("no image: popup falls back to a Street View link (see UPDATING.md for how to find one)")
+    elif not image_ok(img["url"]):
+        flags.append("image URL no longer loads: replace it")
 
     if condition == "unverified":
         flags.append("condition unverified: confirm what stands on the site and set condition")
