@@ -8,9 +8,19 @@
     "status": "contested",
     "condition": "partly-built",
     "neighborhood": "Williamsburg / Bed-Stuy border",
-    "lat": 40.699771,
-    "lng": -73.948173,
-    "bbls": [],
+    "lat": 40.70103,
+    "lng": -73.94942,
+    "bbls": [
+      "3022490023",
+      "3022490122",
+      "3022497503",
+      "3022497504",
+      "3022650022",
+      "3022657501",
+      "3022657502",
+      "3022657503",
+      "3022657504"
+    ],
     "why": "A 30-acre pocket bounded by Broadway, Flushing Ave and Union Ave, former Pfizer land plus city-owned lots, long stalled after its rezoning was challenged as discriminatory.",
     "history": "Pfizer opened here in 1849 and by the early 1900s occupied the full block now called Broadway Triangle. Manufacturing ran until 2008, after its HQ moved to Manhattan in 1961. Earlier use is unknown.",
     "now": "Rabsky Group's eight-building, 1,146-apartment project on the former Pfizer blocks keeps opening in phases; 25% of units are affordable. A lottery for 120 affordable units at 11 Gerry St ran through March 2026.",
@@ -46,7 +56,7 @@
       "credit": "Rendering of Rabsky Group's proposed towers (2016), via New York YIMBY",
       "isRendering": true
     },
-    "updated": "Updated Sept 25, 2026 · coordinates cross-verified against US Census Bureau geocoder",
+    "updated": "Updated Sept 25, 2026 · lots inferred from Harrison Realty LLC ownership on Rabsky's two blocks in NYC PLUTO",
     "last_checked": "2026-09-25"
   },
   {
@@ -461,7 +471,20 @@
     "neighborhood": "Kent Ave & N 9th St, Greenpoint/Williamsburg",
     "lat": 40.72263,
     "lng": -73.96179,
-    "bbls": [],
+    "bbls": [
+      "3022770001",
+      "3022870001",
+      "3022870016",
+      "3022870030",
+      "3022940001",
+      "3022940005",
+      "3023010001",
+      "3023010050",
+      "3023010060",
+      "3023010070",
+      "3025900100",
+      "3025900101"
+    ],
     "why": "Promised as parkland in the city's 2005 rezoning in exchange for upzoning, large sections of the planned park remain undelivered more than 20 years later.",
     "history": "The largest undelivered section sits on the former Astral Oil Works (later Standard Oil, sold in the 1940s), then the Bayside Fuel Oil Depot until it closed in 2010. Tanks came down in 2019.",
     "now": "The Motiva section around the inlet opened April 30, 2026, bringing the park to about 9 of 27.8 promised acres. The 8.5-acre CitiStorage parcel is next, but cleanup is slow and Restler says completion is short $75M to $100M.",
