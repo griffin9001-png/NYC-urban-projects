@@ -112,12 +112,16 @@ header{
 .lp .hood{font-size:11px; color:#7C877E; margin-bottom:8px;}
 .lp .pill-row{margin-bottom:8px;}
 /* Title, neighborhood and pills stay pinned while long popups scroll. */
-.lp-head{position:sticky; top:0; z-index:2; background:#FFFFFF; padding-top:2px; margin-bottom:8px; border-bottom:1px solid #E6E9E2;}
+.lp-head{background:#FFFFFF; padding-top:2px; margin-bottom:8px; border-bottom:1px solid #E6E9E2;}
+/* Only pin when Leaflet has made the popup scroll; otherwise sticky resolves against the map and drifts. */
+.leaflet-popup-scrolled .lp-head{position:sticky; top:0; z-index:2;}
 .lp .render-link{display:block; margin-bottom:9px; text-decoration:none; overflow:visible;}
 .lp .render-thumb{width:100%; height:112px; object-fit:cover; border-radius:6px; border:1px solid #D7DCD0; display:block; transition:transform .18s ease, box-shadow .18s ease; transform-origin:center top;}
 .lp .render-link:hover .render-thumb{transform:scale(1.35); box-shadow:0 10px 26px rgba(0,0,0,.45); position:relative; z-index:60;}
 .lp .render-credit{display:block; font-size:10px; color:#9AA39B; margin-top:3px;}
 .lp .render-credit .go{color:#1B5E63;}
+.lp .sv-fallback{display:flex; align-items:center; justify-content:center; height:64px; margin-bottom:9px; border:1px dashed #C9D0C4; border-radius:6px; background:#F5F7F2; color:#1B5E63; font-size:12px; font-weight:600; text-decoration:none;}
+.lp .sv-fallback:hover{background:#EEF1EC;}
 .lp .section-label{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#7C877E; margin:9px 0 3px;}
 .lp p{font-size:12.5px; line-height:1.45; color:#2A332C; margin:0;}
 .lp ul{margin:2px 0 0; padding-left:16px; font-size:12px; color:#2A332C;}
@@ -265,11 +269,15 @@ function clip(text, limit = SECTION_CHAR_LIMIT){
 
 function popupHTML(s){
   const sources = s.sources.map(src => `<a href="${src.u}" target="_blank" rel="noopener">${src.t} ↗</a>`).join('');
-  const image = s.image ? `
+  // No photo (or a dead hotlink): link to Google Street View at the pin. Maps URLs need no API key;
+  // Street View screenshots can't be hosted on the site under Google's terms.
+  const streetView = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${s.lat},${s.lng}`;
+  const fallback = `<a href="${streetView}" target="_blank" rel="noopener" class="sv-fallback"${s.image ? ' style="display:none"' : ''}>No photo yet · Open in Street View ↗</a>`;
+  const image = (s.image ? `
       <a href="${s.image.url}" target="_blank" rel="noopener" class="render-link" title="Open full image in a new tab">
-        <img class="render-thumb" src="${s.image.url}" alt="${s.image.isRendering ? 'Rendering' : 'Photo'} of ${s.name}" loading="lazy" onerror="this.closest('.render-link').style.display='none'">
+        <img class="render-thumb" src="${s.image.url}" alt="${s.image.isRendering ? 'Rendering' : 'Photo'} of ${s.name}" loading="lazy" onerror="const l=this.closest('.render-link'); l.style.display='none'; l.nextElementSibling.style.display='flex'">
         <span class="render-credit">${s.image.credit} <span class="go">↗</span></span>
-      </a>` : '';
+      </a>` : '') + fallback;
   return `
     <div class="lp">
       <div class="lp-head">

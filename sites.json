@@ -306,9 +306,13 @@
     ],
     "why": "A vacant waterfront lot at the foot of Noble St, south of Transmitter Park, where TF Cornerstone plans two mixed-use towers.",
     "history": "This waterfront corridor held some of the 50+ oil refineries that operated 1860s-1960s. No source ties a specific occupant to this parcel.",
-    "now": "In May 2026 TF Cornerstone filed for a City Planning waterfront certification, not a full rezoning, for two mixed-use buildings with 1,060 apartments, 267 income-restricted. City review of the filing was ongoing as of Sept 2026.",
+    "now": "TF Cornerstone showed Community Board 1 its plans June 9, 2026: an all-affordable building at 2 Oak St and a market-rate one at 10 Noble St, 1,060 units total. Its City Planning waterfront certification was under review as of Sept.",
     "owner": "TF Cornerstone (developer, through 2 Noble North LLC).",
     "sources": [
+      {
+        "t": "Greenpoint Is Getting a 100% Affordable Housing Building on Oak Street · Greenpointers",
+        "u": "https://greenpointers.com/2026/06/17/greenpoint-is-getting-a-100-affordable-housing-building-on-oak-street/"
+      },
       {
         "t": "2 Noble Street Waterfront Cert · NYC Planning ZAP",
         "u": "https://zap.planning.nyc.gov/projects/2026K0129"
@@ -326,6 +330,11 @@
         "u": "https://historicgreenpoint.wordpress.com/2014/04/17/oil-refining-and-greenpoint/"
       }
     ],
+    "image": {
+      "url": "https://greenpointers.com/wp-content/uploads/2026/06/gpwaterfront-scaled-e1781637623846.jpg",
+      "credit": "Site at Oak and West Sts, via Greenpointers",
+      "isRendering": false
+    },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
     "last_checked": "2026-09-25"
   },
