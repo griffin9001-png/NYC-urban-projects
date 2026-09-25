@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Audit · NYC Urban Projects</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F5F7F2;
+  --ink:#15201B; --ink-soft:#4D584F; --ink-faint:#7C877E; --line:#D7DCD0;
+  --accent:#1B5E63; --warn:#C1502E; --ok:#2F7D4F;
+  --status-contested:#C1502E; --status-review:#2B6CB0; --status-active:#2F7D4F;
+  --type-park:#2F7D4F; --type-housing:#2B6CB0; --type-road:#C98A1F; --type-other:#6B5CA5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101617; --surface:#181F21; --surface-2:#1E2729;
+    --ink:#ECF1ED; --ink-soft:#A9B4AD; --ink-faint:#7A857E; --line:#2B3638;
+    --accent:#57C2C9; --warn:#E58063; --ok:#7BC894;
+    --status-contested:#E58063; --status-review:#78ACE0; --status-active:#7BC894;
+    --type-park:#7BC894; --type-housing:#78ACE0; --type-road:#E0A64E; --type-other:#A79BD9;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 'IBM Plex Sans',system-ui,sans-serif}
+header{padding:20px 16px 8px;max-width:1400px;margin:0 auto}
+h1{font:900 22px 'Archivo',sans-serif;margin:0 0 4px}
+header p{margin:0;color:var(--ink-soft)}
+header a{color:var(--accent)}
+.summary{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.stat b{font:700 18px 'Archivo',sans-serif;display:block}
+.stat span{color:var(--ink-faint);font-size:12px}
+.stat.bad b{color:var(--warn)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+input[type=search]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:220px}
+label{color:var(--ink-soft);font-size:13px}
+main{max-width:1400px;margin:0 auto;padding:8px 16px 40px}
+.wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:900px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font:600 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);background:var(--surface-2);cursor:pointer;white-space:nowrap;position:sticky;top:0}
+th[aria-sort=ascending]::after{content:" ▲"} th[aria-sort=descending]::after{content:" ▼"}
+tr:last-child td{border-bottom:0}
+.name{font-weight:600} .id{font:12px 'IBM Plex Mono',monospace;color:var(--ink-faint)}
+.pill{display:inline-block;color:#fff;font:600 11px 'IBM Plex Mono',monospace;padding:2px 7px;border-radius:99px;text-transform:uppercase;white-space:nowrap}
+.muted{color:var(--ink-faint);font-size:12px}
+.flag{color:var(--warn);font-weight:600}
+.okc{color:var(--ok)}
+td.text{max-width:420px}
+details summary{cursor:pointer;color:var(--accent)}
+details a{display:block;color:var(--accent);font-size:12px;margin-top:4px;word-break:break-word}
+.issues{margin:0;padding-left:16px;color:var(--warn);font-size:12px}
+#err{color:var(--warn);padding:16px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Site audit</h1>
+  <p>Every site in <code>sites.json</code>, oldest check first. Sites not checked in 14+ days or breaking a data rule are flagged. <a href="./">Back to map</a></p>
+  <div class="summary" id="summary"></div>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Filter by name, id, neighborhood…" aria-label="Filter sites">
+    <label><input type="checkbox" id="flaggedOnly"> Flagged only</label>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <table>
+      <thead><tr>
+        <th data-k="name">Site</th>
+        <th data-k="type">Type</th>
+        <th data-k="status">Status</th>
+        <th data-k="age" aria-sort="descending">Last checked</th>
+        <th data-k="nowLen">Current status</th>
+        <th data-k="srcCount">Sources</th>
+        <th data-k="issueCount">Issues</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <div id="err"></div>
+</main>
+<script>
+// Keep these rules in sync with scripts/validate_sites.py.
+const STALE_DAYS = 14;
+const LIMITS = {why:200, history:200, now:250, owner:200};
+const STATUS_LABEL = {contested:"Contested", review:"In review", active:"Advancing"};
+const TYPE_LABEL = {park:"Park", housing:"Housing", road:"Road & bikelane", other:"Other"};
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let rows = [], sortKey = 'age', sortDir = -1;
+
+function issuesFor(s, age){
+  const out = [];
+  for (const [k, lim] of Object.entries(LIMITS)) {
+    const n = (s[k] || '').length;
+    if (!n) out.push(`missing ${k}`); else if (n > lim) out.push(`${k} ${n}/${lim} chars`);
+  }
+  if (!(s.sources || []).length) out.push('no sources');
+  if (isNaN(age)) out.push('bad last_checked'); else if (age >= STALE_DAYS) out.push(`not checked in ${age} days`);
+  return out;
+}
+
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const flaggedOnly = document.getElementById('flaggedOnly').checked;
+  const list = rows
+    .filter(r => !q || [r.name, r.id, r.neighborhood, r.headline].join(' ').toLowerCase().includes(q))
+    .filter(r => !flaggedOnly || r.issueCount)
+    .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : a[sortKey] < b[sortKey] ? -1 : 0) * sortDir);
+  document.getElementById('rows').innerHTML = list.map(r => `
+    <tr>
+      <td><div class="name">${esc(r.name)}</div><div class="id">${esc(r.id)}</div><div class="muted">${esc(r.neighborhood)}</div></td>
+      <td><span class="pill" style="background:var(--type-${esc(r.type)})">${esc(TYPE_LABEL[r.type] || r.type)}</span></td>
+      <td><span class="pill" style="background:var(--status-${esc(r.status)})">${esc(STATUS_LABEL[r.status] || r.status)}</span><div class="muted" style="margin-top:4px">${esc(r.headline)}</div></td>
+      <td><div class="${r.age >= STALE_DAYS || isNaN(r.age) ? 'flag' : ''}">${esc(r.last_checked)}</div><div class="muted">${isNaN(r.age) ? '' : r.age === 0 ? 'today' : r.age + ' days ago'}</div></td>
+      <td class="text">${esc(r.now)}<div class="muted ${r.nowLen > LIMITS.now ? 'flag' : ''}">${r.nowLen}/${LIMITS.now} chars · ${esc(r.updated)}</div></td>
+      <td><details><summary>${r.srcCount}</summary>${(r.sources || []).map(s => `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join('')}</details></td>
+      <td>${r.issueCount ? `<ul class="issues">${r.issues.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : '<span class="okc">OK</span>'}</td>
+    </tr>`).join('');
+  document.querySelectorAll('th').forEach(th => th.setAttribute('aria-sort', th.dataset.k === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'));
+}
+
+function summarize(){
+  const stale = rows.filter(r => r.age >= STALE_DAYS || isNaN(r.age)).length;
+  const withIssues = rows.filter(r => r.issueCount).length;
+  const newest = rows.map(r => r.last_checked).sort().pop();
+  const stat = (n, label, bad) => `<div class="stat ${bad && n ? 'bad' : ''}"><b>${n}</b><span>${label}</span></div>`;
+  document.getElementById('summary').innerHTML =
+    stat(rows.length, 'sites') + stat(stale, `not checked in ${STALE_DAYS}+ days`, true) +
+    stat(withIssues, 'with issues', true) + stat(esc(newest || '–'), 'most recent check');
+}
+
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', () => {
+  if (sortKey === th.dataset.k) sortDir *= -1; else { sortKey = th.dataset.k; sortDir = 1; }
+  render();
+}));
+document.getElementById('q').addEventListener('input', render);
+document.getElementById('flaggedOnly').addEventListener('change', render);
+
+fetch('sites.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(sites => {
+    const today = new Date(new Date().toISOString().slice(0, 10));
+    rows = sites.map(s => {
+      const age = Math.round((today - new Date(s.last_checked)) / 864e5);
+      const issues = issuesFor(s, age);
+      return {...s, age, issues, issueCount: issues.length, nowLen: (s.now || '').length, srcCount: (s.sources || []).length};
+    });
+    summarize(); render();
+  })
+  .catch(() => { document.getElementById('err').textContent = 'Could not load sites.json. Serve this folder over http (for example python3 -m http.server) and open it from localhost.'; });
+</script>
+</body>
+</html>
