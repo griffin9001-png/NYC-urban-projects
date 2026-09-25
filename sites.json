@@ -6,14 +6,20 @@
     "type": "housing",
     "category": "parcel",
     "status": "contested",
+    "condition": "partly-built",
     "neighborhood": "Williamsburg / Bed-Stuy border",
     "lat": 40.699771,
     "lng": -73.948173,
-    "why": "A 30-acre pocket bounded by Broadway, Flushing Ave and Union Ave, former Pfizer land plus city-owned lots, has sat vacant since the 1970s after its rezoning was challenged as discriminatory.",
+    "bbls": [],
+    "why": "A 30-acre pocket bounded by Broadway, Flushing Ave and Union Ave, former Pfizer land plus city-owned lots, long stalled after its rezoning was challenged as discriminatory.",
     "history": "Pfizer opened here in 1849 and by the early 1900s occupied the full block now called Broadway Triangle. Manufacturing ran until 2008, after its HQ moved to Manhattan in 1961. Earlier use is unknown.",
-    "now": "City Council approved Rabsky Group's 2017 rezoning. Residential buildings have gone up piecemeal since, but several lots remain vacant or held for later phases amid affordable-housing disputes.",
+    "now": "Rabsky Group's eight-building, 1,146-apartment project on the former Pfizer blocks keeps opening in phases; 25% of units are affordable. A lottery for 120 affordable units at 11 Gerry St ran through March 2026.",
     "owner": "Rabsky Group owns the rezoned parcels. Some adjacent lots remain city-owned.",
     "sources": [
+      {
+        "t": "Huge Broadway Triangle development opens lottery for 120 apartments · 6sqft",
+        "u": "https://www.6sqft.com/huge-broadway-triangle-development-opens-lottery-for-120-apartments-from-812-month/"
+      },
       {
         "t": "Why is the Broadway Triangle Still Empty? · Urban Omnibus",
         "u": "https://urbanomnibus.net/2012/08/why-is-the-broadway-triangle-still-empty/"
@@ -40,24 +46,36 @@
       "credit": "Rendering of Rabsky Group's proposed towers (2016), via New York YIMBY",
       "isRendering": true
     },
-    "updated": "Sourced Sept 2026 · coordinates cross-verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · coordinates cross-verified against US Census Bureau geocoder",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "greenpoint-hospital",
     "name": "Greenpoint Hospital Campus",
-    "headline": "Planned affordable housing",
+    "headline": "Affordable homes rising, seniors wait",
     "type": "housing",
     "category": "parcel",
     "status": "active",
+    "condition": "partly-built",
     "neighborhood": "288 Jackson St · Bed-Stuy / East Williamsburg border",
     "lat": 40.717237,
     "lng": -73.939291,
-    "why": "The historic Greenpoint Hospital complex has sat vacant and deteriorating since closing in 1982. Redevelopment attempts collapsed across four decades, one stalled by an on-site laundry facility.",
+    "bbls": [
+      "3028850025"
+    ],
+    "why": "The former Greenpoint Hospital campus, closed in 1982, is being rebuilt as Kingsland Commons: about 557 affordable homes, senior housing and a 200-bed shelter across four phases.",
     "history": "Before the hospital, this was Peter Cooper's glue factory (c. 1845-1915), one of the city's largest. The hospital opened October 4, 1915, run by the city, and closed in December 1982 after 70 years.",
-    "now": "Hudson Companies has a detailed plan for roughly 500 affordable apartments plus a shelter component, more specifics released in 2026. Community members are pushing the city to deliver this time.",
-    "owner": "NYC (HPD) owns the site. Hudson Companies is the developer under an HPD disposition deal.",
+    "now": "The shelter phase opened in 2025 and the 311-unit second phase is nearly done, with its lottery due soon. A temporary city shelter placed on site in March 2026 is delaying the senior housing phase; neighbors rallied Sept 17.",
+    "owner": "NYC (HPD) owns the site. Hudson Companies and St. Nicks Alliance are developing it; Project Renewal runs the shelter.",
     "sources": [
+      {
+        "t": "North Brooklynites Rally for Senior Housing at Former Greenpoint Hospital · Brooklyn Downtown Star",
+        "u": "https://brooklyndowntownstar.com/lead_story/2026/09/24/north-brooklynites-rally-for-senior-housing-at-former-greenpoint-hospital"
+      },
+      {
+        "t": "Phase two of Greenpoint Hospital conversion begins, adding 311 affordable homes · 6sqft",
+        "u": "https://www.6sqft.com/phase-two-of-greenpoint-hospital-conversion-begins-adding-311-affordable-homes/"
+      },
       {
         "t": "Long-stalled Greenpoint Hospital redevelopment wakes from coma · Brooklyn Paper",
         "u": "https://www.brooklynpaper.com/long-stalled-greenpoint-hospital-redevelopment-wakes-from-coma/"
@@ -84,8 +102,8 @@
       "credit": "Rendering of the planned redevelopment, via Brownstoner",
       "isRendering": true
     },
-    "updated": "Sourced Sept 2026 · coordinates cross-verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "monitor-point",
@@ -94,14 +112,23 @@
     "type": "housing",
     "category": "parcel",
     "status": "active",
+    "condition": "existing-buildings",
     "neighborhood": "40-56 Quay St · Greenpoint waterfront, by Bushwick Inlet Park",
     "lat": 40.726063,
     "lng": -73.959287,
-    "why": "This MTA-owned waterfront parcel next to Bushwick Inlet Park sat vacant for years, part of land the city implied would become parkland under the 2005 rezoning, never fully delivered.",
+    "bbls": [
+      "3025900001",
+      "3025900025"
+    ],
+    "why": "A low-rise MTA auto-repair yard at 40 Quay St and the Greenpoint Monitor Museum's empty lot beside Bushwick Inlet, land many locals wanted added to the park promised in 2005.",
     "history": "56 Quay St was Motiva land, donated in 2003 to found the Greenpoint Monitor Museum, honoring the nearby shipyard that built the ironclad USS Monitor in 1862. 40 Quay St was an MTA auto-repair yard.",
-    "now": "City Council approved a three-tower, 1,324-unit complex in July 2026, after the developer expanded its affordable-housing commitment. Community Board 1 backed it in February 2026.",
+    "now": "The full City Council approved the rezoning on July 16, 2026 after Council Member Restler won more affordability: 662 of at least 1,324 apartments will be affordable, in towers of 56, 41 and 35 stories on land leased from the MTA.",
     "owner": "MTA owns the land. Gotham Organization is the developer.",
     "sources": [
+      {
+        "t": "Monitor Point Will Bring Three Towers, at Least 1,324 Units to Greenpoint Waterfront · Brownstoner",
+        "u": "https://www.brownstoner.com/development/monitor-point-rezoning-passes-40-quay-street-affordable-housing/"
+      },
       {
         "t": "City Council Approves Monitor Point At 40 And 56 Quay Street · New York YIMBY",
         "u": "https://newyorkyimby.com/2026/07/three-tower-1324-unit-monitor-point-complex-approved-for-40-56-quay-street-in-greenpoint-brooklyn.html"
@@ -124,8 +151,8 @@
       "credit": "Rendering by FXCollaborative, via New York YIMBY",
       "isRendering": true
     },
-    "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (BBLs 3025900001, 3025900025)",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "fulton-howard-west",
@@ -134,9 +161,13 @@
     "type": "housing",
     "category": "parcel",
     "status": "review",
+    "condition": "existing-buildings",
     "neighborhood": "Bed-Stuy Multi-Service Center, 1958 Fulton St · Bedford-Stuyvesant (city-owned site)",
     "lat": 40.678745,
     "lng": -73.920403,
+    "bbls": [
+      "3015480019"
+    ],
     "why": "This is the existing Bed-Stuy Multi-Service Center building and site, an aging city-owned facility now targeted for redevelopment rather than raw vacant land.",
     "history": "The 5-story building was built in sections from 1912-1925 and first housed P.S. 28, a public school that did not fully vacate until 2019. No source documents earlier use of the lot.",
     "now": "Mayor Mamdani and HPD launched a public engagement process in May 2026 for a plan to redevelop the site as 100% affordable housing plus new community-service space.",
@@ -165,23 +196,34 @@
       "isRendering": false
     },
     "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-01"
+    "last_checked": "2026-09-25"
   },
   {
     "id": "river-ring",
     "name": "River Ring",
-    "headline": "Approved towers, unbuilt",
+    "headline": "Tax break secured, towers years off",
     "type": "housing",
     "category": "parcel",
-    "status": "review",
-    "neighborhood": "280 Kent Ave · Williamsburg waterfront (next to the former Trader Joe's building at 200 Kent Ave)",
-    "lat": 40.71529,
-    "lng": -73.96701,
-    "why": "This is the empty waterfront land next to the Trader Joe's building, underused industrial and parking land that Two Trees has been trying to redevelop since the early 2020s.",
+    "status": "active",
+    "condition": "vacant",
+    "neighborhood": "River St between N 1st and N 3rd Sts · Williamsburg waterfront",
+    "lat": 40.7182,
+    "lng": -73.9664,
+    "bbls": [
+      "3023550001",
+      "3023610001",
+      "3023610050",
+      "3023610101"
+    ],
+    "why": "Parking and empty lots on the former Con Edison fuel-oil terminal, where Two Trees plans two towers, a YMCA, a public beach and a waterfront park.",
     "history": "This was Con Edison's North First St fuel-oil terminal. Two Trees bought it in 2019 for $150M and later removed the tanks, though caissons and bulkhead remnants remain. Earlier use is unconfirmed.",
-    "now": "City Council approved the rezoning in December 2021, backing two Bjarke Ingels towers, affordable housing, and a public beach. No groundbreaking has been reported as of this writing.",
+    "now": "In May 2026 the state budget extended the old 421a tax break for River Ring past its 2031 deadline. Two Trees says the first of two towers (710 and 560 ft, about 1,200 apartments, 30% affordable) likely won't finish until 2033.",
     "owner": "Two Trees Management (developer).",
     "sources": [
+      {
+        "t": "Brooklyn developer lands state budget tax break for Williamsburg waterfront complex · Gothamist",
+        "u": "https://gothamist.com/news/brooklyn-developer-lands-state-budget-tax-break-for-williamsburg-waterfront-complex"
+      },
       {
         "t": "City Council Approves Two Trees' Massive Williamsburg Waterfront Development River Ring · Brownstoner",
         "u": "https://www.brownstoner.com/development/williamsburg-brooklyn-two-trees-river-ring-affordable-housing-city-council-approves-unanimously/"
@@ -189,10 +231,6 @@
       {
         "t": "Twin Skyscraper Redesign Revealed for 280 Kent Avenue · New York YIMBY",
         "u": "https://newyorkyimby.com/2025/04/twin-skyscraper-redesign-revealed-for-280-kent-avenue-in-williamsburg-brooklyn.html"
-      },
-      {
-        "t": "Brooklyn developer lands state budget tax break for Williamsburg waterfront complex · Gothamist",
-        "u": "https://gothamist.com/news/brooklyn-developer-lands-state-budget-tax-break-for-williamsburg-waterfront-complex"
       },
       {
         "t": "River Ring (development) · Wikipedia",
@@ -204,8 +242,8 @@
       "credit": "Redesigned towers, via New York YIMBY",
       "isRendering": true
     },
-    "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (River Street Partners LLC)",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "greenpoint-landing-phase-2",
@@ -214,14 +252,22 @@
     "type": "housing",
     "category": "parcel",
     "status": "review",
-    "neighborhood": "45 West St · Greenpoint waterfront, north of Transmitter Park",
-    "lat": 40.727745,
-    "lng": -73.958995,
+    "condition": "vacant",
+    "neighborhood": "2 Noble St / 43 West St · Greenpoint waterfront, north of Transmitter Park",
+    "lat": 40.72772,
+    "lng": -73.96106,
+    "bbls": [
+      "3025670001"
+    ],
     "why": "This stretch of the Greenpoint waterfront north of Transmitter Park has sat as surface parking and vacant land for years, part of the larger Greenpoint Landing megaproject site.",
     "history": "This waterfront corridor held some of the 50+ oil refineries that operated 1860s-1960s. WNYC's transmitter ran just south of here 1937-1990. No source ties a specific occupant to this parcel.",
-    "now": "TF Cornerstone filed a ULURP application in fall 2025 for three towers and roughly 1,060 apartments at 45 West Street, now moving through public review.",
-    "owner": "TF Cornerstone (developer).",
+    "now": "In May 2026 TF Cornerstone filed for a City Planning waterfront certification, not a full rezoning, for two mixed-use buildings with 1,060 apartments, 267 income-restricted. City review of the filing was ongoing as of Sept 2026.",
+    "owner": "TF Cornerstone (developer, through 2 Noble North LLC).",
     "sources": [
+      {
+        "t": "2 Noble Street Waterfront Cert · NYC Planning ZAP",
+        "u": "https://zap.planning.nyc.gov/projects/2026K0129"
+      },
       {
         "t": "TF Cornerstone advances 1,060-unit Greenpoint project with new ULURP filing · Pincusco",
         "u": "https://www.pincusco.com/tf-cornerstone-advances-1060-unit-greenpoint-project-with-new-ulurp-filing/"
@@ -244,24 +290,32 @@
       "credit": "Current site photo, via New York YIMBY",
       "isRendering": false
     },
-    "updated": "Sourced Sept 2026 · coordinates cross-verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "97-west-street",
     "name": "97 West Street",
-    "headline": "Contested 13-story tower",
+    "headline": "Contested waterfront towers",
     "type": "housing",
     "category": "parcel",
     "status": "contested",
-    "neighborhood": "97 West St · Greenpoint waterfront, near Greenpoint Ave · best available match, unconfirmed",
+    "condition": "existing-buildings",
+    "neighborhood": "79-97 West St & 36-44 Greenpoint Ave · Greenpoint waterfront",
     "lat": 40.729616,
     "lng": -73.959303,
-    "why": "An existing building and lot on the Greenpoint waterfront near Greenpoint Avenue. Jay Group bought it from Pearl Realty for $130 million in a deal that closed December 2025.",
+    "bbls": [
+      "3025560001"
+    ],
+    "why": "Low-rise industrial buildings at 79-97 West St and 36-44 Greenpoint Ave, built around 1960, slated to be replaced by a large residential development.",
     "history": "Pearl Realty bought this lot in 2001 (price undisclosed) and held it until the 2025 sale. No source documents earlier use. The landmarked Eberhard Faber Pencil Factory sits on the adjacent block.",
-    "now": "Jay Group secured a $320 million construction loan in November 2025. Plans for a roughly 13-story residential building are moving forward over local objections.",
+    "now": "Jay Group bought the site for $130 million in Dec 2025 after lining up a $320 million construction loan for a residential project. Plans are moving forward over local objections.",
     "owner": "Jay Group (developer), purchased from Pearl Realty in Dec. 2025.",
     "sources": [
+      {
+        "t": "Jay Group secures $320M construction loan for Greenpoint towers · The Real Deal",
+        "u": "https://therealdeal.com/new-york/2025/11/19/jay-group-nabs-320-million-greenpoint-construction-loan/"
+      },
       {
         "t": "Jay Group Buys Greenpoint Development Site for $130M · Commercial Observer",
         "u": "https://commercialobserver.com/2025/12/jay-group-buys-97-west-street-greenpoint-pearl-realty/"
@@ -284,8 +338,8 @@
       "credit": "Current site photo, via Greenpointers",
       "isRendering": false
     },
-    "updated": "Sourced Sept 2026 · flagged for Griffin to confirm this is the West St & Greenpoint Ave corner site",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025560001)",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "transmitter-park",
@@ -294,9 +348,13 @@
     "type": "park",
     "category": "topic",
     "status": "review",
+    "condition": "open-space",
     "neighborhood": "India St, Greenpoint waterfront",
     "lat": 40.72984,
     "lng": -73.96079,
+    "bbls": [
+      "3025560041"
+    ],
     "why": "An NYC Parks waterfront park, opened in 2012 on the former WNYC radio transmitter site, where a proposed restaurant and marina drew strong neighborhood opposition.",
     "history": "This spot was Greenpoint's ferry terminal 1853-1933. The city set it aside for WNYC in 1935. The WPA-funded transmitter building was dedicated in 1937 and broadcast until 1990.",
     "now": "On Sept 15, 2026, NYC Parks dropped the restaurant and 40-slip marina at a Community Board 1 committee meeting. A proposed resolution seeks a restroom concession and swaps the 1937 building's required renovation for a plaque.",
@@ -354,14 +412,24 @@
     "type": "park",
     "category": "topic",
     "status": "contested",
+    "condition": "partly-built",
     "neighborhood": "Kent Ave & N 9th St, Greenpoint/Williamsburg",
     "lat": 40.72263,
     "lng": -73.96179,
+    "bbls": [],
     "why": "Promised as parkland in the city's 2005 rezoning in exchange for upzoning, large sections of the planned park remain undelivered more than 20 years later.",
     "history": "The largest undelivered section sits on the former Astral Oil Works (later Standard Oil, sold in the 1940s), then the Bayside Fuel Oil Depot until it closed in 2010. Tanks came down in 2019.",
-    "now": "Friends of Bushwick Inlet Park continues its 'Where's Our Park?' campaign, while the adjacent Monitor Point housing raises questions about how much open space gets finished.",
+    "now": "The Motiva section around the inlet opened April 30, 2026, bringing the park to about 9 of 27.8 promised acres. The 8.5-acre CitiStorage parcel is next, but cleanup is slow and Restler says completion is short $75M to $100M.",
     "owner": "NYC Parks owns the site. Large sections of the planned park remain undelivered.",
     "sources": [
+      {
+        "t": "Bushwick Inlet Opens to Public After 100+ Years · Brooklyn Downtown Star",
+        "u": "https://brooklyndowntownstar.com/lead_story/2026/05/01/bushwick-inlet-opens-to-public-after-100-years/"
+      },
+      {
+        "t": "The inlet section of Bushwick Inlet Park opens at long last · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/bushwick-inlet-park-motiva-opens-at-last/"
+      },
       {
         "t": "Where's Our Park? · Friends of Bushwick Inlet Park",
         "u": "https://bushwickinletpark.org/wheres-our-park/"
@@ -388,8 +456,8 @@
       "credit": "Historic aerial of the former Bayside Fuel Oil tanks, via Friends of Bushwick Inlet Park",
       "isRendering": false
     },
-    "updated": "Sourced Sept 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "grand-army-plaza",
@@ -398,14 +466,20 @@
     "type": "road",
     "category": "topic",
     "status": "review",
+    "condition": "street",
     "neighborhood": "Park Slope / Prospect Heights",
     "lat": 40.672996,
     "lng": -73.969905,
+    "bbls": [],
     "why": "A landmarked traffic circle and plaza at the entrance to Prospect Park, now the subject of a major reconstruction proposal.",
     "history": "Laid out as Olmsted and Vaux's Prospect Park entrance starting in 1866. The Soldiers' and Sailors' Arch went up 1889-92. The current Bailey Fountain dates to 1929-32. Landmarked 1973-75.",
-    "now": "In April 2026 the Mamdani administration and DOT unveiled a 'transformational redesign' proposal aimed at pedestrian and cyclist safety, now moving through public review.",
+    "now": "Mayor Mamdani and DOT proposed closing a roadway in April 2026 to link the arch to Prospect Park. DOT updated five community boards June 2: the plan adds 42% more public space but still needs capital design and landmarks review.",
     "owner": "NYC (public right-of-way, under NYC DOT jurisdiction).",
     "sources": [
+      {
+        "t": "Grand Army/Prospect Heights Public Realm Plan, June 2026 update · NYC DOT",
+        "u": "https://www.nyc.gov/html/dot/downloads/pdf/grand-army-plaza-community-update-june2026.pdf"
+      },
       {
         "t": "Mayor Mamdani Unveils Proposal for Transformational Redesign · NYC Mayor's Office",
         "u": "https://www.nyc.gov/mayors-office/news/2026/04/mayor-mamdani-unveils-proposal-for-transformational-redesign-of-"
@@ -432,22 +506,24 @@
       "credit": "NYC DOT design rendering, via grandarmyredesign.com",
       "isRendering": true
     },
-    "updated": "Sourced Sept 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
+    "last_checked": "2026-09-25"
   },
   {
     "id": "park-ave-bqe",
     "name": "Park Avenue / BQE Corridor",
-    "headline": "Proposed highway reconstruction",
+    "headline": "Corridor concepts under study",
     "type": "road",
     "category": "topic",
     "status": "review",
+    "condition": "street",
     "neighborhood": "100 Park Ave (representative point) · under the BQE, Fort Greene/Clinton Hill end of the corridor",
     "lat": 40.695843,
     "lng": -73.972337,
+    "bbls": [],
     "why": "The elevated BQE viaduct and underused street space beneath it along Park Avenue, the subject of a fight over what replaces this aging highway.",
     "history": "Before the BQE, this was an at-grade industrial street near the Navy Yard (Rockwood Chocolate, Drake's Cakes). This segment was among the last finished, completed around 1960.",
-    "now": "NYSDOT and NYC DOT, with design firm WXY, have released concepts to reconstruct the viaduct and reclaim space underneath for parks, safer streets, and resiliency.",
+    "now": "NYC DOT's October 2024 BQE North and South report floated long-term concepts for the corridor, including this stretch: street redesigns, bike and bus lanes, new plazas and highway capping.",
     "owner": "NYSDOT (state-owned highway corridor).",
     "sources": [
       {
@@ -472,7 +548,7 @@
       "credit": "Rendering by WXY Architecture + Urban Design",
       "isRendering": true
     },
-    "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder (corridor-representative point, not a single-parcel address)",
-    "last_checked": "2026-09-01"
+    "updated": "Updated Sept 25, 2026 · coordinates verified against US Census Bureau geocoder (corridor-representative point, not a single-parcel address)",
+    "last_checked": "2026-09-25"
   }
 ]

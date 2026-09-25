@@ -1,0 +1,333 @@
+{
+  "generated": "2026-09-25",
+  "sites": {
+    "broadway-triangle": {
+      "condition": "partly-built",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3017200001",
+        "address": "475 MARCY AVENUE",
+        "land_use": "Industrial/manufacturing",
+        "buildings": 8,
+        "building_area_sqft": 574055,
+        "year_built": 1930,
+        "owner": "ACP BK I LLC",
+        "lot_area_sqft": 145000,
+        "lat": 40.6995759,
+        "lng": -73.9486012
+      },
+      "flags": [
+        "no bbls listed: pin and condition can't be checked against PLUTO"
+      ]
+    },
+    "greenpoint-hospital": {
+      "condition": "partly-built",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3028850025",
+          "address": "MASPETH AVENUE",
+          "land_use": "Public facilities",
+          "buildings": 2,
+          "building_area_sqft": 127279,
+          "year_built": 1910,
+          "owner": "NYC DEPARTMENT OF HOMELESS SERVICES",
+          "lot_area_sqft": 72060,
+          "lat": 40.7169456,
+          "lng": -73.9391545
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3028850025",
+        "address": "MASPETH AVENUE",
+        "land_use": "Public facilities",
+        "buildings": 2,
+        "building_area_sqft": 127279,
+        "year_built": 1910,
+        "owner": "NYC DEPARTMENT OF HOMELESS SERVICES",
+        "lot_area_sqft": 72060,
+        "lat": 40.7169456,
+        "lng": -73.9391545
+      },
+      "flags": []
+    },
+    "monitor-point": {
+      "condition": "existing-buildings",
+      "pluto_condition": "partly-built",
+      "lots": [
+        {
+          "bbl": "3025900001",
+          "address": "40 QUAY STREET",
+          "land_use": "Industrial/manufacturing",
+          "buildings": 1,
+          "building_area_sqft": 72600,
+          "year_built": 1973,
+          "owner": "NYC TRANSIT AUTHORITY",
+          "lot_area_sqft": 80617,
+          "lat": 40.7258666,
+          "lng": -73.958939
+        },
+        {
+          "bbl": "3025900025",
+          "address": "56 QUAY STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "GREENPOINT MONITOR MUSEUM",
+          "lot_area_sqft": 51028,
+          "lat": 40.7259823,
+          "lng": -73.9600213
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3025900001",
+        "address": "40 QUAY STREET",
+        "land_use": "Industrial/manufacturing",
+        "buildings": 1,
+        "building_area_sqft": 72600,
+        "year_built": 1973,
+        "owner": "NYC TRANSIT AUTHORITY",
+        "lot_area_sqft": 80617,
+        "lat": 40.7258666,
+        "lng": -73.958939
+      },
+      "flags": []
+    },
+    "fulton-howard-west": {
+      "condition": "existing-buildings",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3015480019",
+          "address": "1958 FULTON STREET",
+          "land_use": "Public facilities",
+          "buildings": 1,
+          "building_area_sqft": 150000,
+          "year_built": 1912,
+          "owner": "NYC HUMAN RESOURCES ADMINISTRATION",
+          "lot_area_sqft": 50000,
+          "lat": 40.6783287,
+          "lng": -73.919952
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3015300013",
+        "address": "1903 FULTON STREET",
+        "land_use": "Mixed residential/commercial",
+        "buildings": 1,
+        "building_area_sqft": 4840,
+        "year_built": 1915,
+        "owner": "1903 FULTON HOLDING LLC",
+        "lot_area_sqft": 2422,
+        "lat": 40.6790042,
+        "lng": -73.9204162
+      },
+      "flags": []
+    },
+    "river-ring": {
+      "condition": "vacant",
+      "pluto_condition": "vacant",
+      "lots": [
+        {
+          "bbl": "3023550001",
+          "address": "105 RIVER STREET",
+          "land_use": "Parking",
+          "buildings": 2,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 134450,
+          "lat": 40.7186941,
+          "lng": -73.9658662
+        },
+        {
+          "bbl": "3023610001",
+          "address": "RIVER STREET",
+          "land_use": "Parking",
+          "buildings": 1,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 89026,
+          "lat": 40.7178845,
+          "lng": -73.9663247
+        },
+        {
+          "bbl": "3023610050",
+          "address": "RIVER STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 6609,
+          "lat": 40.7178736,
+          "lng": -73.9670241
+        },
+        {
+          "bbl": "3023610101",
+          "address": "RIVER STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 624,
+          "lat": 40.7176868,
+          "lng": -73.9665865
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3023610001",
+        "address": "RIVER STREET",
+        "land_use": "Parking",
+        "buildings": 1,
+        "building_area_sqft": 0,
+        "year_built": null,
+        "owner": "RIVER STREET PARTNERS LLC",
+        "lot_area_sqft": 89026,
+        "lat": 40.7178845,
+        "lng": -73.9663247
+      },
+      "flags": []
+    },
+    "greenpoint-landing-phase-2": {
+      "condition": "vacant",
+      "pluto_condition": "vacant",
+      "lots": [
+        {
+          "bbl": "3025670001",
+          "address": "43 WEST STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "2 NOBLE NORTH LLC",
+          "lot_area_sqft": 299214,
+          "lat": 40.7277201,
+          "lng": -73.9610558
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3025700036",
+        "address": "2 OAK STREET",
+        "land_use": "Unknown",
+        "buildings": 0,
+        "building_area_sqft": 0,
+        "year_built": null,
+        "owner": "2 OAK SOUTH LLC",
+        "lot_area_sqft": 103740,
+        "lat": 40.7271302,
+        "lng": -73.9617091
+      },
+      "flags": []
+    },
+    "97-west-street": {
+      "condition": "existing-buildings",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3025560001",
+          "address": "97 WEST STREET",
+          "land_use": "Industrial/manufacturing",
+          "buildings": 6,
+          "building_area_sqft": 67000,
+          "year_built": 1960,
+          "owner": "97 WEST REALTY LLC",
+          "lot_area_sqft": 255200,
+          "lat": 40.72912,
+          "lng": -73.9613688
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3025560001",
+        "address": "97 WEST STREET",
+        "land_use": "Industrial/manufacturing",
+        "buildings": 6,
+        "building_area_sqft": 67000,
+        "year_built": 1960,
+        "owner": "97 WEST REALTY LLC",
+        "lot_area_sqft": 255200,
+        "lat": 40.72912,
+        "lng": -73.9613688
+      },
+      "flags": []
+    },
+    "transmitter-park": {
+      "condition": "open-space",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3025560041",
+          "address": "10 KENT STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 1,
+          "building_area_sqft": 1500,
+          "year_built": 1936,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 69930,
+          "lat": 40.7297295,
+          "lng": -73.9619205
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3025560041",
+        "address": "10 KENT STREET",
+        "land_use": "Open space/recreation",
+        "buildings": 1,
+        "building_area_sqft": 1500,
+        "year_built": 1936,
+        "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+        "lot_area_sqft": 69930,
+        "lat": 40.7297295,
+        "lng": -73.9619205
+      },
+      "flags": []
+    },
+    "bushwick-inlet-park": {
+      "condition": "partly-built",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3023010001",
+        "address": "86 KENT AVENUE",
+        "land_use": "Open space/recreation",
+        "buildings": 1,
+        "building_area_sqft": 12447,
+        "year_built": 2010,
+        "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+        "lot_area_sqft": 256200,
+        "lat": 40.7230874,
+        "lng": -73.9624871
+      },
+      "flags": []
+    },
+    "grand-army-plaza": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": null,
+      "flags": []
+    },
+    "park-ave-bqe": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3020450037",
+        "address": "67 ADELPHI STREET",
+        "land_use": "1-2 family homes",
+        "buildings": 1,
+        "building_area_sqft": 2156,
+        "year_built": 1901,
+        "owner": "FLEUR, SUSAN",
+        "lot_area_sqft": 2500,
+        "lat": 40.6956946,
+        "lng": -73.9720626
+      },
+      "flags": []
+    }
+  }
+}
