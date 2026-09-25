@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lot Lines · North Brooklyn Urbanism Map</title>
+<title>NYC Urban Projects · North Brooklyn Urbanism Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -147,7 +147,7 @@ header{
 
 <header>
   <div class="brand">
-    <h1>Lot Lines</h1>
+    <h1>NYC Urban Projects</h1>
     <p>Vacant parcels and live infrastructure fights across North Brooklyn, covering who's building what, why the ground stays empty, and who's deciding.</p>
   </div>
   <div class="header-right">
@@ -536,10 +536,25 @@ function popupHTML(s){
   `;
 }
 
+// Cap popups at ~65% of the window, and never taller than the map pane itself,
+// so they scroll on small screens instead of overflowing.
+function popupMaxHeight(){
+  const mapH = map.getContainer().clientHeight - 80;
+  return Math.max(160, Math.round(Math.min(window.innerHeight * 0.65, mapH)));
+}
+function fitPopup(popup){
+  popup.options.maxHeight = popupMaxHeight();
+  popup.update();
+}
+map.on('popupopen', e => fitPopup(e.popup));
+window.addEventListener('resize', () => {
+  Object.values(markers).forEach(m => { const p = m.getPopup(); if(p && p.isOpen()) fitPopup(p); });
+});
+
 const markers = {};
 SITES.forEach(s => {
   const m = L.marker([s.lat, s.lng], {icon: makeIcon(s)}).addTo(map);
-  m.bindPopup(popupHTML(s), {maxWidth: 300});
+  m.bindPopup(popupHTML(s), {maxWidth: 300, maxHeight: popupMaxHeight()});
   markers[s.id] = m;
 });
 map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
