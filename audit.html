@@ -38,7 +38,7 @@ input[type=search]{font:inherit;padding:7px 10px;border:1px solid var(--line);bo
 label{color:var(--ink-soft);font-size:13px}
 main{max-width:1400px;margin:0 auto;padding:8px 16px 40px}
 .wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;min-width:900px}
+table{border-collapse:collapse;width:100%;min-width:1100px}
 th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
 th{font:600 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);background:var(--surface-2);cursor:pointer;white-space:nowrap;position:sticky;top:0}
 th[aria-sort=ascending]::after{content:" ▲"} th[aria-sort=descending]::after{content:" ▼"}
@@ -58,7 +58,7 @@ details a{display:block;color:var(--accent);font-size:12px;margin-top:4px;word-b
 <body>
 <header>
   <h1>Site audit</h1>
-  <p>Every site in <code>sites.json</code>, oldest check first. Sites not checked in 14+ days or breaking a data rule are flagged. <a href="./">Back to map</a></p>
+  <p>Every site in <code>sites.json</code>, oldest check first. Sites not checked in 14+ days, breaking a data rule, or disagreeing with NYC PLUTO lot records are flagged. <a href="./">Back to map</a></p>
   <div class="summary" id="summary"></div>
   <div class="controls">
     <input type="search" id="q" placeholder="Filter by name, id, neighborhood…" aria-label="Filter sites">
@@ -72,6 +72,7 @@ details a{display:block;color:var(--accent);font-size:12px;margin-top:4px;word-b
         <th data-k="name">Site</th>
         <th data-k="type">Type</th>
         <th data-k="status">Status</th>
+        <th data-k="condition">Condition vs PLUTO</th>
         <th data-k="age" aria-sort="descending">Last checked</th>
         <th data-k="nowLen">Current status</th>
         <th data-k="srcCount">Sources</th>
@@ -88,12 +89,14 @@ const STALE_DAYS = 14;
 const LIMITS = {why:200, history:200, now:250, owner:200};
 const STATUS_LABEL = {contested:"Contested", review:"In review", active:"Advancing"};
 const TYPE_LABEL = {park:"Park", housing:"Housing", road:"Road & bikelane", other:"Other"};
+const CONDITION_LABEL = {"vacant":"Vacant lot", "existing-buildings":"Existing buildings", "under-construction":"Under construction",
+  "partly-built":"Partly built out", "open-space":"Open space", "street":"Street corridor", "unverified":"Unverified"};
 const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-let rows = [], sortKey = 'age', sortDir = -1;
+let rows = [], sortKey = 'age', sortDir = -1, auditDate = null;
 
-function issuesFor(s, age){
-  const out = [];
+function issuesFor(s, age, audit){
+  const out = [...((audit && audit.flags) || [])];
   for (const [k, lim] of Object.entries(LIMITS)) {
     const n = (s[k] || '').length;
     if (!n) out.push(`missing ${k}`); else if (n > lim) out.push(`${k} ${n}/${lim} chars`);
@@ -115,12 +118,20 @@ function render(){
       <td><div class="name">${esc(r.name)}</div><div class="id">${esc(r.id)}</div><div class="muted">${esc(r.neighborhood)}</div></td>
       <td><span class="pill" style="background:var(--type-${esc(r.type)})">${esc(TYPE_LABEL[r.type] || r.type)}</span></td>
       <td><span class="pill" style="background:var(--status-${esc(r.status)})">${esc(STATUS_LABEL[r.status] || r.status)}</span><div class="muted" style="margin-top:4px">${esc(r.headline)}</div></td>
+      <td>${esc(CONDITION_LABEL[r.condition] || r.condition)}${conditionCell(r.audit)}</td>
       <td><div class="${r.age >= STALE_DAYS || isNaN(r.age) ? 'flag' : ''}">${esc(r.last_checked)}</div><div class="muted">${isNaN(r.age) ? '' : r.age === 0 ? 'today' : r.age + ' days ago'}</div></td>
       <td class="text">${esc(r.now)}<div class="muted ${r.nowLen > LIMITS.now ? 'flag' : ''}">${r.nowLen}/${LIMITS.now} chars · ${esc(r.updated)}</div></td>
       <td><details><summary>${r.srcCount}</summary>${(r.sources || []).map(s => `<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join('')}</details></td>
       <td>${r.issueCount ? `<ul class="issues">${r.issues.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : '<span class="okc">OK</span>'}</td>
     </tr>`).join('');
   document.querySelectorAll('th').forEach(th => th.setAttribute('aria-sort', th.dataset.k === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'));
+}
+
+function conditionCell(a){
+  if (!a) return '<div class="muted">not audited</div>';
+  const lots = (a.lots || []).map(l => `${esc(l.bbl)}: ${esc(l.land_use)}, ${l.buildings} bldg, ${l.building_area_sqft.toLocaleString()} sq ft${l.year_built ? ', built ' + l.year_built : ''}`);
+  const pin = a.pin_lot ? `Pin on ${esc(a.pin_lot.address || a.pin_lot.bbl)} (${esc(a.pin_lot.land_use)})` : '';
+  return `<div class="muted">${lots.length ? 'PLUTO: ' + lots.join('<br>') : 'No lots listed'}${pin ? '<br>' + pin : ''}</div>`;
 }
 
 function summarize(){
@@ -130,7 +141,8 @@ function summarize(){
   const stat = (n, label, bad) => `<div class="stat ${bad && n ? 'bad' : ''}"><b>${n}</b><span>${label}</span></div>`;
   document.getElementById('summary').innerHTML =
     stat(rows.length, 'sites') + stat(stale, `not checked in ${STALE_DAYS}+ days`, true) +
-    stat(withIssues, 'with issues', true) + stat(esc(newest || '–'), 'most recent check');
+    stat(withIssues, 'with issues', true) + stat(esc(newest || '–'), 'most recent check') +
+    stat(esc(auditDate || 'never'), 'last PLUTO audit');
 }
 
 document.querySelectorAll('th').forEach(th => th.addEventListener('click', () => {
@@ -140,14 +152,19 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', () =>
 document.getElementById('q').addEventListener('input', render);
 document.getElementById('flaggedOnly').addEventListener('change', render);
 
+// audit.json is written by scripts/audit_sites.py; the page still works without it.
+const auditReq = fetch('audit.json').then(r => r.ok ? r.json() : null).catch(() => null);
 fetch('sites.json')
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(sites => {
+  .then(async sites => {
+    const audit = await auditReq;
+    auditDate = audit && audit.generated;
     const today = new Date(new Date().toISOString().slice(0, 10));
     rows = sites.map(s => {
       const age = Math.round((today - new Date(s.last_checked)) / 864e5);
-      const issues = issuesFor(s, age);
-      return {...s, age, issues, issueCount: issues.length, nowLen: (s.now || '').length, srcCount: (s.sources || []).length};
+      const a = audit && audit.sites[s.id];
+      const issues = issuesFor(s, age, a);
+      return {...s, audit: a, age, issues, issueCount: issues.length, nowLen: (s.now || '').length, srcCount: (s.sources || []).length};
     });
     summarize(); render();
   })

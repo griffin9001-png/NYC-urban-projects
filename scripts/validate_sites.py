@@ -11,12 +11,24 @@ import sys
 TYPES = {"park", "housing", "road", "other"}
 CATEGORIES = {"parcel", "topic"}
 STATUSES = {"contested", "review", "active"}
+CONDITIONS = {"vacant", "existing-buildings", "under-construction", "partly-built",
+              "open-space", "street", "unverified"}
 REQUIRED = ["id", "name", "headline", "type", "category", "status", "neighborhood",
-            "lat", "lng", "why", "history", "now", "owner", "sources", "updated", "last_checked"]
+            "condition", "lat", "lng", "why", "history", "now", "owner", "sources", "updated", "last_checked"]
 # Popup caps: "now" is shown as Current status (250), everything else 200.
 LIMITS = {"why": 200, "history": 200, "now": 250, "owner": 200}
 # Rough NYC bounding box, catches swapped or mistyped coordinates.
 LAT_RANGE, LNG_RANGE = (40.49, 40.92), (-74.27, -73.68)
+# Label-vs-text contradictions: (field, value, pattern in why/now/history, message).
+# Cheap deterministic backstop; the weekly review catches subtler mismatches.
+CONTRADICTIONS = [
+    ("condition", "vacant", r"existing building|demoli|torn down|tear(ing)? down|tenants?|evict|occupied",
+     "condition is vacant but text describes buildings or tenants"),
+    ("condition", "open-space", r"demoli|torn down|tear(ing)? down|evict",
+     "condition is open-space but text describes demolition"),
+    ("status", "active", r"scrapped|dropped|killed|cancell?ed|rejected|withdrawn|voted down",
+     "status is Advancing but text says the plan was stopped"),
+]
 
 
 def validate(sites):
@@ -43,6 +55,15 @@ def validate(sites):
             err(f"category must be one of {sorted(CATEGORIES)}")
         if s.get("status") not in STATUSES:
             err(f"status must be one of {sorted(STATUSES)}")
+        if s.get("condition") not in CONDITIONS:
+            err(f"condition must be one of {sorted(CONDITIONS)}")
+        bbls = s.get("bbls", [])
+        if not isinstance(bbls, list) or not all(re.fullmatch(r"[1-5]\d{9}", str(b)) for b in bbls):
+            err("bbls must be a list of 10-digit BBL strings")
+        text = " ".join(str(s.get(k) or "") for k in ("why", "now", "history")).lower()
+        for field, value, pattern, message in CONTRADICTIONS:
+            if s.get(field) == value and re.search(pattern, text):
+                err(message)
         lat, lng = s.get("lat"), s.get("lng")
         if not isinstance(lat, (int, float)) or not LAT_RANGE[0] <= lat <= LAT_RANGE[1]:
             err(f"lat {lat} outside NYC")
