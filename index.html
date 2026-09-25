@@ -343,17 +343,20 @@ const SITES = [
   {
     id: "transmitter-park",
     name: "Transmitter Park",
-    headline: "Proposed park upgrades",
+    headline: "Marina plan scrapped",
     type: "park",
     category: "topic",
-    status: "active",
+    status: "review",
     neighborhood: "India St, Greenpoint waterfront",
     lat: 40.72984, lng: -73.96079,
-    why: "An NYC Parks waterfront park, opened in 2012 on the former WNYC radio transmitter site, now undergoing an expansion.",
+    why: "An NYC Parks waterfront park, opened in 2012 on the former WNYC radio transmitter site, where a proposed restaurant and marina drew strong neighborhood opposition.",
     history: "This spot was Greenpoint's ferry terminal 1853-1933. The city set it aside for WNYC in 1935. The WPA-funded transmitter building was dedicated in 1937 and broadcast until 1990.",
-    now: "NYC Parks and the North Brooklyn Parks Alliance are adding a restaurant and a small marina, extending the park's waterfront program further along the shoreline.",
+    now: "In Sept 2026, Community Board 1 rejected the restaurant and 40-slip marina and NYC Parks dropped it. A smaller restroom-focused concession comes next, but it no longer requires restoring the 1937 transmitter building, only a plaque.",
     owner: "NYC Parks (public park).",
     sources: [
+      {t:"Transmitter Park Marina Plan Killed · Curbed", u:"https://www.curbed.com/article/transmitter-park-marina-plan-killed-bathroom-concession-change-preservation-battle.html"},
+      {t:"Controversial Transmitter Park Proposal Scrapped · Greenpointers", u:"https://greenpointers.com/2026/09/22/controversial-transmitter-park-proposal-scrapped-due-to-community-pushback/"},
+      {t:"Community Board 1 Nixes Plan for Transmitter Park · Brooklyn Eagle", u:"https://brooklyneagle.com/416476/community-board-1-nixes-plan-for-greenpoint-park/"},
       {t:"Transmitter Park to Get New Restaurant and Marina · Greenpointers", u:"https://greenpointers.com/2026/07/28/greenpoints-transmitter-park-to-get-new-restaurant-and-marina/"},
       {t:"WNYC Transmitter Park · NYC Parks", u:"https://www.nycgovparks.org/parks/transmitter-park"},
       {t:"Transmitter Park · North Brooklyn Parks Alliance", u:"https://nbkparks.org/transmitter-park/"},
@@ -361,7 +364,7 @@ const SITES = [
       {t:"WNYC Transmitter, Former · Living New Deal", u:"https://livingnewdeal.org/sites/wnyc-transmitter-former-brooklyn-ny/"}
     ],
     image: { url: "https://greenpointers.com/wp-content/uploads/2026/07/IMG_6546.jpg", credit: "Photo via Greenpointers", isRendering: false },
-    updated: "Sourced Sept 2026 · exact match from NYC PAD/GeoSearch"
+    updated: "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch"
   },
   {
     id: "bushwick-inlet-park",
@@ -499,9 +502,10 @@ function makeIcon(site){
 }
 
 const SECTION_CHAR_LIMIT = 200;
-function clip(text){
+const STATUS_CHAR_LIMIT = 250;
+function clip(text, limit = SECTION_CHAR_LIMIT){
   if(!text) return '';
-  return text.length > SECTION_CHAR_LIMIT ? text.slice(0, SECTION_CHAR_LIMIT - 1).trimEnd() + '…' : text;
+  return text.length > limit ? text.slice(0, limit - 1).trimEnd() + '…' : text;
 }
 
 function popupHTML(s){
@@ -521,10 +525,10 @@ function popupHTML(s){
         <span class="pill pill-status" style="background:var(--status-${s.status})">${STATUS_LABEL[s.status]}</span>
       </div>${image}
       <p>${clip(s.why)}</p>
+      <div class="section-label">Current status</div>
+      <p>${clip(s.now, STATUS_CHAR_LIMIT)}</p>
       <div class="section-label">History</div>
       <p>${clip(s.history)}</p>
-      <div class="section-label">Now</div>
-      <p>${clip(s.now)}</p>
       <div class="section-label">Who owns the site</div>
       <p>${clip(s.owner)}</p>
       <details class="sources">
