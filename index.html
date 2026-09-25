@@ -111,6 +111,8 @@ header{
 .lp h3 .hname{font-weight:500; color:#4D584F;}
 .lp .hood{font-size:11px; color:#7C877E; margin-bottom:8px;}
 .lp .pill-row{margin-bottom:8px;}
+/* Title, neighborhood and pills stay pinned while long popups scroll. */
+.lp-head{position:sticky; top:0; z-index:2; background:#FFFFFF; padding-top:2px; margin-bottom:8px; border-bottom:1px solid #E6E9E2;}
 .lp .render-link{display:block; margin-bottom:9px; text-decoration:none; overflow:visible;}
 .lp .render-thumb{width:100%; height:112px; object-fit:cover; border-radius:6px; border:1px solid #D7DCD0; display:block; transition:transform .18s ease, box-shadow .18s ease; transform-origin:center top;}
 .lp .render-link:hover .render-thumb{transform:scale(1.35); box-shadow:0 10px 26px rgba(0,0,0,.45); position:relative; z-index:60;}
@@ -266,12 +268,14 @@ function popupHTML(s){
       </a>` : '';
   return `
     <div class="lp">
-      <h3>${s.headline} <span class="hname">(${s.name})</span></h3>
-      <div class="hood">${s.neighborhood}</div>
-      <div class="pill-row">
-        <span class="pill pill-type" style="background:var(--type-${s.type})">${TYPE_LABEL[s.type]}</span>
-        <span class="pill pill-cat-${s.category}">${CAT_LABEL[s.category]}</span>
-        <span class="pill pill-status" style="background:var(--status-${s.status})">${STATUS_LABEL[s.status]}</span>
+      <div class="lp-head">
+        <h3>${s.headline} <span class="hname">(${s.name})</span></h3>
+        <div class="hood">${s.neighborhood}</div>
+        <div class="pill-row">
+          <span class="pill pill-type" style="background:var(--type-${s.type})">${TYPE_LABEL[s.type]}</span>
+          <span class="pill pill-cat-${s.category}">${CAT_LABEL[s.category]}</span>
+          <span class="pill pill-status" style="background:var(--status-${s.status})">${STATUS_LABEL[s.status]}</span>
+        </div>
       </div>${image}
       <p>${clip(s.why)}</p>
       <div class="section-label">Current status</div>
