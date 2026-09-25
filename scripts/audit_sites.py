@@ -75,7 +75,9 @@ def observed_condition(lots):
     """What PLUTO says stands on the listed lots."""
     if not lots:
         return None
-    built = [l for l in lots if l["building_area_sqft"] > 0 or l["buildings"] > 0]
+    # PLUTO counts booths and sheds on parking lots as buildings with zero floor area,
+    # so only recorded floor area counts as "built".
+    built = [l for l in lots if l["building_area_sqft"] > 0]
     if not built:
         return "vacant"
     return "existing-buildings" if len(built) == len(lots) else "partly-built"

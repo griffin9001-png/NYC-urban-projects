@@ -22,7 +22,7 @@
       ]
     },
     "greenpoint-hospital": {
-      "condition": "existing-buildings",
+      "condition": "partly-built",
       "pluto_condition": "existing-buildings",
       "lots": [
         {
@@ -53,9 +53,34 @@
       "flags": []
     },
     "monitor-point": {
-      "condition": "unverified",
-      "pluto_condition": null,
-      "lots": [],
+      "condition": "existing-buildings",
+      "pluto_condition": "partly-built",
+      "lots": [
+        {
+          "bbl": "3025900001",
+          "address": "40 QUAY STREET",
+          "land_use": "Industrial/manufacturing",
+          "buildings": 1,
+          "building_area_sqft": 72600,
+          "year_built": 1973,
+          "owner": "NYC TRANSIT AUTHORITY",
+          "lot_area_sqft": 80617,
+          "lat": 40.7258666,
+          "lng": -73.958939
+        },
+        {
+          "bbl": "3025900025",
+          "address": "56 QUAY STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "GREENPOINT MONITOR MUSEUM",
+          "lot_area_sqft": 51028,
+          "lat": 40.7259823,
+          "lng": -73.9600213
+        }
+      ],
       "pin_lot": {
         "bbl": "3025900001",
         "address": "40 QUAY STREET",
@@ -68,10 +93,7 @@
         "lat": 40.7258666,
         "lng": -73.958939
       },
-      "flags": [
-        "condition unverified: confirm what stands on the site and set condition",
-        "no bbls listed: pin and condition can't be checked against PLUTO"
-      ]
+      "flags": []
     },
     "fulton-howard-west": {
       "condition": "existing-buildings",
@@ -105,46 +127,102 @@
       "flags": []
     },
     "river-ring": {
-      "condition": "unverified",
-      "pluto_condition": null,
-      "lots": [],
+      "condition": "vacant",
+      "pluto_condition": "vacant",
+      "lots": [
+        {
+          "bbl": "3023550001",
+          "address": "105 RIVER STREET",
+          "land_use": "Parking",
+          "buildings": 2,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 134450,
+          "lat": 40.7186941,
+          "lng": -73.9658662
+        },
+        {
+          "bbl": "3023610001",
+          "address": "RIVER STREET",
+          "land_use": "Parking",
+          "buildings": 1,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 89026,
+          "lat": 40.7178845,
+          "lng": -73.9663247
+        },
+        {
+          "bbl": "3023610050",
+          "address": "RIVER STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 6609,
+          "lat": 40.7178736,
+          "lng": -73.9670241
+        },
+        {
+          "bbl": "3023610101",
+          "address": "RIVER STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "RIVER STREET PARTNERS LLC",
+          "lot_area_sqft": 624,
+          "lat": 40.7176868,
+          "lng": -73.9665865
+        }
+      ],
       "pin_lot": {
-        "bbl": "3024140003",
-        "address": "280 KENT STREET",
-        "land_use": "Unknown",
+        "bbl": "3023610001",
+        "address": "RIVER STREET",
+        "land_use": "Parking",
         "buildings": 1,
         "building_area_sqft": 0,
         "year_built": null,
-        "owner": "DOMINO A PARTNERS LLC",
-        "lot_area_sqft": 42900,
-        "lat": 40.7152909,
-        "lng": -73.967015
+        "owner": "RIVER STREET PARTNERS LLC",
+        "lot_area_sqft": 89026,
+        "lat": 40.7178845,
+        "lng": -73.9663247
       },
-      "flags": [
-        "condition unverified: confirm what stands on the site and set condition",
-        "no bbls listed: pin and condition can't be checked against PLUTO"
-      ]
+      "flags": []
     },
     "greenpoint-landing-phase-2": {
-      "condition": "unverified",
-      "pluto_condition": null,
-      "lots": [],
+      "condition": "vacant",
+      "pluto_condition": "vacant",
+      "lots": [
+        {
+          "bbl": "3025670001",
+          "address": "43 WEST STREET",
+          "land_use": "Vacant land",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "2 NOBLE NORTH LLC",
+          "lot_area_sqft": 299214,
+          "lat": 40.7277201,
+          "lng": -73.9610558
+        }
+      ],
       "pin_lot": {
-        "bbl": "3025710001",
-        "address": "26 WEST STREET",
-        "land_use": "Elevator apartments",
-        "buildings": 1,
-        "building_area_sqft": 87963,
-        "year_built": 2017,
-        "owner": "26 WEST STREET LLC",
-        "lot_area_sqft": 18125,
-        "lat": 40.7272498,
-        "lng": -73.9585594
+        "bbl": "3025700036",
+        "address": "2 OAK STREET",
+        "land_use": "Unknown",
+        "buildings": 0,
+        "building_area_sqft": 0,
+        "year_built": null,
+        "owner": "2 OAK SOUTH LLC",
+        "lot_area_sqft": 103740,
+        "lat": 40.7271302,
+        "lng": -73.9617091
       },
-      "flags": [
-        "condition unverified: confirm what stands on the site and set condition",
-        "no bbls listed: pin and condition can't be checked against PLUTO"
-      ]
+      "flags": []
     },
     "97-west-street": {
       "condition": "existing-buildings",
