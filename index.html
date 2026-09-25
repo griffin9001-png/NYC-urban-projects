@@ -358,6 +358,8 @@ document.getElementById('filters').addEventListener('click', (e) => {
     const s = SITES.find(x => x.id === id);
     const show = f === 'all' || s.type === f;
     if(show){ if(!map.hasLayer(m)) m.addTo(map); } else { map.removeLayer(m); }
+    const lots = lotLayers[id];
+    if(lots){ if(show){ if(!map.hasLayer(lots)) lots.addTo(map); } else { map.removeLayer(lots); } }
   });
 });
 
@@ -369,6 +371,32 @@ function init(){
   });
   map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
   renderList('all');
+  loadLots();
+}
+
+// Tax-lot outlines (lots.geojson, built by scripts/fetch_lots.py), shaded in each site's pin color.
+// Drawn in their own pane under the basemap label layer so street names stay readable.
+const lotLayers = {};
+map.createPane('lots').style.zIndex = 350;
+function loadLots(){
+  const css = getComputedStyle(document.documentElement);
+  fetch('lots.geojson').then(r => r.ok ? r.json() : null).then(fc => {
+    if(!fc) return;
+    const bySite = {};
+    fc.features.forEach(f => (bySite[f.properties.site] ||= []).push(f));
+    Object.entries(bySite).forEach(([id, features]) => {
+      const s = SITES.find(x => x.id === id);
+      if(!s || !markers[id]) return;
+      const color = css.getPropertyValue(`--type-${s.type}`).trim();
+      const base = {pane: 'lots', color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.22};
+      const layer = L.geoJSON(features, {style: () => base})
+        .on('mouseover', e => e.layer.setStyle({fillOpacity: 0.4}))
+        .on('mouseout', e => e.layer.setStyle({fillOpacity: base.fillOpacity}))
+        .on('click', () => markers[id].openPopup())
+        .addTo(map);
+      lotLayers[id] = layer;
+    });
+  }).catch(() => {});
 }
 
 fetch('sites.json')

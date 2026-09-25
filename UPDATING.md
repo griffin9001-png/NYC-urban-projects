@@ -6,6 +6,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 - Audit: https://griffin9001-png.github.io/NYC-urban-projects/audit.html
 - Check data locally: `python3 scripts/validate_sites.py`
 - Check against city lot records: `python3 scripts/audit_sites.py` (needs internet; writes `audit.json`, which the audit page shows)
+- Refresh lot shading: `python3 scripts/fetch_lots.py` (needs internet; writes `lots.geojson` from each site's `bbls`; rerun whenever `bbls` change)
 - Preview locally: `python3 -m http.server` in the repo root, then open http://localhost:8000 (opening `index.html` straight from disk can't load `sites.json`).
 
 ## Site fields
@@ -18,7 +19,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `category` | `parcel` (a specific development site) or `topic` (a broader fight). Not shown on the page |
 | `status` | `contested`, `review` (In review), `active` (Advancing) |
 | `condition` | what physically stands on the site today, shown as a pill: `vacant`, `existing-buildings`, `under-construction`, `partly-built`, `open-space`, `street`, `unverified`. Never set `vacant` without a PLUTO lot showing no buildings |
-| `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin |
+| `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin, and for any site whose land should be shaded on the map (streets have none) |
 | `lat`, `lng` | geocoded point; say how in `updated` |
 | `why` | one-line framing, 200 chars max |
 | `now` | shown as **Current status**, 250 chars max, lead with the month and year of the latest event |
@@ -55,13 +56,13 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. It ne
    3. If there is a material development (vote, approval, lawsuit, groundbreaking, cancellation, sale, new plan), rewrite `now` within 250 chars, adjust `headline` and `status` if they are no longer accurate, add the new source(s) to the top of `sources`, and update the date in `updated`.
    4. Set `last_checked` to today for every site that was searched, changed or not.
 3. Consistency review, for every site whether or not news changed: read `headline`, `status`, `condition` and `type` against `why`, `now`, `history` and the sources. Fix any label that the text or sources contradict, or list it in the PR if the right value is unclear. Also open the newest listed source and confirm `now` reflects it; a source that is listed but not reflected in the text is a stale entry. Never carry a claim from reader comments, search snippets or paywalled headlines alone into the text.
-4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Commit the refreshed `audit.json`.
+4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Commit the refreshed `audit.json`. If any `bbls` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.
 5. Run `python3 scripts/validate_sites.py` and fix any errors.
 6. Open a PR titled `Weekly site update YYYY-MM-DD`. The body has one row per site: id, changed or no change, a one-line summary of what changed, and the source URLs relied on. Add a section listing remaining audit flags and label questions, and any pages that couldn't be read.
 7. If no site changed, still open the PR (it only bumps `last_checked`) so the audit page shows the check happened.
 
 ## Adding a site
 
-Add an object to `sites.json` with every field above (look up its `bbls` and confirm `condition` in ZoLa or PLUTO), set `last_checked` to today, run the validator and the audit, and open a PR. The weekly run picks it up automatically from the next Monday.
+Add an object to `sites.json` with every field above (look up its `bbls` and confirm `condition` in ZoLa or PLUTO), set `last_checked` to today, run the validator, the audit and `fetch_lots.py`, and open a PR. The weekly run picks it up automatically from the next Monday.
 
 Cost scales with the number of sites: each weekly run does a few searches and article reads per site. At tens of sites this is small. Past roughly 50 sites, split the weekly run into batches (for example, half the sites on alternating weeks, or only sites with `status` other than `active` weekly and the rest monthly).

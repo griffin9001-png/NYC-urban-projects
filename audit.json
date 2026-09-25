@@ -3,23 +3,130 @@
   "sites": {
     "broadway-triangle": {
       "condition": "partly-built",
-      "pluto_condition": null,
-      "lots": [],
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3022490023",
+          "address": "UNION AVENUE",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 73662,
+          "year_built": 2021,
+          "owner": "HARRISON REALTY II LLC",
+          "lot_area_sqft": 9643,
+          "lat": 40.701292,
+          "lng": -73.9499848
+        },
+        {
+          "bbl": "3022490122",
+          "address": "UNION AVENUE",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 98796,
+          "year_built": 2021,
+          "owner": "HARRISON REALTY II LLC",
+          "lot_area_sqft": 9680,
+          "lat": 40.7010504,
+          "lng": -73.9499813
+        },
+        {
+          "bbl": "3022497503",
+          "address": "251 WALLABOUT STREET",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 172902,
+          "year_built": 2021,
+          "owner": "HARRISON REALTY II LLC",
+          "lot_area_sqft": 32000,
+          "lat": 40.7014922,
+          "lng": -73.9496636
+        },
+        {
+          "bbl": "3022497504",
+          "address": "269 WALLABOUT STREET",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 154501,
+          "year_built": 2021,
+          "owner": "HARRISON REALTY II LLC",
+          "lot_area_sqft": 20000,
+          "lat": 40.7017308,
+          "lng": -73.9492956
+        },
+        {
+          "bbl": "3022650022",
+          "address": "UNION AVENUE",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 143805,
+          "year_built": 2022,
+          "owner": "HARRISON PLAZA LLC",
+          "lot_area_sqft": 18044,
+          "lat": 40.7002736,
+          "lng": -73.9499098
+        },
+        {
+          "bbl": "3022657501",
+          "address": "352 WALLABOUT STREET",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 139330,
+          "year_built": 2022,
+          "owner": "HARRISON REALTY LLC",
+          "lot_area_sqft": 20000,
+          "lat": 40.7011596,
+          "lng": -73.9486649
+        },
+        {
+          "bbl": "3022657502",
+          "address": "342 WALLABOUT STREET",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 164125,
+          "year_built": 2022,
+          "owner": "HARRISON REALTY LLC",
+          "lot_area_sqft": 33000,
+          "lat": 40.7009237,
+          "lng": -73.9490293
+        },
+        {
+          "bbl": "3022657503",
+          "address": "330 WALLABOUT STREET",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 137834,
+          "year_built": 2022,
+          "owner": "HARRISON REALTY LLC",
+          "lot_area_sqft": 20000,
+          "lat": 40.7006851,
+          "lng": -73.9493973
+        },
+        {
+          "bbl": "3022657504",
+          "address": "322 WALLABOUT STREET",
+          "land_use": "Mixed residential/commercial",
+          "buildings": 1,
+          "building_area_sqft": 124122,
+          "year_built": 2022,
+          "owner": "HARRISON REALTY LLC",
+          "lot_area_sqft": 20000,
+          "lat": 40.7005068,
+          "lng": -73.9496752
+        }
+      ],
       "pin_lot": {
-        "bbl": "3017200001",
-        "address": "475 MARCY AVENUE",
-        "land_use": "Industrial/manufacturing",
-        "buildings": 8,
-        "building_area_sqft": 574055,
-        "year_built": 1930,
-        "owner": "ACP BK I LLC",
-        "lot_area_sqft": 145000,
-        "lat": 40.6995759,
-        "lng": -73.9486012
+        "bbl": "3022657502",
+        "address": "342 WALLABOUT STREET",
+        "land_use": "Mixed residential/commercial",
+        "buildings": 1,
+        "building_area_sqft": 164125,
+        "year_built": 2022,
+        "owner": "HARRISON REALTY LLC",
+        "lot_area_sqft": 33000,
+        "lat": 40.7009237,
+        "lng": -73.9490293
       },
-      "flags": [
-        "no bbls listed: pin and condition can't be checked against PLUTO"
-      ]
+      "flags": []
     },
     "greenpoint-hospital": {
       "condition": "partly-built",
@@ -331,8 +438,153 @@
     },
     "bushwick-inlet-park": {
       "condition": "partly-built",
-      "pluto_condition": null,
-      "lots": [],
+      "pluto_condition": "partly-built",
+      "lots": [
+        {
+          "bbl": "3022770001",
+          "address": "26 NORTH 12 STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 15,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 319935,
+          "lat": 40.7243628,
+          "lng": -73.9597986
+        },
+        {
+          "bbl": "3022870001",
+          "address": "41 NORTH 11 STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 80000,
+          "lat": 40.7232017,
+          "lng": -73.9596803
+        },
+        {
+          "bbl": "3022870016",
+          "address": "20 NORTH 12 STREET",
+          "land_use": "Unknown",
+          "buildings": 1,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 60400,
+          "lat": 40.7238196,
+          "lng": -73.960672
+        },
+        {
+          "bbl": "3022870030",
+          "address": "2 NORTH 12 STREET",
+          "land_use": "Unknown",
+          "buildings": 1,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 59600,
+          "lat": 40.7248357,
+          "lng": -73.9623094
+        },
+        {
+          "bbl": "3022940001",
+          "address": "16 NORTH 11 STREET",
+          "land_use": "Industrial/manufacturing",
+          "buildings": 1,
+          "building_area_sqft": 97300,
+          "year_built": 1999,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 147343,
+          "lat": 40.7237707,
+          "lng": -73.9620682
+        },
+        {
+          "bbl": "3022940005",
+          "address": "33 NORTH 10 STREET",
+          "land_use": "Industrial/manufacturing",
+          "buildings": 1,
+          "building_area_sqft": 42300,
+          "year_built": 2001,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 42300,
+          "lat": 40.7225268,
+          "lng": -73.9603806
+        },
+        {
+          "bbl": "3023010001",
+          "address": "86 KENT AVENUE",
+          "land_use": "Open space/recreation",
+          "buildings": 1,
+          "building_area_sqft": 12447,
+          "year_built": 2010,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 256200,
+          "lat": 40.7230874,
+          "lng": -73.9624871
+        },
+        {
+          "bbl": "3023010050",
+          "address": "NORTH 10 STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 1,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 17700,
+          "lat": 40.722582,
+          "lng": -73.9613149
+        },
+        {
+          "bbl": "3023010060",
+          "address": "32 NORTH 10 STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 1,
+          "building_area_sqft": 1000,
+          "year_built": 2011,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 13500,
+          "lat": 40.7222661,
+          "lng": -73.9607667
+        },
+        {
+          "bbl": "3023010070",
+          "address": "40 NORTH 10 STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 1,
+          "building_area_sqft": 6000,
+          "year_built": 2010,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 9000,
+          "lat": 40.7219997,
+          "lng": -73.960334
+        },
+        {
+          "bbl": "3025900100",
+          "address": "1 FRANKLIN STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 25300,
+          "lat": 40.7252738,
+          "lng": -73.959127
+        },
+        {
+          "bbl": "3025900101",
+          "address": "FRANKLIN STREET",
+          "land_use": "Open space/recreation",
+          "buildings": 0,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "NYC DEPARTMENT OF PARKS AND RECREATION",
+          "lot_area_sqft": 181343,
+          "lat": 40.724887,
+          "lng": -73.959589
+        }
+      ],
       "pin_lot": {
         "bbl": "3023010001",
         "address": "86 KENT AVENUE",
