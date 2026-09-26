@@ -380,7 +380,7 @@ const lotLayers = {};
 map.createPane('lots').style.zIndex = 350;
 function loadLots(){
   const css = getComputedStyle(document.documentElement);
-  fetch('lots.geojson').then(r => r.ok ? r.json() : null).then(fc => {
+  fetch('lots.geojson', {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).then(fc => {
     if(!fc) return;
     const bySite = {};
     fc.features.forEach(f => (bySite[f.properties.site] ||= []).push(f));
@@ -399,7 +399,7 @@ function loadLots(){
   }).catch(() => {});
 }
 
-fetch('sites.json')
+fetch('sites.json', {cache: 'no-cache'})
   .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(data => { SITES = data; init(); })
   .catch(() => {
