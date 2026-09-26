@@ -289,7 +289,7 @@ function popupHTML(s){
           <span class="pill pill-status" style="background:var(--status-${s.status})">${STATUS_LABEL[s.status]}</span>
         </div>
       </div>${image}
-      <p>${clip(s.why)}</p>
+      <p>${clip(s.why, 250)}</p>
       <div class="section-label">Current status</div>
       <p>${clip(s.now, STATUS_CHAR_LIMIT)}</p>
       <div class="section-label">History</div>

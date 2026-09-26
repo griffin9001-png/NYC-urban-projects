@@ -15,10 +15,32 @@ CONDITIONS = {"vacant", "existing-buildings", "under-construction", "partly-buil
               "open-space", "street", "unverified"}
 REQUIRED = ["id", "name", "headline", "type", "category", "status", "neighborhood",
             "condition", "lat", "lng", "why", "history", "now", "owner", "sources", "updated", "last_checked"]
-# Popup caps: "now" is shown as Current status (250), everything else 200.
-LIMITS = {"why": 200, "history": 200, "now": 250, "owner": 200}
+# Popup caps: why and Current status (now) 250, history and owner 200.
+LIMITS = {"why": 250, "history": 200, "now": 250, "owner": 200}
 # Rough NYC bounding box, catches swapped or mistyped coordinates.
 LAT_RANGE, LNG_RANGE = (40.49, 40.92), (-74.27, -73.68)
+# Planning jargon readers won't know (see STYLE.md for the plain-language swap).
+JARGON = {
+    r"\bulurp\b": "the city's public approval process",
+    r"\bbbls?\b|\bpluto\b": "leave lot IDs out of reader text",
+    r"\bami\b|income-restricted": "affordable",
+    r"\b421-?a\b|\b485-?x\b": "a property-tax break",
+    r"\bupzon": "a zoning change allowing taller buildings",
+    r"mixed-use": "apartments with shops",
+    r"certification": "a city planning sign-off",
+    r"concession": "a business the park lets operate there",
+    r"\brfp\b|\brfei\b|\bdisposition\b": "the city will pick a developer",
+    r"remediation": "toxic cleanup",
+    r"\bassemblage\b|\bparcels?\b": "land, site or block",
+    r"right-of-way|jurisdiction": "street, run by",
+    r"\bviaduct\b": "elevated highway",
+    r"caissons?|bulkhead": "old foundations, seawall",
+    r"\bhpd\b": "the city's housing department",
+    r"\bdhs\b": "the city's homeless services department",
+    r"\bunits?\b": "apartments or homes",
+}
+JARGON_FIELDS = ("headline", "why", "now", "history", "owner")
+
 # Label-vs-text contradictions: (field, value, pattern in why/now/history, message).
 # Cheap deterministic backstop; the weekly review catches subtler mismatches.
 CONTRADICTIONS = [
@@ -60,6 +82,11 @@ def validate(sites):
         bbls = s.get("bbls", [])
         if not isinstance(bbls, list) or not all(re.fullmatch(r"[1-5]\d{9}", str(b)) for b in bbls):
             err("bbls must be a list of 10-digit BBL strings")
+        for key in JARGON_FIELDS:
+            for pattern, plain in JARGON.items():
+                m = re.search(pattern, str(s.get(key) or ""), re.I)
+                if m:
+                    err(f"{key} uses jargon '{m.group(0)}': write '{plain}' instead (STYLE.md)")
         text = " ".join(str(s.get(k) or "") for k in ("why", "now", "history")).lower()
         for field, value, pattern, message in CONTRADICTIONS:
             if s.get(field) == value and re.search(pattern, text):
