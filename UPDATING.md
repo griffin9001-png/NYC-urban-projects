@@ -21,7 +21,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `condition` | what physically stands on the site today, shown as a pill: `vacant`, `existing-buildings`, `under-construction`, `partly-built`, `open-space`, `street`, `unverified`. Never set `vacant` without a PLUTO lot showing no buildings |
 | `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin, and for any site whose land should be shaded on the map (streets have none) |
 | `lat`, `lng` | geocoded point; say how in `updated` |
-| `why` | one-line framing, 200 chars max |
+| `why` | what the place is and what would change, then the bigger picture, 250 chars max |
 | `now` | shown as **Current status**, 250 chars max, lead with the month and year of the latest event |
 | `history` | 200 chars max |
 | `owner` | who controls the site, 200 chars max |
@@ -32,7 +32,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 
 Labels must agree with the text. `headline`, `status` and `condition` are what a reader sees first; if `why` or `now` says the plan was dropped, `status` can't be `active`, and if the text mentions existing buildings or tenants, `condition` can't be `vacant`. The validator blocks the obvious contradictions; the weekly review catches the rest.
 
-Writing rules: plain prose, no em dashes, no filler adverbs, no self-referential framing. Every factual claim in `now` must be backed by a source in `sources`.
+Writing rules: follow `STYLE.md` (plain language for neighbors, no planning jargon; the validator rejects common jargon). No em dashes, no filler adverbs, no self-referential framing. Every factual claim in `now` must be backed by a source in `sources`.
 
 ## Finding an image
 
