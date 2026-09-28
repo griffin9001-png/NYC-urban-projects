@@ -7,6 +7,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 - Check data locally: `python3 scripts/validate_sites.py`
 - Check against city lot records: `python3 scripts/audit_sites.py` (needs internet; writes `audit.json`, which the audit page shows)
 - Refresh lot shading: `python3 scripts/fetch_lots.py` (needs internet; writes `lots.geojson` from each site's `bbls`, `streets` and `osm`; rerun whenever any of them changes, before running the validator)
+- Find new sites: `python3 scripts/find_candidates.py` (needs internet; writes `candidates.json`, which the candidates page shows: https://griffin9001-png.github.io/NYC-urban-projects/candidates.html)
 - Preview locally: `python3 -m http.server` in the repo root, then open http://localhost:8000 (opening `index.html` straight from disk can't load `sites.json`).
 
 ## Site fields
@@ -76,8 +77,22 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. Once 
 3. Consistency review, for every site whether or not news changed: read `headline`, `status`, `condition` and `type` against `why`, `now`, `history` and the sources. Fix any label that the text or sources contradict, or list it in the PR if the right value is unclear. Also open the newest listed source and confirm `now` reflects it; a source that is listed but not reflected in the text is a stale entry. Never carry a claim from reader comments, search snippets or paywalled headlines alone into the text.
 4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Treat an image flag as a possible wrong image: open the image and its page and confirm it shows this site before doing anything else. Commit the refreshed `audit.json`. If any `bbls`, `streets` or `osm` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.
 5. Run `python3 scripts/validate_sites.py` and fix any errors.
-6. Open a PR titled `Weekly site update YYYY-MM-DD`. The body has one row per site: id, changed or no change, a one-line summary of what changed, and the source URLs relied on. Add a section listing remaining audit flags and label questions, and any pages that couldn't be read.
-7. If no site changed, still open the PR (it only bumps `last_checked`) so the audit page shows the check happened.
+6. Run `python3 scripts/find_candidates.py` and commit the refreshed `candidates.json`. Don't add sites from it in the weekly run; list the ten highest-scoring new leads in the PR so the owner can pick.
+7. Open a PR titled `Weekly site update YYYY-MM-DD`. The body has one row per site: id, changed or no change, a one-line summary of what changed, and the source URLs relied on. Add a section listing remaining audit flags and label questions, any pages that couldn't be read, and the top new leads from `candidates.json`.
+8. If no site changed, still open the PR (it only bumps `last_checked`) so the audit page shows the check happened.
+
+## Finding new sites
+
+`scripts/find_candidates.py` gathers leads for Brooklyn Community Districts 1 to 4 and writes `candidates.json`:
+
+- **Zoning applications** from City Planning's Zoning Application Portal: rezonings, waterfront sign-offs, anything in public review.
+- **New buildings** filed with the Buildings Department since 2024 with 50 or more homes (`MIN_HOMES`).
+- **Park projects** from the Parks Department's capital project tracker that aren't finished.
+- **News** headlines from Greenpointers, Streetsblog NYC and Brooklyn Paper in the last 45 days that name the area and a development topic. Street redesigns mostly show up here, since there's no city dataset for them.
+
+Each lead is scored (homes, whether it's in public review, how recent) and matched against `sites.json`: "on the map" when it shares a lot with a site or a headline names one, "near" when a site's pin is close or its name matches, which only means it's worth checking. The area, thresholds and news keywords are constants at the top of the script.
+
+A lead is not a site. To add one, read its sources in full and follow "Adding a site" below; the zoning and building records say what's filed, not what it means for neighbors, so each site still needs news or agency sources that explain it.
 
 ## Adding a site
 
