@@ -18,7 +18,7 @@
   --line:#D7DCD0;
   --accent:#1B5E63; --accent-ink:#FFFFFF;
   --status-contested:#C1502E; --status-review:#2B6CB0; --status-active:#2F7D4F;
-  --phase-decision-coming:#2B6CB0; --phase-planned:#5E6B63; --phase-construction-underway:#B07A12; --phase-partly-open:#4E8F3A; --phase-open-now:#2F7D4F; --phase-stalled:#C1502E;
+  --phase-decision-coming:#2B6CB0; --phase-planned:#6B5CA5; --phase-construction-underway:#B07A12; --phase-partly-open:#4E8F3A; --phase-open-now:#2F7D4F; --phase-stalled:#C1502E;
   --type-park:#2F7D4F; --type-housing:#2B6CB0; --type-road:#C98A1F; --type-other:#6B5CA5;
   --shadow:0 2px 10px rgba(20,30,25,0.12);
   --radius:10px;
@@ -30,7 +30,7 @@
     --line:#2B3638;
     --accent:#57C2C9; --accent-ink:#08191A;
     --status-contested:#E58063; --status-review:#78ACE0; --status-active:#7BC894;
-    --phase-decision-coming:#78ACE0; --phase-planned:#A9B4AD; --phase-construction-underway:#E0A64E; --phase-partly-open:#9ACB7A; --phase-open-now:#7BC894; --phase-stalled:#E58063;
+    --phase-decision-coming:#78ACE0; --phase-planned:#A79BD9; --phase-construction-underway:#E0A64E; --phase-partly-open:#9ACB7A; --phase-open-now:#7BC894; --phase-stalled:#E58063;
     --type-park:#7BC894; --type-housing:#78ACE0; --type-road:#E0A64E; --type-other:#A79BD9;
     --shadow:0 2px 16px rgba(0,0,0,0.5);
   }
@@ -67,6 +67,12 @@ header{
 .legend{display:flex; gap:12px; align-items:center; font-size:12px; color:var(--ink-soft); flex-wrap:wrap;}
 .legend-item{display:flex; align-items:center; gap:5px;}
 .legend-dot{width:9px; height:9px; border-radius:50%; display:inline-block;}
+.legend-shape{background:var(--ink-soft);}
+.legend-title{font:700 10px "IBM Plex Mono"; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint);}
+.legend-phases{display:flex; gap:10px; flex-wrap:wrap;}
+.legend-swatch{width:10px; height:10px; border-radius:2px; display:inline-block;}
+.phase-select{appearance:auto; padding-right:8px;}
+.legend-wrap > summary{display:none;}
 
 .app{flex:1 1 auto; display:flex; overflow:hidden;}
 #map{flex:1 1 auto; background:var(--surface-2);}
@@ -185,6 +191,8 @@ header{
   .brand p{display:none;}
   .header-near{flex-basis:100%; max-width:none; order:2;}
   .header-right{order:3;}
+  .legend-wrap > summary{display:list-item; font-size:12px; font-weight:600; color:var(--ink-soft); cursor:pointer;}
+  .legend-wrap[open] > summary{margin-bottom:6px;}
 }
 </style>
 </head>
@@ -208,12 +216,20 @@ header{
     <div class="near-msg" id="near-msg" hidden></div>
   </div>
   <div class="header-right">
-    <div class="legend">
-      <span class="legend-item"><span class="legend-dot pin-park" style="background:var(--type-park)"></span>Park</span>
-      <span class="legend-item"><span class="legend-dot pin-housing" style="background:var(--type-housing)"></span>Housing</span>
-      <span class="legend-item"><span class="legend-dot pin-road" style="background:var(--type-road)"></span>Road &amp; bikelane</span>
-      <span class="legend-item"><span class="legend-dot pin-other" style="background:var(--type-other)"></span>Other</span>
+    <details class="legend-wrap" id="legend-wrap" open><summary>Map key</summary>
+    <div class="legend" aria-label="Map key">
+      <span class="legend-title">Shape</span>
+      <span class="legend-item"><span class="legend-dot pin-park legend-shape"></span>Park</span>
+      <span class="legend-item"><span class="legend-dot pin-housing legend-shape"></span>Housing</span>
+      <span class="legend-item"><span class="legend-dot pin-road legend-shape"></span>Road &amp; bikelane</span>
+      <span class="legend-item"><span class="legend-dot pin-other legend-shape"></span>Other</span>
+      <span class="legend-title">Color</span>
+      <span id="phase-legend" class="legend-phases"></span>
     </div>
+    </details>
+    <select id="phase-filter" class="chip phase-select" aria-label="Filter by stage">
+      <option value="all">Any stage</option>
+    </select>
     <div class="filters" id="filters">
       <button class="chip active" data-filter="all">All</button>
       <button class="chip" data-filter="park">Park</button>
@@ -376,7 +392,7 @@ document.addEventListener('click', e => {
 function makeIcon(site){
   return L.divIcon({
     className: '',
-    html: `<div class="pin-wrap"><div class="pin pin-${site.type}" style="background:var(--type-${site.type})" title="${TYPE_LABEL[site.type]}"></div>${isNew(site) ? '<span class="new-dot" title="Updated in the last 30 days"></span>' : ''}</div>`,
+    html: `<div class="pin-wrap"><div class="pin pin-${site.type}" style="background:var(--phase-${site.phase})" title="${TYPE_LABEL[site.type]} · ${PHASE_LABEL[site.phase]}"></div>${isNew(site) ? '<span class="new-dot" title="Updated in the last 30 days"></span>' : ''}</div>`,
     iconSize: [18,18],
     iconAnchor: [9,9],
     popupAnchor: [0,-10]
@@ -466,7 +482,7 @@ function renderList(items){
         <span class="pill pill-cond pill-cond-${s.condition}">${CONDITION_LABEL[s.condition]}</span>
         <span class="pill pill-phase" style="background:var(--phase-${s.phase})">${PHASE_LABEL[s.phase]}</span>
       </div>
-      <div class="card-top"><span class="card-dot pin-${s.type}" style="background:var(--type-${s.type})"></span><span class="card-name">${s.name}</span>${isNew(s) ? '<span class="tag-new">New</span>' : ''}</div>
+      <div class="card-top"><span class="card-dot pin-${s.type}" style="background:var(--phase-${s.phase})" title="${PHASE_LABEL[s.phase]}"></span><span class="card-name">${s.name}</span>${isNew(s) ? '<span class="tag-new">New</span>' : ''}</div>
       <div class="card-hood">${view.near ? `~${walkMin(s)} min walk · ` : ''}${s.neighborhood}</div>
       <div class="card-sum">${s.now}</div>
     </div>
@@ -481,7 +497,7 @@ function renderList(items){
 }
 
 // One place decides what's visible: the type chip AND (if set) the walk circle around an address.
-const view = {type: 'all', near: null};   // near: {latlng, meters, minutes, label}
+const view = {type: 'all', phase: 'all', near: null};   // near: {latlng, meters, minutes, label}
 const WALK_M_PER_MIN = 80;                // ~3 mph; straight-line distance, so a rough walk estimate
 // Distance is straight-line, so describe it as a distance with the walk time as a rough guide.
 const MILES = {5: 'a quarter mile', 10: 'half a mile', 15: 'three-quarters of a mile'};
@@ -489,6 +505,7 @@ function nearLabel(min){ return `about ${MILES[min] || (min * WALK_M_PER_MIN / 1
 function walkMin(s){ return Math.max(1, Math.round(map.distance([s.lat, s.lng], view.near.latlng) / WALK_M_PER_MIN)); }
 function isVisible(s){
   if(view.type !== 'all' && s.type !== view.type) return false;
+  if(view.phase !== 'all' && s.phase !== view.phase) return false;
   if(view.near && map.distance([s.lat, s.lng], view.near.latlng) > view.near.meters) return false;
   return true;
 }
@@ -506,6 +523,18 @@ function applyView(){
       if(show){ if(!map.hasLayer(layer)) layer.addTo(map); } else { map.removeLayer(layer); }
     });
   });
+}
+// The key starts collapsed on phones so the map stays near the top.
+if(matchMedia('(max-width:860px)').matches) document.getElementById('legend-wrap').open = false;
+// Stage filter and color key list only the phases present in the data, in resident order.
+const PHASE_ORDER = ['decision-coming', 'planned', 'construction-underway', 'partly-open', 'open-now', 'stalled'];
+function buildPhaseControls(){
+  const present = PHASE_ORDER.filter(ph => SITES.some(s => s.phase === ph));
+  const sel = document.getElementById('phase-filter');
+  sel.insertAdjacentHTML('beforeend', present.map(ph => `<option value="${ph}">${PHASE_LABEL[ph]}</option>`).join(''));
+  sel.addEventListener('change', () => { view.phase = sel.value; applyView(); });
+  document.getElementById('phase-legend').innerHTML = present.map(ph =>
+    `<span class="legend-item"><span class="legend-swatch" style="background:var(--phase-${ph})"></span>${PHASE_LABEL[ph]}</span>`).join('');
 }
 document.getElementById('filters').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip');
@@ -700,6 +729,7 @@ function init(){
     markers[s.id] = m;
   });
   map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
+  buildPhaseControls();
   applyView();
   loadLots();
   restoreFromUrl();
@@ -720,7 +750,7 @@ function loadLots(){
     Object.entries(bySite).forEach(([id, features]) => {
       const s = SITES.find(x => x.id === id);
       if(!s || !markers[id]) return;
-      const color = css.getPropertyValue(`--type-${s.type}`).trim();
+      const color = css.getPropertyValue(`--phase-${s.phase}`).trim();   // lots match the pin's phase color
       const base = {pane: 'lots', color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.22};
       const layer = L.geoJSON(features, {style: () => base})
         .on('mouseover', e => e.layer.setStyle({fillOpacity: 0.4}))
