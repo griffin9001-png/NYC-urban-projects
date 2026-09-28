@@ -5,6 +5,8 @@ Usage: python3 scripts/validate_sites.py [path/to/sites.json]
 """
 import datetime
 import json
+import math
+import os
 import re
 import sys
 
@@ -153,8 +155,12 @@ def validate(sites):
         if not isinstance(bbls, list) or not all(re.fullmatch(r"[1-5]\d{9}", str(b)) for b in bbls):
             err("bbls must be a list of 10-digit BBL strings")
         streets = s.get("streets", [])
-        if not isinstance(streets, list) or not all(isinstance(x, str) and x.strip() for x in streets):
-            err("streets must be a list of street names")
+        if not isinstance(streets, list) or not all(
+                (isinstance(x, str) and x.strip()) or (isinstance(x, dict) and x.get("name")) for x in streets):
+            err('streets must be a list of street names or {"name", "along"} objects')
+        osm = s.get("osm", [])
+        if not isinstance(osm, list) or not all(re.fullmatch(r"(way|relation)/\d+", str(x)) for x in osm):
+            err('osm must be a list like ["way/123", "relation/456"]')
         for key in JARGON_FIELDS:
             for pattern, plain in JARGON.items():
                 m = re.search(pattern, str(s.get(key) or ""), re.I)
@@ -212,11 +218,97 @@ def validate(sites):
     return errors
 
 
+# A pin must sit on its site's own shape (lots.geojson, built by fetch_lots.py): inside a lot
+# or area, or on a street or creek line. Line data are centerlines, so allow some slack.
+AREA_SLACK_M = 10
+LINE_SLACK_M = 30
+
+
+def _xy(lng, lat, lat0):
+    return (lng * 111_320 * math.cos(math.radians(lat0)), lat * 111_320)
+
+
+def _seg_dist(p, a, b):
+    (px, py), (ax, ay), (bx, by) = p, a, b
+    dx, dy = bx - ax, by - ay
+    t = 0 if dx == dy == 0 else max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)))
+    return math.hypot(px - ax - t * dx, py - ay - t * dy)
+
+
+def _inside(p, ring):
+    x, y, hit = p[0], p[1], False
+    for (ax, ay), (bx, by) in zip(ring, ring[1:] + ring[:1]):
+        if (ay > y) != (by > y) and x < ax + (y - ay) * (bx - ax) / (by - ay):
+            hit = not hit
+    return hit
+
+
+def pin_distance(site, features):
+    """Metres from the pin to the nearest of the site's shapes (0 = inside an area), and what that shape is."""
+    lat0 = site["lat"]
+    p = _xy(site["lng"], site["lat"], lat0)
+    best = (math.inf, None, None)
+    for f in features:
+        g, props = f["geometry"], f["properties"]
+        label = props.get("bbl") and f"lot {props['bbl']}" or props.get("street") or props.get("osm")
+        if g["type"] in ("Polygon", "MultiPolygon"):
+            polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+            for poly in polys:
+                rings = [[_xy(x, y, lat0) for x, y in ring] for ring in poly]
+                if _inside(p, rings[0]) and not any(_inside(p, h) for h in rings[1:]):
+                    return (0, label, "area")
+                d = min(_seg_dist(p, a, b) for ring in rings for a, b in zip(ring, ring[1:]))
+                best = min(best, (d, label, "area"), key=lambda x: x[0])
+        else:
+            lines = [g["coordinates"]] if g["type"] == "LineString" else g["coordinates"]
+            for line in lines:
+                pts = [_xy(x, y, lat0) for x, y in line]
+                d = min(_seg_dist(p, a, b) for a, b in zip(pts, pts[1:]))
+                best = min(best, (d, label, "line"), key=lambda x: x[0])
+    return best
+
+
+def check_pins(sites, lots_path):
+    """Errors for pins that aren't on their site's shape, plus one report line per site."""
+    errors, report = [], []
+    if not os.path.exists(lots_path):
+        return [f"{lots_path} missing: run scripts/fetch_lots.py"], report
+    with open(lots_path, encoding="utf-8") as f:
+        feats = json.load(f)["features"]
+    by_site = {}
+    for f in feats:
+        by_site.setdefault(f["properties"]["site"], []).append(f)
+    for s in sites:
+        sid, mine = s.get("id"), by_site.get(s.get("id"), [])
+        wants = s.get("bbls") or s.get("streets") or s.get("osm")
+        if not wants:
+            errors.append(f"{sid}: no bbls, streets or osm, so its pin can't be checked; give the site a shape (UPDATING.md)")
+            continue
+        have = {f["properties"].get("bbl") for f in mine} - {None}
+        if set(s.get("bbls", [])) - have or have - set(s.get("bbls", [])) or \
+                (s.get("streets") or s.get("osm")) and not any("bbl" not in f["properties"] for f in mine):
+            errors.append(f"{sid}: {lots_path} is out of date for this site: run scripts/fetch_lots.py")
+            continue
+        d, label, kind = pin_distance(s, mine)
+        slack = AREA_SLACK_M if kind == "area" else LINE_SLACK_M
+        where = "inside " + label if d == 0 else f"{round(d)} m from {label}"
+        report.append(f"{'ok  ' if d <= slack else 'FAIL'} {sid}: pin {where}")
+        if d > slack:
+            errors.append(f"{sid}: pin is {round(d)} m from its site ({label}); move it onto the site (limit {slack} m)")
+    return errors, report
+
+
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else "sites.json"
+    lots_path = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(os.path.abspath(path)), "lots.geojson")
     with open(path, encoding="utf-8") as f:
         sites = json.load(f)
     errors = validate(sites)
+    pin_errors, report = check_pins(sites, lots_path)
+    errors += pin_errors
+    print("Pins:")
+    for line in report:
+        print("  " + line)
     for e in errors:
         print(f"ERROR {e}")
     print(f"{len(sites)} sites checked, {len(errors)} error(s)")

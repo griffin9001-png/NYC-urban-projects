@@ -2,10 +2,10 @@ name: Validate sites
 
 on:
   pull_request:
-    paths: ["sites.json", "scripts/validate_sites.py"]
+    paths: ["sites.json", "lots.geojson", "scripts/validate_sites.py"]
   push:
     branches: [main]
-    paths: ["sites.json", "scripts/validate_sites.py"]
+    paths: ["sites.json", "lots.geojson", "scripts/validate_sites.py"]
 
 jobs:
   validate:

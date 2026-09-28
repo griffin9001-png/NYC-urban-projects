@@ -649,16 +649,16 @@
       "pluto_condition": null,
       "lots": [],
       "pin_lot": {
-        "bbl": "3025850001",
-        "address": "332 MONITOR STREET",
-        "land_use": "Unknown",
-        "buildings": 1,
-        "building_area_sqft": 600,
-        "year_built": 1960,
-        "owner": "MONITOR 332 REALTY LLC",
-        "lot_area_sqft": 109000,
-        "lat": 40.7316623,
-        "lng": -73.9431245
+        "bbl": "4002940270",
+        "address": "30-23 GREENPOINT AVENUE",
+        "land_use": "Industrial/manufacturing",
+        "buildings": 2,
+        "building_area_sqft": 40030,
+        "year_built": 1919,
+        "owner": "3023 GPT LLC",
+        "lot_area_sqft": 58000,
+        "lat": 40.7341638,
+        "lng": -73.9397883
       },
       "flags": []
     }

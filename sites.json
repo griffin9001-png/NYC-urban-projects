@@ -778,6 +778,9 @@
     "lat": 40.672996,
     "lng": -73.969905,
     "bbls": [],
+    "streets": [
+      "GRAND ARMY PLZ"
+    ],
     "why": "The busy traffic circle at the entrance to Prospect Park, around the landmark arch, which the city wants to make safer and friendlier for people walking and biking.",
     "history": "Laid out as Olmsted and Vaux's Prospect Park entrance starting in 1866. The Soldiers' and Sailors' Arch went up 1889-92. The current Bailey Fountain dates to 1929-32. Landmarked 1973-75.",
     "now": "In June 2026 the city showed five community boards a plan with 42% more public space. The study wraps up in summer 2026; then comes landmarks review and a decision on how to rebuild.",
@@ -831,7 +834,7 @@
       "page": "https://grandarmyredesign.com/",
       "shows": "Grand Army Plaza"
     },
-    "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
+    "updated": "Updated Sept 25, 2026 · pin at the arch, from NYC GeoSearch; highlighted lines are the plaza's roadways, from the city street centerline file",
     "last_checked": "2026-09-28",
     "changed_on": "2026-06-02",
     "change_note": "The city showed five community boards a plan with 42% more public space."
@@ -849,6 +852,12 @@
     "lat": 40.695843,
     "lng": -73.972337,
     "bbls": [],
+    "streets": [
+      {
+        "name": "PARK AVE",
+        "along": "BROOKLYN QUEENS EXPY"
+      }
+    ],
     "why": "The stretch of Park Ave in Brooklyn under the elevated BQE highway, near the Navy Yard, where the city is looking at how to make the dark, underused space below safer and more useful.",
     "history": "Before the BQE, this was an at-grade industrial street near the Navy Yard (Rockwood Chocolate, Drake's Cakes). This segment was among the last finished, completed around 1960.",
     "now": "In October 2024 the city's transportation department floated long-term ideas for the BQE, including this stretch: safer crossings, bike and bus lanes, new plazas, and covering parts of the highway.",
@@ -887,7 +896,7 @@
         "u": "https://www.brownstoner.com/history/past-and-present-the-bqe-at-washington-and-park/"
       }
     ],
-    "updated": "Updated Sept 25, 2026 · coordinates verified against US Census Bureau geocoder (corridor-representative point, not a single-parcel address)",
+    "updated": "Updated Sept 25, 2026 · pin verified against US Census Bureau geocoder; highlighted lines are Park Ave where it runs under the BQE, from the city street centerline file",
     "last_checked": "2026-09-28",
     "changed_on": "2024-10-10",
     "change_note": "The city released long-term ideas for the streets along the BQE."
@@ -968,9 +977,16 @@
     "condition": "open-space",
     "phase": "planned",
     "neighborhood": "Newtown Creek, Greenpoint / East Williamsburg / Queens border",
-    "lat": 40.73278,
-    "lng": -73.94282,
+    "lat": 40.7333,
+    "lng": -73.9403,
     "bbls": [],
+    "osm": [
+      "way/392486579",
+      "way/392486572",
+      "way/392486567",
+      "way/392486586",
+      "way/392486574"
+    ],
     "why": "Newtown Creek, on Greenpoint's edge, is one of the country's most polluted waterways after a century of refineries and oil spills. A federal cleanup is meant to finish around 2035.",
     "history": "Refineries, gas plants and oil depots lined the creek for over a century. A 1978 discovery revealed one of the largest oil spills in US history under Greenpoint.",
     "now": "In Jan 2025 the EPA finalized its first cleanup, for the creek's 11-acre East Branch, with no start date yet. In late 2025 the state flagged 41 properties along the creek that may be leaking pollution into it.",
@@ -1003,6 +1019,10 @@
       {
         "t": "Newtown Creek Superfund Site Profile · US EPA",
         "u": "https://www.epa.gov/superfund/newtown-creek"
+      },
+      {
+        "t": "Newtown Creek · Wikipedia",
+        "u": "https://en.wikipedia.org/wiki/Newtown_Creek"
       }
     ],
     "image": {
@@ -1012,7 +1032,7 @@
       "page": "https://www.brooklynpaper.com/epa-begin-early-action-cleanup-newown-creek/",
       "shows": "Newtown Creek"
     },
-    "updated": "Updated Sept 28, 2026 · representative point near the Greenpoint Ave bridge, not a single address",
+    "updated": "Updated Sept 28, 2026 · pin on the creek where the Greenpoint Ave bridge crosses it; highlighted lines are the creek and its tributaries, from OpenStreetMap",
     "last_checked": "2026-09-28",
     "changed_on": "2025-12-10",
     "change_note": "The state flagged 41 properties along the creek that may be leaking pollution into it."
