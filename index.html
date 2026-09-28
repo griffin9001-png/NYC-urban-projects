@@ -77,7 +77,9 @@ header{
 .sidebar-head{padding:14px 18px 8px; position:sticky; top:0; background:var(--surface); z-index:2;}
 .sidebar-head .count{font-size:12px; color:var(--ink-faint); font-family:"IBM Plex Mono"; margin-top:2px;}
 .list{padding:6px 12px 20px; display:flex; flex-direction:column; gap:8px;}
-.near{display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;}
+.header-near{flex:1 1 420px; max-width:620px;}
+.near{display:flex; gap:6px; flex-wrap:wrap;}
+.near-msg button{font:inherit; border:0; background:none; color:var(--accent); padding:0; cursor:pointer; text-decoration:underline;}
 .near input{flex:1 1 170px; min-width:0; font:inherit; font-size:13px; padding:7px 9px; border:1px solid var(--line); border-radius:8px; background:var(--surface-2); color:var(--ink);}
 .near select, .near button{font:inherit; font-size:12.5px; padding:7px 9px; border:1px solid var(--line); border-radius:8px; background:var(--surface-2); color:var(--ink); cursor:pointer;}
 .near button.go{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600;}
@@ -147,7 +149,14 @@ header{
 .lp .render-credit .go{color:#1B5E63;}
 .lp .sv-fallback{display:flex; align-items:center; justify-content:center; height:64px; margin-bottom:9px; border:1px dashed #C9D0C4; border-radius:6px; background:#F5F7F2; color:#1B5E63; font-size:12px; font-weight:600; text-decoration:none;}
 .lp .sv-fallback:hover{background:#EEF1EC;}
-.lp .process{font-size:10.5px; color:#7C877E; margin:-2px 0 8px;}
+.lp .process{font-size:10.5px; color:#7C877E; margin:4px 0 2px;}
+.lp .render-link{margin-top:9px;}
+.lp .background{margin-top:10px; border-top:1px solid #E6E9E2; padding-top:6px;}
+.lp .background summary{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#7C877E; cursor:pointer; list-style:none;}
+.lp .background summary::-webkit-details-marker{display:none;}
+.lp .background summary::before{content:"▸ "; font-size:9px;}
+.lp .background[open] summary::before{content:"▾ ";}
+.lp .background > p:first-of-type{margin-top:6px;}
 .lp .next-step{background:#F5F7F2; border:1px solid #E1E6DC; border-radius:6px; padding:7px 9px; margin-top:4px;}
 .lp .next-step a{color:#1B5E63; text-decoration:none; font-weight:600;}
 .lp .section-label{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#7C877E; margin:9px 0 3px;}
@@ -174,6 +183,8 @@ header{
   .sidebar{width:100%; flex:none; border-left:none; border-top:1px solid var(--line);}
   header{padding:12px 14px;}
   .brand p{display:none;}
+  .header-near{flex-basis:100%; max-width:none; order:2;}
+  .header-right{order:3;}
 }
 </style>
 </head>
@@ -182,7 +193,19 @@ header{
 <header>
   <div class="brand">
     <h1>NYC Urban Projects</h1>
-    <p>Vacant parcels and live infrastructure fights across North Brooklyn, covering who's building what, why the ground stays empty, and who's deciding.</p>
+    <p>See what's being built, fixed or fought over near you in North Brooklyn.</p>
+  </div>
+  <div class="header-near">
+      <form class="near" id="near" autocomplete="off">
+      <input id="near-addr" type="search" placeholder="Address or corner, e.g. Nassau Ave &amp; McGuinness Blvd" aria-label="Your address">
+      <select id="near-min" aria-label="Walking time">
+        <option value="5">5 min walk</option><option value="10" selected>10 min walk</option><option value="15">15 min walk</option>
+      </select>
+      <button class="go" type="submit">Near me</button>
+      <button type="button" id="near-locate">Use my location</button>
+      <button type="button" id="near-clear" hidden>Clear</button>
+    </form>
+    <div class="near-msg" id="near-msg" hidden></div>
   </div>
   <div class="header-right">
     <div class="legend">
@@ -207,15 +230,6 @@ header{
     <div class="sidebar-head">
       <h2 style="font-size:14px;">Sites</h2>
       <div class="count" id="count"></div>
-      <form class="near" id="near" autocomplete="off">
-        <input id="near-addr" type="search" placeholder="Address or corner, e.g. Nassau Ave &amp; McGuinness Blvd" aria-label="Your address">
-        <select id="near-min" aria-label="Walking time">
-          <option value="5">5 min walk</option><option value="10" selected>10 min walk</option><option value="15">15 min walk</option>
-        </select>
-        <button class="go" type="submit">Near me</button>
-        <button type="button" id="near-clear" hidden>Clear</button>
-      </form>
-      <div class="near-msg" id="near-msg" hidden></div>
     </div>
     <div class="summary-card" id="summary" hidden></div>
     <details class="news" id="news" open hidden><summary>What's new</summary><ol></ol></details>
@@ -397,21 +411,25 @@ function popupHTML(s){
           <span class="pill pill-cond pill-cond-${s.condition}">${CONDITION_LABEL[s.condition]}</span>
           <span class="pill pill-phase" style="background:var(--phase-${s.phase})">${PHASE_LABEL[s.phase]}</span>
         </div>
-      </div>${image}
-      <p>${clip(s.why, 250)}</p>
-      <div class="section-label">Current status</div>
-      <p>${clip(s.now, STATUS_CHAR_LIMIT)}</p>
-      <div class="process">Process: ${STATUS_LABEL[s.status]}</div>
+      </div>
       <div class="section-label">What you'll notice</div>
       <p>${clip(s.impact)}</p>
       <div class="section-label">When</div>
       <p>${whenText(s.timeline, s.phase)}</p>
       <div class="section-label">What's next</div>
       ${nextStepHTML(s.next_step)}
-      <div class="section-label">History</div>
-      <p>${clip(s.history)}</p>
-      <div class="section-label">Who owns the site</div>
-      <p>${clip(s.owner)}</p>
+      <div class="section-label">Current status</div>
+      <p>${clip(s.now, STATUS_CHAR_LIMIT)}</p>
+      ${image}
+      <details class="background">
+        <summary>Background</summary>
+        <p>${clip(s.why, 250)}</p>
+        <div class="process">Process: ${STATUS_LABEL[s.status]}</div>
+        <div class="section-label">History</div>
+        <p>${clip(s.history)}</p>
+        <div class="section-label">Who owns the site</div>
+        <p>${clip(s.owner)}</p>
+      </details>
       <details class="sources">
         <summary>Sources (${s.sources.length})</summary>
         ${sources}
@@ -481,7 +499,8 @@ function applyView(){
   renderSummary(items);
   renderNews(items);
   SITES.forEach(s => {
-    const show = items.includes(s);
+    // Never hide the site whose popup is open (e.g. a shared #site link outside the walk circle).
+    const show = items.includes(s) || (markers[s.id] && markers[s.id].isPopupOpen());
     [markers[s.id], lotLayers[s.id]].forEach(layer => {
       if(!layer) return;
       if(show){ if(!map.hasLayer(layer)) layer.addTo(map); } else { map.removeLayer(layer); }
@@ -567,6 +586,78 @@ async function findIntersection(q){
 }
 
 let youLayer = null, searchSeq = 0;
+const LAST_NEAR_KEY = 'nup-last-near';
+// One entry point for typed addresses, "Use my location" and shared links.
+function setNear(place, minutes, remember){
+  view.near = {latlng: L.latLng(place.lat, place.lng), minutes, meters: minutes * WALK_M_PER_MIN, label: place.label};
+  if(youLayer) map.removeLayer(youLayer);
+  youLayer = L.layerGroup([
+    L.circle(view.near.latlng, {radius: view.near.meters, color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(), weight: 1.5, fillOpacity: 0.06, dashArray: '4 4', interactive: false}),
+    L.marker(view.near.latlng, {icon: L.divIcon({className: '', html: '<div class="you-pin"></div>', iconSize: [20, 20], iconAnchor: [10, 10]}), interactive: false})
+  ]).addTo(map);
+  map.fitBounds(youLayer.getLayers()[0].getBounds(), {padding: [30, 30]});
+  const msg = document.getElementById('near-msg');
+  msg.hidden = false;
+  msg.textContent = `Showing sites within ${nearLabel(minutes)} of ${place.label}, measured in a straight line.`;
+  document.getElementById('near-clear').hidden = false;
+  document.getElementById('near-min').value = String(minutes);
+  if(remember){ try{ localStorage.setItem(LAST_NEAR_KEY, JSON.stringify(place)); }catch(e){} }
+  syncUrl();
+  applyView();
+}
+// The address search and the open site live in the URL, so a resident can text the link to a neighbor.
+function syncUrl(openId){
+  const params = new URLSearchParams(location.search);
+  ['near', 'min', 'label'].forEach(k => params.delete(k));
+  if(view.near){
+    params.set('near', `${view.near.latlng.lat.toFixed(5)},${view.near.latlng.lng.toFixed(5)}`);
+    params.set('min', view.near.minutes);
+    params.set('label', view.near.label);
+  }
+  const hash = openId === undefined ? location.hash : (openId ? '#' + openId : '');
+  const qs = params.toString();
+  history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + hash);
+}
+function restoreFromUrl(){
+  const params = new URLSearchParams(location.search);
+  const m = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/.exec(params.get('near') || '');
+  if(m){
+    const min = [5, 10, 15].includes(+params.get('min')) ? +params.get('min') : 10;
+    setNear({lat: +m[1], lng: +m[2], label: params.get('label') || 'the shared spot'}, min, false);
+  } else {
+    let last = null;
+    try{ last = JSON.parse(localStorage.getItem(LAST_NEAR_KEY) || 'null'); }catch(e){}
+    if(last && last.label){
+      const msg = document.getElementById('near-msg');
+      msg.hidden = false;
+      msg.innerHTML = `Last time you looked near <button type="button" id="near-last"></button>.`;
+      msg.querySelector('#near-last').textContent = last.label;
+      msg.querySelector('#near-last').onclick = () => setNear(last, +document.getElementById('near-min').value, true);
+    }
+  }
+  const id = decodeURIComponent(location.hash.slice(1));
+  if(id && markers[id]){
+    const s = SITES.find(x => x.id === id);
+    if(!view.near) map.setView([s.lat, s.lng], 16);
+    if(!map.hasLayer(markers[id])) markers[id].addTo(map);   // a shared site link always opens, even outside the circle
+    markers[id].openPopup();
+  }
+}
+map.on('popupopen', e => {
+  const id = Object.keys(markers).find(k => markers[k].getPopup() === e.popup);
+  if(id) syncUrl(id);
+});
+map.on('popupclose', () => syncUrl(''));
+document.getElementById('near-locate').addEventListener('click', () => {
+  const msg = document.getElementById('near-msg');
+  msg.hidden = false;
+  const fail = () => { msg.textContent = "Couldn't get your location. Type an address or a corner instead."; document.getElementById('near-addr').focus(); };
+  if(!navigator.geolocation) return fail();
+  msg.textContent = 'Finding your location…';
+  navigator.geolocation.getCurrentPosition(
+    pos => setNear({lat: pos.coords.latitude, lng: pos.coords.longitude, label: 'your location'}, +document.getElementById('near-min').value, false),
+    fail, {timeout: 10000, maximumAge: 300000});
+});
 async function searchNear(e){
   e.preventDefault();
   const seq = ++searchSeq;   // a slower earlier search must not overwrite a newer one
@@ -583,24 +674,14 @@ async function searchNear(e){
     }
     if(seq !== searchSeq) return;
     if(!place){ msg.textContent = 'Couldn\'t find that. Try a street address or a corner like "McGuinness Blvd & Nassau Ave".'; return; }
-    const minutes = +document.getElementById('near-min').value;
-    view.near = {latlng: L.latLng(place.lat, place.lng), minutes, meters: minutes * WALK_M_PER_MIN, label: place.label};
-    if(youLayer) map.removeLayer(youLayer);
-    youLayer = L.layerGroup([
-      L.circle(view.near.latlng, {radius: view.near.meters, color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(), weight: 1.5, fillOpacity: 0.06, dashArray: '4 4', interactive: false}),
-      L.marker(view.near.latlng, {icon: L.divIcon({className: '', html: '<div class="you-pin"></div>', iconSize: [20, 20], iconAnchor: [10, 10]}), interactive: false})
-    ]).addTo(map);
-    map.fitBounds(youLayer.getLayers()[0].getBounds(), {padding: [30, 30]});
-    msg.textContent = `Showing sites within ${nearLabel(minutes)}, measured in a straight line.`;
-    document.getElementById('near-clear').hidden = false;
-    applyView();
+    setNear(place, +document.getElementById('near-min').value, true);
   }catch(err){
     msg.textContent = 'Address search is unavailable right now.';
   }
 }
 document.getElementById('near').addEventListener('submit', searchNear);
 document.getElementById('near-min').addEventListener('change', () => {
-  if(view.near) document.getElementById('near').requestSubmit();
+  if(view.near) setNear({lat: view.near.latlng.lat, lng: view.near.latlng.lng, label: view.near.label}, +document.getElementById('near-min').value, false);
 });
 document.getElementById('near-clear').addEventListener('click', () => {
   view.near = null;
@@ -608,6 +689,7 @@ document.getElementById('near-clear').addEventListener('click', () => {
   document.getElementById('near-msg').hidden = true;
   document.getElementById('near-clear').hidden = true;
   document.getElementById('near-addr').value = '';
+  syncUrl();
   applyView();
 });
 
@@ -620,6 +702,7 @@ function init(){
   map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
   applyView();
   loadLots();
+  restoreFromUrl();
   const latest = SITES.map(s => s.last_checked).sort().pop();
   if(latest) document.getElementById('last-checked').textContent = `Sites last checked ${fmtDate(latest)}.`;
 }
