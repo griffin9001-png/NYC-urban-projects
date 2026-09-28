@@ -112,6 +112,19 @@ header{
 /* map pins: shape encodes type (park/housing/road/other), color reinforces it */
 .pin{width:18px; height:18px; border:2px solid #fff; box-shadow:0 1px 5px rgba(0,0,0,.4);}
 .pin-park{border-radius:50%;}
+.pin-wrap{position:relative; width:18px; height:18px;}
+.new-dot{position:absolute; top:-5px; right:-5px; width:9px; height:9px; border-radius:50%; background:#E0452B; border:1.5px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.2);}
+.tag-new{display:inline-block; margin-left:6px; font:700 9.5px "IBM Plex Mono"; letter-spacing:.04em; text-transform:uppercase; color:#fff; background:#E0452B; border-radius:99px; padding:1px 6px; vertical-align:2px;}
+.news{margin:4px 12px 2px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface);}
+.news summary{cursor:pointer; padding:9px 12px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); list-style:none;}
+.news summary::-webkit-details-marker{display:none;}
+.news summary::before{content:"▸ ";} .news[open] summary::before{content:"▾ ";}
+.news ol{list-style:none; margin:0; padding:0 12px 8px;}
+.news li{padding:7px 0; border-top:1px solid var(--line); font-size:12.5px; line-height:1.4; cursor:pointer;}
+.news li:hover .news-name{text-decoration:underline;}
+.news .news-date{font:11px "IBM Plex Mono"; color:var(--ink-faint);}
+.news .news-name{font-weight:600; color:var(--ink);}
+.news .more{background:none; border:0; color:var(--accent); font:inherit; font-size:12px; padding:4px 0 2px; cursor:pointer;}
 .pin-housing{border-radius:3px;}
 .pin-road{clip-path:polygon(50% 0%, 0% 100%, 100% 100%);}
 .pin-other{border-radius:3px; transform:rotate(45deg);}
@@ -205,6 +218,7 @@ header{
       <div class="near-msg" id="near-msg" hidden></div>
     </div>
     <div class="summary-card" id="summary" hidden></div>
+    <details class="news" id="news" open hidden><summary>What's new</summary><ol></ol></details>
     <div class="list" id="list"></div>
     <div class="disclaimer">
       Seed dataset, researched from public reporting (Brooklyn Paper, Greenpointers, Gothamist, Brownstoner, NYC Mayor's Office/DOT/HPD releases, and others) as of September 2026. Pin locations are geocoded against NYC Planning Labs' GeoSearch service (built on PAD/PLUTO). Broadway Triangle, Monitor Point, Fulton-Howard West, and the Park Ave/BQE corridor don't have single exact-address matches in that dataset. Those four pins sit at the nearest verified address on the same block or site, not a precise parcel centroid. This is not an official city dataset. History sections come from Wikipedia, NYC Parks, Landmarks Preservation Commission material, and local history sources. Some pre-1900s history could not be confirmed. Those gaps are noted in the popups. Bulk NYC Open Data (PLUTO) pulls are planned for a future version. See the note Griffin has on automation.
@@ -300,10 +314,38 @@ function loadTileProvider(i){
 }
 loadTileProvider(0);
 
+// "What's new": changed_on is the date of the latest real development; badge anything in the last 30 days.
+const NEW_DAYS = 30;
+function isNew(s){ return s.changed_on && (Date.now() - new Date(s.changed_on)) / 864e5 <= NEW_DAYS; }
+let newsExpanded = false;
+function renderNews(items){
+  const box = document.getElementById('news');
+  const sorted = [...items].filter(s => s.changed_on).sort((a, b) => b.changed_on.localeCompare(a.changed_on));
+  if(!sorted.length){ box.hidden = true; return; }
+  box.hidden = false;
+  const recent = sorted.filter(isNew).length;
+  const shown = newsExpanded ? sorted : sorted.slice(0, 4);
+  box.querySelector('summary').textContent = `What's new${recent ? ` · ${recent} in the last ${NEW_DAYS} days` : ''}`;
+  box.querySelector('ol').innerHTML = shown.map(s => `
+    <li data-id="${s.id}"><span class="news-date">${fmtDate(s.changed_on)}</span>${isNew(s) ? '<span class="tag-new">New</span>' : ''}<br>
+      <span class="news-name">${s.name}:</span> ${s.change_note}</li>`).join('') +
+    (sorted.length > 4 ? `<li style="cursor:default"><button class="more" type="button">${newsExpanded ? 'Show fewer' : `Show all ${sorted.length}`}</button></li>` : '');
+}
+document.addEventListener('click', e => {
+  const more = e.target.closest('#news .more');
+  if(more){ newsExpanded = !newsExpanded; applyView(); return; }
+  const li = e.target.closest('#news li[data-id]');
+  if(li){
+    const s = SITES.find(x => x.id === li.dataset.id);
+    map.flyTo([s.lat, s.lng], 16, {duration: 0.6});
+    markers[s.id].openPopup();
+  }
+});
+
 function makeIcon(site){
   return L.divIcon({
     className: '',
-    html: `<div class="pin pin-${site.type}" style="background:var(--type-${site.type})" title="${TYPE_LABEL[site.type]}"></div>`,
+    html: `<div class="pin-wrap"><div class="pin pin-${site.type}" style="background:var(--type-${site.type})" title="${TYPE_LABEL[site.type]}"></div>${isNew(site) ? '<span class="new-dot" title="Updated in the last 30 days"></span>' : ''}</div>`,
     iconSize: [18,18],
     iconAnchor: [9,9],
     popupAnchor: [0,-10]
@@ -389,7 +431,7 @@ function renderList(items){
         <span class="pill pill-cond pill-cond-${s.condition}">${CONDITION_LABEL[s.condition]}</span>
         <span class="pill pill-phase" style="background:var(--phase-${s.phase})">${PHASE_LABEL[s.phase]}</span>
       </div>
-      <div class="card-top"><span class="card-dot pin-${s.type}" style="background:var(--type-${s.type})"></span><span class="card-name">${s.name}</span></div>
+      <div class="card-top"><span class="card-dot pin-${s.type}" style="background:var(--type-${s.type})"></span><span class="card-name">${s.name}</span>${isNew(s) ? '<span class="tag-new">New</span>' : ''}</div>
       <div class="card-hood">${view.near ? `~${walkMin(s)} min walk · ` : ''}${s.neighborhood}</div>
       <div class="card-sum">${s.now}</div>
     </div>
@@ -417,6 +459,7 @@ function applyView(){
   if(view.near) items.sort((a, b) => walkMin(a) - walkMin(b));
   renderList(items);
   renderSummary(items);
+  renderNews(items);
   SITES.forEach(s => {
     const show = items.includes(s);
     [markers[s.id], lotLayers[s.id]].forEach(layer => {
