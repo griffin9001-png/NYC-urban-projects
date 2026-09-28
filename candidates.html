@@ -70,7 +70,8 @@ table{min-width:900px}
     <input type="search" id="q" placeholder="Filter by name, address…" aria-label="Filter leads">
     <select id="src" aria-label="Source">
       <option value="">All sources</option><option value="zoning">Zoning applications</option>
-      <option value="building">New buildings</option><option value="park">Park projects</option><option value="news">News</option>
+      <option value="building">New buildings</option><option value="park">Park projects</option>
+      <option value="street">Bike lanes &amp; street plans</option><option value="news">News</option>
     </select>
     <label><input type="checkbox" id="hideMapped" checked> Hide leads already on the map</label>
   </div>
@@ -92,7 +93,7 @@ table{min-width:900px}
   <div id="err"></div>
 </main>
 <script>
-const SOURCE_LABEL = {zoning:"Zoning", building:"New building", park:"Park", news:"News"};
+const SOURCE_LABEL = {zoning:"Zoning", building:"New building", park:"Park", street:"Street plan", news:"News"};
 const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let data = null, sortKey = 'score', sortDir = -1;
 

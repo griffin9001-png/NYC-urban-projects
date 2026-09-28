@@ -88,9 +88,21 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. Once 
 - **Zoning applications** from City Planning's Zoning Application Portal: rezonings, waterfront sign-offs, anything in public review.
 - **New buildings** filed with the Buildings Department since 2024 with 50 or more homes (`MIN_HOMES`).
 - **Park projects** from the Parks Department's capital project tracker that aren't finished.
-- **News** headlines from Greenpointers, Streetsblog NYC and Brooklyn Paper in the last 45 days that name the area and a development topic. Street redesigns mostly show up here, since there's no city dataset for them.
+- **Bike lanes and street plans** from DOT's "Current Bicycle Route Projects" list (Brooklyn rows placed at their first cross street and kept if inside the area) and DOT's project site, nycdotprojects.info (North Brooklyn place or street names; pages with no dated update in 3 years are skipped). Street projects that DOT handles as sewer or water capital work, like the Commercial St greenway, aren't on either list and still come from news or community board agendas.
+- **News** headlines from Greenpointers, Streetsblog NYC and Brooklyn Paper in the last 45 days that name the area and a development topic.
 
-Each lead is scored (homes, whether it's in public review, how recent) and matched against `sites.json`: "on the map" when it shares a lot with a site or a headline names one, "near" when a site's pin is close or its name matches, which only means it's worth checking. The area, thresholds and news keywords are constants at the top of the script.
+Each lead gets a score (higher is more worth a look; housing tops out around 16, street plans around 10) and is matched against `sites.json`. Score:
+
+| Points | For |
+|---|---|
+| 0 to 8 | Size: 1 per 100 proposed homes |
+| +3 | A zoning application still filed, noticed or in public review |
+| +5 / +4 | A DOT bike lane plan in development / another active DOT street project |
+| +2 | A park project under construction |
+| +2 / +1 | Latest date within 90 days / within a year |
+| up to +3 | One per recent headline naming the lead's street or project |
+
+Matching: "on the map" when it shares a lot with a site, or a headline or DOT plan names one, "near" when a site's pin is close or its name matches, which only means it's worth checking. The area, thresholds and news keywords are constants at the top of the script.
 
 A lead is not a site. To add one, read its sources in full and follow "Adding a site" below; the zoning and building records say what's filed, not what it means for neighbors, so each site still needs news or agency sources that explain it.
 
