@@ -95,7 +95,13 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. Once 
 - **Community board agendas** from the last 60 days and any upcoming meeting: CB1's Transportation, Land Use and Parks & Waterfront committee notices and full-board agendas, and CB3 and CB4 full-board agendas. Each agenda item becomes a lead; routine items (minutes, reports, liquor and cannabis licenses, outdoor dining, street co-namings) are dropped, and an address in the item is looked up to match it to a lot. CB3's page hasn't posted an agenda since June 2025, and CB2's site blocks automated reads, so those two boards are thin; check their calendars by hand.
 - **News** headlines from Greenpointers, Streetsblog NYC and Brooklyn Paper in the last 45 days that name the area and a development topic.
 
-Finished work drops out 3 months after it finishes (`DONE_DAYS`): a building once its first certificate of occupancy (temporary or final) is older than that, a zoning application once its review closed that long ago, a park project once construction finished. A building filing's own date isn't used for this, since amendments keep arriving long after people move in.
+Finished work drops out 3 months after it finishes (`DONE_DAYS`):
+
+- a new building once its first certificate of occupancy (temporary or final) is older than that; a building filing's own date isn't used, since amendments keep arriving long after people move in;
+- a park project once construction finished that long ago;
+- an approved zoning application only once a new building on its lots has been occupied for 3 months and no building permits have been issued there in 6 months. "Completed" in City Planning's records means the review finished, not that anything was built: Domino Site B was approved in Nov 2025 and is under construction, shown as "Approved 2025-11; 35 building permits issued since". Approvals that bring housing or went through full public review stay up to 3 years (`APPROVED_KEEP_YEARS`); minor sign-offs drop 3 months after they close.
+
+Some large projects never show up as building filings: Domino Site B's new-building job was filed in 2014 in the Buildings Department's older system, which has no unit counts, so it comes through its zoning approval instead.
 
 Each lead gets a score (higher is more worth a look; housing tops out around 16, street plans around 10) and is matched against `sites.json`. Score:
 
