@@ -18,7 +18,7 @@
   --line:#D7DCD0;
   --accent:#1B5E63; --accent-ink:#FFFFFF;
   --status-contested:#C1502E; --status-review:#2B6CB0; --status-active:#2F7D4F;
-  --phase-decision-coming:#2B6CB0; --phase-planned:#5E6B63; --phase-construction-underway:#B07A12; --phase-open-now:#2F7D4F; --phase-stalled:#C1502E;
+  --phase-decision-coming:#2B6CB0; --phase-planned:#5E6B63; --phase-construction-underway:#B07A12; --phase-partly-open:#4E8F3A; --phase-open-now:#2F7D4F; --phase-stalled:#C1502E;
   --type-park:#2F7D4F; --type-housing:#2B6CB0; --type-road:#C98A1F; --type-other:#6B5CA5;
   --shadow:0 2px 10px rgba(20,30,25,0.12);
   --radius:10px;
@@ -30,7 +30,7 @@
     --line:#2B3638;
     --accent:#57C2C9; --accent-ink:#08191A;
     --status-contested:#E58063; --status-review:#78ACE0; --status-active:#7BC894;
-    --phase-decision-coming:#78ACE0; --phase-planned:#A9B4AD; --phase-construction-underway:#E0A64E; --phase-open-now:#7BC894; --phase-stalled:#E58063;
+    --phase-decision-coming:#78ACE0; --phase-planned:#A9B4AD; --phase-construction-underway:#E0A64E; --phase-partly-open:#9ACB7A; --phase-open-now:#7BC894; --phase-stalled:#E58063;
     --type-park:#7BC894; --type-housing:#78ACE0; --type-road:#E0A64E; --type-other:#A79BD9;
     --shadow:0 2px 16px rgba(0,0,0,0.5);
   }
@@ -234,7 +234,7 @@ let SITES = [];
 const STATUS_LABEL = {contested:"Contested", review:"In review", active:"Advancing"};
 // Resident-facing stage shown as the pill; `status` stays as process detail inside the popup.
 const PHASE_LABEL = {"decision-coming":"Decision coming", "planned":"Planned, not started",
-  "construction-underway":"Construction underway", "open-now":"Open now", "stalled":"Stalled"};
+  "construction-underway":"Construction underway", "partly-open":"Partly open", "open-now":"Open now", "stalled":"Stalled"};
 const MONTHS = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"];
 function fmtDate(d){
   if(!d) return '';

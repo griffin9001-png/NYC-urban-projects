@@ -18,7 +18,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `type` | `park`, `housing`, `road`, `other` (pin shape and color) |
 | `category` | `parcel` (a specific development site) or `topic` (a broader fight). Not shown on the page |
 | `status` | `contested`, `review` (In review), `active` (Advancing). Process detail, shown small inside the popup |
-| `phase` | the resident-facing pill: `decision-coming`, `planned` (approved or cleared, not started), `construction-underway`, `open-now`, `stalled` |
+| `phase` | the resident-facing pill: `decision-coming`, `planned` (approved or cleared, not started), `construction-underway`, `partly-open` (some of it open, the rest still coming), `open-now`, `stalled` |
 | `condition` | what physically stands on the site today, shown as a pill: `vacant`, `existing-buildings`, `under-construction`, `partly-built`, `open-space`, `street`, `unverified`. Never set `vacant` without a PLUTO lot showing no buildings |
 | `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin, and for any site whose land should be shaded on the map (streets have none) |
 | `lat`, `lng` | geocoded point; say how in `updated` |
