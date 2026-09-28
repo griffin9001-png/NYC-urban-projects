@@ -17,18 +17,25 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `name`, `headline`, `neighborhood` | shown in popup and list |
 | `type` | `park`, `housing`, `road`, `other` (pin shape and color) |
 | `category` | `parcel` (a specific development site) or `topic` (a broader fight). Not shown on the page |
-| `status` | `contested`, `review` (In review), `active` (Advancing) |
+| `status` | `contested`, `review` (In review), `active` (Advancing). Process detail, shown small inside the popup |
+| `phase` | the resident-facing pill: `decision-coming`, `planned` (approved or cleared, not started), `construction-underway`, `open-now`, `stalled` |
 | `condition` | what physically stands on the site today, shown as a pill: `vacant`, `existing-buildings`, `under-construction`, `partly-built`, `open-space`, `street`, `unverified`. Never set `vacant` without a PLUTO lot showing no buildings |
 | `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin, and for any site whose land should be shaded on the map (streets have none) |
 | `lat`, `lng` | geocoded point; say how in `updated` |
 | `why` | what the place is and what would change, then the bigger picture, 250 chars max |
 | `now` | shown as **Current status**, 250 chars max, lead with the month and year of the latest event |
 | `history` | 200 chars max |
+| `impact` | what a neighbor will notice, 200 chars max (STYLE.md) |
+| `timeline` | `{start, complete, confidence}`: dates as `YYYY`, `YYYY-MM` or `YYYY-MM-DD` or null; `confidence` is `announced` (official date), `estimated` (reported estimate) or `unknown` (then `complete` must be null) |
+| `next_step` | `{date, what, where, url}`: the next meeting, vote, lottery or deadline. `what` is required; the rest may be null. Say "No public meeting or deadline scheduled yet." when there is none |
+| `units_total`, `units_affordable` | whole numbers from a source, or null. Only derive `units_affordable` from a sourced percentage |
+| `park_acres_promised`, `park_acres_delivered` | numbers from a source, or null |
 | `owner` | who controls the site, 200 chars max |
 | `sources` | list of `{t, u}`; newest first; `u` must be https |
 | `image` | `{url, credit, isRendering}`, hotlinked. See "Finding an image" below. If missing or broken, the popup shows an "Open in Street View" link instead |
 | `updated` | free text shown at the popup foot, e.g. `Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch` |
 | `last_checked` | `YYYY-MM-DD` of the last time someone searched for news on this site, whether or not anything changed |
+| `changed_on`, `change_note` | date of the latest material development (not a wording fix) and one plain sentence about it; feeds "What's new" |
 
 Labels must agree with the text. `headline`, `status` and `condition` are what a reader sees first; if `why` or `now` says the plan was dropped, `status` can't be `active`, and if the text mentions existing buildings or tenants, `condition` can't be `vacant`. The validator blocks the obvious contradictions; the weekly review catches the rest.
 
@@ -53,7 +60,7 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. It ne
 2. For each site in `sites.json`:
    1. Search the web for news about the site published after its `last_checked` date. Use the site name, street address or neighborhood, and the key actors in `owner` and `now`. Prefer primary sources (NYC agencies, Community Board minutes, City Council, LPC) and local outlets (Greenpointers, Brooklyn Paper, Brooklyn Eagle, Gothamist, Curbed, Patch, Brownstoner, THE CITY).
    2. Only read articles in full; don't update from search snippets. If a page can't be loaded, note it in the PR and leave the site's content unchanged.
-   3. If there is a material development (vote, approval, lawsuit, groundbreaking, cancellation, sale, new plan), rewrite `now` within 250 chars, adjust `headline` and `status` if they are no longer accurate, add the new source(s) to the top of `sources`, and update the date in `updated`.
+   3. If there is a material development (vote, approval, lawsuit, groundbreaking, cancellation, sale, new plan), rewrite `now` within 250 chars, adjust `headline`, `status`, `phase`, `impact`, `timeline`, `next_step` and the unit/acre numbers if they are no longer accurate, set `changed_on` to the development's date and `change_note` to one sentence about it, add the new source(s) to the top of `sources`, and update the date in `updated`. Never fill a number or date from a guess; leave it null.
    4. Set `last_checked` to today for every site that was searched, changed or not.
 3. Consistency review, for every site whether or not news changed: read `headline`, `status`, `condition` and `type` against `why`, `now`, `history` and the sources. Fix any label that the text or sources contradict, or list it in the PR if the right value is unclear. Also open the newest listed source and confirm `now` reflects it; a source that is listed but not reflected in the text is a stale entry. Never carry a claim from reader comments, search snippets or paywalled headlines alone into the text.
 4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Commit the refreshed `audit.json`. If any `bbls` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.

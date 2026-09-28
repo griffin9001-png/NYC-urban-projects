@@ -11,12 +11,19 @@ import sys
 TYPES = {"park", "housing", "road", "other"}
 CATEGORIES = {"parcel", "topic"}
 STATUSES = {"contested", "review", "active"}
+PHASES = {"decision-coming", "planned", "construction-underway", "open-now", "stalled"}
+CONFIDENCE = {"announced", "estimated", "unknown"}
+PARTIAL_DATE = r"\d{4}(-\d{2}(-\d{2})?)?"
+NUMERIC = ("units_total", "units_affordable", "park_acres_promised", "park_acres_delivered")
 CONDITIONS = {"vacant", "existing-buildings", "under-construction", "partly-built",
               "open-space", "street", "unverified"}
 REQUIRED = ["id", "name", "headline", "type", "category", "status", "neighborhood",
-            "condition", "lat", "lng", "why", "history", "now", "owner", "sources", "updated", "last_checked"]
+            "condition", "phase", "lat", "lng", "why", "history", "now", "impact", "owner", "sources",
+            "updated", "last_checked", "changed_on", "change_note"]
+# Keys that must exist but may hold null when the fact is unknown.
+REQUIRED_NULLABLE = ["timeline", "next_step", *NUMERIC]
 # Popup caps: why and Current status (now) 250, history and owner 200.
-LIMITS = {"why": 250, "history": 200, "now": 250, "owner": 200}
+LIMITS = {"why": 250, "history": 200, "now": 250, "owner": 200, "impact": 200, "change_note": 160}
 # Rough NYC bounding box, catches swapped or mistyped coordinates.
 LAT_RANGE, LNG_RANGE = (40.49, 40.92), (-74.27, -73.68)
 # Planning jargon readers won't know (see STYLE.md for the plain-language swap).
@@ -39,11 +46,11 @@ JARGON = {
     r"\bdhs\b": "the city's homeless services department",
     r"\bunits?\b": "apartments or homes",
 }
-JARGON_FIELDS = ("headline", "why", "now", "history", "owner")
+JARGON_FIELDS = ("headline", "why", "now", "history", "owner", "impact", "change_note")
 
 # Names belong only in `owner` (STYLE.md, "The neighbor test"). Organizations named in
 # `owner` must not reappear in reader text; public agencies residents deal with are fine.
-NAME_FIELDS = ("headline", "why", "now", "history")
+NAME_FIELDS = ("headline", "why", "now", "history", "impact", "change_note")
 PUBLIC_BODIES = {"MTA", "NYC", "NYC Parks", "Parks Department", "City Council", "New York State DOT",
                  "Department of Transportation", "The", "The MTA", "NYSDOT", "HPD", "State", "City"}
 ORG_SUFFIX = r"(?:Group|Companies|Company|Organization|Management|Partners|Realty|Holdings|Alliance|LLC|Inc\.?)"
@@ -99,6 +106,47 @@ def validate(sites):
             err(f"category must be one of {sorted(CATEGORIES)}")
         if s.get("status") not in STATUSES:
             err(f"status must be one of {sorted(STATUSES)}")
+        for key in REQUIRED_NULLABLE:
+            if key not in s:
+                err(f"missing {key} (use null if unknown)")
+        if s.get("phase") not in PHASES:
+            err(f"phase must be one of {sorted(PHASES)}")
+        tl = s.get("timeline")
+        if not isinstance(tl, dict) or tl.get("confidence") not in CONFIDENCE:
+            err(f"timeline needs start, complete and confidence in {sorted(CONFIDENCE)}")
+        else:
+            for k in ("start", "complete"):
+                if tl.get(k) is not None and not re.fullmatch(PARTIAL_DATE, str(tl[k])):
+                    err(f"timeline.{k} must be YYYY, YYYY-MM or YYYY-MM-DD, or null")
+            if tl["confidence"] == "unknown" and tl.get("complete") is not None:
+                err("timeline.complete must be null when confidence is unknown")
+            if tl["confidence"] != "unknown" and tl.get("complete") is None and tl.get("start") is None:
+                err("timeline with announced/estimated confidence needs a start or complete date")
+        ns = s.get("next_step")
+        if not isinstance(ns, dict) or not ns.get("what"):
+            err("next_step needs at least 'what' (say 'No public meeting or deadline scheduled yet.' if none)")
+        else:
+            if ns.get("date") is not None and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(ns["date"])):
+                err("next_step.date must be YYYY-MM-DD or null")
+            if ns.get("url") is not None and not str(ns["url"]).startswith("https://"):
+                err("next_step.url must be https:// or null")
+            if len(ns["what"]) > 150:
+                err(f"next_step.what is {len(ns['what'])} chars, limit 150")
+        for key in NUMERIC:
+            v = s.get(key)
+            if v is not None and (not isinstance(v, (int, float)) or v < 0):
+                err(f"{key} must be a non-negative number or null")
+        if isinstance(s.get("units_affordable"), (int, float)) and isinstance(s.get("units_total"), (int, float)) \
+                and s["units_affordable"] > s["units_total"]:
+            err("units_affordable is more than units_total")
+        if isinstance(s.get("park_acres_delivered"), (int, float)) and isinstance(s.get("park_acres_promised"), (int, float)) \
+                and s["park_acres_delivered"] > s["park_acres_promised"]:
+            err("park_acres_delivered is more than park_acres_promised")
+        try:
+            if datetime.date.fromisoformat(str(s.get("changed_on"))) > today:
+                err("changed_on is in the future")
+        except ValueError:
+            err("changed_on must be YYYY-MM-DD")
         if s.get("condition") not in CONDITIONS:
             err(f"condition must be one of {sorted(CONDITIONS)}")
         bbls = s.get("bbls", [])

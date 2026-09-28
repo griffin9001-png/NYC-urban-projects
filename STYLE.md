@@ -81,3 +81,6 @@ Leave out of `headline`, `why`, `now` and `history`:
 - `now` (250 chars): the latest development, leading with when it happened.
 - `history` (200 chars): what the land was before, in order.
 - `owner` (200 chars): who owns or controls it, in plain words. The only field where developer and organization names go.
+- `impact` (200 chars): one sentence on what a neighbor will notice: building height, new households, construction, park access, a closed road, a new restroom. Concrete and physical, not process.
+- `next_step.what` (150 chars): the next thing a resident could watch for or act on, in plain words ("Housing lottery for the 311 new affordable apartments"). `where` names the meeting, lottery or page; `url` links straight to it. If nothing is scheduled, say so plainly.
+- `change_note` (160 chars): one sentence on the latest news, for the "What's new" feed. Same rules as `now`.
