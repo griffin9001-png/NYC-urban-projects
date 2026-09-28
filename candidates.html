@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Candidates · NYC Urban Projects</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F5F7F2;
+  --ink:#15201B; --ink-soft:#4D584F; --ink-faint:#7C877E; --line:#D7DCD0;
+  --accent:#1B5E63; --warn:#C1502E; --ok:#2F7D4F;
+  --status-contested:#C1502E; --status-review:#2B6CB0; --status-active:#2F7D4F;
+  --type-park:#2F7D4F; --type-housing:#2B6CB0; --type-road:#C98A1F; --type-other:#6B5CA5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101617; --surface:#181F21; --surface-2:#1E2729;
+    --ink:#ECF1ED; --ink-soft:#A9B4AD; --ink-faint:#7A857E; --line:#2B3638;
+    --accent:#57C2C9; --warn:#E58063; --ok:#7BC894;
+    --status-contested:#E58063; --status-review:#78ACE0; --status-active:#7BC894;
+    --type-park:#7BC894; --type-housing:#78ACE0; --type-road:#E0A64E; --type-other:#A79BD9;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 'IBM Plex Sans',system-ui,sans-serif}
+header{padding:20px 16px 8px;max-width:1400px;margin:0 auto}
+h1{font:900 22px 'Archivo',sans-serif;margin:0 0 4px}
+header p{margin:0;color:var(--ink-soft)}
+header a{color:var(--accent)}
+.summary{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.stat b{font:700 18px 'Archivo',sans-serif;display:block}
+.stat span{color:var(--ink-faint);font-size:12px}
+.stat.bad b{color:var(--warn)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+input[type=search]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:220px}
+label{color:var(--ink-soft);font-size:13px}
+main{max-width:1400px;margin:0 auto;padding:8px 16px 40px}
+.wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:1100px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font:600 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);background:var(--surface-2);cursor:pointer;white-space:nowrap;position:sticky;top:0}
+th[aria-sort=ascending]::after{content:" ▲"} th[aria-sort=descending]::after{content:" ▼"}
+tr:last-child td{border-bottom:0}
+.name{font-weight:600} .id{font:12px 'IBM Plex Mono',monospace;color:var(--ink-faint)}
+.pill{display:inline-block;color:#fff;font:600 11px 'IBM Plex Mono',monospace;padding:2px 7px;border-radius:99px;text-transform:uppercase;white-space:nowrap}
+.muted{color:var(--ink-faint);font-size:12px}
+.flag{color:var(--warn);font-weight:600}
+.okc{color:var(--ok)}
+td.text{max-width:420px}
+details summary{cursor:pointer;color:var(--accent)}
+details a{display:block;color:var(--accent);font-size:12px;margin-top:4px;word-break:break-word}
+.issues{margin:0;padding-left:16px;color:var(--warn);font-size:12px}
+#err{color:var(--warn);padding:16px}
+select{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.src{display:inline-block;font:600 11px 'IBM Plex Mono',monospace;padding:2px 7px;border-radius:99px;border:1px solid var(--line);text-transform:uppercase;white-space:nowrap}
+.score{font:700 16px 'Archivo',sans-serif}
+td a{color:var(--accent)}
+.near{color:var(--accent);font-size:12px}
+table{min-width:900px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Site candidates</h1>
+  <p>Possible new sites from city records and local news, highest score first. A lead becomes a site only after its sources are read in full (see <code>UPDATING.md</code>). <a href="./">Back to map</a> · <a href="audit.html">Site audit</a></p>
+  <div class="summary" id="summary"></div>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Filter by name, address…" aria-label="Filter leads">
+    <select id="src" aria-label="Source">
+      <option value="">All sources</option><option value="zoning">Zoning applications</option>
+      <option value="building">New buildings</option><option value="park">Park projects</option><option value="news">News</option>
+    </select>
+    <label><input type="checkbox" id="hideMapped" checked> Hide leads already on the map</label>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <table>
+      <thead><tr>
+        <th data-k="score" aria-sort="descending">Score</th>
+        <th data-k="title">Lead</th>
+        <th data-k="source">Source</th>
+        <th data-k="status">Status</th>
+        <th data-k="homes">Homes</th>
+        <th data-k="date">Date</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <div id="err"></div>
+</main>
+<script>
+const SOURCE_LABEL = {zoning:"Zoning", building:"New building", park:"Park", news:"News"};
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let data = null, sortKey = 'score', sortDir = -1;
+
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const src = document.getElementById('src').value;
+  const hide = document.getElementById('hideMapped').checked;
+  const list = data.candidates
+    .filter(c => !hide || !c.on_map)
+    .filter(c => !src || c.source === src)
+    .filter(c => !q || [c.title, c.address, c.summary, c.status].join(' ').toLowerCase().includes(q))
+    .sort((a, b) => ((a[sortKey] ?? -1) > (b[sortKey] ?? -1) ? 1 : (a[sortKey] ?? -1) < (b[sortKey] ?? -1) ? -1 : 0) * sortDir);
+  document.getElementById('rows').innerHTML = list.map(c => `
+    <tr>
+      <td class="score">${c.score}</td>
+      <td class="text"><div class="name"><a href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.title)}</a></div>
+        ${c.address && c.source !== 'building' ? `<div class="muted">${esc(c.address)}</div>` : ''}
+        ${c.summary && c.source !== 'news' ? `<details><summary>Details</summary><div class="muted">${esc(c.summary)}</div></details>` : ''}
+        ${c.on_map ? `<div class="okc">On the map: ${esc(c.on_map)}</div>` : ''}
+        ${c.near ? `<div class="near">Near ${esc(c.near)}: check it isn't the same project</div>` : ''}</td>
+      <td><span class="src">${esc(SOURCE_LABEL[c.source] || c.source)}</span></td>
+      <td>${esc(c.status)}</td>
+      <td>${c.homes == null ? '<span class="muted">–</span>' : c.homes.toLocaleString()}</td>
+      <td>${esc(c.date)}</td>
+    </tr>`).join('') || '<tr><td colspan="6" class="muted">No leads match.</td></tr>';
+  document.querySelectorAll('th').forEach(th => th.setAttribute('aria-sort', th.dataset.k === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'));
+}
+
+function summarize(){
+  const all = data.candidates, fresh = all.filter(c => !c.on_map);
+  const stat = (n, label) => `<div class="stat"><b>${n}</b><span>${label}</span></div>`;
+  document.getElementById('summary').innerHTML =
+    stat(fresh.length, 'new leads') + stat(all.length - fresh.length, 'already on the map') +
+    Object.entries(data.counts).map(([k, n]) => stat(n, (SOURCE_LABEL[k] || k).toLowerCase() + ' leads')).join('') +
+    stat(esc(data.generated), esc(data.area));
+}
+
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', () => {
+  if (sortKey === th.dataset.k) sortDir *= -1; else { sortKey = th.dataset.k; sortDir = th.dataset.k === 'title' ? 1 : -1; }
+  render();
+}));
+['q', 'src', 'hideMapped'].forEach(id => document.getElementById(id).addEventListener(id === 'q' ? 'input' : 'change', render));
+
+// candidates.json is written by scripts/find_candidates.py.
+fetch('candidates.json', {cache: 'no-cache'})
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => { data = d; summarize(); render(); })
+  .catch(() => { document.getElementById('err').textContent = 'Could not load candidates.json. Run scripts/find_candidates.py, then serve this folder over http (for example python3 -m http.server).'; });
+</script>
+</body>
+</html>
