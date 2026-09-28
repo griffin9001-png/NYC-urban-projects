@@ -75,8 +75,8 @@
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Harrison Realty LLC ownership on Rabsky's two blocks in NYC PLUTO",
     "last_checked": "2026-09-28",
-    "changed_on": "2026-01-07",
-    "change_note": "A lottery opened for 120 affordable apartments at 11 Gerry St."
+    "changed_on": "2026-03-04",
+    "change_note": "The lottery for 120 affordable apartments at 11 Gerry St closed."
   },
   {
     "id": "greenpoint-hospital",
@@ -499,7 +499,7 @@
     "why": "A block of low-rise industrial buildings on the Greenpoint waterfront near Greenpoint Ave, set to be torn down for a large apartment project.",
     "history": "Industrial land on the waterfront, next to the landmarked Eberhard Faber Pencil Factory. No source documents its earlier uses.",
     "now": "A new owner bought the site in late 2025 and lined up money to build. Plans are moving ahead despite neighborhood objections.",
-    "impact": "Low-rise industrial buildings near Greenpoint Ave would come down for a large apartment complex on the waterfront.",
+    "impact": "Low-rise industrial buildings near Greenpoint Ave would come down for a waterfront apartment complex of about 590 homes.",
     "timeline": {
       "start": null,
       "complete": null,
@@ -511,12 +511,16 @@
       "where": null,
       "url": null
     },
-    "units_total": null,
+    "units_total": 590,
     "units_affordable": null,
     "park_acres_promised": null,
     "park_acres_delivered": null,
     "owner": "Jay Group (developer), purchased from Pearl Realty in Dec. 2025.",
     "sources": [
+      {
+        "t": "Jay Group Lands $320M Construction Loan for 590-Unit Greenpoint Project · BLDUP",
+        "u": "https://www.bldup.com/posts/jay-group-lands-320m-construction-loan-for-590-unit-greenpoint-project-at-97-west-street"
+      },
       {
         "t": "Jay Group secures $320M construction loan for Greenpoint towers · The Real Deal",
         "u": "https://therealdeal.com/new-york/2025/11/19/jay-group-nabs-320-million-greenpoint-construction-loan/"
@@ -639,7 +643,7 @@
     "category": "topic",
     "status": "contested",
     "condition": "partly-built",
-    "phase": "stalled",
+    "phase": "partly-open",
     "neighborhood": "Kent Ave & N 9th St, Greenpoint/Williamsburg",
     "lat": 40.72263,
     "lng": -73.96179,
@@ -736,7 +740,7 @@
     "bbls": [],
     "why": "The busy traffic circle at the entrance to Prospect Park, around the landmark arch, which the city wants to make safer and friendlier for people walking and biking.",
     "history": "Laid out as Olmsted and Vaux's Prospect Park entrance starting in 1866. The Soldiers' and Sailors' Arch went up 1889-92. The current Bailey Fountain dates to 1929-32. Landmarked 1973-75.",
-    "now": "In April 2026 the city proposed closing a road to connect the arch directly to Prospect Park, adding about 42% more public space. The plan still needs detailed design and landmarks approval before any construction.",
+    "now": "In June 2026 the city showed five community boards a plan with 42% more public space. The study wraps up in summer 2026; then comes landmarks review and a decision on how to rebuild.",
     "impact": "A road between the arch and Prospect Park would close to cars, making it easier to walk or bike into the park.",
     "timeline": {
       "start": null,
@@ -745,7 +749,7 @@
     },
     "next_step": {
       "date": null,
-      "what": "The city will finish its study and pick a final design.",
+      "what": "After this summer's study, landmarks and design reviews come first, then the city decides how to rebuild the plaza.",
       "where": "NYC DOT project page",
       "url": "https://www.nyc.gov/html/dot/html/about/grandarmyplaza.shtml"
     },

@@ -11,7 +11,7 @@ import sys
 TYPES = {"park", "housing", "road", "other"}
 CATEGORIES = {"parcel", "topic"}
 STATUSES = {"contested", "review", "active"}
-PHASES = {"decision-coming", "planned", "construction-underway", "open-now", "stalled"}
+PHASES = {"decision-coming", "planned", "construction-underway", "partly-open", "open-now", "stalled"}
 CONFIDENCE = {"announced", "estimated", "unknown"}
 PARTIAL_DATE = r"\d{4}(-\d{2}(-\d{2})?)?"
 NUMERIC = ("units_total", "units_affordable", "park_acres_promised", "park_acres_delivered")
