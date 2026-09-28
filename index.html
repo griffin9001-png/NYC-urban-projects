@@ -737,7 +737,7 @@ function init(){
   if(latest) document.getElementById('last-checked').textContent = `Sites last checked ${fmtDate(latest)}.`;
 }
 
-// Tax-lot outlines (lots.geojson, built by scripts/fetch_lots.py), shaded in each site's pin color.
+// Tax-lot outlines and street lines (lots.geojson, built by scripts/fetch_lots.py), in each site's pin color.
 // Drawn in their own pane under the basemap label layer so street names stay readable.
 const lotLayers = {};
 map.createPane('lots').style.zIndex = 350;
@@ -752,9 +752,11 @@ function loadLots(){
       if(!s || !markers[id]) return;
       const color = css.getPropertyValue(`--phase-${s.phase}`).trim();   // lots match the pin's phase color
       const base = {pane: 'lots', color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.22};
-      const layer = L.geoJSON(features, {style: () => base})
-        .on('mouseover', e => e.layer.setStyle({fillOpacity: 0.4}))
-        .on('mouseout', e => e.layer.setStyle({fillOpacity: base.fillOpacity}))
+      const street = {pane: 'lots', color, weight: 7, opacity: 0.55, lineCap: 'round'};   // whole corridor, e.g. a street redesign
+      const isLine = f => /LineString/.test(f.geometry.type);
+      const layer = L.geoJSON(features, {style: f => isLine(f) ? street : base})
+        .on('mouseover', e => e.layer.setStyle(isLine(e.layer.feature) ? {opacity: 0.85} : {fillOpacity: 0.4}))
+        .on('mouseout', e => e.layer.setStyle(isLine(e.layer.feature) ? {opacity: street.opacity} : {fillOpacity: base.fillOpacity}))
         .on('click', () => markers[id].openPopup())
         .addTo(map);
       lotLayers[id] = layer;
