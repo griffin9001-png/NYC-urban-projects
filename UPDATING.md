@@ -24,6 +24,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin, and for any site whose land should be shaded on the map (streets have none) |
 | `streets` | for street projects: exact Brooklyn street names as they appear in the city's street centerline file (CSCL, e.g. `MCGUINNESS BLVD`), or `{"name": "PARK AVE", "along": "BROOKLYN QUEENS EXPY"}` to keep only the segments within 40 m of another street, or `{"name": "BEDFORD AVE", "between": ["FLUSHING AVE", "WILLOUGHBY AVE"]}` for the blocks between two cross streets. Drawn as a line in the pin color |
 | `osm` | for anything the city files don't cover (creeks, odd-shaped plazas): OpenStreetMap elements such as `"way/392486579"`. Find the ID by clicking the feature on openstreetmap.org. Closed ways are drawn as areas, other ways and relations as lines |
+| `address_notes` | optional; `{"address as written in neighborhood": "why it stands"}` for an address the city's address database doesn't put on the site's lots but that's still right (a planned building's new address, a permit that ties the address to a different lot number). The audit skips these; every other address in `neighborhood` must land on one of the site's `bbls` |
 | `lat`, `lng` | geocoded point; say how in `updated`. Must sit on the site's own shape (`bbls`, `streets` or `osm`): `validate_sites.py` prints where every pin lands ("inside lot 3025670001", "4 m from MCGUINNESS BLVD") and fails a pin more than 10 m outside its lots or 30 m off its line. Every site needs at least one of `bbls`, `streets` or `osm` for this check |
 | `why` | what the place is and what would change, then the bigger picture, 250 chars max |
 | `now` | shown as **Current status**, 250 chars max, lead with the month and year of the latest event |
@@ -52,6 +53,8 @@ Try these in order and stop at the first that shows the site itself (check the c
 2. Wikimedia Commons photos taken near the pin: `https://commons.wikimedia.org/w/api.php?action=query&list=geosearch&gscoord=LAT|LNG&gsradius=150&gsnamespace=6&format=json`. Credit the photographer and license.
 3. Mapillary street-level imagery (open license, needs a free access token).
 4. None of the above: leave `image` out. The popup then links to Google Street View at the pin.
+
+Addresses: take a site's street address from NYC's address database (ZoLa's lot page or GeoSearch), not from PLUTO's address field alone. PLUTO has listed Domino's Kent Avenue lots as "Kent Street", which is in Greenpoint. The audit looks up every address in `neighborhood` and flags one that lands on another lot.
 
 Before keeping an image:
 

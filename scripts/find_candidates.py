@@ -47,6 +47,7 @@ DOT_BIKE = "https://www.nyc.gov/html/dot/html/bicyclists/bike-projects.shtml"
 DOT_PROJECTS = "https://nycdotprojects.info"
 NYC = "https://www.nyc.gov"
 GEOSEARCH = "https://geosearch.planninglabs.nyc/v2/search"
+REVERSE = "https://geosearch.planninglabs.nyc/v2/reverse"
 # (board, page listing agenda PDFs, which link texts to keep)
 AGENDA_PAGES = [
     ("CB1", NYC + "/site/brooklyncb1/meetings/notices.page", r"Transportation|Land Use|Parks"),
@@ -104,7 +105,8 @@ def area_polygons():
 
 
 def pluto_points(bbls):
-    """lat/lng and address for each BBL, from PLUTO."""
+    """lat/lng and PLUTO's address for each BBL. PLUTO's address field can be wrong (it lists Domino's Kent
+    Avenue lots as "Kent Street"), so show lot_address() to people, not this."""
     out = {}
     bbls = sorted(set(bbls))
     for i in range(0, len(bbls), 100):
@@ -325,6 +327,37 @@ def agendas(polys):
     return out
 
 
+_addr = {}
+
+
+def lot_address(bbl, lat, lng, given=None):
+    """A lot's address as NYC's official address database (PAD, via GeoSearch) has it. `given` (the address a
+    filing or lot record uses) is kept if PAD puts it on this same lot, since it's the one people know;
+    otherwise PAD's address for the lot's location is used. Neither confirming it, `given` is shown marked
+    unconfirmed: PLUTO's address field has been wrong (Domino's Kent Avenue lots listed as "Kent Street")."""
+    key = (bbl, given)
+    if key not in _addr:
+        label = None
+        tries = []
+        if given:
+            tries.append((GEOSEARCH, {"text": given + ", Brooklyn", "size": 3}))
+        if lat is not None:
+            tries.append((REVERSE, {"point.lat": lat, "point.lon": lng, "size": 5}))
+        for url, params in tries:
+            try:
+                feats = get(url, params)[0].get("features", [])
+            except Exception:
+                continue
+            same = [f for f in feats if f["properties"].get("addendum", {}).get("pad", {}).get("bbl") == bbl]
+            if same:
+                label = same[0]["properties"]["label"].replace(", Brooklyn, NY, USA", "").title()
+                break
+        _addr[key] = label
+    if _addr[key]:
+        return _addr[key]
+    return f"{given.title()} (lot record, unconfirmed)" if given else None
+
+
 def zoning():
     cds = ",".join(f"'K{c[1:]}'" for c in AREA_CDS)
     rows = soda("hgx4-8ukb", where=f"borough='Brooklyn' AND community_district in({cds}) AND "
@@ -340,14 +373,18 @@ def zoning():
     for r in rows:
         brief = r.get("project_brief", "")
         homes = re.search(r"([\d,]+)\s*(?:DUs?|dwelling units|residential units|units)\b", brief, re.I)
-        bbls = lots.get(r["project_id"], [])
-        pt = next((pts[b] for b in bbls if b in pts), None)
+        bbls = list(dict.fromkeys(lots.get(r["project_id"], [])))
+        located = [b for b in bbls if b in pts]
+        pt = pts[located[0]] if located else None
+        # A project can cover many lots; name up to three rather than pass one off as "the" address.
+        names = list(dict.fromkeys(filter(None, (lot_address(b, pts[b][0], pts[b][1], pts[b][2]) for b in located[:3]))))
+        address = "; ".join(names) + (f" (+{len(bbls) - 3} more lots)" if len(bbls) > 3 else "") if names else None
         date = r.get("completed_date") or r.get("current_milestone_date") or r.get("certified_referred") or ""
         out.append({
             "source": "zoning", "key": r["project_id"], "title": r["project_name"],
             "summary": brief[:400], "status": r.get("public_status") or r.get("project_status"),
             "date": date[:10], "homes": int(homes.group(1).replace(",", "")) if homes else None,
-            "bbls": bbls, "lat": pt and pt[0], "lng": pt and pt[1], "address": pt and pt[2],
+            "bbls": bbls, "lat": pt and pt[0], "lng": pt and pt[1], "address": address,
             "link": f"https://zap.planning.nyc.gov/projects/{r['project_id']}",
             "active": r.get("project_status") == "Active",
         })
@@ -365,13 +402,15 @@ def buildings():
     out = []
     for r in rows:
         b = r["bbl"]
-        addr = f"{r.get('house', '')} {r.get('street', '')}".strip().title()
+        lat = float(r["lat"]) if r.get("lat") else None
+        lng = float(r["lng"]) if r.get("lng") else None
+        filed = f"{r.get('house', '')} {r.get('street', '')}".strip()
+        addr = lot_address(b, lat, lng, filed) or filed.title()
         out.append({
-            "source": "building", "key": b, "title": f"{addr}: new building, {int(float(r['homes']))} homes",
+            "source": "building", "key": b, "title": f"{addr.replace(' (lot record, unconfirmed)', '')}: new building, {int(float(r['homes']))} homes",
             "summary": "", "status": "Filed with the Buildings Department", "date": r["filed"][:10],
             "homes": int(float(r["homes"])), "bbls": [b],
-            "lat": float(r["lat"]) if r.get("lat") else None, "lng": float(r["lng"]) if r.get("lng") else None,
-            "address": addr, "link": f"https://zola.planning.nyc.gov/l/lot/{b[0]}/{int(b[1:6])}/{int(b[6:])}",
+            "lat": lat, "lng": lng, "address": addr, "link": f"https://zola.planning.nyc.gov/l/lot/{b[0]}/{int(b[1:6])}/{int(b[6:])}",
             "active": True,
         })
     return out

@@ -158,6 +158,9 @@ def validate(sites):
         if not isinstance(streets, list) or not all(
                 (isinstance(x, str) and x.strip()) or (isinstance(x, dict) and x.get("name")) for x in streets):
             err('streets must be a list of street names or {"name", "along"} objects')
+        notes = s.get("address_notes", {})
+        if not isinstance(notes, dict) or not all(isinstance(v, str) and v.strip() for v in notes.values()):
+            err('address_notes must map an address to why it stands, e.g. {"65 Commercial St": "..."}')
         osm = s.get("osm", [])
         if not isinstance(osm, list) or not all(re.fullmatch(r"(way|relation)/\d+", str(x)) for x in osm):
             err('osm must be a list like ["way/123", "relation/456"]')
