@@ -99,12 +99,12 @@
     "impact": "Hundreds of new affordable neighbors and a rebuilt shelter on Jackson St; the senior housing is on hold while the city uses that building as a temporary shelter.",
     "timeline": {
       "start": "2024-09",
-      "complete": null,
-      "confidence": "unknown"
+      "complete": "2027",
+      "confidence": "estimated"
     },
     "next_step": {
       "date": null,
-      "what": "Housing lottery for the 311 new affordable apartments, expected to open soon.",
+      "what": "The lottery for the 311 new affordable apartments is expected soon; a free NYC Housing Connect profile gets you ready to apply.",
       "where": "NYC Housing Connect",
       "url": "https://housingconnect.nyc.gov/"
     },
@@ -114,6 +114,10 @@
     "park_acres_delivered": null,
     "owner": "The city owns the site. Hudson Companies and St. Nicks Alliance are building the housing; the nonprofit Project Renewal runs the shelter.",
     "sources": [
+      {
+        "t": "Officials break ground on second phase of Kingsland Commons · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/kingsland-commons-groundbreaking-greenpoint/"
+      },
       {
         "t": "North Brooklynites Rally for Senior Housing at Former Greenpoint Hospital · Brooklyn Downtown Star",
         "u": "https://brooklyndowntownstar.com/lead_story/2026/09/24/north-brooklynites-rally-for-senior-housing-at-former-greenpoint-hospital"
@@ -174,15 +178,15 @@
     "now": "The City Council approved the towers in July 2026 after the local council member won a deal making half of the roughly 1,300 apartments affordable. The towers will be 56, 41 and 35 stories tall.",
     "impact": "Towers up to 56 stories beside Bushwick Inlet Park with about 1,300 new households; the developer also pays for park upkeep and two park bathrooms.",
     "timeline": {
-      "start": null,
-      "complete": null,
-      "confidence": "unknown"
+      "start": "2028",
+      "complete": "2031",
+      "confidence": "estimated"
     },
     "next_step": {
       "date": null,
-      "what": "No public meeting or deadline scheduled yet.",
-      "where": null,
-      "url": null
+      "what": "Half of the roughly 1,300 apartments will be offered by lottery on NYC Housing Connect; a free profile gets you ready.",
+      "where": "NYC Housing Connect",
+      "url": "https://housingconnect.nyc.gov/"
     },
     "units_total": 1324,
     "units_affordable": 662,
@@ -190,6 +194,10 @@
     "park_acres_delivered": null,
     "owner": "The MTA owns the land and will lease it to developer Gotham Organization for 99 years.",
     "sources": [
+      {
+        "t": "Monitor Point development sparks hope and concern in Greenpoint · News 12 Brooklyn",
+        "u": "https://brooklyn.news12.com/monitor-point-development-sparks-hope-and-concern-in-greenpoint"
+      },
       {
         "t": "Monitor Point Will Bring Three Towers, at Least 1,324 Units to Greenpoint Waterfront · Brownstoner",
         "u": "https://www.brownstoner.com/development/monitor-point-rezoning-passes-40-quay-street-affordable-housing/"
@@ -313,9 +321,9 @@
     },
     "next_step": {
       "date": null,
-      "what": "No public meeting or deadline scheduled yet.",
-      "where": null,
-      "url": null
+      "what": "About 30% of the apartments will be offered by lottery on NYC Housing Connect when they open; a free profile gets you ready.",
+      "where": "NYC Housing Connect",
+      "url": "https://housingconnect.nyc.gov/"
     },
     "units_total": 1200,
     "units_affordable": 360,
@@ -377,9 +385,9 @@
     },
     "next_step": {
       "date": null,
-      "what": "No public meeting or deadline scheduled yet.",
-      "where": null,
-      "url": null
+      "what": "300 affordable apartments will be offered by lottery on NYC Housing Connect; a free profile gets you ready.",
+      "where": "NYC Housing Connect",
+      "url": "https://housingconnect.nyc.gov/"
     },
     "units_total": 1025,
     "units_affordable": 300,
@@ -439,10 +447,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "City planning review of the waterfront plan.",
-      "where": "NYC Planning project page",
-      "url": "https://zap.planning.nyc.gov/projects/2026K0129"
+      "date": "2026-10-13",
+      "what": "Community Board 1 meets at 6 PM, 80 Siegel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting notice",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
     },
     "units_total": 1060,
     "units_affordable": 267,
@@ -450,6 +458,10 @@
     "park_acres_delivered": null,
     "owner": "TF Cornerstone (developer).",
     "sources": [
+      {
+        "t": "Combined Public Hearing and Board Meeting Notice, Oct 13, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+      },
       {
         "t": "Greenpoint Is Getting a 100% Affordable Housing Building on Oak Street · Greenpointers",
         "u": "https://greenpointers.com/2026/06/17/greenpoint-is-getting-a-100-affordable-housing-building-on-oak-street/"
@@ -506,10 +518,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "No public meeting or deadline scheduled yet.",
-      "where": null,
-      "url": null
+      "date": "2026-10-13",
+      "what": "Community Board 1 meets at 6 PM, 80 Siegel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting notice",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
     },
     "units_total": 590,
     "units_affordable": null,
@@ -517,6 +529,10 @@
     "park_acres_delivered": null,
     "owner": "Jay Group (developer), purchased from Pearl Realty in Dec. 2025.",
     "sources": [
+      {
+        "t": "Combined Public Hearing and Board Meeting Notice, Oct 13, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+      },
       {
         "t": "Jay Group Lands $320M Construction Loan for 590-Unit Greenpoint Project · BLDUP",
         "u": "https://www.bldup.com/posts/jay-group-lands-320m-construction-loan-for-590-unit-greenpoint-project-at-97-west-street"
@@ -577,10 +593,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "The Parks Department will look for a way to add a public restroom.",
-      "where": "Community Board 1",
-      "url": "https://www.nyc.gov/site/brooklyncb1/index.page"
+      "date": "2026-10-13",
+      "what": "Community Board 1 meets at 6 PM, 80 Siegel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting notice",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
     },
     "units_total": null,
     "units_affordable": null,
@@ -588,6 +604,10 @@
     "park_acres_delivered": null,
     "owner": "NYC Parks (public park).",
     "sources": [
+      {
+        "t": "Combined Public Hearing and Board Meeting Notice, Oct 13, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+      },
       {
         "t": "Transmitter Park Marina Plan Killed · Curbed",
         "u": "https://www.curbed.com/article/transmitter-park-marina-plan-killed-bathroom-concession-change-preservation-battle.html"
@@ -671,10 +691,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "No public meeting or deadline scheduled yet.",
-      "where": null,
-      "url": null
+      "date": "2026-10-13",
+      "what": "Community Board 1 meets at 6 PM, 80 Siegel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting notice",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
     },
     "units_total": null,
     "units_affordable": null,
@@ -682,6 +702,10 @@
     "park_acres_delivered": 9,
     "owner": "The Parks Department owns the land.",
     "sources": [
+      {
+        "t": "Combined Public Hearing and Board Meeting Notice, Oct 13, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+      },
       {
         "t": "Monitor Point Will Bring Three Towers, at Least 1,324 Units to Greenpoint Waterfront · Brownstoner",
         "u": "https://www.brownstoner.com/development/monitor-point-rezoning-passes-40-quay-street-affordable-housing/"
