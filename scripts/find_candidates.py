@@ -6,6 +6,8 @@ Greene/Clinton Hill/Brooklyn Heights, Bed-Stuy, Bushwick) from:
   - zoning:   City Planning's Zoning Application Portal (rezonings, waterfront sign-offs)
   - building: Buildings Department new-building filings with MIN_HOMES+ proposed homes
   - park:     Parks Department capital project tracker (projects not yet finished)
+  - street:   DOT bike lane and street redesign plans in development, from DOT's
+              "Current Bicycle Route Projects" list and its nycdotprojects.info project site
   - news:     recent Greenpointers, Streetsblog NYC and Brooklyn Paper headlines that
               name the area and a development topic
 
@@ -32,9 +34,13 @@ BUILDING_SINCE = "2024-01-01"
 ZONING_SINCE = "2024-01-01"
 NEWS_DAYS = 45
 MATCH_M = 75
+STREET_STALE_YEARS = 3   # DOT project pages this long without a dated update are skipped
 
 SODA = "https://data.cityofnewyork.us/resource/"
 UA = {"User-Agent": "Mozilla/5.0 (nyc-urban-projects-candidates)"}
+CSCL = SODA + "inkn-q76z.json"
+DOT_BIKE = "https://www.nyc.gov/html/dot/html/bicyclists/bike-projects.shtml"
+DOT_PROJECTS = "https://nycdotprojects.info"
 NEWS_SITES = {
     "Greenpointers": "https://greenpointers.com",
     "Streetsblog NYC": "https://nyc.streetsblog.org",
@@ -42,7 +48,8 @@ NEWS_SITES = {
 }
 AREA_WORDS = r"greenpoint|williamsburg|bushwick|bed-?stuy|bedford-stuyvesant|fort greene|clinton hill|navy yard|" \
              r"brooklyn heights|dumbo|vinegar hill|boerum hill|downtown brooklyn|east williamsburg|newtown creek|" \
-             r"mcguinness|bedford av|kent av|flushing av|myrtle av|broadway triangle|domino|bushwick inlet"
+             r"mcguinness|bedford av|kent av|flushing av|myrtle av|broadway triangle|domino|bushwick inlet|" \
+             r"meeker|metropolitan av|grand st|wyckoff|commercial st|nassau av|jay st|ashland|atlantic av"
 TOPIC_WORDS = r"rezon|develop|tower|apartment|housing|affordable|lottery|park|playground|greenway|bike lane|" \
               r"redesign|road diet|bus lane|plaza|shelter|demoli|construction|community board|landmark|cleanup|" \
               r"superfund|waterfront|bqe"
@@ -87,6 +94,102 @@ def pluto_points(bbls):
         for r in soda("64uk-42ks", select="bbl,address,latitude,longitude", where=f"bbl in({chunk})", limit=1000):
             if r.get("latitude"):
                 out[str(r["bbl"]).split(".")[0]] = (float(r["latitude"]), float(r["longitude"]), r.get("address"))
+    return out
+
+
+def get_text(url):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=90) as r:
+        return r.read().decode("utf-8", "ignore")
+
+
+MONTHS = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+SUFFIX = {"avenue": "AVE", "street": "ST", "place": "PL", "boulevard": "BLVD", "road": "RD", "parkway": "PKWY",
+          "drive": "DR", "lane": "LN", "court": "CT", "expressway": "EXPY", "bridge": "BRG"}
+_ends = {}
+
+
+def cscl_name(s):
+    words = re.sub(r"[^\w\s]", "", s).split()
+    return " ".join(SUFFIX.get(w.lower(), w.upper()) for w in words)
+
+
+def street_ends(name):
+    if name not in _ends:
+        try:
+            rows = soda("inkn-q76z", select="the_geom", where=f"full_street_name='{name}' AND boroughcode='3'", limit=2000)
+        except Exception:
+            rows = []
+        _ends[name] = {tuple(p) for r in rows for l in r["the_geom"]["coordinates"] for p in (l[0], l[-1])}
+    return _ends[name]
+
+
+def locate(title):
+    """Where a DOT project title like "Meeker Avenue, Metropolitan Avenue to Apollo Street" starts: the
+    intersection of its first two named streets in Brooklyn, or None."""
+    streets = [cscl_name(s) for s in re.split(r",|&| to | and ", title)
+               if re.search(r"\b(avenue|street|place|boulevard|road|parkway|drive|lane|court)\b", s, re.I)]
+    for i, a in enumerate(streets):
+        for b in streets[i + 1:]:
+            hit = street_ends(a) & street_ends(b)
+            if hit:
+                lng, lat = next(iter(hit))
+                return lat, lng
+    return None
+
+
+def dot_bike(polys):
+    """Brooklyn rows of DOT's current bicycle route projects table, kept if they fall in the area."""
+    s = get_text(DOT_BIKE)
+    out = []
+    for url, name, boro in re.findall(r'<tr>\s*<td>\s*<a\s+href="([^"]+)"[^>]*>(.*?)</a>\s*</td>\s*<td>(.*?)</td>', s, re.S):
+        if "Brooklyn" not in boro:
+            continue
+        title = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", name))).strip()
+        pt = locate(title)
+        in_area = any(inside(pt[1], pt[0], ring) for ring in polys) if pt else re.search(AREA_WORDS, title, re.I)
+        if not in_area:
+            continue
+        m = re.search(r"-(jan|feb|mar|apr|may|jun|jul|aug|sept?|oct|nov|dec)[a-z]*(\d{4})\.pdf$", url, re.I)
+        date = f"{m.group(2)}-{MONTHS[m.group(1)[:3].lower()]:02d}-01" if m else ""
+        out.append({"source": "street", "key": url, "title": title,
+                    "summary": "DOT bike lane plan in development; the link is the plan DOT presented.",
+                    "status": "DOT plan in development", "date": date, "homes": None, "bbls": [],
+                    "lat": pt and pt[0], "lng": pt and pt[1], "address": None, "link": url, "active": True})
+    return out
+
+
+def dot_projects():
+    """North Brooklyn projects on DOT's project site, with the latest date each page mentions."""
+    home = get_text(DOT_PROJECTS + "/")
+    seen, out = {}, []
+    for path, name in re.findall(r'<a[^>]+href="(/(?:project/)?[a-z0-9-]+)"[^>]*>(.*?)</a>', home, re.S):
+        title = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", name))).strip()
+        if title and path not in seen and "citywide" not in title.lower():
+            seen[path] = title
+    cutoff = datetime.date.today().year - STREET_STALE_YEARS
+    for path, title in seen.items():
+        try:
+            page = get_text(DOT_PROJECTS + path)
+        except Exception:
+            continue
+        desc = re.search(r'name="description"\s+content="([^"]*)"', page)
+        desc = html.unescape(desc.group(1)) if desc else ""
+        if not re.search(AREA_WORDS, title + " " + desc, re.I):
+            continue
+        dates = []
+        for mon, day, year in re.findall(r"\b(January|February|March|April|May|June|July|August|September|October|"
+                                         r"November|December) (\d{1,2}), (20\d\d)", page):
+            try:
+                dates.append(datetime.date(int(year), MONTHS[mon[:3].lower()], int(day)))
+            except ValueError:
+                pass
+        last = max(dates) if dates else None
+        if last and last.year < cutoff:
+            continue
+        out.append({"source": "street", "key": DOT_PROJECTS + path, "title": title, "summary": desc,
+                    "status": "DOT project", "date": last.isoformat() if last else "", "homes": None, "bbls": [],
+                    "lat": None, "lng": None, "address": None, "link": DOT_PROJECTS + path, "active": True})
     return out
 
 
@@ -204,24 +307,38 @@ def match(c, sites):
         if set(c["bbls"]) & set(s.get("bbls", [])):
             return s["id"], None
         named = any(v in c["title"].lower() for v in name_variants(s["name"]))
-        if named and c["source"] == "news":
+        if named and c["source"] in ("news", "street"):
             return s["id"], None
         if near is None and (named or (c["lat"] and metres(c["lat"], c["lng"], s["lat"], s["lng"]) <= MATCH_M)):
             near = s["id"]
     return None, near
 
 
-def score(c, today):
+def mentions(c, news):
+    """How many recent headlines name this lead's main street or project name."""
+    key = re.split(r",| - |:|\(", c["title"])[0].strip().lower()
+    key = re.sub(r"^\d+[-\d]*\s+", "", key) if c["source"] == "building" else key
+    if len(key) < 6 or c["source"] == "news":
+        return 0
+    return sum(1 for n in news if key in n["title"].lower())
+
+
+def score(c, today, news):
+    """Housing leads score on size; street leads on being a live DOT plan. Both add points for
+    being open to public input, for recent activity and for news coverage."""
     pts = min((c["homes"] or 0) / 100, 8)
     if c["source"] == "zoning" and c["status"] in ("Filed", "In Public Review", "Noticed"):
         pts += 3
     if c["source"] == "park" and "construction" in c["status"]:
         pts += 2
+    if c["source"] == "street":
+        pts += 5 if c["status"] == "DOT plan in development" else 4
     try:
         age = (today - datetime.date.fromisoformat(c["date"])).days
         pts += 2 if age <= 90 else 1 if age <= 365 else 0
     except ValueError:
         pass
+    pts += min(mentions(c, news), 3)
     return round(pts, 2)
 
 
@@ -233,7 +350,9 @@ def main():
     today = datetime.date.today()
     polys = area_polygons()
     found, counts = [], {}
-    for name, fn in (("zoning", zoning), ("building", buildings), ("park", lambda: parks(polys)), ("news", news)):
+    sources = (("zoning", zoning), ("building", buildings), ("park", lambda: parks(polys)),
+               ("street", lambda: dot_bike(polys) + dot_projects()), ("news", news))
+    for name, fn in sources:
         try:
             rows = fn()
         except Exception as e:  # one source being down shouldn't sink the rest
@@ -243,7 +362,9 @@ def main():
         found += rows
     for c in found:
         c["on_map"], c["near"] = match(c, sites)
-        c["score"] = score(c, today)
+    headlines = [c for c in found if c["source"] == "news"]
+    for c in found:
+        c["score"] = score(c, today, headlines)
     found.sort(key=lambda c: (c["on_map"] is not None, -c["score"], c["title"]))
     report = {"generated": today.isoformat(), "area": f"Brooklyn Community Districts {', '.join(str(int(c[1:])) for c in AREA_CDS)}",
               "min_homes": MIN_HOMES, "counts": counts, "candidates": found}
