@@ -55,7 +55,7 @@ header{
 .brand h1{font-size:22px; font-weight:900; color:var(--ink);}
 .brand p{margin:0; font-size:13px; color:var(--ink-soft); max-width:44ch;}
 .header-right{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
-.filters{display:flex; gap:6px;}
+.filters{display:flex; gap:6px; flex-wrap:wrap;}
 .chip{
   font-family:"IBM Plex Sans"; font-weight:600; font-size:12.5px; padding:7px 13px;
   border-radius:999px; border:1px solid var(--line); background:var(--surface-2);
@@ -77,6 +77,15 @@ header{
 .sidebar-head{padding:14px 18px 8px; position:sticky; top:0; background:var(--surface); z-index:2;}
 .sidebar-head .count{font-size:12px; color:var(--ink-faint); font-family:"IBM Plex Mono"; margin-top:2px;}
 .list{padding:6px 12px 20px; display:flex; flex-direction:column; gap:8px;}
+.near{display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;}
+.near input{flex:1 1 170px; min-width:0; font:inherit; font-size:13px; padding:7px 9px; border:1px solid var(--line); border-radius:8px; background:var(--surface-2); color:var(--ink);}
+.near select, .near button{font:inherit; font-size:12.5px; padding:7px 9px; border:1px solid var(--line); border-radius:8px; background:var(--surface-2); color:var(--ink); cursor:pointer;}
+.near button.go{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600;}
+.near-msg{font-size:12px; color:var(--ink-faint); margin-top:6px;}
+.summary-card{margin:4px 12px 2px; padding:10px 12px; border-radius:var(--radius); background:var(--surface-2); border:1px solid var(--line); font-size:13px; line-height:1.45;}
+.summary-card b{font-family:"Archivo"; font-weight:700;}
+.summary-card .sum-title{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:700; margin-bottom:3px;}
+.you-pin{width:14px; height:14px; border-radius:50%; background:var(--accent); border:3px solid #fff; box-shadow:0 0 0 2px var(--accent);}
 
 .card{
   border:1px solid var(--line); border-radius:var(--radius); background:var(--surface-2);
@@ -185,7 +194,17 @@ header{
     <div class="sidebar-head">
       <h2 style="font-size:14px;">Sites</h2>
       <div class="count" id="count"></div>
+      <form class="near" id="near" autocomplete="off">
+        <input id="near-addr" type="search" placeholder="Your address, e.g. 100 Franklin St" aria-label="Your address">
+        <select id="near-min" aria-label="Walking time">
+          <option value="5">5 min walk</option><option value="10" selected>10 min walk</option><option value="15">15 min walk</option>
+        </select>
+        <button class="go" type="submit">Near me</button>
+        <button type="button" id="near-clear" hidden>Clear</button>
+      </form>
+      <div class="near-msg" id="near-msg" hidden></div>
     </div>
+    <div class="summary-card" id="summary" hidden></div>
     <div class="list" id="list"></div>
     <div class="disclaimer">
       Seed dataset, researched from public reporting (Brooklyn Paper, Greenpointers, Gothamist, Brownstoner, NYC Mayor's Office/DOT/HPD releases, and others) as of September 2026. Pin locations are geocoded against NYC Planning Labs' GeoSearch service (built on PAD/PLUTO). Broadway Triangle, Monitor Point, Fulton-Howard West, and the Park Ave/BQE corridor don't have single exact-address matches in that dataset. Those four pins sit at the nearest verified address on the same block or site, not a precise parcel centroid. This is not an official city dataset. History sections come from Wikipedia, NYC Parks, Landmarks Preservation Commission material, and local history sources. Some pre-1900s history could not be confirmed. Those gaps are noted in the popups. Bulk NYC Open Data (PLUTO) pulls are planned for a future version. See the note Griffin has on automation.
@@ -360,9 +379,8 @@ window.addEventListener('resize', () => {
 
 const markers = {};
 
-function renderList(filter){
+function renderList(items){
   const list = document.getElementById('list');
-  const items = SITES.filter(s => filter === 'all' || s.type === filter);
   document.getElementById('count').textContent = `${items.length} site${items.length===1?'':'s'} shown`;
   list.innerHTML = items.map(s => `
     <div class="card" data-id="${s.id}">
@@ -372,7 +390,7 @@ function renderList(filter){
         <span class="pill pill-phase" style="background:var(--phase-${s.phase})">${PHASE_LABEL[s.phase]}</span>
       </div>
       <div class="card-top"><span class="card-dot pin-${s.type}" style="background:var(--type-${s.type})"></span><span class="card-name">${s.name}</span></div>
-      <div class="card-hood">${s.neighborhood}</div>
+      <div class="card-hood">${view.near ? `~${walkMin(s)} min walk · ` : ''}${s.neighborhood}</div>
       <div class="card-sum">${s.now}</div>
     </div>
   `).join('');
@@ -385,20 +403,101 @@ function renderList(filter){
   });
 }
 
+// One place decides what's visible: the type chip AND (if set) the walk circle around an address.
+const view = {type: 'all', near: null};   // near: {latlng, meters, minutes, label}
+const WALK_M_PER_MIN = 80;                // ~3 mph; straight-line distance, so a rough walk estimate
+function walkMin(s){ return Math.max(1, Math.round(map.distance([s.lat, s.lng], view.near.latlng) / WALK_M_PER_MIN)); }
+function isVisible(s){
+  if(view.type !== 'all' && s.type !== view.type) return false;
+  if(view.near && map.distance([s.lat, s.lng], view.near.latlng) > view.near.meters) return false;
+  return true;
+}
+function applyView(){
+  const items = SITES.filter(isVisible);
+  if(view.near) items.sort((a, b) => walkMin(a) - walkMin(b));
+  renderList(items);
+  renderSummary(items);
+  SITES.forEach(s => {
+    const show = items.includes(s);
+    [markers[s.id], lotLayers[s.id]].forEach(layer => {
+      if(!layer) return;
+      if(show){ if(!map.hasLayer(layer)) layer.addTo(map); } else { map.removeLayer(layer); }
+    });
+  });
+}
 document.getElementById('filters').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip');
   if(!btn) return;
   document.querySelectorAll('#filters .chip').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
-  const f = btn.dataset.filter;
-  renderList(f);
-  Object.entries(markers).forEach(([id, m]) => {
-    const s = SITES.find(x => x.id === id);
-    const show = f === 'all' || s.type === f;
-    if(show){ if(!map.hasLayer(m)) m.addTo(map); } else { map.removeLayer(m); }
-    const lots = lotLayers[id];
-    if(lots){ if(show){ if(!map.hasLayer(lots)) lots.addTo(map); } else { map.removeLayer(lots); } }
-  });
+  view.type = btn.dataset.filter;
+  applyView();
+});
+
+// "So what for me": totals for the sites inside the walk circle.
+function roundHomes(n){ return n >= 1000 ? '~' + (Math.round(n / 100) * 100).toLocaleString() : n.toLocaleString(); }
+function renderSummary(items){
+  const box = document.getElementById('summary');
+  if(!view.near){ box.hidden = true; return; }
+  box.hidden = false;
+  const title = `Within a ${view.near.minutes}-minute walk of ${view.near.label}`;
+  if(!items.length){ box.innerHTML = `<div class="sum-title">${title}</div>No tracked projects here yet. Try a longer walk.`; return; }
+  const housing = items.filter(s => s.units_total);
+  const homes = housing.reduce((a, s) => a + s.units_total, 0);
+  const withAff = housing.filter(s => s.units_affordable != null);
+  const affShare = withAff.length ? Math.round(100 * withAff.reduce((a, s) => a + s.units_affordable, 0) / withAff.reduce((a, s) => a + s.units_total, 0)) : null;
+  const parks = items.filter(s => s.type === 'park' || s.park_acres_promised != null);
+  const promised = parks.reduce((a, s) => a + (s.park_acres_promised || 0), 0);
+  const open = parks.reduce((a, s) => a + (s.park_acres_delivered || 0), 0);
+  const today = new Date().toISOString().slice(0, 10);
+  const next = items.filter(s => s.next_step && s.next_step.date && s.next_step.date >= today)
+    .sort((a, b) => a.next_step.date.localeCompare(b.next_step.date))[0];
+  const bits = [`<b>${items.length}</b> project${items.length === 1 ? '' : 's'}`];
+  if(homes) bits.push(`<b>${roundHomes(homes)}</b> new homes planned or built${affShare != null ? ` (<b>${affShare}%</b> affordable)` : ''}`);
+  if(parks.length) bits.push(`<b>${parks.length}</b> park project${parks.length === 1 ? '' : 's'}${promised ? ` (${open} of ${promised} promised acres open)` : ''}`);
+  bits.push(next ? `next date: <b>${fmtDate(next.next_step.date)}</b>, ${next.name}` : 'no meeting or vote dates scheduled');
+  box.innerHTML = `<div class="sum-title">${title}</div>${bits.join(' · ')}.`;
+}
+
+let youLayer = null;
+async function searchNear(e){
+  e.preventDefault();
+  const q = document.getElementById('near-addr').value.trim();
+  const msg = document.getElementById('near-msg');
+  if(!q) return;
+  msg.hidden = false; msg.textContent = 'Finding that address…';
+  try{
+    const r = await fetch('https://geosearch.planninglabs.nyc/v2/search?size=1&text=' + encodeURIComponent(q));
+    const f = (await r.json()).features[0];
+    if(!f){ msg.textContent = 'Couldn\'t find that NYC address. Try a street number and name.'; return; }
+    const [lng, lat] = f.geometry.coordinates;
+    const minutes = +document.getElementById('near-min').value;
+    view.near = {latlng: L.latLng(lat, lng), minutes, meters: minutes * WALK_M_PER_MIN,
+                 label: f.properties.name || f.properties.label.split(',')[0]};
+    if(youLayer) map.removeLayer(youLayer);
+    youLayer = L.layerGroup([
+      L.circle(view.near.latlng, {radius: view.near.meters, color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(), weight: 1.5, fillOpacity: 0.06, dashArray: '4 4', interactive: false}),
+      L.marker(view.near.latlng, {icon: L.divIcon({className: '', html: '<div class="you-pin"></div>', iconSize: [20, 20], iconAnchor: [10, 10]}), interactive: false})
+    ]).addTo(map);
+    map.fitBounds(youLayer.getLayers()[0].getBounds(), {padding: [30, 30]});
+    msg.textContent = `Showing sites within about a ${minutes}-minute walk (straight-line distance).`;
+    document.getElementById('near-clear').hidden = false;
+    applyView();
+  }catch(err){
+    msg.textContent = 'Address search is unavailable right now.';
+  }
+}
+document.getElementById('near').addEventListener('submit', searchNear);
+document.getElementById('near-min').addEventListener('change', () => {
+  if(view.near) document.getElementById('near').requestSubmit();
+});
+document.getElementById('near-clear').addEventListener('click', () => {
+  view.near = null;
+  if(youLayer){ map.removeLayer(youLayer); youLayer = null; }
+  document.getElementById('near-msg').hidden = true;
+  document.getElementById('near-clear').hidden = true;
+  document.getElementById('near-addr').value = '';
+  applyView();
 });
 
 function init(){
@@ -408,7 +507,7 @@ function init(){
     markers[s.id] = m;
   });
   map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
-  renderList('all');
+  applyView();
   loadLots();
 }
 
@@ -434,6 +533,7 @@ function loadLots(){
         .addTo(map);
       lotLayers[id] = layer;
     });
+    applyView();   // respect any filter or walk circle set before the lots arrived
   }).catch(() => {});
 }
 
