@@ -12,10 +12,15 @@
 The map draws all of them in the site's pin color, and validate_sites.py checks every
 pin sits on its site's shape. Rerun whenever `bbls`, `streets` or `osm` change.
 
+Also writes viewpoints.json: where the popup's embedded Street View should stand and which
+way it should face. Lot sites look from the nearest ordinary street (not a highway or ramp)
+toward the pin; street and creek sites stand at the pin and look along the line.
+
 Usage: python3 scripts/fetch_lots.py [sites.json] [lots.geojson]
 """
 import json
 import math
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -80,6 +85,70 @@ def fetch_street(entry):
     return {"type": "MultiLineString", "coordinates": lines} if lines else None
 
 
+SKIP_ROADS = re.compile(r"EXPY|EXPWY|\bEP\b|BRG|BRIDGE|RAMP|ENTRANCE|\bEN\b|EXIT|\bET\b|TUNNEL|PKWY|APPR|SVC", re.I)
+
+
+def bearing(a, b):
+    """Compass heading in degrees from point a to point b, both (lng, lat)."""
+    dx = (b[0] - a[0]) * math.cos(math.radians(a[1]))
+    dy = b[1] - a[1]
+    return round(math.degrees(math.atan2(dx, dy)) % 360)
+
+
+def nearest_on(p, lines):
+    """Closest point to p on any of the polylines, with the segment it's on."""
+    best = (math.inf, None, None)
+    for line in lines:
+        for a, b in zip(line, line[1:]):
+            ax, ay = (a[0] - p[0]) * math.cos(math.radians(p[1])), a[1] - p[1]
+            bx, by = (b[0] - p[0]) * math.cos(math.radians(p[1])), b[1] - p[1]
+            dx, dy = bx - ax, by - ay
+            t = 0 if dx == dy == 0 else max(0, min(1, -(ax * dx + ay * dy) / (dx * dx + dy * dy)))
+            q = [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])]
+            d = meters(p, q)
+            if d < best[0]:
+                best = (d, q, (a, b))
+    return best
+
+
+SUFFIX_FULL = {"St": "ST", "Street": "ST", "Ave": "AVE", "Avenue": "AVE", "Pl": "PL", "Place": "PL",
+               "Blvd": "BLVD", "Boulevard": "BLVD"}
+
+
+def address_street(site):
+    """CSCL name of the street in the site's first address, e.g. "280 Kent Ave" -> "KENT AVE"."""
+    m = re.search(r"\b\d+[-\d]*\s+((?:[A-Z][a-z]+\s){1,3})(St|Street|Ave|Avenue|Pl|Place|Blvd|Boulevard)\b",
+                  site.get("neighborhood", ""))
+    return (m.group(1).strip().upper() + " " + SUFFIX_FULL[m.group(2)]) if m else None
+
+
+def viewpoint(site, features):
+    """Where the popup's Street View stands and faces. A hand-set `streetview` in sites.json wins
+    (for spots where the nearest street has no Google imagery)."""
+    sv = site.get("streetview") or {}
+    if "lat" in sv:
+        return {k: sv[k] for k in ("lat", "lng", "heading")}
+    pin = [site["lng"], site["lat"]]
+    lines = [l for f in features if f["properties"]["site"] == site["id"] and "LineString" in f["geometry"]["type"]
+             for l in ([f["geometry"]["coordinates"]] if f["geometry"]["type"] == "LineString" else f["geometry"]["coordinates"])]
+    if lines and not sv.get("street"):  # a street or creek: stand on it at the pin, look along it
+        _, q, (a, b) = nearest_on(pin, lines)
+        return {"lat": round(q[1], 6), "lng": round(q[0], 6), "heading": bearing(a, b)}
+    q = {"$select": "full_street_name,the_geom", "$limit": "200",
+         "$where": f"boroughcode='3' AND within_circle(the_geom,{site['lat']},{site['lng']},200)"}
+    rows = get_json(CSCL + "?" + urllib.parse.urlencode(q))
+    usable = [r for r in rows if not SKIP_ROADS.search(r["full_street_name"])]
+    named = sv.get("street") or address_street(site)
+    # look from the street in the site's address when it's close by (the front door, not the back lot line)
+    if named and any(r["full_street_name"] == named for r in usable):
+        usable = [r for r in usable if r["full_street_name"] == named]
+    streets = [[[x, y] for x, y in l] for r in usable for l in r["the_geom"]["coordinates"]]
+    if not streets:
+        return {"lat": site["lat"], "lng": site["lng"], "heading": 0}
+    _, q, _ = nearest_on(pin, streets)
+    return {"lat": round(q[1], 6), "lng": round(q[0], 6), "heading": bearing(q, pin)}
+
+
 def fetch_osm(ref):
     """Geometry of an OpenStreetMap way or relation, e.g. "way/392486579"."""
     kind, _, oid = ref.partition("/")
@@ -128,6 +197,10 @@ def main():
                 missing_streets.append(ref)
     with open(dst, "w", encoding="utf-8") as f:
         json.dump({"type": "FeatureCollection", "features": features}, f, separators=(",", ":"))
+        f.write("\n")
+    views = {s["id"]: viewpoint(s, features) for s in sites}
+    with open("viewpoints.json", "w", encoding="utf-8") as f:
+        json.dump(views, f, indent=1)
         f.write("\n")
     missing = sorted(set(owner) - found)
     print(f"{len(features)} lots and streets written to {dst}"

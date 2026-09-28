@@ -148,15 +148,22 @@ header{
 .lp-head{background:#FFFFFF; padding-top:2px; margin-bottom:8px; border-bottom:1px solid #E6E9E2;}
 /* Only pin when Leaflet has made the popup scroll; otherwise sticky resolves against the map and drifts. */
 .leaflet-popup-scrolled .lp-head{position:sticky; top:0; z-index:2;}
-.lp .render-link{display:block; margin-bottom:9px; text-decoration:none; overflow:visible;}
-.lp .render-thumb{width:100%; height:112px; object-fit:cover; border-radius:6px; border:1px solid #D7DCD0; display:block; transition:transform .18s ease, box-shadow .18s ease; transform-origin:center top;}
-.lp .render-link:hover .render-thumb{transform:scale(1.35); box-shadow:0 10px 26px rgba(0,0,0,.45); position:relative; z-index:60;}
+/* Image first: a rendering of the plan where one exists, otherwise a photo. */
+.lp .render-link{display:block; position:relative; margin:0 0 4px; text-decoration:none;}
+.lp .render-thumb{width:100%; height:150px; object-fit:cover; border-radius:6px; border:1px solid #D7DCD0; display:block;}
+.lp .render-kind{position:absolute; top:6px; left:6px; background:rgba(21,32,27,.78); color:#fff; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:2px 6px; border-radius:4px;}
 .lp .render-credit{display:block; font-size:10px; color:#9AA39B; margin-top:3px;}
 .lp .render-credit .go{color:#1B5E63;}
-.lp .sv-fallback{display:flex; align-items:center; justify-content:center; height:64px; margin-bottom:9px; border:1px dashed #C9D0C4; border-radius:6px; background:#F5F7F2; color:#1B5E63; font-size:12px; font-weight:600; text-decoration:none;}
-.lp .sv-fallback:hover{background:#EEF1EC;}
+/* Street View today: Google's embedded viewer, loaded only when the dropdown opens. */
+.lp .streetview{margin:4px 0 8px;}
+.lp .streetview summary{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#1B5E63; cursor:pointer; list-style:none;}
+.lp .streetview summary::-webkit-details-marker{display:none;}
+.lp .streetview summary::before{content:"▸ "; font-size:9px;}
+.lp .streetview[open] summary::before{content:"▾ ";}
+.lp .sv-frame{width:100%; height:190px; border:0; border-radius:6px; margin-top:6px; display:block; background:#EEF1EC;}
+.lp .sv-note{font-size:10px; color:#9AA39B; margin-top:3px;}
+.lp .sv-note a{color:#1B5E63;}
 .lp .process{font-size:10.5px; color:#7C877E; margin:4px 0 2px;}
-.lp .render-link{margin-top:9px;}
 .lp .background{margin-top:10px; border-top:1px solid #E6E9E2; padding-top:6px;}
 .lp .background summary{font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#7C877E; cursor:pointer; list-style:none;}
 .lp .background summary::-webkit-details-marker{display:none;}
@@ -261,6 +268,7 @@ header{
 <script>
 // Site data lives in sites.json (see UPDATING.md for how it is maintained).
 let SITES = [];
+let VIEWS = {};   // Street View viewpoints per site (viewpoints.json); the popup falls back to the pin
 
 const STATUS_LABEL = {contested:"Contested", review:"In review", active:"Advancing"};
 // Resident-facing stage shown as the pill; `status` stays as process detail inside the popup.
@@ -408,17 +416,27 @@ function clip(text, limit = SECTION_CHAR_LIMIT){
 
 function popupHTML(s){
   const sources = s.sources.map(src => `<a href="${src.u}" target="_blank" rel="noopener">${src.t} ↗</a>`).join('');
-  // No photo (or a dead hotlink): link to Google Street View at the pin. Maps URLs need no API key;
-  // Street View screenshots can't be hosted on the site under Google's terms.
-  const streetView = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${s.lat},${s.lng}`;
-  const fallback = `<a href="${streetView}" target="_blank" rel="noopener" class="sv-fallback"${s.image ? ' style="display:none"' : ''}>No photo yet · Open in Street View ↗</a>`;
-  const image = (s.image ? `
+  // Street View can't be saved and hosted under Google's terms, so the popup embeds Google's own
+  // viewer (no API key), standing where viewpoints.json says (built by fetch_lots.py) and facing the site.
+  const v = VIEWS[s.id] || {lat: s.lat, lng: s.lng, heading: 0};
+  const svEmbed = `https://maps.google.com/maps?layer=c&cbll=${v.lat},${v.lng}&cbp=11,${v.heading},0,0,0&output=svembed`;
+  const svLink = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${v.lat},${v.lng}&heading=${v.heading}`;
+  const streetView = `
+      <details class="streetview" data-src="${svEmbed}"${s.image ? '' : ' open'}>
+        <summary>Street view today</summary>
+        <div class="sv-slot"></div>
+        <div class="sv-note">Google's latest imagery, which may already show construction. Drag to look around · <a href="${svLink}" target="_blank" rel="noopener">Open in Google Maps ↗</a></div>
+      </details>`;
+  const image = s.image ? `
       <a href="${s.image.url}" target="_blank" rel="noopener" class="render-link" title="Open full image in a new tab">
-        <img class="render-thumb" src="${s.image.url}" alt="${s.image.isRendering ? 'Rendering' : 'Photo'} of ${s.name}" loading="lazy" onerror="const l=this.closest('.render-link'); l.style.display='none'; l.nextElementSibling.style.display='flex'">
+        <img class="render-thumb" src="${s.image.url}" alt="${s.image.isRendering ? 'Rendering' : 'Photo'} of ${s.name}" loading="lazy" onerror="const l=this.closest('.render-link'); l.style.display='none'; const d=l.parentNode.querySelector('.streetview'); if(d && !d.open) d.open=true">
+        <span class="render-kind">${s.image.isRendering ? 'Rendering' : 'Photo'}</span>
         <span class="render-credit">${s.image.credit} <span class="go">↗</span></span>
-      </a>` : '') + fallback;
+      </a>` : '';
   return `
     <div class="lp">
+      ${image}
+      ${streetView}
       <div class="lp-head">
         <h3>${s.headline} <span class="hname">(${s.name})</span></h3>
         <div class="hood">${s.neighborhood}</div>
@@ -436,7 +454,6 @@ function popupHTML(s){
       ${nextStepHTML(s.next_step)}
       <div class="section-label">Current status</div>
       <p>${clip(s.now, STATUS_CHAR_LIMIT)}</p>
-      ${image}
       <details class="background">
         <summary>Background</summary>
         <p>${clip(s.why, 250)}</p>
@@ -722,6 +739,16 @@ document.getElementById('near-clear').addEventListener('click', () => {
   applyView();
 });
 
+// Load the embedded Street View only when its dropdown opens (or opens itself for sites without an image).
+document.addEventListener('toggle', e => {
+  const d = e.target;
+  if (!d.classList || !d.classList.contains('streetview') || !d.open || d.querySelector('iframe')) return;
+  const f = document.createElement('iframe');
+  f.className = 'sv-frame'; f.src = d.dataset.src; f.loading = 'lazy';
+  f.title = 'Google Street View'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+  d.querySelector('.sv-slot').appendChild(f);
+}, true);
+
 function init(){
   SITES.forEach(s => {
     const m = L.marker([s.lat, s.lng], {icon: makeIcon(s)}).addTo(map);
@@ -765,9 +792,10 @@ function loadLots(){
   }).catch(() => {});
 }
 
+const viewsReq = fetch('viewpoints.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : {}).catch(() => ({}));
 fetch('sites.json', {cache: 'no-cache'})
   .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
-  .then(data => { SITES = data; init(); })
+  .then(async data => { SITES = data; VIEWS = await viewsReq; init(); })
   .catch(() => {
     document.getElementById('list').innerHTML = '<p class="card">Could not load sites.json. If you opened this file directly, serve the folder instead (for example <code>python3 -m http.server</code>) and open it from localhost.</p>';
   });

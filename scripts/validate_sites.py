@@ -158,6 +158,10 @@ def validate(sites):
         if not isinstance(streets, list) or not all(
                 (isinstance(x, str) and x.strip()) or (isinstance(x, dict) and x.get("name")) for x in streets):
             err('streets must be a list of street names or {"name", "along"} objects')
+        sv = s.get("streetview")
+        if sv is not None and not (isinstance(sv, dict) and (
+                isinstance(sv.get("street"), str) or all(isinstance(sv.get(k), (int, float)) for k in ("lat", "lng", "heading")))):
+            err('streetview must be {"street": "KENT AVE"} (look from that street) or {lat, lng, heading}')
         notes = s.get("address_notes", {})
         if not isinstance(notes, dict) or not all(isinstance(v, str) and v.strip() for v in notes.values()):
             err('address_notes must map an address to why it stands, e.g. {"65 Commercial St": "..."}')

@@ -362,7 +362,10 @@
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (River Street Partners LLC)",
     "last_checked": "2026-09-28",
     "changed_on": "2026-05-20",
-    "change_note": "The state extended a property-tax break the developer says the project needs."
+    "change_note": "The state extended a property-tax break the developer says the project needs.",
+    "streetview": {
+      "street": "KENT AVE"
+    }
   },
   {
     "id": "greenpoint-landing-phase-2",
@@ -770,7 +773,10 @@
     "updated": "Updated Sept 28, 2026 · exact match from NYC PAD/GeoSearch",
     "last_checked": "2026-09-28",
     "changed_on": "2026-07-16",
-    "change_note": "The mayor's office promised to finish the park as part of the Monitor Point deal."
+    "change_note": "The mayor's office promised to finish the park as part of the Monitor Point deal.",
+    "streetview": {
+      "street": "KENT AVE"
+    }
   },
   {
     "id": "grand-army-plaza",
@@ -950,6 +956,10 @@
         "u": "https://greenpointers.com/2026/05/27/dot-breaks-ground-on-full-mcguinness-boulevard-redesign-in-greenpoint/"
       },
       {
+        "t": "NYC begins redesign of McGuinness Boulevard · 6sqft",
+        "u": "https://www.6sqft.com/nyc-begins-redesign-of-mcguinness-boulevard/"
+      },
+      {
         "t": "Mamdani Announces Full McGuinness Road Diet · Streetsblog NYC",
         "u": "https://nyc.streetsblog.org/2026/01/03/mamdani-announces-full-mcguinness-road-diet-finishing-a-job-halted-by-adams"
       },
@@ -963,10 +973,10 @@
       }
     ],
     "image": {
-      "url": "https://greenpointers.com/wp-content/uploads/2026/05/PXL_20260527_171548080.MP_-scaled.jpg",
-      "credit": "Groundbreaking at McGuinness Blvd & Freeman St, via Greenpointers",
+      "url": "https://thumbs.6sqft.com/wp-content/uploads/2026/05/28102609/McGuinness-Boulevard-Groundbreaking.jpg",
+      "credit": "The already-redesigned southern section of McGuinness Blvd, NYC DOT via 6sqft",
       "isRendering": false,
-      "page": "https://greenpointers.com/2026/05/27/dot-breaks-ground-on-full-mcguinness-boulevard-redesign-in-greenpoint/",
+      "page": "https://www.6sqft.com/nyc-begins-redesign-of-mcguinness-boulevard/",
       "shows": "McGuinness"
     },
     "updated": "Updated Sept 28, 2026 · pin at Nassau Ave; highlighted line is McGuinness Blvd from the Pulaski Bridge to the BQE, from the city street centerline file",
@@ -1230,9 +1240,9 @@
       }
     ],
     "image": {
-      "url": "https://www.brooklynpaper.com/wp-content/uploads/2026/05/williamsburg-domino-site-b-construction-may012026-sdevries-1.jpg?quality=51&w=1200",
-      "credit": "Construction at 280 Kent Ave, May 2026, photo by Susan De Vries via Brooklyn Paper",
-      "isRendering": false,
+      "url": "https://www.brooklynpaper.com/wp-content/uploads/2026/05/williamsburg-domino-two-trees-master-plan-cb1.webp?quality=51&w=1200",
+      "credit": "Rendering of the finished Domino site; Site B is the two wavy towers at left. Two Trees via Community Board 1, via Brooklyn Paper",
+      "isRendering": true,
       "page": "https://www.brooklynpaper.com/two-trees-domino-sugar-refinery-complex-tower-rising/",
       "shows": "Domino"
     },
