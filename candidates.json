@@ -3,7 +3,7 @@
  "area": "Brooklyn Community Districts 1, 2, 3, 4",
  "min_homes": 50,
  "counts": {
-  "zoning": 21,
+  "zoning": 29,
   "building": 62,
   "park": 48,
   "street": 9,
@@ -28,6 +28,32 @@
    "address": "46 Navy Street; 240 Nassau Street",
    "link": "https://zap.planning.nyc.gov/projects/2026K0233",
    "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 12
+  },
+  {
+   "source": "zoning",
+   "key": "2024K0344",
+   "title": "Domino Site B",
+   "summary": "Actions to facilitate the alteration and expansion of the Domino LSGD for Site B, to expand overall footprint, to remove previously approved skybridge, to add balconies, remove a setback, and reduce loading berths to facilitate a new building containing 1,173,500 sf, including 1,161,270 sf of residential uses (1,262 units), 12,230 sf of commercial space, is being sought by Domino A Partners LLC an",
+   "status": "Approved 2025-11; 35 building permits issued since, latest 2026-08",
+   "date": "2026-08-25",
+   "homes": 1262,
+   "bbls": [
+    "3024140001",
+    "3024287502",
+    "3024140003",
+    "3024147502",
+    "3024140025",
+    "3024147501",
+    "3024140026"
+   ],
+   "lat": 40.7149399,
+   "lng": -73.9681804,
+   "address": "270 Kent Avenue; 325 Kent Avenue; 280 Kent Avenue (+4 more lots)",
+   "link": "https://zap.planning.nyc.gov/projects/2024K0344",
+   "active": false,
    "on_map": null,
    "near": null,
    "score": 12
@@ -575,6 +601,26 @@
   },
   {
    "source": "zoning",
+   "key": "2026K0240",
+   "title": "6 Howard Avenue FRESH Cancellation",
+   "summary": "An application for Legal Document action to cancel a FRESH Restrictive Declaration pursuant to ZR 63-40 is being sought by Merrick Capital Corp., a private applicant, to facilitate the construction of a new 8-story residential building comprising 40,031 square feet of floor area and 57 dwelling units, including 15 affordable units, at 6 Howard Avenue, Block 1481, Lot 35, in Bedford-Stuyvesant, Com",
+   "status": "Approved 2026-03; 4 building permits issued since, latest 2026-09",
+   "date": "2026-09-17",
+   "homes": 57,
+   "bbls": [
+    "3014810035"
+   ],
+   "lat": 40.6886117,
+   "lng": -73.921436,
+   "address": "862 John Steptoe Place",
+   "link": "https://zap.planning.nyc.gov/projects/2026K0240",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 4.57
+  },
+  {
+   "source": "zoning",
    "key": "2024K0196",
    "title": "132 Melrose Street Rezoning",
    "summary": "An application by Melrose Towers Corp. for a zoning map amendment (M1-1 to R6A/M1-2A (MX-22)) and a zoning text amendment (Appendix F) to facilitate a new 6-story, 24,653 zsf mixed-use development, with 18 DU’s (5 MIH) and 6k sf of ground floor commercial at 132-136 Melrose Street in Bushwick, CD 4.",
@@ -596,6 +642,26 @@
    "on_map": null,
    "near": null,
    "score": 4.18
+  },
+  {
+   "source": "zoning",
+   "key": "2023K0128",
+   "title": "109 Marcus Garvey Boulevard LSGD",
+   "summary": "A Zoning Map Amendment from R6 & R6/C2-4 to R7A & R7A/C2-4, a Special Permit pursuant to Section 74 - 74 for a Large-scale General Development, and a Zoning Text Amendment to Appendix F (MIH), to facilitate a new 14-story, 177,311 zsf, 292 dwelling unit, residential development is being sought by Phoenix Realty Group LLC at 109 Marcus Garvey Blvd in Bedford-Stuyvesant, Community District 3, Brookl",
+   "status": "Approved 2025-07; 1 building permit issued since, latest 2026-07",
+   "date": "2026-07-31",
+   "homes": null,
+   "bbls": [
+    "3015880001"
+   ],
+   "lat": 40.6953965,
+   "lng": -73.9391814,
+   "address": "721 Willoughby Avenue",
+   "link": "https://zap.planning.nyc.gov/projects/2023K0128",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 4.0
   },
   {
    "source": "zoning",
@@ -1125,6 +1191,37 @@
    "score": 3.0
   },
   {
+   "source": "zoning",
+   "key": "2022K0237",
+   "title": "Greenpoint Landing 5A Zoning Lot Subdivision Cert",
+   "summary": "A Zoning Certification pursuant to 62-812 to subdivide a zoning lot is being sought by BOP Greenpoint for Greenpoint Landing Parcel 5A in Greenpoint, Community District 1, Brooklyn.",
+   "status": "Approved 2025-08; 4 building permits issued since, latest 2026-02",
+   "date": "2026-02-02",
+   "homes": null,
+   "bbls": [
+    "3024727502",
+    "3024720090",
+    "3024727501",
+    "3024720080",
+    "3024720055",
+    "3024720050",
+    "3024720200",
+    "3024720475",
+    "3024720045",
+    "3024727504",
+    "3024720210",
+    "3024727503"
+   ],
+   "lat": 40.7360691,
+   "lng": -73.9594415,
+   "address": "5 Blue Slip; Greenpoint Landing, Brooklyn, Kings County, Ny, Usa; 21 Commercial Street (+9 more lots)",
+   "link": "https://zap.planning.nyc.gov/projects/2022K0237",
+   "active": false,
+   "on_map": null,
+   "near": null,
+   "score": 3.0
+  },
+  {
    "source": "agenda",
    "key": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-notices/2026/REVISED-Parks-Waterfront-Committee-Meeting-Notice-09-15-26.pdf#Metropolitan Pool Update (Discussion)",
    "title": "Metropolitan Pool Update (Discussion)",
@@ -1481,6 +1578,53 @@
    "on_map": null,
    "near": null,
    "score": 2.17
+  },
+  {
+   "source": "zoning",
+   "key": "2024K0373",
+   "title": "1289 Atlantic Avenue ZFA Certification",
+   "summary": "An easement certification pursuant to ZR Section 66-21, to facilitate a new 14-story, approximately 162,494 square foot mixed-use building with 112 dwelling units and a clear path easement, at 1289 Atlantic Avenue in Bedford-Stuyvesant, Community District 3, Brooklyn.",
+   "status": "Approved 2026-05; no building permits since",
+   "date": "2026-05-20",
+   "homes": 112,
+   "bbls": [
+    "3018670062",
+    "3018670068",
+    "3018670063",
+    "3018670064",
+    "3018670065",
+    "3018670066"
+   ],
+   "lat": 40.6785228,
+   "lng": -73.9471789,
+   "address": "1313 Atlantic Avenue; 1289 Atlantic Avenue; 1305 Atlantic Avenue (+3 more lots)",
+   "link": "https://zap.planning.nyc.gov/projects/2024K0373",
+   "active": false,
+   "on_map": null,
+   "near": null,
+   "score": 2.12
+  },
+  {
+   "source": "zoning",
+   "key": "2021K0145",
+   "title": "281-311 Marcus Garvey Blvd.",
+   "summary": "This is a private application by the Omni New York LLC, for a Zoning Map Amendment from R6B, R6A, R6B/C2-4, R6A/C2-4 to R7A/C2-4, Zoning Text Amendment to map MIH, a City Planning Commission Special Permit for a Large-Scale General Development and the reduction of existing parking to facilitate the development of two-mixed-use buildings at 281-311 Marcus Garvey Blvd., Bedford-Stuyvesant, Community",
+   "status": "Approved 2024-05; 1 building permit issued since, latest 2024-09",
+   "date": "2024-09-18",
+   "homes": null,
+   "bbls": [
+    "3016290001",
+    "3016340001",
+    "3016340079"
+   ],
+   "lat": 40.6879766,
+   "lng": -73.9377026,
+   "address": "281 Marcus Garvey Boulevard; 311 Marcus Garvey Boulevard; 467 Monroe Street",
+   "link": "https://zap.planning.nyc.gov/projects/2021K0145",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 2.0
   },
   {
    "source": "park",
@@ -3221,6 +3365,57 @@
    "on_map": "mcguinness-blvd",
    "near": null,
    "score": 4.0
+  },
+  {
+   "source": "zoning",
+   "key": "2023K0411",
+   "title": "Eagle Street Demapping",
+   "summary": "The applicant, BOP Greenpoint D LLC, seeks the elimination of a portion of Eagle Street in Greenpoint, Community District 1, Brooklyn.",
+   "status": "Approved 2025-12; no building permits since",
+   "date": "2025-12-19",
+   "homes": null,
+   "bbls": [
+    "3025020005",
+    "3024720004",
+    "3025020001",
+    "3025020007",
+    "3024720023",
+    "3024720006",
+    "3025020002",
+    "3024720030",
+    "3025020050"
+   ],
+   "lat": 40.7345353,
+   "lng": -73.9610121,
+   "address": "West Street (lot record, unconfirmed) (+6 more lots)",
+   "link": "https://zap.planning.nyc.gov/projects/2023K0411",
+   "active": true,
+   "on_map": "greenpoint-landing-phase-2",
+   "near": null,
+   "score": 1.0
+  },
+  {
+   "source": "zoning",
+   "key": "2020K0443",
+   "title": "Greenpoint Landing Parcel 5c-2 Waterfront",
+   "summary": "Waterfront certifications and authorizations pursuant to ZR 62-811, ZR 62-822 (a) and ZR 62-822 (b) to facilitate a 95,283-square foot waterfront public access area to be constructed in connection with a new as-of-right mixed-use (primarily residential) development, being sought by a private applicant, Park Tower Group at the site known as Greenpoint Landing Parcel 5c-2 (Block 2502, Lot 1, Block 2",
+   "status": "Approved 2024-03; no building permits since",
+   "date": "2024-03-08",
+   "homes": null,
+   "bbls": [
+    "3025020005",
+    "3025200057",
+    "3025020001",
+    "3025100001"
+   ],
+   "lat": 40.7345353,
+   "lng": -73.9610121,
+   "address": "West Street (lot record, unconfirmed); 171 West Street (+1 more lots)",
+   "link": "https://zap.planning.nyc.gov/projects/2020K0443",
+   "active": false,
+   "on_map": "greenpoint-landing-phase-2",
+   "near": null,
+   "score": 0.0
   }
  ]
 }
