@@ -2,6 +2,18 @@
 
 The map is for neighbors, not planners. Write every site so someone who has never heard of the project understands what it is, what would change, and why it matters, from the first sentence.
 
+## The neighbor test
+
+Before keeping any sentence, ask: **would a resident who knows nothing about urbanism or this project learn something that matters to their block?** Keep what changes daily life (homes, affordability, parks, bathrooms, traffic, height, timing, what's being torn down, whether neighbors had a say). Cut what only matters to the real estate or policy world.
+
+Leave out of `headline`, `why`, `now` and `history`:
+
+- **Developer, landlord, LLC and nonprofit names.** Say "the developer", "a new owner", "the shelter operator". Names belong only in `owner`.
+- **Deal figures**: purchase prices, loan amounts, financing, air rights, tax-break mechanics. Keep a dollar figure only when it's public money or something residents get (a park's funding gap, money for park upkeep).
+- **Officials' names.** Use the role: "the local council member", "the mayor's office", "the Parks Department".
+- **Filings, application types, agency sign-offs**, unless the step decides whether it happens; then say what it decides ("the City Council approved it").
+- **Ownership history** that doesn't change what's there (who sold to whom, when).
+
 ## Rules
 
 1. **Lead with what's happening in everyday words.** A proposal, a new park, apartments, a highway. Say what the land is now and what would change.
@@ -10,7 +22,8 @@ The map is for neighbors, not planners. Write every site so someone who has neve
 4. **Name the process only if a reader needs it, and say what it does.** "The City Council approved it", "a property-tax break", "a city planning sign-off that doesn't go to the City Council".
 5. **Explain names the first time.** Quote a project name and say what it is: the "Greenpoint Landing" plan to add 5,500 homes to the waterfront.
 6. **Give the bigger picture in the second sentence**, if there is one: the larger plan, the promise it relates to, the fight around it.
-7. **Keep it short and plain.** No em dashes, filler adverbs or self-referential framing ("this site", "as of this writing"). Every fact still needs a source in `sources`.
+7. **Current status (`now`) is the big picture of what's going on**: what just happened, when, and what comes next for the neighborhood. No company names, deal figures or filing details.
+8. **Keep it short and plain.** No em dashes, filler adverbs or self-referential framing ("this site", "as of this writing"). Every fact still needs a source in `sources`.
 
 ## Swap list
 
@@ -49,7 +62,17 @@ The map is for neighbors, not planners. Write every site so someone who has neve
 **River Ring**
 
 - Before: "In May 2026 the state budget extended the old 421a tax break for River Ring past its 2031 deadline."
-- After: "In May 2026 the state gave developer Two Trees extra time to keep a large property-tax break it says the project needs."
+- After: "In May 2026 the state extended a large property-tax break the developer says the project needs."
+
+**97 West Street**
+
+- Before: "Jay Group bought the site for $130 million in Dec 2025 after lining up a $320 million construction loan."
+- After: "A new owner bought the site in late 2025 and lined up money to build. Plans are moving ahead despite neighborhood objections."
+
+**Monitor Point**
+
+- Before: "...after Council Member Lincoln Restler pushed Gotham to make half of the apartments affordable."
+- After: "...after the local council member won a deal making half of the roughly 1,300 apartments affordable."
 
 ## Fields
 
@@ -57,4 +80,4 @@ The map is for neighbors, not planners. Write every site so someone who has neve
 - `why` (250 chars): what the place is and what would change, then the bigger picture.
 - `now` (250 chars): the latest development, leading with when it happened.
 - `history` (200 chars): what the land was before, in order.
-- `owner` (200 chars): who owns or controls it, in plain words.
+- `owner` (200 chars): who owns or controls it, in plain words. The only field where developer and organization names go.
