@@ -89,6 +89,7 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. Once 
 - **New buildings** filed with the Buildings Department since 2024 with 50 or more homes (`MIN_HOMES`).
 - **Park projects** from the Parks Department's capital project tracker that aren't finished.
 - **Bike lanes and street plans** from DOT's "Current Bicycle Route Projects" list (Brooklyn rows placed at their first cross street and kept if inside the area) and DOT's project site, nycdotprojects.info (North Brooklyn place or street names; pages with no dated update in 3 years are skipped). Street projects that DOT handles as sewer or water capital work, like the Commercial St greenway, aren't on either list and still come from news or community board agendas.
+- **Community board agendas** from the last 60 days and any upcoming meeting: CB1's Transportation, Land Use and Parks & Waterfront committee notices and full-board agendas, and CB3 and CB4 full-board agendas. Each agenda item becomes a lead; routine items (minutes, reports, liquor and cannabis licenses, outdoor dining, street co-namings) are dropped, and an address in the item is looked up to match it to a lot. CB3's page hasn't posted an agenda since June 2025, and CB2's site blocks automated reads, so those two boards are thin; check their calendars by hand.
 - **News** headlines from Greenpointers, Streetsblog NYC and Brooklyn Paper in the last 45 days that name the area and a development topic.
 
 Each lead gets a score (higher is more worth a look; housing tops out around 16, street plans around 10) and is matched against `sites.json`. Score:
@@ -99,6 +100,7 @@ Each lead gets a score (higher is more worth a look; housing tops out around 16,
 | +3 | A zoning application still filed, noticed or in public review |
 | +5 / +4 | A DOT bike lane plan in development / another active DOT street project |
 | +2 | A park project under construction |
+| +2 / +1 | A community board agenda item at an upcoming / recent meeting; +2 more if it's a rezoning, housing, DOT, park or landmark item |
 | +2 / +1 | Latest date within 90 days / within a year |
 | up to +3 | One per recent headline naming the lead's street or project |
 
