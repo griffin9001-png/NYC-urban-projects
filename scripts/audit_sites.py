@@ -8,6 +8,8 @@ then flags:
   - missing lots: a development site with no `bbls` to check against
   - unverified condition
   - missing or broken image (images are hotlinked, so source sites can move them)
+  - street addresses in `neighborhood` that NYC's address database (PAD, via GeoSearch) doesn't put
+    on the site's own lots, unless `address_notes` explains why the address stands
   - image that can't be tied to this site: its `image.page` must load, contain the
     image, and name the site (`image.shows`) in the page title or next to the image;
     if `shows` is an address it must fall on one of the site's `bbls`
@@ -135,6 +137,36 @@ def check_image_page(site, img):
     return flags
 
 
+ADDRESS_RE = re.compile(r"\b\d+[-\d]*\s+(?:[A-Z][a-z]+\s){1,3}(?:St|Ave|Street|Avenue|Pl|Place|Blvd|Boulevard)\b")
+SUFFIX_FULL = {"St": "Street", "Ave": "Avenue", "Pl": "Place", "Blvd": "Boulevard"}
+
+
+def check_addresses(site):
+    """Flags for addresses in `neighborhood` that land on another lot (or none). Ranges like 79-97 pass
+    if either end is on the site. Only sites with `bbls` are checked."""
+    if not site.get("bbls"):
+        return []
+    noted = set((site.get("address_notes") or {}).keys())
+    flags = []
+    for addr in ADDRESS_RE.findall(site.get("neighborhood", "")):
+        if addr in noted:
+            continue
+        words = addr.split()
+        words[-1] = SUFFIX_FULL.get(words[-1], words[-1])
+        found = []
+        for num in dict.fromkeys(words[0].split("-")):
+            try:
+                feats = get_json(SEARCH, {"text": " ".join([num] + words[1:]) + ", Brooklyn, NY", "size": 5}).get("features", [])
+            except Exception as e:
+                return [f"address lookup failed: {e}"]
+            found += [(f["properties"]["label"].split(",")[0], f["properties"].get("addendum", {}).get("pad", {}).get("bbl"))
+                      for f in feats if "Brooklyn" in f["properties"]["label"] and f["properties"]["label"].split()[0] == num]
+        if not any(b in site["bbls"] for _, b in found):
+            where = f"lot {found[0][1]} ({found[0][0].title()})" if found else "no lot in the city's address database"
+            flags.append(f'address "{addr}" is on {where}, not this site\'s lots: fix it, or explain in address_notes')
+    return flags
+
+
 def distance_m(a_lat, a_lng, b_lat, b_lng):
     dy = (a_lat - b_lat) * 111_320
     dx = (a_lng - b_lng) * 111_320 * math.cos(math.radians(a_lat))
@@ -178,6 +210,8 @@ def audit_site(site):
         flags.append("image URL no longer loads: replace it")
     else:
         flags += check_image_page(site, img)
+
+    flags += check_addresses(site)
 
     if condition == "unverified":
         flags.append("condition unverified: confirm what stands on the site and set condition")

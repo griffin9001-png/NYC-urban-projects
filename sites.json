@@ -428,7 +428,11 @@
     "updated": "Updated Sept 25, 2026 · lots inferred from Greenpoint Landing (GPLC Owner LLC) ownership in NYC PLUTO",
     "last_checked": "2026-09-28",
     "changed_on": "2025-08-19",
-    "change_note": "The next phase of Greenpoint Landing was announced: three buildings and a waterfront park."
+    "change_note": "The next phase of Greenpoint Landing was announced: three buildings and a waterfront park.",
+    "address_notes": {
+      "37 Freeman St": "Planned building's address as reported by 6sqft; not in the city's address database until it's built.",
+      "209 West St": "Planned building's address as reported by 6sqft; not in the city's address database until it's built."
+    }
   },
   {
     "id": "2-noble-street",
@@ -578,7 +582,10 @@
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025560001)",
     "last_checked": "2026-09-28",
     "changed_on": "2025-12-01",
-    "change_note": "A new owner bought the site and lined up money to build."
+    "change_note": "A new owner bought the site and lined up money to build.",
+    "address_notes": {
+      "79-97 West St": "City lot records list 97 West St on this lot (3025560001); the address database assigns the number 97 to lot 58 next door. 79 West St resolves here."
+    }
   },
   {
     "id": "transmitter-park",
@@ -848,7 +855,7 @@
     "status": "review",
     "condition": "street",
     "phase": "decision-coming",
-    "neighborhood": "100 Park Ave (representative point) · under the BQE, Fort Greene/Clinton Hill end of the corridor",
+    "neighborhood": "Park Ave at Adelphi St (representative point) · under the BQE, Fort Greene/Clinton Hill end of the corridor",
     "lat": 40.695843,
     "lng": -73.972337,
     "bbls": [],
@@ -896,7 +903,7 @@
         "u": "https://www.brownstoner.com/history/past-and-present-the-bqe-at-washington-and-park/"
       }
     ],
-    "updated": "Updated Sept 25, 2026 · pin verified against US Census Bureau geocoder; highlighted lines are Park Ave where it runs under the BQE, from the city street centerline file",
+    "updated": "Updated Sept 28, 2026 · pin at Park Ave & Adelphi St, from the city street centerline file; highlighted lines are Park Ave where it runs under the BQE",
     "last_checked": "2026-09-28",
     "changed_on": "2024-10-10",
     "change_note": "The city released long-term ideas for the streets along the BQE."
@@ -1100,7 +1107,10 @@
     "updated": "Added Sept 28, 2026 · pin inside the park's lot (BBL 3024720425), from NYC PLUTO",
     "last_checked": "2026-09-28",
     "changed_on": "2026-04-01",
-    "change_note": "The city said Box Street Park would open later in 2026."
+    "change_note": "The city said Box Street Park would open later in 2026.",
+    "address_notes": {
+      "65 Commercial St": "The state permit notice for the park gives 65 Commercial St as Block 2472, Lot 425; the city's address database puts that number on lot 415, the MTA's smaller lot next door."
+    }
   },
   {
     "id": "bedford-ave-bike-lane",
