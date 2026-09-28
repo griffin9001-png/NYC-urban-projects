@@ -41,6 +41,28 @@ JARGON = {
 }
 JARGON_FIELDS = ("headline", "why", "now", "history", "owner")
 
+# Names belong only in `owner` (STYLE.md, "The neighbor test"). Organizations named in
+# `owner` must not reappear in reader text; public agencies residents deal with are fine.
+NAME_FIELDS = ("headline", "why", "now", "history")
+PUBLIC_BODIES = {"MTA", "NYC", "NYC Parks", "Parks Department", "City Council", "New York State DOT",
+                 "Department of Transportation", "The", "The MTA", "NYSDOT", "HPD", "State", "City"}
+ORG_SUFFIX = r"(?:Group|Companies|Company|Organization|Management|Partners|Realty|Holdings|Alliance|LLC|Inc\.?)"
+ORG_NAME = re.compile(r"(?:[A-Z][\w&.'-]*\s+){0,3}[A-Z][\w&.'-]*\s+" + ORG_SUFFIX + r"\b")
+# Short brand names that show up without a suffix, and officials to name by role instead.
+EXTRA_NAMES = ["Rabsky", "Two Trees", "Gotham", "TF Cornerstone", "Jay Group", "LMXD", "Domain",
+               "Park Tower", "Hudson", "Project Renewal", "St. Nicks", "Restler", "Mamdani", "Hochul", "Adams"]
+
+
+def org_names(owner):
+    names = set()
+    for m in ORG_NAME.finditer(owner or ""):
+        full = re.sub(r"^(?:The|developer|with|and)\s+", "", m.group(0).strip())
+        names.add(full)
+        core = re.sub(r"\s+" + ORG_SUFFIX + r"$", "", full)   # "Two Trees Management" -> "Two Trees"
+        if core and core not in PUBLIC_BODIES:
+            names.add(core)
+    return {n for n in names if n not in PUBLIC_BODIES}
+
 # Label-vs-text contradictions: (field, value, pattern in why/now/history, message).
 # Cheap deterministic backstop; the weekly review catches subtler mismatches.
 CONTRADICTIONS = [
@@ -87,6 +109,17 @@ def validate(sites):
                 m = re.search(pattern, str(s.get(key) or ""), re.I)
                 if m:
                     err(f"{key} uses jargon '{m.group(0)}': write '{plain}' instead (STYLE.md)")
+        banned = org_names(s.get("owner")) | set(EXTRA_NAMES)
+        for key in NAME_FIELDS:
+            val = str(s.get(key) or "")
+            for name in sorted(banned, key=len, reverse=True):
+                if re.search(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])", val):
+                    err(f"{key} names '{name}': use a role (the developer, a new owner, the local council member); names go only in owner (STYLE.md)")
+                    break
+        for key in NAME_FIELDS:
+            for sentence in re.split(r"(?<=[.!?])\s+", str(s.get(key) or "")):
+                if "$" in sentence and re.search(r"\b(loan|financ|bought|buy|purchas|sold|paid|price)", sentence, re.I):
+                    err(f"{key} cites a deal figure ('{sentence[:60]}...'): drop prices and loans (STYLE.md)")
         text = " ".join(str(s.get(k) or "") for k in ("why", "now", "history")).lower()
         for field, value, pattern, message in CONTRADICTIONS:
             if s.get(field) == value and re.search(pattern, text):
