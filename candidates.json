@@ -3,8 +3,8 @@
  "area": "Brooklyn Community Districts 1, 2, 3, 4",
  "min_homes": 50,
  "counts": {
-  "zoning": 43,
-  "building": 95,
+  "zoning": 21,
+  "building": 62,
   "park": 48,
   "street": 9,
   "agenda": 16,
@@ -77,52 +77,6 @@
    "score": 10.4
   },
   {
-   "source": "building",
-   "key": "3025380001",
-   "title": "18 India Street: new building, 834 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-21",
-   "homes": 834,
-   "bbls": [
-    "3025380001"
-   ],
-   "lat": 40.731774,
-   "lng": -73.9604,
-   "address": "18 India Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2538/1",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 10
-  },
-  {
-   "source": "zoning",
-   "key": "2024K0344",
-   "title": "Domino Site B",
-   "summary": "Actions to facilitate the alteration and expansion of the Domino LSGD for Site B, to expand overall footprint, to remove previously approved skybridge, to add balconies, remove a setback, and reduce loading berths to facilitate a new building containing 1,173,500 sf, including 1,161,270 sf of residential uses (1,262 units), 12,230 sf of commercial space, is being sought by Domino A Partners LLC an",
-   "status": "Completed",
-   "date": "2025-11-22",
-   "homes": 1262,
-   "bbls": [
-    "3024140001",
-    "3024287502",
-    "3024140003",
-    "3024147502",
-    "3024140025",
-    "3024147501",
-    "3024140026"
-   ],
-   "lat": 40.7149399,
-   "lng": -73.9681804,
-   "address": "270 Kent Avenue; 325 Kent Avenue; 280 Kent Avenue (+4 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2024K0344",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 9
-  },
-  {
    "source": "zoning",
    "key": "2022K0430",
    "title": "Park Avenue Brooklyn Rezoning",
@@ -179,26 +133,6 @@
    "score": 7.91
   },
   {
-   "source": "building",
-   "key": "3001747501",
-   "title": "84 Flatbush Avenue: new building, 521 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-19",
-   "homes": 521,
-   "bbls": [
-    "3001747501"
-   ],
-   "lat": 40.686386,
-   "lng": -73.979361,
-   "address": "84 Flatbush Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/174/7501",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 7.21
-  },
-  {
    "source": "street",
    "key": "https://www.nyc.gov/html/dot/downloads/pdf/ashland-pl-lafayette-ave-hanson-pl-jun2026.pdf",
    "title": "Ashland Place, Lafayette Avenue & Hanson Place",
@@ -207,8 +141,8 @@
    "date": "2026-06-01",
    "homes": null,
    "bbls": [],
-   "lat": 40.685118524734,
-   "lng": -73.977948630943,
+   "lat": 40.686827452636,
+   "lng": -73.978199415507,
    "address": null,
    "link": "https://www.nyc.gov/html/dot/downloads/pdf/ashland-pl-lafayette-ave-hanson-pl-jun2026.pdf",
    "active": true,
@@ -256,26 +190,6 @@
    "score": 6.96
   },
   {
-   "source": "building",
-   "key": "3001490014",
-   "title": "567 Fulton Street: new building, 591 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-02-12",
-   "homes": 591,
-   "bbls": [
-    "3001490014"
-   ],
-   "lat": 40.689439,
-   "lng": -73.982277,
-   "address": "567 Fulton Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/149/14",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 6.91
-  },
-  {
    "source": "zoning",
    "key": "2024K0240",
    "title": "289 Kent Avenue Rezoning",
@@ -302,26 +216,6 @@
    "score": 6.78
   },
   {
-   "source": "building",
-   "key": "3020200068",
-   "title": "1057 Atlantic Avenue: new building, 456 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-21",
-   "homes": 456,
-   "bbls": [
-    "3020200068"
-   ],
-   "lat": 40.679504,
-   "lng": -73.956678,
-   "address": "1057 Atlantic Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2020/68",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 6.56
-  },
-  {
    "source": "zoning",
    "key": "2024K0286",
    "title": "200 Kent Avenue Rezoning",
@@ -346,8 +240,8 @@
    "key": "3001540005",
    "title": "370 Fulton Street: new building, 443 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
+   "status": "Filed 2026-08, no building permit yet",
+   "date": "2026-08-20",
    "homes": 443,
    "bbls": [
     "3001540005"
@@ -427,7 +321,7 @@
    "key": "3018760001",
    "title": "4 Ryerson Street: new building, 425 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-08, no building permit yet",
    "date": "2026-08-24",
    "homes": 425,
    "bbls": [
@@ -441,6 +335,26 @@
    "on_map": null,
    "near": null,
    "score": 6.25
+  },
+  {
+   "source": "building",
+   "key": "3001747501",
+   "title": "84 Flatbush Avenue: new building, 521 homes",
+   "summary": "",
+   "status": "Under construction: permit 2025-11, filed 2025-01",
+   "date": "2025-11-10",
+   "homes": 521,
+   "bbls": [
+    "3001747501"
+   ],
+   "lat": 40.686386,
+   "lng": -73.979361,
+   "address": "84 Flatbush Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/174/7501",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 6.21
   },
   {
    "source": "agenda",
@@ -460,26 +374,6 @@
    "on_map": null,
    "near": null,
    "score": 5.75
-  },
-  {
-   "source": "building",
-   "key": "3020500100",
-   "title": "71 Prince Street: new building, 473 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-10",
-   "homes": 473,
-   "bbls": [
-    "3020500100"
-   ],
-   "lat": 40.695332,
-   "lng": -73.982413,
-   "address": "71 Prince Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2050/100",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 5.73
   },
   {
    "source": "zoning",
@@ -664,8 +558,8 @@
    "key": "3015490018",
    "title": "2020 Fulton Street: new building, 262 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-07-24",
+   "status": "Filed 2026-07, no building permit yet",
+   "date": "2026-07-23",
    "homes": 262,
    "bbls": [
     "3015490018"
@@ -678,66 +572,6 @@
    "on_map": null,
    "near": null,
    "score": 4.62
-  },
-  {
-   "source": "building",
-   "key": "3021340150",
-   "title": "50 Mollenhauer Drive: new building, 360 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-24",
-   "homes": 360,
-   "bbls": [
-    "3021340150"
-   ],
-   "lat": 40.707878,
-   "lng": -73.96897,
-   "address": "50 Mollenhauer Drive",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2134/150",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 4.6
-  },
-  {
-   "source": "building",
-   "key": "3033250060",
-   "title": "223 Linden Street: new building, 353 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-02-27",
-   "homes": 353,
-   "bbls": [
-    "3033250060"
-   ],
-   "lat": 40.696176,
-   "lng": -73.916696,
-   "address": "223 Linden Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3325/60",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 4.53
-  },
-  {
-   "source": "building",
-   "key": "3020857504",
-   "title": "89 Dekalb Avenue: new building, 324 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-04-10",
-   "homes": 324,
-   "bbls": [
-    "3020857504"
-   ],
-   "lat": 40.689889,
-   "lng": -73.979937,
-   "address": "89 Dekalb Avenue (lot record, unconfirmed)",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2085/7504",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 4.24
   },
   {
    "source": "zoning",
@@ -762,46 +596,6 @@
    "on_map": null,
    "near": null,
    "score": 4.18
-  },
-  {
-   "source": "building",
-   "key": "3001610003",
-   "title": "17 Hanover Place: new building, 314 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-17",
-   "homes": 314,
-   "bbls": [
-    "3001610003"
-   ],
-   "lat": 40.688827,
-   "lng": -73.982454,
-   "address": "17 Hanover Place",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/161/3",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 4.14
-  },
-  {
-   "source": "building",
-   "key": "3017030014",
-   "title": "1864 Fulton Street: new building, 213 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-24",
-   "homes": 213,
-   "bbls": [
-    "3017030014"
-   ],
-   "lat": 40.679115,
-   "lng": -73.926167,
-   "address": "1864 Fulton Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1703/14",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 4.13
   },
   {
    "source": "zoning",
@@ -1193,171 +987,31 @@
   },
   {
    "source": "building",
-   "key": "3001470044",
-   "title": "55 Willoughby Street: new building, 295 homes",
+   "key": "3021340150",
+   "title": "50 Mollenhauer Drive: new building, 360 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-17",
-   "homes": 295,
+   "status": "Under construction: permit 2024-08, filed 2024-01",
+   "date": "2024-08-21",
+   "homes": 360,
    "bbls": [
-    "3001470044"
+    "3021340150"
    ],
-   "lat": 40.692225,
-   "lng": -73.987065,
-   "address": "55 Willoughby Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/147/44",
+   "lat": 40.707878,
+   "lng": -73.96897,
+   "address": "50 Mollenhauer Drive",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2134/150",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 3.95
-  },
-  {
-   "source": "building",
-   "key": "3021070002",
-   "title": "95 Rockwell Place: new building, 190 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-18",
-   "homes": 190,
-   "bbls": [
-    "3021070002"
-   ],
-   "lat": 40.687306,
-   "lng": -73.979133,
-   "address": "95 Rockwell Place",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2107/2",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.9
-  },
-  {
-   "source": "building",
-   "key": "3021347504",
-   "title": "11 Gantry Road: new building, 183 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-18",
-   "homes": 183,
-   "bbls": [
-    "3021347504"
-   ],
-   "lat": 40.707793,
-   "lng": -73.968498,
-   "address": "11 Gantry Road",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2134/7504",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.83
-  },
-  {
-   "source": "building",
-   "key": "3024940006",
-   "title": "16 Dupont Street: new building, 381 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-06-17",
-   "homes": 381,
-   "bbls": [
-    "3024940006"
-   ],
-   "lat": 40.735419,
-   "lng": -73.95985,
-   "address": "16 Dupont Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2494/6",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.81
-  },
-  {
-   "source": "building",
-   "key": "3020950010",
-   "title": "19 Rockwell Place: new building, 174 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-08",
-   "homes": 174,
-   "bbls": [
-    "3020950010"
-   ],
-   "lat": 40.689285,
-   "lng": -73.979418,
-   "address": "19 Rockwell Place",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2095/10",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.74
-  },
-  {
-   "source": "building",
-   "key": "3021060035",
-   "title": "570 Fulton Street: new building, 163 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
-   "homes": 163,
-   "bbls": [
-    "3021060035"
-   ],
-   "lat": 40.688406,
-   "lng": -73.979692,
-   "address": "570 Fulton Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2106/35",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.63
-  },
-  {
-   "source": "building",
-   "key": "3001860012",
-   "title": "540 Atlantic Avenue: new building, 159 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-14",
-   "homes": 159,
-   "bbls": [
-    "3001860012"
-   ],
-   "lat": 40.685077,
-   "lng": -73.98009,
-   "address": "540 Atlantic Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/186/12",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.59
-  },
-  {
-   "source": "building",
-   "key": "3030410025",
-   "title": "73 Meserole Street: new building, 149 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-17",
-   "homes": 149,
-   "bbls": [
-    "3030410025"
-   ],
-   "lat": 40.707711,
-   "lng": -73.947192,
-   "address": "73 Meserole Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3041/25",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.49
+   "score": 3.6
   },
   {
    "source": "building",
    "key": "3021110040",
    "title": "130 St Felix Street: new building, 147 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-05",
+   "status": "Filed 2026-07, no building permit yet",
+   "date": "2026-07-02",
    "homes": 147,
    "bbls": [
     "3021110040"
@@ -1373,51 +1027,31 @@
   },
   {
    "source": "building",
-   "key": "3002440001",
-   "title": "205 Montague Street: new building, 136 homes",
+   "key": "3017030014",
+   "title": "1864 Fulton Street: new building, 213 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-01",
-   "homes": 136,
+   "status": "Under construction: permit 2026-03, filed 2024-11",
+   "date": "2026-03-30",
+   "homes": 213,
    "bbls": [
-    "3002440001"
+    "3017030014"
    ],
-   "lat": 40.693914,
-   "lng": -73.991107,
-   "address": "205 Montague Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/244/1",
+   "lat": 40.679115,
+   "lng": -73.926167,
+   "address": "1864 Fulton Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/1703/14",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 3.36
-  },
-  {
-   "source": "building",
-   "key": "3001210033",
-   "title": "236 Gold Street: new building, 117 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-22",
-   "homes": 117,
-   "bbls": [
-    "3001210033"
-   ],
-   "lat": 40.697124,
-   "lng": -73.983155,
-   "address": "236 Gold Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/121/33",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 3.17
+   "score": 3.13
   },
   {
    "source": "building",
    "key": "3025700010",
    "title": "7 Wharf Drive: new building, 303 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2024-04-12",
+   "status": "Filed 2024-02, no building permit yet",
+   "date": "2024-02-09",
    "homes": 303,
    "bbls": [
     "3025700010"
@@ -1533,8 +1167,8 @@
    "key": "3020620018",
    "title": "104 Fleet Place: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
+   "status": "Finished: first certificate of occupancy 2026-07-16",
+   "date": "2026-07-16",
    "homes": 99,
    "bbls": [
     "3020620018"
@@ -1553,8 +1187,8 @@
    "key": "3020620019",
    "title": "106 Fleet Place: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
+   "status": "Finished: first certificate of occupancy 2026-07-16",
+   "date": "2026-07-16",
    "homes": 99,
    "bbls": [
     "3020620019"
@@ -1573,7 +1207,7 @@
    "key": "3001520018",
    "title": "147 Lawrence Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-08, no building permit yet",
    "date": "2026-08-13",
    "homes": 99,
    "bbls": [
@@ -1593,8 +1227,8 @@
    "key": "3024570034",
    "title": "159 Broadway: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-07-01",
+   "status": "Under construction: permit 2026-08, filed 2025-12",
+   "date": "2026-08-10",
    "homes": 99,
    "bbls": [
     "3024570034"
@@ -1613,8 +1247,8 @@
    "key": "3020620024",
    "title": "165 Willoughby Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
+   "status": "Finished: first certificate of occupancy 2026-07-21",
+   "date": "2026-07-21",
    "homes": 99,
    "bbls": [
     "3020620024"
@@ -1630,31 +1264,11 @@
   },
   {
    "source": "building",
-   "key": "3031830071",
-   "title": "21 Charles Place: new building, 99 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-16",
-   "homes": 99,
-   "bbls": [
-    "3031830071"
-   ],
-   "lat": 40.697918,
-   "lng": -73.93175,
-   "address": "21 Charles Place",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3183/71",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.99
-  },
-  {
-   "source": "building",
    "key": "3020620001",
    "title": "277 Flatbush Avenue X: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
+   "status": "Finished: first certificate of occupancy 2026-08-20",
+   "date": "2026-08-20",
    "homes": 99,
    "bbls": [
     "3020620001"
@@ -1670,70 +1284,10 @@
   },
   {
    "source": "building",
-   "key": "3023150133",
-   "title": "285 North    8 Street: new building, 99 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-02",
-   "homes": 99,
-   "bbls": [
-    "3023150133"
-   ],
-   "lat": 40.715591,
-   "lng": -73.952625,
-   "address": "285 North    8 Street (lot record, unconfirmed)",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2315/133",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.99
-  },
-  {
-   "source": "building",
-   "key": "3001670022",
-   "title": "370 Livingston Street: new building, 99 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-03",
-   "homes": 99,
-   "bbls": [
-    "3001670022"
-   ],
-   "lat": 40.687644,
-   "lng": -73.980641,
-   "address": "370 Livingston Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/167/22",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.99
-  },
-  {
-   "source": "building",
-   "key": "3001670016",
-   "title": "372 Livingston Street: new building, 99 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-03",
-   "homes": 99,
-   "bbls": [
-    "3001670016"
-   ],
-   "lat": 40.687696,
-   "lng": -73.980778,
-   "address": "372 Livingston Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/167/16",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.99
-  },
-  {
-   "source": "building",
    "key": "3001520006",
    "title": "485 Fulton Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-08, no building permit yet",
    "date": "2026-08-13",
    "homes": 99,
    "bbls": [
@@ -1753,8 +1307,8 @@
    "key": "3001920032",
    "title": "546 Pacific Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-11",
+   "status": "Filed 2026-07, no building permit yet",
+   "date": "2026-07-29",
    "homes": 99,
    "bbls": [
     "3001920032"
@@ -1770,30 +1324,10 @@
   },
   {
    "source": "building",
-   "key": "3030500008",
-   "title": "64 Meserole Street: new building, 99 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-10",
-   "homes": 99,
-   "bbls": [
-    "3030500008"
-   ],
-   "lat": 40.707654,
-   "lng": -73.947621,
-   "address": "64 Meserole Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3050/8",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.99
-  },
-  {
-   "source": "building",
    "key": "3026980007",
    "title": "488 Leonard Street: new building, 96 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-08, no building permit yet",
    "date": "2026-08-27",
    "homes": 96,
    "bbls": [
@@ -1810,151 +1344,11 @@
   },
   {
    "source": "building",
-   "key": "3020200001",
-   "title": "609 Classon Avenue: new building, 96 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-31",
-   "homes": 96,
-   "bbls": [
-    "3020200001"
-   ],
-   "lat": 40.679768,
-   "lng": -73.95794,
-   "address": "609 Classon Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2020/1",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.96
-  },
-  {
-   "source": "building",
-   "key": "3015800010",
-   "title": "57 Marcus Garvey Boulevard: new building, 190 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-12-11",
-   "homes": 190,
-   "bbls": [
-    "3015800010"
-   ],
-   "lat": 40.697473,
-   "lng": -73.940921,
-   "address": "57 Marcus Garvey Boulevard",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1580/10",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.9
-  },
-  {
-   "source": "building",
-   "key": "3029220001",
-   "title": "819 Grand Street: new building, 187 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-23",
-   "homes": 187,
-   "bbls": [
-    "3029220001"
-   ],
-   "lat": 40.71205,
-   "lng": -73.94036,
-   "address": "819 Grand Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2922/1",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.87
-  },
-  {
-   "source": "building",
-   "key": "3027800001",
-   "title": "597 Grand Street: new building, 185 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-04-23",
-   "homes": 185,
-   "bbls": [
-    "3027800001"
-   ],
-   "lat": 40.711255,
-   "lng": -73.948069,
-   "address": "597 Grand Street (lot record, unconfirmed)",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2780/1",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.85
-  },
-  {
-   "source": "building",
-   "key": "3018540038",
-   "title": "484 Tompkins Avenue: new building, 80 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-04",
-   "homes": 80,
-   "bbls": [
-    "3018540038"
-   ],
-   "lat": 40.680561,
-   "lng": -73.94337,
-   "address": "484 Tompkins Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1854/38",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.8
-  },
-  {
-   "source": "building",
-   "key": "3015840039",
-   "title": "1111 Myrtle Avenue: new building, 77 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-25",
-   "homes": 77,
-   "bbls": [
-    "3015840039"
-   ],
-   "lat": 40.696787,
-   "lng": -73.937016,
-   "address": "1111 Myrtle Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1584/39",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.77
-  },
-  {
-   "source": "building",
-   "key": "3002760047",
-   "title": "120 Court Street: new building, 75 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-24",
-   "homes": 75,
-   "bbls": [
-    "3002760047"
-   ],
-   "lat": 40.689989,
-   "lng": -73.992233,
-   "address": "120 Court Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/276/47",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.75
-  },
-  {
-   "source": "building",
    "key": "3031090004",
    "title": "387 Bushwick Avenue: new building, 75 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-25",
+   "status": "Under construction: permit 2026-09, filed 2026-03",
+   "date": "2026-09-02",
    "homes": 75,
    "bbls": [
     "3031090004"
@@ -1970,91 +1364,11 @@
   },
   {
    "source": "building",
-   "key": "3030760018",
-   "title": "265 Lorimer Street: new building, 270 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2024-11-13",
-   "homes": 270,
-   "bbls": [
-    "3030760018"
-   ],
-   "lat": 40.705365,
-   "lng": -73.948568,
-   "address": "265 Lorimer Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3076/18",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.7
-  },
-  {
-   "source": "building",
-   "key": "3027610021",
-   "title": "554 Metropolitan Avenue: new building, 70 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-18",
-   "homes": 70,
-   "bbls": [
-    "3027610021"
-   ],
-   "lat": 40.714058,
-   "lng": -73.950498,
-   "address": "554 Metropolitan Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2761/21",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.7
-  },
-  {
-   "source": "building",
-   "key": "3027810036",
-   "title": "643 Grand Street: new building, 69 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-20",
-   "homes": 69,
-   "bbls": [
-    "3027810036"
-   ],
-   "lat": 40.711394,
-   "lng": -73.946594,
-   "address": "643 Grand Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2781/36",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.69
-  },
-  {
-   "source": "building",
-   "key": "3024820009",
-   "title": "19 Clay Street: new building, 68 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-24",
-   "homes": 68,
-   "bbls": [
-    "3024820009"
-   ],
-   "lat": 40.73639,
-   "lng": -73.957403,
-   "address": "19 Clay Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2482/9",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.68
-  },
-  {
-   "source": "building",
    "key": "3030910063",
    "title": "235 Seigel Street: new building, 67 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-16",
+   "status": "Filed 2026-07, no building permit yet",
+   "date": "2026-07-13",
    "homes": 67,
    "bbls": [
     "3030910063"
@@ -2070,51 +1384,11 @@
   },
   {
    "source": "building",
-   "key": "3033140070",
-   "title": "111 Grove Street: new building, 60 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-27",
-   "homes": 60,
-   "bbls": [
-    "3033140070"
-   ],
-   "lat": 40.693604,
-   "lng": -73.920381,
-   "address": "111 Grove Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3314/70",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.6
-  },
-  {
-   "source": "building",
-   "key": "3031380032",
-   "title": "460 Bushwick Avenue: new building, 59 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-07-24",
-   "homes": 59,
-   "bbls": [
-    "3031380032"
-   ],
-   "lat": 40.701733,
-   "lng": -73.936918,
-   "address": "460 Bushwick Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3138/32",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.59
-  },
-  {
-   "source": "building",
    "key": "3001460002",
    "title": "245 Duffield Street: new building, 158 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-18",
+   "status": "Filed 2025-12, no building permit yet",
+   "date": "2025-12-19",
    "homes": 158,
    "bbls": [
     "3001460002"
@@ -2130,188 +1404,83 @@
   },
   {
    "source": "building",
-   "key": "3033730057",
-   "title": "11 Cornelia Street: new building, 56 homes",
+   "key": "3014810039",
+   "title": "10 Howard Avenue: new building, 55 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-02",
-   "homes": 56,
+   "status": "Under construction: permit 2026-09, filed 2026-03",
+   "date": "2026-09-14",
+   "homes": 55,
    "bbls": [
-    "3033730057"
+    "3014810039"
    ],
-   "lat": 40.687764,
-   "lng": -73.917911,
-   "address": "11 Cornelia Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3373/57",
+   "lat": 40.688444,
+   "lng": -73.921108,
+   "address": "10 Howard Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/1481/39",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 2.56
+   "score": 2.55
   },
   {
    "source": "building",
-   "key": "3032770012",
-   "title": "219 Harman Street: new building, 53 homes",
+   "key": "3030410025",
+   "title": "73 Meserole Street: new building, 149 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-09-17",
-   "homes": 53,
+   "status": "Under construction: permit 2026-05, filed 2025-07",
+   "date": "2026-05-08",
+   "homes": 149,
    "bbls": [
-    "3032770012"
+    "3030410025"
    ],
-   "lat": 40.69832,
-   "lng": -73.92044,
-   "address": "219 Harman Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3277/12",
+   "lat": 40.707711,
+   "lng": -73.947192,
+   "address": "73 Meserole Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3041/25",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 2.53
+   "score": 2.49
   },
   {
    "source": "building",
-   "key": "3032320005",
-   "title": "60 Cedar Street: new building, 139 homes",
+   "key": "3002440001",
+   "title": "205 Montague Street: new building, 136 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-12-24",
-   "homes": 139,
-   "bbls": [
-    "3032320005"
-   ],
-   "lat": 40.69721,
-   "lng": -73.927329,
-   "address": "60 Cedar Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3232/5",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.39
-  },
-  {
-   "source": "building",
-   "key": "3025890001",
-   "title": "69 Quay Street: new building, 132 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-11-12",
-   "homes": 132,
-   "bbls": [
-    "3025890001"
-   ],
-   "lat": 40.726215,
-   "lng": -73.958437,
-   "address": "69 Quay Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2589/1",
-   "active": true,
-   "on_map": null,
-   "near": "monitor-point",
-   "score": 2.32
-  },
-  {
-   "source": "building",
-   "key": "3000520004",
-   "title": "69 Adams Street: new building, 231 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-04-28",
-   "homes": 231,
-   "bbls": [
-    "3000520004"
-   ],
-   "lat": 40.702354,
-   "lng": -73.988538,
-   "address": "69 Adams Street (lot record, unconfirmed)",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/52/4",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.31
-  },
-  {
-   "source": "building",
-   "key": "3000550020",
-   "title": "218 Front Street: new building, 218 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-03-31",
-   "homes": 218,
-   "bbls": [
-    "3000550020"
-   ],
-   "lat": 40.702309,
-   "lng": -73.983698,
-   "address": "218 Front Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/55/20",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 2.18
-  },
-  {
-   "source": "zoning",
-   "key": "2024K0373",
-   "title": "1289 Atlantic Avenue ZFA Certification",
-   "summary": "An easement certification pursuant to ZR Section 66-21, to facilitate a new 14-story, approximately 162,494 square foot mixed-use building with 112 dwelling units and a clear path easement, at 1289 Atlantic Avenue in Bedford-Stuyvesant, Community District 3, Brooklyn.",
-   "status": "Completed",
+   "status": "Under construction: permit 2026-05, filed 2024-03",
    "date": "2026-05-20",
-   "homes": 112,
+   "homes": 136,
    "bbls": [
-    "3018670062",
-    "3018670068",
-    "3018670063",
-    "3018670064",
-    "3018670065",
-    "3018670066"
+    "3002440001"
    ],
-   "lat": 40.6785228,
-   "lng": -73.9471789,
-   "address": "1313 Atlantic Avenue; 1289 Atlantic Avenue; 1305 Atlantic Avenue (+3 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2024K0373",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 2.12
-  },
-  {
-   "source": "building",
-   "key": "3017787502",
-   "title": "77 Kosciuszko Street: new building, 110 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-04-16",
-   "homes": 110,
-   "bbls": [
-    "3017787502"
-   ],
-   "lat": 40.690523,
-   "lng": -73.952337,
-   "address": "77 Kosciuszko Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1778/7502",
+   "lat": 40.693914,
+   "lng": -73.991107,
+   "address": "205 Montague Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/244/1",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 2.1
+   "score": 2.36
   },
   {
    "source": "building",
-   "key": "3020340135",
-   "title": "96 St Edward'S Street: new building, 105 homes",
+   "key": "3001210033",
+   "title": "236 Gold Street: new building, 117 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-10-20",
-   "homes": 105,
+   "status": "Under construction: permit 2026-01, filed 2025-04",
+   "date": "2026-01-27",
+   "homes": 117,
    "bbls": [
-    "3020340135"
+    "3001210033"
    ],
-   "lat": 40.694167,
-   "lng": -73.977977,
-   "address": "96 St Edward'S Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2034/135",
+   "lat": 40.697124,
+   "lng": -73.983155,
+   "address": "236 Gold Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/121/33",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 2.05
+   "score": 2.17
   },
   {
    "source": "park",
@@ -3182,7 +2351,7 @@
    "key": "3020200089",
    "title": "1029 Atlantic Avenue: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-06, no building permit yet",
    "date": "2026-06-10",
    "homes": 99,
    "bbls": [
@@ -3202,7 +2371,7 @@
    "key": "3020200086",
    "title": "1035 Atlantic Avenue: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-06, no building permit yet",
    "date": "2026-06-10",
    "homes": 99,
    "bbls": [
@@ -3222,7 +2391,7 @@
    "key": "3024560032",
    "title": "111 South 6 Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-03, no building permit yet",
    "date": "2026-03-28",
    "homes": 99,
    "bbls": [
@@ -3242,7 +2411,7 @@
    "key": "3016080027",
    "title": "1150 B'Way: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-03, no building permit yet",
    "date": "2026-03-31",
    "homes": 99,
    "bbls": [
@@ -3259,19 +2428,19 @@
   },
   {
    "source": "building",
-   "key": "3020030019",
-   "title": "151 South Elliott Place: new building, 99 homes",
+   "key": "3031830071",
+   "title": "21 Charles Place: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-05",
+   "status": "Under construction: permit 2026-03, filed 2025-11",
+   "date": "2026-03-06",
    "homes": 99,
    "bbls": [
-    "3020030019"
+    "3031830071"
    ],
-   "lat": 40.684881,
-   "lng": -73.975125,
-   "address": "151 South Elliott Place",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2003/19",
+   "lat": 40.697918,
+   "lng": -73.93175,
+   "address": "21 Charles Place",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3183/71",
    "active": true,
    "on_map": null,
    "near": null,
@@ -3282,8 +2451,8 @@
    "key": "3003880020",
    "title": "280 Bergen Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-25",
+   "status": "Under construction: permit 2025-12, filed 2025-02",
+   "date": "2025-12-30",
    "homes": 99,
    "bbls": [
     "3003880020"
@@ -3299,11 +2468,31 @@
   },
   {
    "source": "building",
+   "key": "3023150133",
+   "title": "285 North    8 Street: new building, 99 homes",
+   "summary": "",
+   "status": "Under construction: permit 2026-03, filed 2025-04",
+   "date": "2026-03-24",
+   "homes": 99,
+   "bbls": [
+    "3023150133"
+   ],
+   "lat": 40.715591,
+   "lng": -73.952625,
+   "address": "285 North    8 Street (lot record, unconfirmed)",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2315/133",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.99
+  },
+  {
+   "source": "building",
    "key": "3003880019",
    "title": "290 Wyckoff Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-05-13",
+   "status": "Under construction: permit 2025-10, filed 2025-02",
+   "date": "2025-10-28",
    "homes": 99,
    "bbls": [
     "3003880019"
@@ -3322,7 +2511,7 @@
    "key": "3001640001",
    "title": "45 Smith Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-02, no building permit yet",
    "date": "2026-02-03",
    "homes": 99,
    "bbls": [
@@ -3339,19 +2528,19 @@
   },
   {
    "source": "building",
-   "key": "3001640040",
-   "title": "48 Hoyt Street: new building, 99 homes",
+   "key": "3030500008",
+   "title": "64 Meserole Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-09",
+   "status": "Under construction: permit 2026-04, filed 2026-02",
+   "date": "2026-04-24",
    "homes": 99,
    "bbls": [
-    "3001640040"
+    "3030500008"
    ],
-   "lat": 40.689162,
-   "lng": -73.986071,
-   "address": "48 Hoyt Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/164/40",
+   "lat": 40.707654,
+   "lng": -73.947621,
+   "address": "64 Meserole Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3050/8",
    "active": true,
    "on_map": null,
    "near": null,
@@ -3362,7 +2551,7 @@
    "key": "3016080034",
    "title": "1164 B'Way: new building, 98 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
+   "status": "Filed 2026-03, no building permit yet",
    "date": "2026-03-31",
    "homes": 98,
    "bbls": [
@@ -3379,11 +2568,71 @@
   },
   {
    "source": "building",
+   "key": "3020200001",
+   "title": "609 Classon Avenue: new building, 96 homes",
+   "summary": "",
+   "status": "Filed 2026-03, no building permit yet",
+   "date": "2026-03-23",
+   "homes": 96,
+   "bbls": [
+    "3020200001"
+   ],
+   "lat": 40.679768,
+   "lng": -73.95794,
+   "address": "609 Classon Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2020/1",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.96
+  },
+  {
+   "source": "building",
+   "key": "3021070002",
+   "title": "95 Rockwell Place: new building, 190 homes",
+   "summary": "",
+   "status": "Under construction: permit 2025-06, filed 2024-11",
+   "date": "2025-06-10",
+   "homes": 190,
+   "bbls": [
+    "3021070002"
+   ],
+   "lat": 40.687306,
+   "lng": -73.979133,
+   "address": "95 Rockwell Place",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2107/2",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.9
+  },
+  {
+   "source": "building",
+   "key": "3029220001",
+   "title": "819 Grand Street: new building, 187 homes",
+   "summary": "",
+   "status": "Filed 2025-09, no building permit yet",
+   "date": "2025-09-02",
+   "homes": 187,
+   "bbls": [
+    "3029220001"
+   ],
+   "lat": 40.71205,
+   "lng": -73.94036,
+   "address": "819 Grand Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2922/1",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.87
+  },
+  {
+   "source": "building",
    "key": "3016210076",
    "title": "703 Lexington Avenue: new building, 85 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-27",
+   "status": "Filed 2026-03, no building permit yet",
+   "date": "2026-03-26",
    "homes": 85,
    "bbls": [
     "3016210076"
@@ -3399,19 +2648,59 @@
   },
   {
    "source": "building",
-   "key": "3032700024",
-   "title": "343 Himrod Street: new building, 75 homes",
+   "key": "3018540038",
+   "title": "484 Tompkins Avenue: new building, 80 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-20",
+   "status": "Under construction: permit 2026-06, filed 2025-06",
+   "date": "2026-06-11",
+   "homes": 80,
+   "bbls": [
+    "3018540038"
+   ],
+   "lat": 40.680561,
+   "lng": -73.94337,
+   "address": "484 Tompkins Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/1854/38",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.8
+  },
+  {
+   "source": "building",
+   "key": "3015840039",
+   "title": "1111 Myrtle Avenue: new building, 77 homes",
+   "summary": "",
+   "status": "Filed 2026-01, no building permit yet",
+   "date": "2026-01-27",
+   "homes": 77,
+   "bbls": [
+    "3015840039"
+   ],
+   "lat": 40.696787,
+   "lng": -73.937016,
+   "address": "1111 Myrtle Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/1584/39",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.77
+  },
+  {
+   "source": "building",
+   "key": "3002760047",
+   "title": "120 Court Street: new building, 75 homes",
+   "summary": "",
+   "status": "Filed 2026-03, no building permit yet",
+   "date": "2026-03-30",
    "homes": 75,
    "bbls": [
-    "3032700024"
+    "3002760047"
    ],
-   "lat": 40.702473,
-   "lng": -73.917535,
-   "address": "343 Himrod Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/3270/24",
+   "lat": 40.689989,
+   "lng": -73.992233,
+   "address": "120 Court Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/276/47",
    "active": true,
    "on_map": null,
    "near": null,
@@ -3419,113 +2708,111 @@
   },
   {
    "source": "building",
-   "key": "3025760007",
-   "title": "237 Mcguinness Boulevard: new building, 70 homes",
+   "key": "3027610021",
+   "title": "554 Metropolitan Avenue: new building, 70 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-03-05",
+   "status": "Filed 2026-01, no building permit yet",
+   "date": "2026-01-08",
    "homes": 70,
    "bbls": [
-    "3025760007"
+    "3027610021"
    ],
-   "lat": 40.730107,
-   "lng": -73.951295,
-   "address": "237 Mcguinness Boulevard",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2576/7",
+   "lat": 40.714058,
+   "lng": -73.950498,
+   "address": "554 Metropolitan Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2761/21",
    "active": true,
    "on_map": null,
-   "near": "mcguinness-blvd",
+   "near": null,
    "score": 1.7
   },
   {
-   "source": "zoning",
-   "key": "2025K0355",
-   "title": "639 Grand Street FRESH Cert",
-   "summary": "A FRESH Certification to facilitate a new mixed use eleven-story, 53,000 square-foot development with 66 units and approximately 7,900 square feet of floor area for a FRESH food store, is being sought by a private applicant at 639 Grand Street in Williamsburg, Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2026-05-21",
-   "homes": 66,
+   "source": "building",
+   "key": "3027810036",
+   "title": "643 Grand Street: new building, 69 homes",
+   "summary": "",
+   "status": "Under construction: permit 2026-03, filed 2025-08",
+   "date": "2026-03-24",
+   "homes": 69,
    "bbls": [
-    "3027810036",
-    "3027810012",
-    "3027810011"
+    "3027810036"
    ],
-   "lat": 40.71163,
-   "lng": -73.9466224,
-   "address": "639 Grand Street; 106 Powers Street; 104 Powers Street",
-   "link": "https://zap.planning.nyc.gov/projects/2025K0355",
-   "active": false,
+   "lat": 40.711394,
+   "lng": -73.946594,
+   "address": "643 Grand Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2781/36",
+   "active": true,
    "on_map": null,
    "near": null,
-   "score": 1.66
+   "score": 1.69
   },
   {
    "source": "building",
-   "key": "3020730021",
-   "title": "151 Carlton Avenue: new building, 63 homes",
+   "key": "3024820009",
+   "title": "19 Clay Street: new building, 68 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-01-13",
-   "homes": 63,
+   "status": "Under construction: permit 2026-02, filed 2025-09",
+   "date": "2026-02-19",
+   "homes": 68,
    "bbls": [
-    "3020730021"
+    "3024820009"
    ],
-   "lat": 40.692972,
-   "lng": -73.972796,
-   "address": "151 Carlton Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2073/21",
+   "lat": 40.73639,
+   "lng": -73.957403,
+   "address": "19 Clay Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/2482/9",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 1.63
-  },
-  {
-   "source": "zoning",
-   "key": "2026K0240",
-   "title": "6 Howard Avenue FRESH Cancellation",
-   "summary": "An application for Legal Document action to cancel a FRESH Restrictive Declaration pursuant to ZR 63-40 is being sought by Merrick Capital Corp., a private applicant, to facilitate the construction of a new 8-story residential building comprising 40,031 square feet of floor area and 57 dwelling units, including 15 affordable units, at 6 Howard Avenue, Block 1481, Lot 35, in Bedford-Stuyvesant, Com",
-   "status": "Completed",
-   "date": "2026-03-31",
-   "homes": 57,
-   "bbls": [
-    "3014810035"
-   ],
-   "lat": 40.6886117,
-   "lng": -73.921436,
-   "address": "862 John Steptoe Place",
-   "link": "https://zap.planning.nyc.gov/projects/2026K0240",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 1.57
+   "score": 1.68
   },
   {
    "source": "building",
-   "key": "3014810039",
-   "title": "10 Howard Avenue: new building, 55 homes",
+   "key": "3033140070",
+   "title": "111 Grove Street: new building, 60 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-10",
-   "homes": 55,
+   "status": "Filed 2026-05, no building permit yet",
+   "date": "2026-05-06",
+   "homes": 60,
    "bbls": [
-    "3014810039"
+    "3033140070"
    ],
-   "lat": 40.688444,
-   "lng": -73.921108,
-   "address": "10 Howard Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1481/39",
+   "lat": 40.693604,
+   "lng": -73.920381,
+   "address": "111 Grove Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3314/70",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 1.55
+   "score": 1.6
+  },
+  {
+   "source": "building",
+   "key": "3033730057",
+   "title": "11 Cornelia Street: new building, 56 homes",
+   "summary": "",
+   "status": "Filed 2026-02, no building permit yet",
+   "date": "2026-02-10",
+   "homes": 56,
+   "bbls": [
+    "3033730057"
+   ],
+   "lat": 40.687764,
+   "lng": -73.917911,
+   "address": "11 Cornelia Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3373/57",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 1.56
   },
   {
    "source": "building",
    "key": "3029220038",
    "title": "877 Grand Street: new building, 55 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-24",
+   "status": "Filed 2026-05, no building permit yet",
+   "date": "2026-05-04",
    "homes": 55,
    "bbls": [
     "3029220038"
@@ -3541,39 +2828,19 @@
   },
   {
    "source": "building",
-   "key": "3002710045",
-   "title": "88 Schermerhorn Street: new building, 55 homes",
+   "key": "3032770012",
+   "title": "219 Harman Street: new building, 53 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-05-27",
-   "homes": 55,
-   "bbls": [
-    "3002710045"
-   ],
-   "lat": 40.690562,
-   "lng": -73.990408,
-   "address": "88 Schermerhorn Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/271/45",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 1.55
-  },
-  {
-   "source": "building",
-   "key": "3018850014",
-   "title": "32 Skillman Street: new building, 53 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-11-14",
+   "status": "Under construction: permit 2026-04, filed 2025-06",
+   "date": "2026-04-17",
    "homes": 53,
    "bbls": [
-    "3018850014"
+    "3032770012"
    ],
-   "lat": 40.697746,
-   "lng": -73.957752,
-   "address": "32 Skillman Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1885/14",
+   "lat": 40.69832,
+   "lng": -73.92044,
+   "address": "219 Harman Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3277/12",
    "active": true,
    "on_map": null,
    "near": null,
@@ -3584,8 +2851,8 @@
    "key": "3020960073",
    "title": "673 Fulton Street: new building, 53 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-08",
+   "status": "Filed 2025-12, no building permit yet",
+   "date": "2025-12-18",
    "homes": 53,
    "bbls": [
     "3020960073"
@@ -3601,51 +2868,11 @@
   },
   {
    "source": "building",
-   "key": "3015790010",
-   "title": "861 Park Avenue: new building, 50 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-06-03",
-   "homes": 50,
-   "bbls": [
-    "3015790010"
-   ],
-   "lat": 40.698598,
-   "lng": -73.94074,
-   "address": "861 Park Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1579/10",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 1.5
-  },
-  {
-   "source": "building",
-   "key": "3001510037",
-   "title": "150 Lawrence Street: new building, 110 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-09-26",
-   "homes": 110,
-   "bbls": [
-    "3001510037"
-   ],
-   "lat": 40.691825,
-   "lng": -73.986301,
-   "address": "150 Lawrence Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/151/37",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 1.1
-  },
-  {
-   "source": "building",
    "key": "3025700005",
    "title": "3 West Street: new building, 106 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2024-04-12",
+   "status": "Filed 2024-02, no building permit yet",
+   "date": "2024-02-15",
    "homes": 106,
    "bbls": [
     "3025700005"
@@ -3661,115 +2888,11 @@
   },
   {
    "source": "building",
-   "key": "3001987503",
-   "title": "323 Bergen Street: new building, 105 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-06-16",
-   "homes": 105,
-   "bbls": [
-    "3001987503"
-   ],
-   "lat": 40.682967,
-   "lng": -73.980808,
-   "address": "323 Bergen Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/198/7503",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 1.05
-  },
-  {
-   "source": "zoning",
-   "key": "2025K0408",
-   "title": "1200 Manhattan Ave Waterfront Cert",
-   "summary": "A certification pursuant to 62-811 for the development of a new training-facility for the NY Liberty is being sought by NY Liberty at 1200 Manhattan Avenue in the Greenpoint neighborhood of Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-11-22",
-   "homes": null,
-   "bbls": [
-    "3024770002",
-    "3024770001"
-   ],
-   "lat": 40.7386803,
-   "lng": -73.9547705,
-   "address": "1200 Manhattan Avenue; 1164 Manhattan Avenue",
-   "link": "https://zap.planning.nyc.gov/projects/2025K0408",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 1.0
-  },
-  {
-   "source": "zoning",
-   "key": "2026K0202",
-   "title": "130 St. Felix Special Permit Renewal",
-   "summary": "A private application to renew a special permit pursuant to ZR Section 101-82 (C 210281 ZSK) to facilitate a new 23-story, approximately 146,800-zsf mixed-use development with approximately 120 residences, including permanently affordable housing, at 130 St. Felix Street in Downtown Brooklyn, Community District 2.",
-   "status": "Completed",
-   "date": "2026-02-12",
-   "homes": null,
-   "bbls": [
-    "3021117501",
-    "3021110040",
-    "3021110037"
-   ],
-   "lat": 40.68551,
-   "lng": -73.9777242,
-   "address": "1 Hanson Place; 130 St Felix Street; 126 St Felix Street",
-   "link": "https://zap.planning.nyc.gov/projects/2026K0202",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 1.0
-  },
-  {
-   "source": "zoning",
-   "key": "2025K0117",
-   "title": "242 Seigel Street Bulk Authorization",
-   "summary": "A zoning authorization pursuant to ZR 75-21 to facilitate a new six-story, approximately 215,000 sf development, including sound stages and mill is being sought by a private applicant, Bungalow Projects, at 242 Seigel Street, in the Williamsburg neighborhood of Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-10-27",
-   "homes": null,
-   "bbls": [
-    "3031000022"
-   ],
-   "lat": 40.70473,
-   "lng": -73.9364282,
-   "address": "215 Moore Street",
-   "link": "https://zap.planning.nyc.gov/projects/2025K0117",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 1.0
-  },
-  {
-   "source": "zoning",
-   "key": "2025K0132",
-   "title": "90 Sands Plaza - Design Change Certification",
-   "summary": "A Certification pursuant to ZR 37-625 (Design Changes) in connection with an existing 7,600-sf plaza is being requested by a private applicant, 90 Sands Street Housing Development Fund Corp. at 90 Sands Street, in the DUMBO neighborhood, Community District 2, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-12-04",
-   "homes": null,
-   "bbls": [
-    "3000870005",
-    "3000870009"
-   ],
-   "lat": 40.6995977,
-   "lng": -73.987529,
-   "address": "175 Pearl Street; 90 Sands Street",
-   "link": "https://zap.planning.nyc.gov/projects/2025K0132",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 1.0
-  },
-  {
-   "source": "building",
    "key": "3020580040",
    "title": "188 Duffield Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-08-25",
+   "status": "Filed 2024-07, no building permit yet",
+   "date": "2024-07-10",
    "homes": 99,
    "bbls": [
     "3020580040"
@@ -3785,31 +2908,71 @@
   },
   {
    "source": "building",
-   "key": "3017140030",
-   "title": "1889 Atlantic Avenue: new building, 89 homes",
+   "key": "3001670022",
+   "title": "370 Livingston Street: new building, 99 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2024-07-16",
-   "homes": 89,
+   "status": "Under construction: permit 2025-04, filed 2024-12",
+   "date": "2025-04-21",
+   "homes": 99,
    "bbls": [
-    "3017140030"
+    "3001670022"
    ],
-   "lat": 40.676994,
-   "lng": -73.922708,
-   "address": "1889 Atlantic Avenue",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/1714/30",
+   "lat": 40.687644,
+   "lng": -73.980641,
+   "address": "370 Livingston Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/167/22",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 0.89
+   "score": 0.99
+  },
+  {
+   "source": "building",
+   "key": "3001670016",
+   "title": "372 Livingston Street: new building, 99 homes",
+   "summary": "",
+   "status": "Under construction: permit 2025-04, filed 2024-11",
+   "date": "2025-04-21",
+   "homes": 99,
+   "bbls": [
+    "3001670016"
+   ],
+   "lat": 40.687696,
+   "lng": -73.980778,
+   "address": "372 Livingston Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/167/16",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 0.99
+  },
+  {
+   "source": "building",
+   "key": "3001640040",
+   "title": "48 Hoyt Street: new building, 99 homes",
+   "summary": "",
+   "status": "Filed 2024-12, no building permit yet",
+   "date": "2024-12-05",
+   "homes": 99,
+   "bbls": [
+    "3001640040"
+   ],
+   "lat": 40.689162,
+   "lng": -73.986071,
+   "address": "48 Hoyt Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/164/40",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 0.99
   },
   {
    "source": "building",
    "key": "3016290001",
    "title": "281 Marcus Garvey Boulevard: new building, 86 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-05-09",
+   "status": "Filed 2025-02, no building permit yet",
+   "date": "2025-02-04",
    "homes": 86,
    "bbls": [
     "3016290001"
@@ -3828,8 +2991,8 @@
    "key": "3016340001",
    "title": "311 Marcus Garvey Boulevard: new building, 69 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-05-20",
+   "status": "Filed 2025-02, no building permit yet",
+   "date": "2025-02-04",
    "homes": 69,
    "bbls": [
     "3016340001"
@@ -3845,11 +3008,31 @@
   },
   {
    "source": "building",
+   "key": "3031380032",
+   "title": "460 Bushwick Avenue: new building, 59 homes",
+   "summary": "",
+   "status": "Under construction: permit 2025-07, filed 2025-04",
+   "date": "2025-07-07",
+   "homes": 59,
+   "bbls": [
+    "3031380032"
+   ],
+   "lat": 40.701733,
+   "lng": -73.936918,
+   "address": "460 Bushwick Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/3138/32",
+   "active": true,
+   "on_map": null,
+   "near": null,
+   "score": 0.59
+  },
+  {
+   "source": "building",
    "key": "3023780014",
    "title": "62 North 1 Street: new building, 56 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-06-25",
+   "status": "Filed 2025-01, no building permit yet",
+   "date": "2025-01-31",
    "homes": 56,
    "bbls": [
     "3023780014"
@@ -3864,231 +3047,44 @@
    "score": 0.56
   },
   {
-   "source": "zoning",
-   "key": "2023K0128",
-   "title": "109 Marcus Garvey Boulevard LSGD",
-   "summary": "A Zoning Map Amendment from R6 & R6/C2-4 to R7A & R7A/C2-4, a Special Permit pursuant to Section 74 - 74 for a Large-scale General Development, and a Zoning Text Amendment to Appendix F (MIH), to facilitate a new 14-story, 177,311 zsf, 292 dwelling unit, residential development is being sought by Phoenix Realty Group LLC at 109 Marcus Garvey Blvd in Bedford-Stuyvesant, Community District 3, Brookl",
-   "status": "Completed",
-   "date": "2025-07-24",
-   "homes": null,
+   "source": "building",
+   "key": "3018850014",
+   "title": "32 Skillman Street: new building, 53 homes",
+   "summary": "",
+   "status": "Under construction: permit 2025-09, filed 2024-11",
+   "date": "2025-09-03",
+   "homes": 53,
    "bbls": [
-    "3015880001"
+    "3018850014"
    ],
-   "lat": 40.6953965,
-   "lng": -73.9391814,
-   "address": "721 Willoughby Avenue",
-   "link": "https://zap.planning.nyc.gov/projects/2023K0128",
+   "lat": 40.697746,
+   "lng": -73.957752,
+   "address": "32 Skillman Street",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/1885/14",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 0.0
+   "score": 0.53
   },
   {
-   "source": "zoning",
-   "key": "2023K0278",
-   "title": "14 Hooper St HOW Waiver",
-   "summary": "This is a private application requesting a certification pursuant to ZR Section 44-25 (Waiver for Locally-Oriented Houses of Worship) to waive the parking requirements at the existing Cong Yetev Lev Satmar Hooper at 14 Hooper Street in the South Williamsburg neighborhood of Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2024-02-06",
-   "homes": null,
+   "source": "building",
+   "key": "3015790010",
+   "title": "861 Park Avenue: new building, 50 homes",
+   "summary": "",
+   "status": "Filed 2025-01, no building permit yet",
+   "date": "2025-01-29",
+   "homes": 50,
    "bbls": [
-    "3022030007"
+    "3015790010"
    ],
-   "lat": 40.7010772,
-   "lng": -73.9626618,
-   "address": "675 Kent Avenue",
-   "link": "https://zap.planning.nyc.gov/projects/2023K0278",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2020K0444",
-   "title": "20 Berry Street",
-   "summary": "A zoning map amendment from M1-1 to M1-2, a zoning text amendment pursuant to ZR 74-94, and zoning special permits pursuant to Section 74-962 and 74-963 to facilitate a new 192,000 sf commercial and industrial building with publicly accessible open space at 20 Berry Street sought by private application by Mihata Corp. in the Williamsburg neighborhood of Brooklyn, Community District 1.",
-   "status": "Completed",
-   "date": "2025-09-15",
-   "homes": null,
-   "bbls": [
-    "3022830028",
-    "3022830035",
-    "3022830025",
-    "3022830031",
-    "3022830043",
-    "3022830033",
-    "3022830038",
-    "3022830041"
-   ],
-   "lat": 40.7220503,
-   "lng": -73.9560625,
-   "address": "120 North 13 Street (lot record, unconfirmed); 28 Berry Street; 132 North 13 Street (lot record, unconfirmed) (+5 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2020K0444",
+   "lat": 40.698598,
+   "lng": -73.94074,
+   "address": "861 Park Avenue",
+   "link": "https://zola.planning.nyc.gov/l/lot/3/1579/10",
    "active": true,
    "on_map": null,
    "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2023K0195",
-   "title": "218 Front St. FRESH STORE",
-   "summary": "A private application for a Certification pursuant to ZR 63-30 to facilitate a new FRESH Food Store (11,290 sf) is being sought by Chess Builders, LLC. at 218 Front St. in Vinegar Hill/DUMBO, Community District 2, Brooklyn.",
-   "status": "Completed",
-   "date": "2024-11-18",
-   "homes": null,
-   "bbls": [
-    "3000550020"
-   ],
-   "lat": 40.7018753,
-   "lng": -73.9837417,
-   "address": "218 Front Street",
-   "link": "https://zap.planning.nyc.gov/projects/2023K0195",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2021K0145",
-   "title": "281-311 Marcus Garvey Blvd.",
-   "summary": "This is a private application by the Omni New York LLC, for a Zoning Map Amendment from R6B, R6A, R6B/C2-4, R6A/C2-4 to R7A/C2-4, Zoning Text Amendment to map MIH, a City Planning Commission Special Permit for a Large-Scale General Development and the reduction of existing parking to facilitate the development of two-mixed-use buildings at 281-311 Marcus Garvey Blvd., Bedford-Stuyvesant, Community",
-   "status": "Completed",
-   "date": "2024-05-22",
-   "homes": null,
-   "bbls": [
-    "3016290001",
-    "3016340001",
-    "3016340079"
-   ],
-   "lat": 40.6879766,
-   "lng": -73.9377026,
-   "address": "281 Marcus Garvey Boulevard; 311 Marcus Garvey Boulevard; 467 Monroe Street",
-   "link": "https://zap.planning.nyc.gov/projects/2021K0145",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2023K0435",
-   "title": "343 Gold Street Plaza Reduction Certification",
-   "summary": "Chairperson Certifications pursuant to ZR 37-621 to facilitate the reduction of approximately 200-sf of non-bonused plaza area and a Certification pursuant to ZR Section 37-625 (Design changes) for an existing approximately 18,600 sf plaza located at 343 Gold Street is being sought by a private applicant in the Downtown Brooklyn neighborhood of Community District 2, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-07-11",
-   "homes": null,
-   "bbls": [
-    "3020490002",
-    "3020490008"
-   ],
-   "lat": 40.6940773,
-   "lng": -73.9828853,
-   "address": "343 Gold Street; 325 Gold Street",
-   "link": "https://zap.planning.nyc.gov/projects/2023K0435",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2022K0281",
-   "title": "625 Fulton Street FRESH Certification",
-   "summary": "A private application for a Certification pursuant to ZR 63-30 to facilitate a new, approximately 20000-sf FRESH food store in a 764,000-sf as-of-right mixed-use development,  is being sought by The Rabsky Group at 625 Fulton Street in Downtown Brooklyn, CD 2, Brooklyn.",
-   "status": "Completed",
-   "date": "2024-06-24",
-   "homes": null,
-   "bbls": [
-    "3020940010",
-    "3020940008",
-    "3020940001"
-   ],
-   "lat": 40.6896907,
-   "lng": -73.9799765,
-   "address": "80 Dekalb Avenue; 12 Rockwell Place; 625 Fulton Street",
-   "link": "https://zap.planning.nyc.gov/projects/2022K0281",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2024K0329",
-   "title": "Domino Fourth RD Modification",
-   "summary": "Two Trees Management is proposing a fourth modification the RD for the approved Large Scale General Development of the Domino Sugar Factory, located in Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-04-16",
-   "homes": null,
-   "bbls": [
-    "3024147502",
-    "3024140001",
-    "3024147501",
-    "3024140003",
-    "3024140025",
-    "3024140026",
-    "3024287502"
-   ],
-   "lat": 40.7131063,
-   "lng": -73.9679359,
-   "address": "346 Kent Avenue; 270 Kent Avenue; 266 Kent Avenue (+4 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2024K0329",
-   "active": true,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2022K0237",
-   "title": "Greenpoint Landing 5A Zoning Lot Subdivision Cert",
-   "summary": "A Zoning Certification pursuant to 62-812 to subdivide a zoning lot is being sought by BOP Greenpoint for Greenpoint Landing Parcel 5A in Greenpoint, Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-08-01",
-   "homes": null,
-   "bbls": [
-    "3024727502",
-    "3024720090",
-    "3024727501",
-    "3024720080",
-    "3024720055",
-    "3024720050",
-    "3024720200",
-    "3024720475",
-    "3024720045",
-    "3024727504",
-    "3024720210",
-    "3024727503"
-   ],
-   "lat": 40.7360691,
-   "lng": -73.9594415,
-   "address": "5 Blue Slip; Greenpoint Landing, Brooklyn, Kings County, Ny, Usa; 21 Commercial Street (+9 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2022K0237",
-   "active": false,
-   "on_map": null,
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2021K0396",
-   "title": "River Ring City Map Change",
-   "summary": "A City Map change proposing the elimination discontinuance and closing of Metropolitan Avenue between River Street and the US Pierhead Line and a portion of North 1st Street between River Street and the US Pierhead Line.",
-   "status": "Completed",
-   "date": "2021-12-21",
-   "homes": null,
-   "bbls": [],
-   "lat": null,
-   "lng": null,
-   "address": null,
-   "link": "https://zap.planning.nyc.gov/projects/2021K0396",
-   "active": true,
-   "on_map": null,
-   "near": "river-ring",
-   "score": 0.0
+   "score": 0.5
   },
   {
    "source": "zoning",
@@ -4136,8 +3132,8 @@
    "key": "3025670001",
    "title": "37 Oak Street: new building, 792 homes",
    "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-06",
+   "status": "Filed 2025-11, no building permit yet",
+   "date": "2025-11-07",
    "homes": 792,
    "bbls": [
     "3025670001"
@@ -4149,7 +3145,7 @@
    "active": true,
    "on_map": "2-noble-street",
    "near": null,
-   "score": 9.92
+   "score": 8.92
   },
   {
    "source": "street",
@@ -4225,164 +3221,6 @@
    "on_map": "mcguinness-blvd",
    "near": null,
    "score": 4.0
-  },
-  {
-   "source": "building",
-   "key": "3022650022",
-   "title": "11 Gerry Street: new building, 120 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-08-12",
-   "homes": 120,
-   "bbls": [
-    "3022650022"
-   ],
-   "lat": 40.700235,
-   "lng": -73.949394,
-   "address": "11 Gerry Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2265/22",
-   "active": true,
-   "on_map": "broadway-triangle",
-   "near": null,
-   "score": 3.2
-  },
-  {
-   "source": "building",
-   "key": "3022657502",
-   "title": "342 Wallabout Street: new building, 60 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2026-05-26",
-   "homes": 60,
-   "bbls": [
-    "3022657502"
-   ],
-   "lat": 40.700691,
-   "lng": -73.948669,
-   "address": "342 Wallabout Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2265/7502",
-   "active": true,
-   "on_map": "broadway-triangle",
-   "near": null,
-   "score": 1.6
-  },
-  {
-   "source": "zoning",
-   "key": "2023K0411",
-   "title": "Eagle Street Demapping",
-   "summary": "The applicant, BOP Greenpoint D LLC, seeks the elimination of a portion of Eagle Street in Greenpoint, Community District 1, Brooklyn.",
-   "status": "Completed",
-   "date": "2025-12-19",
-   "homes": null,
-   "bbls": [
-    "3025020005",
-    "3024720004",
-    "3025020001",
-    "3025020007",
-    "3024720023",
-    "3024720006",
-    "3025020002",
-    "3024720030",
-    "3025020050"
-   ],
-   "lat": 40.7345353,
-   "lng": -73.9610121,
-   "address": "West Street (lot record, unconfirmed) (+6 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2023K0411",
-   "active": true,
-   "on_map": "greenpoint-landing-phase-2",
-   "near": null,
-   "score": 1.0
-  },
-  {
-   "source": "building",
-   "key": "3022657501",
-   "title": "352 Wallabout Street: new building, 58 homes",
-   "summary": "",
-   "status": "Filed with the Buildings Department",
-   "date": "2025-04-01",
-   "homes": 58,
-   "bbls": [
-    "3022657501"
-   ],
-   "lat": 40.700776,
-   "lng": -73.948535,
-   "address": "352 Wallabout Street",
-   "link": "https://zola.planning.nyc.gov/l/lot/3/2265/7501",
-   "active": true,
-   "on_map": "broadway-triangle",
-   "near": null,
-   "score": 0.58
-  },
-  {
-   "source": "zoning",
-   "key": "2025K0136",
-   "title": "77 Commercial RD Mod",
-   "summary": "A Chair minor modification to an existing restrictive declaration to remove the transfer of the WPAA to NYC Parks, as it will remain under applicant maintenance and ownership at 77 Commercial Street, in Greenpoint, CD1, Brooklyn.",
-   "status": "Completed",
-   "date": "2024-11-12",
-   "homes": null,
-   "bbls": [
-    "3024720410",
-    "3024720425"
-   ],
-   "lat": 40.7376879,
-   "lng": -73.9579033,
-   "address": "51 Commercial Street",
-   "link": "https://zap.planning.nyc.gov/projects/2025K0136",
-   "active": false,
-   "on_map": "box-street-park",
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2020K0443",
-   "title": "Greenpoint Landing Parcel 5c-2 Waterfront",
-   "summary": "Waterfront certifications and authorizations pursuant to ZR 62-811, ZR 62-822 (a) and ZR 62-822 (b) to facilitate a 95,283-square foot waterfront public access area to be constructed in connection with a new as-of-right mixed-use (primarily residential) development, being sought by a private applicant, Park Tower Group at the site known as Greenpoint Landing Parcel 5c-2 (Block 2502, Lot 1, Block 2",
-   "status": "Completed",
-   "date": "2024-03-08",
-   "homes": null,
-   "bbls": [
-    "3025020005",
-    "3025200057",
-    "3025020001",
-    "3025100001"
-   ],
-   "lat": 40.7345353,
-   "lng": -73.9610121,
-   "address": "West Street (lot record, unconfirmed); 171 West Street (+1 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2020K0443",
-   "active": false,
-   "on_map": "greenpoint-landing-phase-2",
-   "near": null,
-   "score": 0.0
-  },
-  {
-   "source": "zoning",
-   "key": "2024K0422",
-   "title": "Kingsland Commons RD Modification",
-   "summary": "Modification of a restrictive declaration to eliminate tying TCO to open space of another phase of the project",
-   "status": "Completed",
-   "date": "2024-07-17",
-   "homes": null,
-   "bbls": [
-    "3028850025",
-    "3028850032",
-    "3028850020",
-    "3028850035",
-    "3028850028",
-    "3028850001",
-    "3028850023"
-   ],
-   "lat": 40.7169456,
-   "lng": -73.9391545,
-   "address": "300 Skillman Avenue; 29 Debevoise Avenue; 28 Kingsland Avenue (+4 more lots)",
-   "link": "https://zap.planning.nyc.gov/projects/2024K0422",
-   "active": true,
-   "on_map": "greenpoint-hospital",
-   "near": null,
-   "score": 0.0
   }
  ]
 }

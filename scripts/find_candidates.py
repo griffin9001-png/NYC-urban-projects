@@ -39,6 +39,7 @@ NEWS_DAYS = 45
 MATCH_M = 75
 STREET_STALE_YEARS = 3   # DOT project pages this long without a dated update are skipped
 AGENDA_PAST_DAYS = 60    # agenda items from meetings this recent, plus any upcoming meeting
+DONE_DAYS = 90           # drop leads finished longer ago than this (building occupied, approval done, park built)
 
 SODA = "https://data.cityofnewyork.us/resource/"
 UA = {"User-Agent": "Mozilla/5.0 (nyc-urban-projects-candidates)"}
@@ -364,6 +365,10 @@ def zoning():
                                    f"(project_status='Active' OR completed_date>'{ZONING_SINCE}')",
                 select="project_id,project_name,project_brief,project_status,public_status,ulurp_non,"
                        "completed_date,certified_referred,current_milestone_date", limit=1000)
+    cutoff = (datetime.date.today() - datetime.timedelta(days=DONE_DAYS)).isoformat()
+    # a finished review (approved, withdrawn or otherwise closed) drops out DONE_DAYS after its last date
+    rows = [r for r in rows if r.get("project_status") == "Active" and r.get("public_status") != "Completed"
+            or (r.get("completed_date") or r.get("current_milestone_date") or "")[:10] >= cutoff]
     ids = ",".join(f"'{r['project_id']}'" for r in rows) or "''"
     lots = {}
     for r in soda("2iga-a6mk", select="project_id,bbl", where=f"project_id in({ids}) AND bbl IS NOT NULL", limit=5000):
@@ -391,24 +396,55 @@ def zoning():
     return out
 
 
+def first_occupancy(bbls):
+    """Earliest new-building certificate of occupancy (temporary or final) per lot, from DOB NOW. That's
+    when people could move in, so the building counts as finished from then."""
+    out = {}
+    bbls = sorted(set(bbls))
+    for i in range(0, len(bbls), 100):
+        chunk = ",".join(f"'{b}'" for b in bbls[i:i + 100])
+        for r in soda("pkdm-hqz6", select="bbl,c_of_o_issuance_date",
+                      where=f"bbl in({chunk}) AND job_type='New Building' AND c_of_o_status='CO Issued'", limit=5000):
+            try:
+                d = datetime.datetime.strptime(r["c_of_o_issuance_date"].split()[0], "%m/%d/%y").date()
+            except (KeyError, ValueError):
+                continue
+            if d.year >= 2015 and (r["bbl"] not in out or d < out[r["bbl"]]):
+                out[r["bbl"]] = d
+    return out
+
+
 def buildings():
     cbs = ",".join(f"'{c}'" for c in AREA_CDS)
     rows = soda("w9ak-ipjd", select="bbl,max(house_no) as house,max(street_name) as street,"
-                                    "max(proposed_dwelling_units::number) as homes,max(filing_date) as filed,"
-                                    "max(latitude) as lat,max(longitude) as lng",
+                                    "max(proposed_dwelling_units::number) as homes,min(filing_date) as first_filed,"
+                                    "min(first_permit_date) as permit,max(latitude) as lat,max(longitude) as lng",
                 where=f"job_type='New Building' AND commmunity_board in({cbs}) AND bbl IS NOT NULL AND "
                       f"proposed_dwelling_units::number>={MIN_HOMES} AND filing_date>'{BUILDING_SINCE}'",
                 group="bbl", limit=2000)
+    occupied = first_occupancy([r["bbl"] for r in rows])
+    cutoff = datetime.date.today() - datetime.timedelta(days=DONE_DAYS)
     out = []
     for r in rows:
         b = r["bbl"]
+        done = occupied.get(b)
+        if done and done < cutoff:
+            continue  # people have lived there for months: finished, not news
+        first = r["first_filed"][:10]
+        permit = (r.get("permit") or "")[:10]
+        if done:
+            status, date = f"Finished: first certificate of occupancy {done.isoformat()}", done.isoformat()
+        elif permit:
+            status, date = f"Under construction: permit {permit[:7]}, filed {first[:7]}", permit
+        else:
+            status, date = f"Filed {first[:7]}, no building permit yet", first
         lat = float(r["lat"]) if r.get("lat") else None
         lng = float(r["lng"]) if r.get("lng") else None
         filed = f"{r.get('house', '')} {r.get('street', '')}".strip()
         addr = lot_address(b, lat, lng, filed) or filed.title()
         out.append({
             "source": "building", "key": b, "title": f"{addr.replace(' (lot record, unconfirmed)', '')}: new building, {int(float(r['homes']))} homes",
-            "summary": "", "status": "Filed with the Buildings Department", "date": r["filed"][:10],
+            "summary": "", "status": status, "date": date,
             "homes": int(float(r["homes"])), "bbls": [b],
             "lat": lat, "lng": lng, "address": addr, "link": f"https://zola.planning.nyc.gov/l/lot/{b[0]}/{int(b[1:6])}/{int(b[6:])}",
             "active": True,
@@ -425,6 +461,9 @@ def parks(polys):
         except (KeyError, TypeError, ValueError):
             continue
         if not any(inside(lng, lat, ring) for ring in polys):
+            continue
+        built = (r.get("constructionactualcompletion") or "")[:10]
+        if built and built < (datetime.date.today() - datetime.timedelta(days=DONE_DAYS)).isoformat():
             continue
         dates = [("construction starts", r.get("constructionstart")),
                  ("construction ends", r.get("constructionadjustedcompletion") or r.get("constructionprojectedcom"))]
