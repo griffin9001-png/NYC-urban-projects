@@ -6,7 +6,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 - Audit: https://griffin9001-png.github.io/NYC-urban-projects/audit.html
 - Check data locally: `python3 scripts/validate_sites.py`
 - Check against city lot records: `python3 scripts/audit_sites.py` (needs internet; writes `audit.json`, which the audit page shows)
-- Refresh lot shading: `python3 scripts/fetch_lots.py` (needs internet; writes `lots.geojson` from each site's `bbls`, `streets` and `osm`; rerun whenever any of them changes, before running the validator)
+- Refresh lot shading and Street View viewpoints: `python3 scripts/fetch_lots.py` (needs internet). It writes `lots.geojson` from each site's `bbls`, `streets` and `osm`, and `viewpoints.json`, where each popup's embedded Street View stands and which way it faces. Rerun whenever `bbls`, `streets`, `osm` or a pin changes, before running the validator. Street View can't be saved and hosted under Google's terms, so the popup embeds Google's own viewer.
 - Find new sites: `python3 scripts/find_candidates.py` (needs internet; writes `candidates.json`, which the candidates page shows: https://griffin9001-png.github.io/NYC-urban-projects/candidates.html)
 - Preview locally: `python3 -m http.server` in the repo root, then open http://localhost:8000 (opening `index.html` straight from disk can't load `sites.json`).
 
@@ -25,6 +25,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `streets` | for street projects: exact Brooklyn street names as they appear in the city's street centerline file (CSCL, e.g. `MCGUINNESS BLVD`), or `{"name": "PARK AVE", "along": "BROOKLYN QUEENS EXPY"}` to keep only the segments within 40 m of another street, or `{"name": "BEDFORD AVE", "between": ["FLUSHING AVE", "WILLOUGHBY AVE"]}` for the blocks between two cross streets. Drawn as a line in the pin color |
 | `osm` | for anything the city files don't cover (creeks, odd-shaped plazas): OpenStreetMap elements such as `"way/392486579"`. Find the ID by clicking the feature on openstreetmap.org. Closed ways are drawn as areas, other ways and relations as lines |
 | `address_notes` | optional; `{"address as written in neighborhood": "why it stands"}` for an address the city's address database doesn't put on the site's lots but that's still right (a planned building's new address, a permit that ties the address to a different lot number). The audit skips these; every other address in `neighborhood` must land on one of the site's `bbls` |
+| `streetview` | optional; where the popup's embedded Street View looks from. Normally computed by `fetch_lots.py` (the street in the site's address, else the nearest ordinary street, facing the pin). Set `{"street": "KENT AVE"}` when that street has no Google imagery ("No Street View available"), or `{lat, lng, heading}` for an exact spot |
 | `lat`, `lng` | geocoded point; say how in `updated`. Must sit on the site's own shape (`bbls`, `streets` or `osm`): `validate_sites.py` prints where every pin lands ("inside lot 3025670001", "4 m from MCGUINNESS BLVD") and fails a pin more than 10 m outside its lots or 30 m off its line. Every site needs at least one of `bbls`, `streets` or `osm` for this check |
 | `why` | what the place is and what would change, then the bigger picture, 250 chars max |
 | `now` | shown as **Current status**, 250 chars max, lead with the month and year of the latest event |
@@ -46,6 +47,8 @@ Labels must agree with the text. `headline`, `status` and `condition` are what a
 Writing rules: follow `STYLE.md` (plain language for neighbors, no planning jargon; the validator rejects common jargon). No em dashes, no filler adverbs, no self-referential framing. Every factual claim in `now` must be backed by a source in `sources`.
 
 ## Finding an image
+
+The image sits at the top of the popup. For anything planned or under construction, use a rendering of the plan when a readable page has one (set `isRendering: true`); for something open, stalled or dropped, use a photo. Where no image exists, the popup's "Street view today" dropdown opens by itself.
 
 Try these in order and stop at the first that shows the site itself (check the caption or alt text, not just the article topic):
 

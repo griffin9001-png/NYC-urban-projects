@@ -1,0 +1,107 @@
+{
+ "broadway-triangle": {
+  "lat": 40.701109,
+  "lng": -73.949509,
+  "heading": 139
+ },
+ "greenpoint-hospital": {
+  "lat": 40.71737,
+  "lng": -73.939363,
+  "heading": 158
+ },
+ "monitor-point": {
+  "lat": 40.726149,
+  "lng": -73.959298,
+  "heading": 174
+ },
+ "fulton-howard-west": {
+  "lat": 40.67881,
+  "lng": -73.920397,
+  "heading": 184
+ },
+ "river-ring": {
+  "lat": 40.717309,
+  "lng": -73.964964,
+  "heading": 309
+ },
+ "greenpoint-landing-phase-2": {
+  "lat": 40.734561,
+  "lng": -73.961199,
+  "heading": 180
+ },
+ "2-noble-street": {
+  "lat": 40.728117,
+  "lng": -73.961094,
+  "heading": 176
+ },
+ "97-west-street": {
+  "lat": 40.729623,
+  "lng": -73.959228,
+  "heading": 263
+ },
+ "transmitter-park": {
+  "lat": 40.729633,
+  "lng": -73.960245,
+  "heading": 297
+ },
+ "bushwick-inlet-park": {
+  "lat": 40.721685,
+  "lng": -73.960263,
+  "heading": 309
+ },
+ "grand-army-plaza": {
+  "lat": 40.672967,
+  "lng": -73.96961,
+  "heading": 187
+ },
+ "park-ave-bqe": {
+  "lat": 40.695894,
+  "lng": -73.972334,
+  "heading": 93
+ },
+ "mcguinness-blvd": {
+  "lat": 40.724619,
+  "lng": -73.948252,
+  "heading": 337
+ },
+ "newtown-creek-cleanup": {
+  "lat": 40.733299,
+  "lng": -73.940305,
+  "heading": 343
+ },
+ "box-street-park": {
+  "lat": 40.736982,
+  "lng": -73.957232,
+  "heading": 324
+ },
+ "bedford-ave-bike-lane": {
+  "lat": 40.69679,
+  "lng": -73.956581,
+  "heading": 171
+ },
+ "domino-site-b": {
+  "lat": 40.715174,
+  "lng": -73.96656,
+  "heading": 289
+ },
+ "ashland-place-bike-lane": {
+  "lat": 40.68597,
+  "lng": -73.978074,
+  "heading": 174
+ },
+ "sands-adams-bike-lanes": {
+  "lat": 40.70071,
+  "lng": -73.988668,
+  "heading": 182
+ },
+ "289-kent-avenue": {
+  "lat": 40.715136,
+  "lng": -73.966577,
+  "heading": 109
+ },
+ "488-leonard-street": {
+  "lat": 40.721868,
+  "lng": -73.948968,
+  "heading": 83
+ }
+}
