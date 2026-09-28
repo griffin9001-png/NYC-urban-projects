@@ -57,7 +57,7 @@
       "isRendering": true
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Harrison Realty LLC ownership on Rabsky's two blocks in NYC PLUTO",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "greenpoint-hospital",
@@ -113,7 +113,7 @@
       "isRendering": true
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "monitor-point",
@@ -162,7 +162,7 @@
       "isRendering": true
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (BBLs 3025900001, 3025900025)",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "fulton-howard-west",
@@ -206,7 +206,7 @@
       "isRendering": false
     },
     "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "river-ring",
@@ -253,7 +253,7 @@
       "isRendering": true
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (River Street Partners LLC)",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "greenpoint-landing-phase-2",
@@ -298,7 +298,7 @@
       "isRendering": false
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Greenpoint Landing (GPLC Owner LLC) ownership in NYC PLUTO",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "2-noble-street",
@@ -346,7 +346,7 @@
       "isRendering": false
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "97-west-street",
@@ -394,7 +394,7 @@
       "isRendering": false
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025560001)",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "transmitter-park",
@@ -458,7 +458,7 @@
       "isRendering": false
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "bushwick-inlet-park",
@@ -487,9 +487,13 @@
     ],
     "why": "A waterfront park the city promised in 2005 in exchange for letting developers build taller along the Williamsburg and Greenpoint shore. More than 20 years later, most of it still isn't built.",
     "history": "The largest undelivered section sits on the former Astral Oil Works (later Standard Oil, sold in the 1940s), then the Bayside Fuel Oil Depot until it closed in 2010. Tanks came down in 2019.",
-    "now": "A new section around the inlet opened April 30, 2026, bringing the park to about 9 of its promised 28 acres. The next piece, the old CitiStorage site, is waiting on a slow toxic cleanup, and finishing the park is $75 to $100 million short.",
+    "now": "A new section around the inlet opened April 30, 2026. In July, as part of the Monitor Point deal, the mayor's office promised to finish the park, and the developer will pay $300,000 a year for its upkeep. About 9 of 28 promised acres are open.",
     "owner": "The Parks Department owns the land.",
     "sources": [
+      {
+        "t": "Monitor Point Will Bring Three Towers, at Least 1,324 Units to Greenpoint Waterfront · Brownstoner",
+        "u": "https://www.brownstoner.com/development/monitor-point-rezoning-passes-40-quay-street-affordable-housing/"
+      },
       {
         "t": "Bushwick Inlet Opens to Public After 100+ Years · Brooklyn Downtown Star",
         "u": "https://brooklyndowntownstar.com/lead_story/2026/05/01/bushwick-inlet-opens-to-public-after-100-years/"
@@ -524,8 +528,8 @@
       "credit": "Historic aerial of the former Bayside Fuel Oil tanks, via Friends of Bushwick Inlet Park",
       "isRendering": false
     },
-    "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-25"
+    "updated": "Updated Sept 28, 2026 · exact match from NYC PAD/GeoSearch",
+    "last_checked": "2026-09-28"
   },
   {
     "id": "grand-army-plaza",
@@ -575,7 +579,7 @@
       "isRendering": true
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   },
   {
     "id": "park-ave-bqe",
@@ -617,6 +621,6 @@
       "isRendering": true
     },
     "updated": "Updated Sept 25, 2026 · coordinates verified against US Census Bureau geocoder (corridor-representative point, not a single-parcel address)",
-    "last_checked": "2026-09-25"
+    "last_checked": "2026-09-28"
   }
 ]
