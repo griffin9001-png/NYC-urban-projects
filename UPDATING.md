@@ -89,11 +89,13 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. Once 
 `scripts/find_candidates.py` gathers leads for Brooklyn Community Districts 1 to 4 and writes `candidates.json`:
 
 - **Zoning applications** from City Planning's Zoning Application Portal: rezonings, waterfront sign-offs, anything in public review.
-- **New buildings** filed with the Buildings Department since 2024 with 50 or more homes (`MIN_HOMES`).
+- **New buildings** filed with the Buildings Department since 2024 with 50 or more homes (`MIN_HOMES`), shown as filed, under construction (has a permit) or finished (first certificate of occupancy).
 - **Park projects** from the Parks Department's capital project tracker that aren't finished.
 - **Bike lanes and street plans** from DOT's "Current Bicycle Route Projects" list (Brooklyn rows placed at their first cross street and kept if inside the area) and DOT's project site, nycdotprojects.info (North Brooklyn place or street names; pages with no dated update in 3 years are skipped). Street projects that DOT handles as sewer or water capital work, like the Commercial St greenway, aren't on either list and still come from news or community board agendas.
 - **Community board agendas** from the last 60 days and any upcoming meeting: CB1's Transportation, Land Use and Parks & Waterfront committee notices and full-board agendas, and CB3 and CB4 full-board agendas. Each agenda item becomes a lead; routine items (minutes, reports, liquor and cannabis licenses, outdoor dining, street co-namings) are dropped, and an address in the item is looked up to match it to a lot. CB3's page hasn't posted an agenda since June 2025, and CB2's site blocks automated reads, so those two boards are thin; check their calendars by hand.
 - **News** headlines from Greenpointers, Streetsblog NYC and Brooklyn Paper in the last 45 days that name the area and a development topic.
+
+Finished work drops out 3 months after it finishes (`DONE_DAYS`): a building once its first certificate of occupancy (temporary or final) is older than that, a zoning application once its review closed that long ago, a park project once construction finished. A building filing's own date isn't used for this, since amendments keep arriving long after people move in.
 
 Each lead gets a score (higher is more worth a look; housing tops out around 16, street plans around 10) and is matched against `sites.json`. Score:
 
