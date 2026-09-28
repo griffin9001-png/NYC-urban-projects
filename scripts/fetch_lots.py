@@ -4,7 +4,8 @@
 - `bbls`: tax-lot outlines from NYC Planning's MapPLUTO table (the data ZoLa uses).
 - `streets`: street lines from the city's street centerline file (CSCL). Each entry is
   an exact Brooklyn street name, or {"name": ..., "along": ...} to keep only the
-  segments within 40 m of another street (e.g. Park Ave where it runs under the BQE).
+  segments within 40 m of another street (e.g. Park Ave where it runs under the BQE),
+  or {"name": ..., "between": [cross1, cross2]} for the blocks between two cross streets.
 - `osm`: OpenStreetMap elements such as "way/392486579" (creeks, plazas, anything
   the city files don't cover). Closed ways become areas, open ways and relations lines.
 
@@ -61,6 +62,21 @@ def fetch_street(entry):
         guide = [(a[0] + (b[0] - a[0]) * k / 10, a[1] + (b[1] - a[1]) * k / 10)
                  for line in street_lines(entry["along"]) for a, b in zip(line, line[1:]) for k in range(11)]
         lines = [l for l in lines if min(meters(l[len(l) // 2], g) for g in guide) <= ALONG_M]
+    if isinstance(entry, dict) and entry.get("between"):
+        ends = []
+        for cross in entry["between"]:
+            nodes = {tuple(p) for l in street_lines(cross) for p in (l[0], l[-1])}
+            hits = [p for l in lines for p in (l[0], l[-1]) if tuple(p) in nodes]
+            if not hits:
+                raise SystemExit(f"{name} and {cross} don't meet in CSCL")
+            ends.append(hits[0])
+        (ax, ay), (bx, by) = ends
+        def keep(line):
+            mx, my = line[len(line) // 2] if len(line) > 2 else [(line[0][i] + line[-1][i]) / 2 for i in (0, 1)]
+            dx, dy = bx - ax, by - ay
+            s = ((mx - ax) * dx + (my - ay) * dy) / (dx * dx + dy * dy)
+            return 0 <= s <= 1 and meters((mx, my), (ax + s * dx, ay + s * dy)) <= ALONG_M
+        lines = [l for l in lines if keep(l)]
     return {"type": "MultiLineString", "coordinates": lines} if lines else None
 
 
@@ -97,7 +113,9 @@ def main():
     for s in sites:
         for entry in s.get("streets", []):
             geom = fetch_street(entry)
-            label = entry if isinstance(entry, str) else f"{entry['name']} along {entry.get('along')}"
+            label = entry if isinstance(entry, str) else entry["name"] + (
+                f" along {entry['along']}" if entry.get("along") else "") + (
+                f" between {' and '.join(entry['between'])}" if entry.get("between") else "")
             if geom:
                 features.append({"type": "Feature", "properties": {"site": s["id"], "street": label}, "geometry": geom})
             else:

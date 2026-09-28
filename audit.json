@@ -661,6 +661,57 @@
         "lng": -73.9397883
       },
       "flags": []
+    },
+    "box-street-park": {
+      "condition": "unverified",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3024720425",
+          "address": "51 COMMERCIAL STREET",
+          "land_use": "Transportation/utility",
+          "buildings": 2,
+          "building_area_sqft": 8800,
+          "year_built": 1931,
+          "owner": "NYC TRANSIT AUTHORITY",
+          "lot_area_sqft": 106619,
+          "lat": 40.7376879,
+          "lng": -73.9579033
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3024720425",
+        "address": "51 COMMERCIAL STREET",
+        "land_use": "Transportation/utility",
+        "buildings": 2,
+        "building_area_sqft": 8800,
+        "year_built": 1931,
+        "owner": "NYC TRANSIT AUTHORITY",
+        "lot_area_sqft": 106619,
+        "lat": 40.7376879,
+        "lng": -73.9579033
+      },
+      "flags": [
+        "condition unverified: confirm what stands on the site and set condition"
+      ]
+    },
+    "bedford-ave-bike-lane": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3017157508",
+        "address": "789 BEDFORD AVENUE",
+        "land_use": "Elevator apartments",
+        "buildings": 1,
+        "building_area_sqft": 21196,
+        "year_built": 2008,
+        "owner": "UNAVAILABLE OWNER",
+        "lot_area_sqft": 6194,
+        "lat": 40.6969907,
+        "lng": -73.956299
+      },
+      "flags": []
     }
   }
 }

@@ -1036,5 +1036,138 @@
     "last_checked": "2026-09-28",
     "changed_on": "2025-12-10",
     "change_note": "The state flagged 41 properties along the creek that may be leaking pollution into it."
+  },
+  {
+    "id": "box-street-park",
+    "name": "Box Street Park",
+    "headline": "Long-promised park due to open",
+    "type": "park",
+    "category": "parcel",
+    "status": "active",
+    "condition": "unverified",
+    "phase": "construction-underway",
+    "neighborhood": "65 Commercial St, between Box and Clay Sts · Greenpoint, on Newtown Creek",
+    "lat": 40.73769,
+    "lng": -73.9579,
+    "bbls": [
+      "3024720425"
+    ],
+    "why": "A former MTA lot for Access-A-Ride vans at Greenpoint's northern tip, on Newtown Creek, being turned into a waterfront park. The city promised it in 2005 when it allowed towers along the Greenpoint and Williamsburg waterfront.",
+    "history": "The MTA kept parking vans and emergency vehicles on the lot for years after the city promised the park, which held it up. By 2021 neighbors had waited 16 years.",
+    "now": "In April 2026 the city said the park would open later this year. In March 2026 the Parks Department applied for state permits to rebuild the shoreline with terraced steps down to the water.",
+    "impact": "A new waterfront park with a lawn, a path along the creek, two dog runs, a basketball court and a public restroom, at the end of Commercial St.",
+    "timeline": {
+      "start": null,
+      "complete": "2026",
+      "confidence": "estimated"
+    },
+    "next_step": {
+      "date": "2026-10-13",
+      "what": "Community Board 1 meets at 6 PM, 80 Siegel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Parks Department is building the park on land the MTA used for vehicle parking.",
+    "sources": [
+      {
+        "t": "DOT's Greenpoint Greenway Project Doesn't Dream Big Enough · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/04/01/dots-greenpoint-greenway-project-doesnt-dream-big-enough"
+      },
+      {
+        "t": "NYC Parks - Box St Park, completed permit application · NYS DEC Environmental Notice Bulletin",
+        "u": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-03-18/completed-application/brooklyn-nyc-parks-box-st-park"
+      },
+      {
+        "t": "Long-Delayed Greenpoint Park Still on Hold While Site Serves as MTA Parking Lot · Brownstoner",
+        "u": "https://www.brownstoner.com/development/box-street-park-65-commercial-street-greenpoint-brooklyn-delays-mta-parking-lot/"
+      },
+      {
+        "t": "Combined Public Hearing and Board Meeting Notice, Oct 13, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+      }
+    ],
+    "image": {
+      "url": "https://www.brownstoner.com/wp-content/uploads/2021/02/greenpoint-brooklyn-nyc-parks-box-street-park-rendering-2-1024x620.jpg",
+      "credit": "Parks Department design rendering, via Brownstoner",
+      "isRendering": true,
+      "page": "https://www.brownstoner.com/development/box-street-park-65-commercial-street-greenpoint-brooklyn-delays-mta-parking-lot/",
+      "shows": "Box Street Park"
+    },
+    "updated": "Added Sept 28, 2026 · pin inside the park's lot (BBL 3024720425), from NYC PLUTO",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-04-01",
+    "change_note": "The city said Box Street Park would open later in 2026."
+  },
+  {
+    "id": "bedford-ave-bike-lane",
+    "name": "Bedford Avenue bike lane",
+    "headline": "Protection removed, fight continues",
+    "type": "road",
+    "category": "topic",
+    "status": "contested",
+    "condition": "street",
+    "phase": "stalled",
+    "neighborhood": "Bedford Ave between Flushing and Willoughby Aves · Williamsburg / Bed-Stuy border",
+    "lat": 40.69679,
+    "lng": -73.95658,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "BEDFORD AVE",
+        "between": [
+          "FLUSHING AVE",
+          "WILLOUGHBY AVE"
+        ]
+      }
+    ],
+    "why": "Three blocks of Bedford Ave where the city took away the row of parked cars that shielded the bike lane, putting riders back next to moving traffic. The rest of the protected lane, from Crown Heights to Williamsburg, kept it.",
+    "history": "The city added the parked-car barrier in late 2024. After leaders of the local Hasidic community objected, the previous mayor had it removed on these three blocks in August 2025.",
+    "now": "As of September 2026 the three blocks are still unprotected. The new mayor had promised to restore the protection, but in July 2026 cited unspecified legal requirements and has set no date.",
+    "impact": "Bike riders here ride between parked cars and moving traffic. The city counted 13 cyclist injuries in the seven months after the change, up from 9 in the seven months before.",
+    "timeline": {
+      "start": null,
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": null,
+      "what": "No date set to restore the protection. You can tell the city's transportation department what you think through its contact form.",
+      "where": "NYC DOT contact form",
+      "url": "https://www.nyc.gov/html/dot/html/contact/contact-form.shtml"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street and the bike lane.",
+    "sources": [
+      {
+        "t": "Wednesday's Headlines: The Streetsblog Effect · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/09/16/wednesdays-headlines-the-streetsblog-effect"
+      },
+      {
+        "t": "Citing Vague 'Legal Requirements,' Mamdani Won't Say If or When He'll Fix Bedford Avenue · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/07/13/citing-vague-legal-requirements-mamdani-puts-a-fig-leaf-on-his-predecessors-bedford-ave-bike-lane-junk"
+      },
+      {
+        "t": "City Removes Protections From Section of Bedford Avenue Bike Lane · Greenpointers",
+        "u": "https://greenpointers.com/2025/08/05/city-removes-protections-from-section-of-bedford-avenue-bike-lane/"
+      }
+    ],
+    "image": {
+      "url": "https://nyc.streetsblog.org/wp-content/uploads/sites/9/2025/08/Bedford-parking-lane-3.jpg?w=1024",
+      "credit": "The unprotected lane in summer 2025, via Streetsblog NYC",
+      "isRendering": false,
+      "page": "https://nyc.streetsblog.org/2026/07/13/citing-vague-legal-requirements-mamdani-puts-a-fig-leaf-on-his-predecessors-bedford-ave-bike-lane-junk",
+      "shows": "Bedford Ave"
+    },
+    "updated": "Added Sept 28, 2026 · pin at Bedford Ave & Park Ave; highlighted line is Bedford Ave from Flushing to Willoughby Aves, from the city street centerline file",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-07-13",
+    "change_note": "The mayor cited legal requirements and set no date to restore the protected lane."
   }
 ]
