@@ -208,7 +208,7 @@ header{
       <h2 style="font-size:14px;">Sites</h2>
       <div class="count" id="count"></div>
       <form class="near" id="near" autocomplete="off">
-        <input id="near-addr" type="search" placeholder="Your address, e.g. 100 Franklin St" aria-label="Your address">
+        <input id="near-addr" type="search" placeholder="Address or corner, e.g. Nassau Ave &amp; McGuinness Blvd" aria-label="Your address">
         <select id="near-min" aria-label="Walking time">
           <option value="5">5 min walk</option><option value="10" selected>10 min walk</option><option value="15">15 min walk</option>
         </select>
@@ -220,8 +220,9 @@ header{
     <div class="summary-card" id="summary" hidden></div>
     <details class="news" id="news" open hidden><summary>What's new</summary><ol></ol></details>
     <div class="list" id="list"></div>
-    <div class="disclaimer">
-      Seed dataset, researched from public reporting (Brooklyn Paper, Greenpointers, Gothamist, Brownstoner, NYC Mayor's Office/DOT/HPD releases, and others) as of September 2026. Pin locations are geocoded against NYC Planning Labs' GeoSearch service (built on PAD/PLUTO). Broadway Triangle, Monitor Point, Fulton-Howard West, and the Park Ave/BQE corridor don't have single exact-address matches in that dataset. Those four pins sit at the nearest verified address on the same block or site, not a precise parcel centroid. This is not an official city dataset. History sections come from Wikipedia, NYC Parks, Landmarks Preservation Commission material, and local history sources. Some pre-1900s history could not be confirmed. Those gaps are noted in the popups. Bulk NYC Open Data (PLUTO) pulls are planned for a future version. See the note Griffin has on automation.
+    <div class="disclaimer" id="disclaimer">
+      Compiled from local news and city records (NYC Planning, Parks, Transportation and Housing departments). Not an official city dataset. Pins show approximate locations. Each site lists its sources.
+      <span id="last-checked"></span>
     </div>
   </aside>
 </div>
@@ -241,11 +242,13 @@ function fmtDate(d){
   const [y, m, day] = String(d).split('-');
   return (day ? `${MONTHS[+m-1]} ${+day}, ` : m ? `${MONTHS[+m-1]} ` : '') + y;
 }
-function whenText(t){
+// Work has begun only for these phases; a year-only start date alone can't tell us that.
+const UNDERWAY = new Set(['construction-underway', 'partly-open', 'open-now']);
+function whenText(t, phase){
   if(!t || (!t.start && !t.complete)) return 'No dates announced.';
   const today = new Date().toISOString().slice(0, 10);
   const parts = [];
-  if(t.start) parts.push(`${String(t.start) <= today ? 'Work started' : 'Work expected to start'} ${fmtDate(t.start)}.`);
+  if(t.start) parts.push(`${UNDERWAY.has(phase) && String(t.start) <= today ? 'Work started' : 'Work expected to start'} ${fmtDate(t.start)}.`);
   if(t.complete) parts.push(`${t.confidence === 'announced' ? 'Scheduled to finish' : 'Expected to finish around'} ${fmtDate(t.complete)}.`);
   else parts.push('No finish date announced.');
   if(t.confidence === 'estimated') parts.push('(Estimate.)');
@@ -315,19 +318,33 @@ function loadTileProvider(i){
 loadTileProvider(0);
 
 // "What's new": changed_on is the date of the latest real development; badge anything in the last 30 days.
-const NEW_DAYS = 30;
-function isNew(s){ return s.changed_on && (Date.now() - new Date(s.changed_on)) / 864e5 <= NEW_DAYS; }
+const NEW_DAYS = 30, NEWS_WINDOW_DAYS = 90;
+const daysAgo = d => (Date.now() - new Date(d)) / 864e5;
+// Last visit, so returning readers see what changed since they were here. Storage can be blocked, so it's optional.
+const LAST_VISIT_KEY = 'nup-last-visit';
+let lastVisit = null;
+try{
+  lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+  localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString().slice(0, 10));
+}catch(e){}
+const sinceLastVisit = s => lastVisit && s.changed_on && s.changed_on > lastVisit;
+function isNew(s){ return !!s.changed_on && (lastVisit ? sinceLastVisit(s) : daysAgo(s.changed_on) <= NEW_DAYS); }
 let newsExpanded = false;
 function renderNews(items){
   const box = document.getElementById('news');
-  const sorted = [...items].filter(s => s.changed_on).sort((a, b) => b.changed_on.localeCompare(a.changed_on));
-  if(!sorted.length){ box.hidden = true; return; }
+  const sorted = [...items].filter(s => s.changed_on && daysAgo(s.changed_on) <= NEWS_WINDOW_DAYS)
+    .sort((a, b) => b.changed_on.localeCompare(a.changed_on));
   box.hidden = false;
+  if(!sorted.length){
+    box.querySelector('summary').textContent = "What's new";
+    box.querySelector('ol').innerHTML = `<li style="cursor:default">No changes in the last ${NEWS_WINDOW_DAYS} days.</li>`;
+    return;
+  }
   const recent = sorted.filter(isNew).length;
   const shown = newsExpanded ? sorted : sorted.slice(0, 4);
-  box.querySelector('summary').textContent = `What's new${recent ? ` · ${recent} in the last ${NEW_DAYS} days` : ''}`;
+  box.querySelector('summary').textContent = `What's new${recent ? ` · ${recent} ${lastVisit ? 'since your last visit' : `in the last ${NEW_DAYS} days`}` : ''}`;
   box.querySelector('ol').innerHTML = shown.map(s => `
-    <li data-id="${s.id}"><span class="news-date">${fmtDate(s.changed_on)}</span>${isNew(s) ? '<span class="tag-new">New</span>' : ''}<br>
+    <li data-id="${s.id}"><span class="news-date">${fmtDate(s.changed_on)}</span>${isNew(s) ? `<span class="tag-new">${lastVisit ? 'New since your last visit' : 'New'}</span>` : ''}<br>
       <span class="news-name">${s.name}:</span> ${s.change_note}</li>`).join('') +
     (sorted.length > 4 ? `<li style="cursor:default"><button class="more" type="button">${newsExpanded ? 'Show fewer' : `Show all ${sorted.length}`}</button></li>` : '');
 }
@@ -388,7 +405,7 @@ function popupHTML(s){
       <div class="section-label">What you'll notice</div>
       <p>${clip(s.impact)}</p>
       <div class="section-label">When</div>
-      <p>${whenText(s.timeline)}</p>
+      <p>${whenText(s.timeline, s.phase)}</p>
       <div class="section-label">What's next</div>
       ${nextStepHTML(s.next_step)}
       <div class="section-label">History</div>
@@ -448,6 +465,9 @@ function renderList(items){
 // One place decides what's visible: the type chip AND (if set) the walk circle around an address.
 const view = {type: 'all', near: null};   // near: {latlng, meters, minutes, label}
 const WALK_M_PER_MIN = 80;                // ~3 mph; straight-line distance, so a rough walk estimate
+// Distance is straight-line, so describe it as a distance with the walk time as a rough guide.
+const MILES = {5: 'a quarter mile', 10: 'half a mile', 15: 'three-quarters of a mile'};
+function nearLabel(min){ return `about ${MILES[min] || (min * WALK_M_PER_MIN / 1609).toFixed(1) + ' miles'} (≈${min}-minute walk)`; }
 function walkMin(s){ return Math.max(1, Math.round(map.distance([s.lat, s.lng], view.near.latlng) / WALK_M_PER_MIN)); }
 function isVisible(s){
   if(view.type !== 'all' && s.type !== view.type) return false;
@@ -483,12 +503,16 @@ function renderSummary(items){
   const box = document.getElementById('summary');
   if(!view.near){ box.hidden = true; return; }
   box.hidden = false;
-  const title = `Within a ${view.near.minutes}-minute walk of ${view.near.label}`;
+  const title = `Within ${nearLabel(view.near.minutes)} of ${view.near.label}`;
   if(!items.length){ box.innerHTML = `<div class="sum-title">${title}</div>No tracked projects here yet. Try a longer walk.`; return; }
-  const housing = items.filter(s => s.units_total);
-  const homes = housing.reduce((a, s) => a + s.units_total, 0);
-  const withAff = housing.filter(s => s.units_affordable != null);
-  const affShare = withAff.length ? Math.round(100 * withAff.reduce((a, s) => a + s.units_affordable, 0) / withAff.reduce((a, s) => a + s.units_total, 0)) : null;
+  // Homes, split by certainty: approved or under way vs still only proposed. Unknown sizes are called out, not hidden.
+  const housing = items.filter(s => s.type === 'housing' || s.units_total);
+  const sized = housing.filter(s => s.units_total);
+  const unsized = housing.length - sized.length;
+  const sum = arr => arr.reduce((a, s) => a + s.units_total, 0);
+  const firm = sized.filter(s => s.phase !== 'decision-coming'), proposed = sized.filter(s => s.phase === 'decision-coming');
+  const withAff = sized.filter(s => s.units_affordable != null);
+  const affShare = withAff.length ? Math.round(100 * withAff.reduce((a, s) => a + s.units_affordable, 0) / sum(withAff)) : null;
   const parks = items.filter(s => s.type === 'park' || s.park_acres_promised != null);
   const promised = parks.reduce((a, s) => a + (s.park_acres_promised || 0), 0);
   const open = parks.reduce((a, s) => a + (s.park_acres_delivered || 0), 0);
@@ -496,34 +520,78 @@ function renderSummary(items){
   const next = items.filter(s => s.next_step && s.next_step.date && s.next_step.date >= today)
     .sort((a, b) => a.next_step.date.localeCompare(b.next_step.date))[0];
   const bits = [`<b>${items.length}</b> project${items.length === 1 ? '' : 's'}`];
-  if(homes) bits.push(`<b>${roundHomes(homes)}</b> new homes planned or built${affShare != null ? ` (<b>${affShare}%</b> affordable)` : ''}`);
+  const homeBits = [];
+  if(firm.length) homeBits.push(`<b>${roundHomes(sum(firm))}</b> homes approved or under way`);
+  if(proposed.length) homeBits.push(`<b>${roundHomes(sum(proposed))}</b> more proposed`);
+  if(homeBits.length) bits.push(homeBits.join(', ') + (affShare != null ? ` (<b>${affShare}%</b> affordable)` : ''));
+  if(unsized) bits.push(`${unsized} housing project${unsized === 1 ? '' : 's'} with size not yet known`);
   if(parks.length) bits.push(`<b>${parks.length}</b> park project${parks.length === 1 ? '' : 's'}${promised ? ` (${open} of ${promised} promised acres open)` : ''}`);
-  bits.push(next ? `next date: <b>${fmtDate(next.next_step.date)}</b>, ${next.name}` : 'no meeting or vote dates scheduled');
+  if(next) bits.push(`next public date: <b>${fmtDate(next.next_step.date)}</b>, ${next.next_step.where || next.name}`);
+  else {
+    // No dated event nearby: point to the closest site's standing action instead of "nothing scheduled".
+    const closest = [...items].sort((a, b) => walkMin(a) - walkMin(b)).find(s => s.next_step && s.next_step.url);
+    if(closest) bits.push(`what you can do: <a href="${closest.next_step.url}" target="_blank" rel="noopener">${closest.next_step.where} ↗</a>`);
+  }
   box.innerHTML = `<div class="sum-title">${title}</div>${bits.join(' · ')}.`;
 }
 
-let youLayer = null;
+// GeoSearch has no intersections, so "A & B" is resolved from the city's street centerline data:
+// the corner is where a segment of one street shares an endpoint with a segment of the other.
+const STREET_SUFFIX = /^(AVE|AVENUE|ST|STREET|BLVD|BOULEVARD|PL|PLACE|RD|ROAD|DR|DRIVE|CT|COURT|LN|LANE|PKWY|PARKWAY|TER|N|S|E|W|NORTH|SOUTH|EAST|WEST|BROOKLYN|NY)$/;
+function streetToken(name){
+  const words = name.toUpperCase().replace(/[^A-Z0-9 ]/g, ' ').split(/\s+/).filter(w => w && !STREET_SUFFIX.test(w));
+  return words.sort((a, b) => b.length - a.length)[0];
+}
+async function streetEnds(token){
+  const q = new URLSearchParams({$select: 'full_street_name,the_geom', $limit: '2000',
+    $where: `upper(full_street_name) like '%${token}%' AND boroughcode='3'`});
+  const rows = await (await fetch('https://data.cityofnewyork.us/resource/inkn-q76z.json?' + q)).json();
+  const ends = new Set();
+  rows.filter(r => new RegExp(`\\b${token}\\b`).test(r.full_street_name)).forEach(r => {
+    const g = r.the_geom, lines = g.type === 'MultiLineString' ? g.coordinates : [g.coordinates];
+    lines.forEach(l => [l[0], l[l.length - 1]].forEach(([x, y]) => ends.add(`${x.toFixed(6)},${y.toFixed(6)}`)));
+  });
+  return ends;
+}
+async function findIntersection(q){
+  const parts = q.replace(/,?\s*(brooklyn|ny)\b.*$/i, '').split(/\s+(?:&|and|at|\/)\s+|\s*&\s*/i);
+  if(parts.length !== 2) return null;
+  const [a, b] = parts.map(streetToken);
+  if(!a || !b) return null;
+  const [ea, eb] = await Promise.all([streetEnds(a), streetEnds(b)]);
+  const hits = [...ea].filter(k => eb.has(k)).map(k => k.split(',').map(Number));
+  if(!hits.length) return null;
+  const c = map.getCenter();
+  const [lng, lat] = hits.sort((p, q2) => map.distance([p[1], p[0]], c) - map.distance([q2[1], q2[0]], c))[0];
+  return {lat, lng, label: parts.map(x => x.trim()).join(' & ')};
+}
+
+let youLayer = null, searchSeq = 0;
 async function searchNear(e){
   e.preventDefault();
+  const seq = ++searchSeq;   // a slower earlier search must not overwrite a newer one
   const q = document.getElementById('near-addr').value.trim();
   const msg = document.getElementById('near-msg');
   if(!q) return;
   msg.hidden = false; msg.textContent = 'Finding that address…';
   try{
-    const r = await fetch('https://geosearch.planninglabs.nyc/v2/search?size=1&text=' + encodeURIComponent(q));
-    const f = (await r.json()).features[0];
-    if(!f){ msg.textContent = 'Couldn\'t find that NYC address. Try a street number and name.'; return; }
-    const [lng, lat] = f.geometry.coordinates;
+    let place = await findIntersection(q).catch(() => null);
+    if(!place){
+      const r = await fetch('https://geosearch.planninglabs.nyc/v2/search?size=1&text=' + encodeURIComponent(q));
+      const f = (await r.json()).features[0];
+      if(f) place = {lng: f.geometry.coordinates[0], lat: f.geometry.coordinates[1], label: f.properties.name || f.properties.label.split(',')[0]};
+    }
+    if(seq !== searchSeq) return;
+    if(!place){ msg.textContent = 'Couldn\'t find that. Try a street address or a corner like "McGuinness Blvd & Nassau Ave".'; return; }
     const minutes = +document.getElementById('near-min').value;
-    view.near = {latlng: L.latLng(lat, lng), minutes, meters: minutes * WALK_M_PER_MIN,
-                 label: f.properties.name || f.properties.label.split(',')[0]};
+    view.near = {latlng: L.latLng(place.lat, place.lng), minutes, meters: minutes * WALK_M_PER_MIN, label: place.label};
     if(youLayer) map.removeLayer(youLayer);
     youLayer = L.layerGroup([
       L.circle(view.near.latlng, {radius: view.near.meters, color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(), weight: 1.5, fillOpacity: 0.06, dashArray: '4 4', interactive: false}),
       L.marker(view.near.latlng, {icon: L.divIcon({className: '', html: '<div class="you-pin"></div>', iconSize: [20, 20], iconAnchor: [10, 10]}), interactive: false})
     ]).addTo(map);
     map.fitBounds(youLayer.getLayers()[0].getBounds(), {padding: [30, 30]});
-    msg.textContent = `Showing sites within about a ${minutes}-minute walk (straight-line distance).`;
+    msg.textContent = `Showing sites within ${nearLabel(minutes)}, measured in a straight line.`;
     document.getElementById('near-clear').hidden = false;
     applyView();
   }catch(err){
@@ -552,6 +620,8 @@ function init(){
   map.fitBounds(L.latLngBounds(SITES.map(s => [s.lat, s.lng])), {padding: [40, 40]});
   applyView();
   loadLots();
+  const latest = SITES.map(s => s.last_checked).sort().pop();
+  if(latest) document.getElementById('last-checked').textContent = `Sites last checked ${fmtDate(latest)}.`;
 }
 
 // Tax-lot outlines (lots.geojson, built by scripts/fetch_lots.py), shaded in each site's pin color.
