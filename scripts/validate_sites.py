@@ -173,7 +173,8 @@ def validate(sites):
         for key in NAME_FIELDS:
             val = str(s.get(key) or "")
             for name in sorted(banned, key=len, reverse=True):
-                if re.search(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])", val):
+                # a street named after someone (Adams St) is a place, not a person
+                if re.search(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])(?!\s+(?:Sts?|Streets?|Aves?|Avenues?|Pl|Place|Blvd)\b)", val):
                     err(f"{key} names '{name}': use a role (the developer, a new owner, the local council member); names go only in owner (STYLE.md)")
                     break
         for key in NAME_FIELDS:

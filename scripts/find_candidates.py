@@ -578,9 +578,13 @@ def name_variants(name):
 def match(c, sites):
     """(on_map, near): the site this lead already is, and a site it may belong to."""
     near = None
+    lead_street = cscl_name(re.split(r",|&| to ", c["title"])[0]) if c["source"] == "street" else None
     for s in sites:
         if set(c["bbls"]) & set(s.get("bbls", [])):
             return s["id"], None
+        site_streets = {e if isinstance(e, str) else e["name"] for e in s.get("streets", [])}
+        if lead_street and lead_street in site_streets:
+            return s["id"], None  # a DOT plan for a street the site already draws
         named = any(v in c["title"].lower() for v in name_variants(s["name"]))
         if named and c["source"] in ("news", "street", "agenda"):
             return s["id"], None
