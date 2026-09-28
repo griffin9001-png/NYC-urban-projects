@@ -69,9 +69,11 @@
       }
     ],
     "image": {
-      "url": "https://newyorkyimby.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-29-at-4.33.03-PM.png",
-      "credit": "Rendering of Rabsky Group's proposed towers (2016), via New York YIMBY",
-      "isRendering": true
+      "url": "https://thumbs.6sqft.com/wp-content/uploads/2026/01/02125626/11-Gerry-Street-Exterior-Rendering.png",
+      "credit": "Rendering of 11 Gerry St, via 6sqft",
+      "isRendering": true,
+      "page": "https://www.6sqft.com/huge-broadway-triangle-development-opens-lottery-for-120-apartments-from-812-month/",
+      "shows": "Broadway Triangle"
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Harrison Realty LLC ownership on Rabsky's two blocks in NYC PLUTO",
     "last_checked": "2026-09-28",
@@ -150,7 +152,9 @@
     "image": {
       "url": "https://www.brownstoner.com/wp-content/uploads/2021/04/affordable-housing-brooklyn-greenpoint-hospital-288-jackson-street-homeless-shelter-1.png",
       "credit": "Rendering of the planned redevelopment, via Brownstoner",
-      "isRendering": true
+      "isRendering": true,
+      "page": "https://www.brownstoner.com/development/affordable-housing-brooklyn-greenpoint-hospital-288-jackson-street-homeless-shelter-hudson-companies/",
+      "shows": "Greenpoint Hospital"
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
     "last_checked": "2026-09-28",
@@ -220,9 +224,11 @@
       }
     ],
     "image": {
-      "url": "https://newyorkyimby.com/wp-content/uploads/2026/07/Monitor-Point-Rendering-001-Credit-Monitor-Point.jpg",
-      "credit": "Rendering by FXCollaborative, via New York YIMBY",
-      "isRendering": true
+      "url": "https://greenpointers.com/wp-content/uploads/2025/06/67fedf6ad69760e062f80901_MonitorPointProjectGallery005-p-2000.jpg",
+      "credit": "Planned waterfront path by Bushwick Inlet Park, rendering via Greenpointers",
+      "isRendering": true,
+      "page": "https://greenpointers.com/2025/06/12/greenpoint-considers-new-monitor-point-residential-development-on-the-bushwick-inlet/",
+      "shows": "Monitor Point"
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (BBLs 3025900001, 3025900025)",
     "last_checked": "2026-09-28",
@@ -285,7 +291,9 @@
     "image": {
       "url": "https://www.brownstoner.com/wp-content/uploads/2026/05/bed-stuy-multi-service-center-1958-fulton-street-may082026-sdevries-2.jpg",
       "credit": "Current photo of the site, via Brownstoner",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://www.brownstoner.com/interiors-renovation/bed-stuy-multi-service-center-1958-fulton-street-affordable-housing/",
+      "shows": "1958 Fulton"
     },
     "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
     "last_checked": "2026-09-28",
@@ -340,18 +348,16 @@
         "u": "https://www.brownstoner.com/development/williamsburg-brooklyn-two-trees-river-ring-affordable-housing-city-council-approves-unanimously/"
       },
       {
-        "t": "Twin Skyscraper Redesign Revealed for 280 Kent Avenue · New York YIMBY",
-        "u": "https://newyorkyimby.com/2025/04/twin-skyscraper-redesign-revealed-for-280-kent-avenue-in-williamsburg-brooklyn.html"
-      },
-      {
         "t": "River Ring (development) · Wikipedia",
         "u": "https://en.wikipedia.org/wiki/River_Ring_(development)"
       }
     ],
     "image": {
-      "url": "https://newyorkyimby.com/wp-content/uploads/2025/04/IMG_2584-scaled.jpg",
-      "credit": "Redesigned towers, via New York YIMBY",
-      "isRendering": true
+      "url": "https://api-prod.gothamist.com/images/357145/fill-1200x650|format-jpeg|jpegquality-85/",
+      "credit": "Rendering of River Ring, via Gothamist",
+      "isRendering": true,
+      "page": "https://gothamist.com/news/brooklyn-developer-lands-state-budget-tax-break-for-williamsburg-waterfront-complex",
+      "shows": "River Ring"
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (River Street Partners LLC)",
     "last_checked": "2026-09-28",
@@ -413,9 +419,11 @@
       }
     ],
     "image": {
-      "url": "https://newyorkyimby.com/wp-content/uploads/2025/08/tmtxuQoo.jpg",
-      "credit": "Current site photo, via New York YIMBY",
-      "isRendering": false
+      "url": "https://thumbs.6sqft.com/wp-content/uploads/2025/08/19113233/greenpoint-landing-C-block.png",
+      "credit": "Aerial with the site highlighted, via 6sqft",
+      "isRendering": false,
+      "page": "https://www.6sqft.com/next-greenpoint-landing-phase-includes-1000-apartments-across-three-towers/",
+      "shows": "Greenpoint Landing"
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Greenpoint Landing (GPLC Owner LLC) ownership in NYC PLUTO",
     "last_checked": "2026-09-28",
@@ -486,7 +494,9 @@
     "image": {
       "url": "https://greenpointers.com/wp-content/uploads/2026/06/gpwaterfront-scaled-e1781637623846.jpg",
       "credit": "Site at Oak and West Sts, via Greenpointers",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://greenpointers.com/2026/06/17/greenpoint-is-getting-a-100-affordable-housing-building-on-oak-street/",
+      "shows": "Noble Street"
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
     "last_checked": "2026-09-28",
@@ -561,7 +571,9 @@
     "image": {
       "url": "https://greenpointers.com/wp-content/uploads/2025/10/west.jpg",
       "credit": "Current site photo, via Greenpointers",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://greenpointers.com/2025/11/25/real-estate-developers-move-forward-with-housing-at-contested-west-street-site/",
+      "shows": "West Street"
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025560001)",
     "last_checked": "2026-09-28",
@@ -648,7 +660,9 @@
     "image": {
       "url": "https://greenpointers.com/wp-content/uploads/2026/07/IMG_6546.jpg",
       "credit": "Photo via Greenpointers",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://greenpointers.com/2026/07/28/greenpoints-transmitter-park-to-get-new-restaurant-and-marina/",
+      "shows": "Transmitter Park"
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
     "last_checked": "2026-09-28",
@@ -742,7 +756,9 @@
     "image": {
       "url": "https://eadn-wc01-5191420.nxedge.io/wp-content/uploads/2024/05/bayside-01-aerial-tanks-oti-1024x570.jpg",
       "credit": "Historic aerial of the former Bayside Fuel Oil tanks, via Friends of Bushwick Inlet Park",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://bushwickinletpark.org/history/bayside/",
+      "shows": "Bayside"
     },
     "updated": "Updated Sept 28, 2026 · exact match from NYC PAD/GeoSearch",
     "last_checked": "2026-09-28",
@@ -811,7 +827,9 @@
     "image": {
       "url": "https://grandarmyredesign.com/assets/images/dot-proposal-large.jpg",
       "credit": "NYC DOT design rendering, via grandarmyredesign.com",
-      "isRendering": true
+      "isRendering": true,
+      "page": "https://grandarmyredesign.com/",
+      "shows": "Grand Army Plaza"
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
     "last_checked": "2026-09-28",
@@ -869,11 +887,6 @@
         "u": "https://www.brownstoner.com/history/past-and-present-the-bqe-at-washington-and-park/"
       }
     ],
-    "image": {
-      "url": "https://media.wxy-labs.org/cdn-cgi/image/width=1440,quality=85,fit=cover,format=auto/1/p_A_redesigned_underpass_with_bike_lanes_pedestrian_pathways_and_green_infrastructure_p_46dfa562b7.jpeg",
-      "credit": "Rendering by WXY Architecture + Urban Design",
-      "isRendering": true
-    },
     "updated": "Updated Sept 25, 2026 · coordinates verified against US Census Bureau geocoder (corridor-representative point, not a single-parcel address)",
     "last_checked": "2026-09-28",
     "changed_on": "2024-10-10",
@@ -892,7 +905,9 @@
     "lat": 40.72462,
     "lng": -73.94825,
     "bbls": [],
-    "streets": ["MCGUINNESS BLVD"],
+    "streets": [
+      "MCGUINNESS BLVD"
+    ],
     "why": "Greenpoint's four-lane truck route from the Pulaski Bridge to the BQE, where the city is cutting a car lane each way to make it safer to cross, walk and bike.",
     "history": "In the 1950s the city widened a residential street into this four-lane road. A boy died after being hit by a driver here in 1956, and neighbors have pushed for years to calm it.",
     "now": "In May 2026 the city started building the full redesign: one car lane each way from the Pulaski Bridge to the BQE, plus a parking-protected bike lane. Before, only the southern end had it.",
@@ -934,7 +949,9 @@
     "image": {
       "url": "https://greenpointers.com/wp-content/uploads/2026/05/PXL_20260527_171548080.MP_-scaled.jpg",
       "credit": "Groundbreaking at McGuinness Blvd & Freeman St, via Greenpointers",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://greenpointers.com/2026/05/27/dot-breaks-ground-on-full-mcguinness-boulevard-redesign-in-greenpoint/",
+      "shows": "McGuinness"
     },
     "updated": "Updated Sept 28, 2026 · pin at Nassau Ave; highlighted line is McGuinness Blvd from the Pulaski Bridge to the BQE, from the city street centerline file",
     "last_checked": "2026-09-28",
@@ -991,7 +1008,9 @@
     "image": {
       "url": "https://www.brooklynpaper.com/wp-content/uploads/2025/01/DSC05231.jpg?quality=51&w=1200&p=q",
       "credit": "Newtown Creek, via Brooklyn Paper",
-      "isRendering": false
+      "isRendering": false,
+      "page": "https://www.brooklynpaper.com/epa-begin-early-action-cleanup-newown-creek/",
+      "shows": "Newtown Creek"
     },
     "updated": "Updated Sept 28, 2026 · representative point near the Greenpoint Ave bridge, not a single address",
     "last_checked": "2026-09-28",

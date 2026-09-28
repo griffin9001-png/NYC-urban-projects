@@ -8,19 +8,26 @@ then flags:
   - missing lots: a development site with no `bbls` to check against
   - unverified condition
   - missing or broken image (images are hotlinked, so source sites can move them)
+  - image that can't be tied to this site: its `image.page` must load, contain the
+    image, and name the site (`image.shows`) in the page title or next to the image;
+    if `shows` is an address it must fall on one of the site's `bbls`
 
 Needs network access to geosearch.planninglabs.nyc and data.cityofnewyork.us.
 Usage: python3 scripts/audit_sites.py [sites.json] [audit.json]
 """
 import datetime
+import html
 import json
 import math
+import re
 import sys
 import urllib.parse
 import urllib.request
 
 PLUTO = "https://data.cityofnewyork.us/resource/64uk-42ks.json"
 REVERSE = "https://geosearch.planninglabs.nyc/v2/reverse"
+SEARCH = "https://geosearch.planninglabs.nyc/v2/search"
+BROWSER_UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 LAND_USE = {
     "1": "1-2 family homes", "2": "Walk-up apartments", "3": "Elevator apartments",
     "4": "Mixed residential/commercial", "5": "Commercial/office", "6": "Industrial/manufacturing",
@@ -70,9 +77,62 @@ def image_ok(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (nyc-urban-projects-audit)"})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
-            return r.status == 200 and r.headers.get("Content-Type", "").startswith("image/")
+            return r.status == 200 and r.headers.get("Content-Type", "").startswith("image")
     except Exception:
         return False
+
+
+def image_tokens(url):
+    """Pieces of an image URL that should appear in the HTML of the page it came from."""
+    path = urllib.parse.urlparse(url).path
+    tokens = {path.rsplit("/", 1)[-1]} - {""}
+    for seg in path.split("/"):
+        stem = re.sub(r"\.(jpe?g|png|webp|gif)$", "", seg, flags=re.I)
+        while True:  # WordPress adds -scaled, -1024x570 and -e1234567890 to resized copies
+            shorter = re.sub(r"-(scaled|\d+x\d+|e\d{9,})$", "", stem)
+            if shorter == stem:
+                break
+            stem = shorter
+        if stem in {"wp-content", "uploads", "app", "images", "assets"} or re.fullmatch(r"\d{1,4}", stem):
+            continue
+        if len(stem) >= 6 or re.search(r"\d", stem):
+            tokens.add(stem)
+    return tokens
+
+
+def check_image_page(site, img):
+    """Flags for an image that can't be shown to belong to this site."""
+    page, shows = img.get("page"), img.get("shows")
+    if not page or not shows:
+        return ["image has no page/shows: record where it came from and what names the site (UPDATING.md)"]
+    req = urllib.request.Request(page, headers={"User-Agent": BROWSER_UA})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            doc = r.read().decode("utf-8", "ignore")
+    except Exception as e:
+        return [f"image page could not be read ({e}): cannot confirm the image shows this site; pick one from a readable page"]
+    if "<title>Just a moment" in doc[:5000]:
+        return ["image page is behind a bot wall: cannot confirm the image shows this site; pick one from a readable page"]
+    want = shows.lower()
+    heads = " ".join(a or b for a, b in re.findall(
+        r'<title[^>]*>(.*?)</title>|(?:og:title|og:image:alt)"\s+content="([^"]*)"', doc, re.S | re.I))
+    spots = [m.start() for tok in image_tokens(img["url"]) for m in re.finditer(re.escape(tok), doc)]
+    if not spots:
+        return ["image does not appear on its page: it may be from a different article"]
+    near = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", doc[max(0, i - 1500):i + 1500]))
+                    + " " + " ".join(re.findall(r'alt="([^"]*)"', doc[max(0, i - 1500):i + 1500])) for i in spots)
+    flags = []
+    if want not in html.unescape(heads).lower() and want not in near.lower():
+        flags.append(f'image page does not name "{shows}" in its title or next to the image: check it shows this site')
+    if re.match(r"\d", shows):  # an address: it must be on one of the site's lots
+        try:
+            feats = get_json(SEARCH, {"text": shows + ", Brooklyn", "size": 1}).get("features", [])
+            bbl = feats[0]["properties"]["addendum"]["pad"]["bbl"] if feats else None
+            if bbl not in site.get("bbls", []):
+                flags.append(f'image address "{shows}" is lot {bbl}, not one of this site\'s bbls')
+        except Exception as e:
+            flags.append(f"image address lookup failed: {e}")
+    return flags
 
 
 def distance_m(a_lat, a_lng, b_lat, b_lng):
@@ -116,6 +176,8 @@ def audit_site(site):
         flags.append("no image: popup falls back to a Street View link (see UPDATING.md for how to find one)")
     elif not image_ok(img["url"]):
         flags.append("image URL no longer loads: replace it")
+    else:
+        flags += check_image_page(site, img)
 
     if condition == "unverified":
         flags.append("condition unverified: confirm what stands on the site and set condition")

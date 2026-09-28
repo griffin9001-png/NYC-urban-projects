@@ -190,8 +190,19 @@ def validate(sites):
             if not src.get("t") or not str(src.get("u", "")).startswith("https://"):
                 err(f"source {j + 1} needs a title and an https:// url")
         img = s.get("image")
-        if img is not None and not str(img.get("url", "")).startswith("https://"):
-            err("image.url must be https://")
+        if img is not None:
+            if not str(img.get("url", "")).startswith("https://"):
+                err("image.url must be https://")
+            # Provenance: the page the image came from, and the name or address on that page
+            # that ties it to this site. audit_sites.py confirms both against the live page.
+            if not str(img.get("page", "")).startswith("https://"):
+                err("image.page must be the https:// page the image appears on")
+            shows = str(img.get("shows") or "").strip()
+            own_text = " ".join(str(s.get(k) or "") for k in ("name", "headline", "neighborhood", "why", "history", "now", "impact"))
+            if not shows:
+                err("image.shows must name the site or its address as the image's page does")
+            elif shows.lower() not in own_text.lower():
+                err(f'image.shows "{shows}" does not appear in this site\'s name or text: the image may be of another place')
         try:
             checked = datetime.date.fromisoformat(str(s.get("last_checked")))
             if checked > today:
