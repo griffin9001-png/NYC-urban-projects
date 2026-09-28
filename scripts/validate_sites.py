@@ -152,6 +152,9 @@ def validate(sites):
         bbls = s.get("bbls", [])
         if not isinstance(bbls, list) or not all(re.fullmatch(r"[1-5]\d{9}", str(b)) for b in bbls):
             err("bbls must be a list of 10-digit BBL strings")
+        streets = s.get("streets", [])
+        if not isinstance(streets, list) or not all(isinstance(x, str) and x.strip() for x in streets):
+            err("streets must be a list of street names")
         for key in JARGON_FIELDS:
             for pattern, plain in JARGON.items():
                 m = re.search(pattern, str(s.get(key) or ""), re.I)

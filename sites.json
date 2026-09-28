@@ -892,6 +892,7 @@
     "lat": 40.72462,
     "lng": -73.94825,
     "bbls": [],
+    "streets": ["MCGUINNESS BLVD"],
     "why": "Greenpoint's four-lane truck route from the Pulaski Bridge to the BQE, where the city is cutting a car lane each way to make it safer to cross, walk and bike.",
     "history": "In the 1950s the city widened a residential street into this four-lane road. A boy died after being hit by a driver here in 1956, and neighbors have pushed for years to calm it.",
     "now": "In May 2026 the city started building the full redesign: one car lane each way from the Pulaski Bridge to the BQE, plus a parking-protected bike lane. Before, only the southern end had it.",
@@ -935,7 +936,7 @@
       "credit": "Groundbreaking at McGuinness Blvd & Freeman St, via Greenpointers",
       "isRendering": false
     },
-    "updated": "Updated Sept 28, 2026 · corridor-representative point at Nassau Ave, not a single address",
+    "updated": "Updated Sept 28, 2026 · pin at Nassau Ave; highlighted line is McGuinness Blvd from the Pulaski Bridge to the BQE, from the city street centerline file",
     "last_checked": "2026-09-28",
     "changed_on": "2026-05-27",
     "change_note": "The city broke ground on the full McGuinness Boulevard redesign."

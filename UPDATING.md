@@ -6,7 +6,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 - Audit: https://griffin9001-png.github.io/NYC-urban-projects/audit.html
 - Check data locally: `python3 scripts/validate_sites.py`
 - Check against city lot records: `python3 scripts/audit_sites.py` (needs internet; writes `audit.json`, which the audit page shows)
-- Refresh lot shading: `python3 scripts/fetch_lots.py` (needs internet; writes `lots.geojson` from each site's `bbls`; rerun whenever `bbls` change)
+- Refresh lot shading: `python3 scripts/fetch_lots.py` (needs internet; writes `lots.geojson` from each site's `bbls` and `streets`; rerun whenever either changes)
 - Preview locally: `python3 -m http.server` in the repo root, then open http://localhost:8000 (opening `index.html` straight from disk can't load `sites.json`).
 
 ## Site fields
@@ -21,6 +21,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `phase` | the resident-facing pill: `decision-coming`, `planned` (approved or cleared, not started), `construction-underway`, `partly-open` (some of it open, the rest still coming), `open-now`, `stalled` |
 | `condition` | what physically stands on the site today, shown as a pill: `vacant`, `existing-buildings`, `under-construction`, `partly-built`, `open-space`, `street`, `unverified`. Never set `vacant` without a PLUTO lot showing no buildings |
 | `bbls` | the site's NYC tax lots as 10-digit strings (look up at https://zola.planning.nyc.gov). Required in practice for `parcel` sites so the audit can check condition and pin, and for any site whose land should be shaded on the map (streets have none) |
+| `streets` | optional; for street projects, exact Brooklyn street names as they appear in the city's street centerline file (CSCL, e.g. `MCGUINNESS BLVD`). `fetch_lots.py` draws every segment of that name as a line in the pin color |
 | `lat`, `lng` | geocoded point; say how in `updated` |
 | `why` | what the place is and what would change, then the bigger picture, 250 chars max |
 | `now` | shown as **Current status**, 250 chars max, lead with the month and year of the latest event |
@@ -63,7 +64,7 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. It ne
    3. If there is a material development (vote, approval, lawsuit, groundbreaking, cancellation, sale, new plan), rewrite `now` within 250 chars, adjust `headline`, `status`, `phase`, `impact`, `timeline`, `next_step` and the unit/acre numbers if they are no longer accurate, set `changed_on` to the development's date and `change_note` to one sentence about it, add the new source(s) to the top of `sources`, and update the date in `updated`. Never fill a number or date from a guess; leave it null.
    4. Set `last_checked` to today for every site that was searched, changed or not.
 3. Consistency review, for every site whether or not news changed: read `headline`, `status`, `condition` and `type` against `why`, `now`, `history` and the sources. Fix any label that the text or sources contradict, or list it in the PR if the right value is unclear. Also open the newest listed source and confirm `now` reflects it; a source that is listed but not reflected in the text is a stale entry. Never carry a claim from reader comments, search snippets or paywalled headlines alone into the text.
-4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Commit the refreshed `audit.json`. If any `bbls` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.
+4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Commit the refreshed `audit.json`. If any `bbls` or `streets` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.
 5. Run `python3 scripts/validate_sites.py` and fix any errors.
 6. Open a PR titled `Weekly site update YYYY-MM-DD`. The body has one row per site: id, changed or no change, a one-line summary of what changed, and the source URLs relied on. Add a section listing remaining audit flags and label questions, and any pages that couldn't be read.
 7. If no site changed, still open the PR (it only bumps `last_checked`) so the audit page shows the check happened.
