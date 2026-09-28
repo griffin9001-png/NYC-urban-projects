@@ -623,6 +623,42 @@
         "lng": -73.9720626
       },
       "flags": []
+    },
+    "mcguinness-blvd": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3026820008",
+        "address": "130 NASSAU AVENUE",
+        "land_use": "Mixed residential/commercial",
+        "buildings": 1,
+        "building_area_sqft": 4125,
+        "year_built": 1931,
+        "owner": "FUNKY NASSAU LLC",
+        "lot_area_sqft": 2500,
+        "lat": 40.7244103,
+        "lng": -73.9482862
+      },
+      "flags": []
+    },
+    "newtown-creek-cleanup": {
+      "condition": "open-space",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3025850001",
+        "address": "332 MONITOR STREET",
+        "land_use": "Unknown",
+        "buildings": 1,
+        "building_area_sqft": 600,
+        "year_built": 1960,
+        "owner": "MONITOR 332 REALTY LLC",
+        "lot_area_sqft": 109000,
+        "lat": 40.7316623,
+        "lng": -73.9431245
+      },
+      "flags": []
     }
   }
 }

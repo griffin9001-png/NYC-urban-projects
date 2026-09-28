@@ -878,5 +878,123 @@
     "last_checked": "2026-09-28",
     "changed_on": "2024-10-10",
     "change_note": "The city released long-term ideas for the streets along the BQE."
+  },
+  {
+    "id": "mcguinness-blvd",
+    "name": "McGuinness Boulevard",
+    "headline": "Safer boulevard being built",
+    "type": "road",
+    "category": "topic",
+    "status": "active",
+    "condition": "street",
+    "phase": "construction-underway",
+    "neighborhood": "McGuinness Blvd from the Pulaski Bridge to the BQE · Greenpoint",
+    "lat": 40.72462,
+    "lng": -73.94825,
+    "bbls": [],
+    "why": "Greenpoint's four-lane truck route from the Pulaski Bridge to the BQE, where the city is cutting a car lane each way to make it safer to cross, walk and bike.",
+    "history": "In the 1950s the city widened a residential street into this four-lane road. A boy died after being hit by a driver here in 1956, and neighbors have pushed for years to calm it.",
+    "now": "In May 2026 the city started building the full redesign: one car lane each way from the Pulaski Bridge to the BQE, plus a parking-protected bike lane. Before, only the southern end had it.",
+    "impact": "One car lane each way, a protected bike lane and a parking lane along the whole boulevard, with crews working on the street while it's rebuilt.",
+    "timeline": {
+      "start": "2026-05",
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": "2026-10-13",
+      "what": "Community Board 1 meets at 6 PM, 80 Siegel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street.",
+    "sources": [
+      {
+        "t": "DOT Breaks Ground on Full McGuinness Boulevard Redesign in Greenpoint · Greenpointers",
+        "u": "https://greenpointers.com/2026/05/27/dot-breaks-ground-on-full-mcguinness-boulevard-redesign-in-greenpoint/"
+      },
+      {
+        "t": "Mamdani Announces Full McGuinness Road Diet · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/01/03/mamdani-announces-full-mcguinness-road-diet-finishing-a-job-halted-by-adams"
+      },
+      {
+        "t": "Mayor Announces City to Complete Redesign on McGuinness Boulevard · NYC Mayor's Office",
+        "u": "https://www.nyc.gov/mayors-office/news/2026/01/mayor-mamdani-announces-city-to-complete-redesign-on-mcguinness-"
+      },
+      {
+        "t": "Combined Public Hearing and Board Meeting Notice, Oct 13, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-agendas/Combined-Public-Hearing-Board-Meeting-Notice-10-13-26.pdf"
+      }
+    ],
+    "image": {
+      "url": "https://greenpointers.com/wp-content/uploads/2026/05/PXL_20260527_171548080.MP_-scaled.jpg",
+      "credit": "Groundbreaking at McGuinness Blvd & Freeman St, via Greenpointers",
+      "isRendering": false
+    },
+    "updated": "Updated Sept 28, 2026 · corridor-representative point at Nassau Ave, not a single address",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-05-27",
+    "change_note": "The city broke ground on the full McGuinness Boulevard redesign."
+  },
+  {
+    "id": "newtown-creek-cleanup",
+    "name": "Newtown Creek Cleanup",
+    "headline": "Toxic creek cleanup planned",
+    "type": "other",
+    "category": "topic",
+    "status": "review",
+    "condition": "open-space",
+    "phase": "planned",
+    "neighborhood": "Newtown Creek, Greenpoint / East Williamsburg / Queens border",
+    "lat": 40.73278,
+    "lng": -73.94282,
+    "bbls": [],
+    "why": "Newtown Creek, on Greenpoint's edge, is one of the country's most polluted waterways after a century of refineries and oil spills. A federal cleanup is meant to finish around 2035.",
+    "history": "Refineries, gas plants and oil depots lined the creek for over a century. A 1978 discovery revealed one of the largest oil spills in US history under Greenpoint.",
+    "now": "In Jan 2025 the EPA finalized its first cleanup, for the creek's 11-acre East Branch, with no start date yet. In late 2025 the state flagged 41 properties along the creek that may be leaking pollution into it.",
+    "impact": "Dredging and capping will remove cancer-causing sediment from the East Branch first; the rest of the creek's cleanup follows over the next decade.",
+    "timeline": {
+      "start": null,
+      "complete": "2035",
+      "confidence": "estimated"
+    },
+    "next_step": {
+      "date": null,
+      "what": "The EPA posts cleanup plans and public meeting notices for the creek on its site page.",
+      "where": "EPA Newtown Creek page",
+      "url": "https://www.epa.gov/superfund/newtown-creek"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "Federal Superfund site run by the EPA; state regulators handle the polluted land along the banks.",
+    "sources": [
+      {
+        "t": "New Study Identifies Toxic Feedback Loop Along Newtown Creek · Brooklyn Downtown Star",
+        "u": "https://brooklyndowntownstar.com/lead_story/2025/12/10/toxic-feedback/"
+      },
+      {
+        "t": "EPA moves toward partial 'early action' cleanup of Newtown Creek · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/epa-begin-early-action-cleanup-newown-creek/"
+      },
+      {
+        "t": "Newtown Creek Superfund Site Profile · US EPA",
+        "u": "https://www.epa.gov/superfund/newtown-creek"
+      }
+    ],
+    "image": {
+      "url": "https://www.brooklynpaper.com/wp-content/uploads/2025/01/DSC05231.jpg?quality=51&w=1200&p=q",
+      "credit": "Newtown Creek, via Brooklyn Paper",
+      "isRendering": false
+    },
+    "updated": "Updated Sept 28, 2026 · representative point near the Greenpoint Ave bridge, not a single address",
+    "last_checked": "2026-09-28",
+    "changed_on": "2025-12-10",
+    "change_note": "The state flagged 41 properties along the creek that may be leaking pollution into it."
   }
 ]
