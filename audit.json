@@ -622,7 +622,9 @@
         "lat": 40.6956946,
         "lng": -73.9720626
       },
-      "flags": []
+      "flags": [
+        "no image: popup falls back to a Street View link (see UPDATING.md for how to find one)"
+      ]
     },
     "mcguinness-blvd": {
       "condition": "street",

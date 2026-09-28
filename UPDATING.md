@@ -33,7 +33,7 @@ All site data lives in `sites.json`. `index.html` (the map) and `audit.html` (th
 | `park_acres_promised`, `park_acres_delivered` | numbers from a source, or null |
 | `owner` | who controls the site, 200 chars max |
 | `sources` | list of `{t, u}`; newest first; `u` must be https |
-| `image` | `{url, credit, isRendering}`, hotlinked. See "Finding an image" below. If missing or broken, the popup shows an "Open in Street View" link instead |
+| `image` | `{url, credit, isRendering, page, shows}`, hotlinked. `page` is the https page the image appears on; `shows` is the site name or street address that page uses for it (in the title, caption or alt text), and must also appear in this site's own text. See "Finding an image" below. If missing or broken, the popup shows an "Open in Street View" link instead |
 | `updated` | free text shown at the popup foot, e.g. `Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch` |
 | `last_checked` | `YYYY-MM-DD` of the last time someone searched for news on this site, whether or not anything changed |
 | `changed_on`, `change_note` | date of the latest material development (not a wording fix) and one plain sentence about it; feeds "What's new" |
@@ -51,11 +51,20 @@ Try these in order and stop at the first that shows the site itself (check the c
 3. Mapillary street-level imagery (open license, needs a free access token).
 4. None of the above: leave `image` out. The popup then links to Google Street View at the pin.
 
+Before keeping an image:
+
+- **Look at it.** Does it match what `why` describes (the number and shape of buildings, a waterfront, the streets named)? A rendering of "twin towers" isn't automatically this site's twin towers.
+- **The page must name this site.** Record the page in `image.page` and the words it uses for the site in `image.shows`. If the article is about a different address or project, even a nearby one, don't use its images.
+- **Addresses must be on the site's lots.** If `shows` is a street address, it has to geocode to one of the site's `bbls`.
+- **Use a page that loads without a bot wall.** New York YIMBY and some others often block automated reads, so the audit can't confirm their images; prefer another outlet's copy of the same rendering.
+
+`validate_sites.py` requires `page` and `shows`. `audit_sites.py` loads the page and flags the image if the page can't be read, doesn't contain the image, doesn't name `shows` in its title or next to the image, or if an address in `shows` isn't on the site's lots.
+
 Don't screenshot Google Street View or Google Maps for the site: Google's terms don't allow hosting those images on a website outside its own embeds and APIs. Avoid images that are mostly a person, a logo or a composite.
 
 ## Weekly update procedure
 
-A scheduled Claude Code run does this every Monday morning and opens a PR. It never merges; a person reviews and merges.
+A scheduled Claude Code run does this every Monday morning and opens a PR. Once its checks pass and it has no merge conflict, the run squash-merges it (the standing instruction in `CLAUDE.md`).
 
 1. Start a branch from the latest `main` (the scheduled run reuses its session branch, `claude/friendly-dirac-ydvf3y`).
 2. For each site in `sites.json`:
@@ -64,7 +73,7 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. It ne
    3. If there is a material development (vote, approval, lawsuit, groundbreaking, cancellation, sale, new plan), rewrite `now` within 250 chars, adjust `headline`, `status`, `phase`, `impact`, `timeline`, `next_step` and the unit/acre numbers if they are no longer accurate, set `changed_on` to the development's date and `change_note` to one sentence about it, add the new source(s) to the top of `sources`, and update the date in `updated`. Never fill a number or date from a guess; leave it null.
    4. Set `last_checked` to today for every site that was searched, changed or not.
 3. Consistency review, for every site whether or not news changed: read `headline`, `status`, `condition` and `type` against `why`, `now`, `history` and the sources. Fix any label that the text or sources contradict, or list it in the PR if the right value is unclear. Also open the newest listed source and confirm `now` reflects it; a source that is listed but not reflected in the text is a stale entry. Never carry a claim from reader comments, search snippets or paywalled headlines alone into the text.
-4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Commit the refreshed `audit.json`. If any `bbls` or `streets` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.
+4. Run `python3 scripts/audit_sites.py`. For each flag, fix the data (set `condition`, add or correct `bbls`, move a pin onto its lot, find or replace an image per "Finding an image") or explain in the PR why it stands. Treat an image flag as a possible wrong image: open the image and its page and confirm it shows this site before doing anything else. Commit the refreshed `audit.json`. If any `bbls` or `streets` changed, run `python3 scripts/fetch_lots.py` and commit `lots.geojson`.
 5. Run `python3 scripts/validate_sites.py` and fix any errors.
 6. Open a PR titled `Weekly site update YYYY-MM-DD`. The body has one row per site: id, changed or no change, a one-line summary of what changed, and the source URLs relied on. Add a section listing remaining audit flags and label questions, and any pages that couldn't be read.
 7. If no site changed, still open the PR (it only bumps `last_checked`) so the audit page shows the check happened.
