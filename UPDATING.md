@@ -86,7 +86,7 @@ A scheduled Claude Code run does this every Monday morning and opens a PR. Once 
 
 ## Finding new sites
 
-`scripts/find_candidates.py` gathers leads for Brooklyn Community Districts 1 to 4 and writes `candidates.json`:
+`scripts/find_candidates.py` gathers leads and writes `candidates.json`. Development leads (zoning applications, new buildings, and development items on other boards' agendas) come from Community District 1 only, Greenpoint and Williamsburg (`DEV_CDS`). Bike lanes, street plans, parks and news cover Districts 1 to 4, adding Fort Greene/Clinton Hill/Downtown, Bed-Stuy and Bushwick (`AREA_CDS`); CB3 and CB4 agenda items are kept only when they're about streets or parks:
 
 - **Zoning applications** from City Planning's Zoning Application Portal: rezonings, waterfront sign-offs, anything in public review.
 - **New buildings** filed with the Buildings Department since 2024 with 50 or more homes (`MIN_HOMES`), shown as filed, under construction (has a permit) or finished (first certificate of occupancy).

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Find possible new sites for the map and write candidates.json.
 
-Pulls leads for Brooklyn Community Districts 1-4 (Greenpoint, Williamsburg, Fort
-Greene/Clinton Hill/Brooklyn Heights, Bed-Stuy, Bushwick) from:
+Development leads (zoning, new buildings) come from Community District 1 only (Greenpoint and
+Williamsburg, DEV_CDS); street, park, agenda and news leads from Districts 1-4 (AREA_CDS: also Fort
+Greene/Clinton Hill/Brooklyn Heights, Bed-Stuy, Bushwick). Sources:
   - zoning:   City Planning's Zoning Application Portal (rezonings, waterfront sign-offs)
   - building: Buildings Department new-building filings with MIN_HOMES+ proposed homes
   - park:     Parks Department capital project tracker (projects not yet finished)
@@ -31,7 +32,8 @@ import sys
 import urllib.parse
 import urllib.request
 
-AREA_CDS = ["301", "302", "303", "304"]
+AREA_CDS = ["301", "302", "303", "304"]   # bike lanes, street plans, parks, agendas, news
+DEV_CDS = ["301"]                          # zoning applications and new buildings
 MIN_HOMES = 50
 BUILDING_SINCE = "2024-01-01"
 ZONING_SINCE = "2024-01-01"
@@ -57,6 +59,8 @@ AGENDA_PAGES = [
     ("CB3", NYC + "/site/brooklyncb3/meetings/agendas.page", r"."),
     ("CB4", NYC + "/site/brooklyncb4/calendar/agendas.page", r"."),
 ]
+STREET_PARK_WORDS = r"\bDOT\b|bike|lane|street redesign|greenway|plaza|park\b|playground|\bbus\b|busway|" \
+                    r"traffic|sidewalk|transit|station"
 AGENDA_SKIP = r"minutes|old business|new business|adjourn|roll call|chair.?person.s report|district manager|needs statement|" \
               r"co-?naming|sla\b|liquor|cannabis|pending and upcoming|election|budget|public session|announcements|" \
               r"acceptance of|precinct|introduction of|committee reports|^recommendations|elected officials|" \
@@ -314,6 +318,8 @@ def agendas(polys):
                 head = item_title(item)
                 if len(head) < 12 or re.search(AGENDA_SKIP, head, re.I):
                     continue
+                if board != "CB1" and not re.search(STREET_PARK_WORDS, item, re.I):
+                    continue  # outside CB1, only street and park items (development leads are CB1 only)
                 homes = re.search(r"(\d[\d,]*)\s+(?:residential\s+)?(?:dwelling\s+)?units", item, re.I)
                 addr = re.search(r"\b\d+[-\d]*\s+(?:[A-Z][a-z]+\s){1,3}(?:Street|Avenue|Place|Boulevard|Road|Drive|St|Ave|Blvd)\b",
                                  item)
@@ -361,7 +367,7 @@ def lot_address(bbl, lat, lng, given=None):
 
 
 def zoning():
-    cds = ",".join(f"'K{c[1:]}'" for c in AREA_CDS)
+    cds = ",".join(f"'K{c[1:]}'" for c in DEV_CDS)
     rows = soda("hgx4-8ukb", where=f"borough='Brooklyn' AND community_district in({cds}) AND "
                                    f"(project_status='Active' OR completed_date>'{ZONING_SINCE}')",
                 select="project_id,project_name,project_brief,project_status,public_status,ulurp_non,"
@@ -451,7 +457,7 @@ def housing_jobs(bbls=None, since=BUILDING_SINCE):
     Alteration filings are left out: they repeat a building's unit count on unrelated work (a loading
     platform filed as "680 proposed homes"), and projects first filed in the old BIS system (Domino Site B's
     2014 new-building job) carry no unit counts, so those come through the zoning source instead."""
-    cbs = ",".join(f"'{c}'" for c in AREA_CDS)
+    cbs = ",".join(f"'{c}'" for c in DEV_CDS)
     where = (f"job_type='New Building' AND commmunity_board in({cbs}) AND bbl IS NOT NULL AND "
              f"proposed_dwelling_units::number>={MIN_HOMES} AND filing_date>'{since}'")
     if bbls:
@@ -642,7 +648,9 @@ def main():
     for c in found:
         c["score"] = score(c, today, headlines)
     found.sort(key=lambda c: (c["on_map"] is not None, -c["score"], c["title"]))
-    report = {"generated": today.isoformat(), "area": f"Brooklyn Community Districts {', '.join(str(int(c[1:])) for c in AREA_CDS)}",
+    report = {"generated": today.isoformat(),
+              "area": f"Development: Brooklyn CD {', '.join(str(int(c[1:])) for c in DEV_CDS)}; streets and parks: "
+                      f"CD {', '.join(str(int(c[1:])) for c in AREA_CDS)}",
               "min_homes": MIN_HOMES, "counts": counts, "candidates": found}
     with open(dst, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=1, ensure_ascii=False)
