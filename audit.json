@@ -712,6 +712,141 @@
         "lng": -73.956299
       },
       "flags": []
+    },
+    "domino-site-b": {
+      "condition": "under-construction",
+      "pluto_condition": "vacant",
+      "lots": [
+        {
+          "bbl": "3024140003",
+          "address": "280 KENT STREET",
+          "land_use": "Unknown",
+          "buildings": 1,
+          "building_area_sqft": 0,
+          "year_built": null,
+          "owner": "DOMINO A PARTNERS LLC",
+          "lot_area_sqft": 42900,
+          "lat": 40.7152909,
+          "lng": -73.967015
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3024140003",
+        "address": "280 KENT STREET",
+        "land_use": "Unknown",
+        "buildings": 1,
+        "building_area_sqft": 0,
+        "year_built": null,
+        "owner": "DOMINO A PARTNERS LLC",
+        "lot_area_sqft": 42900,
+        "lat": 40.7152909,
+        "lng": -73.967015
+      },
+      "flags": []
+    },
+    "ashland-place-bike-lane": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3021110011",
+        "address": "321 ASHLAND PLACE",
+        "land_use": "Public facilities",
+        "buildings": 1,
+        "building_area_sqft": 7485,
+        "year_built": 1927,
+        "owner": "NYC DEPARTMENT OF CULTURAL AFFAIRS",
+        "lot_area_sqft": 7367,
+        "lat": 40.6860261,
+        "lng": -73.9778105
+      },
+      "flags": []
+    },
+    "sands-adams-bike-lanes": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3000630001",
+        "address": "55 PROSPECT STREET",
+        "land_use": "Commercial/office",
+        "buildings": 1,
+        "building_area_sqft": 256057,
+        "year_built": 1967,
+        "owner": "RFR/K 55 PROSPECT OWNER LLC",
+        "lot_area_sqft": 20704,
+        "lat": 40.7008905,
+        "lng": -73.9881923
+      },
+      "flags": [
+        "no image: popup falls back to a Street View link (see UPDATING.md for how to find one)"
+      ]
+    },
+    "289-kent-avenue": {
+      "condition": "existing-buildings",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3024030001",
+          "address": "285 KENT AVENUE",
+          "land_use": "Commercial/office",
+          "buildings": 1,
+          "building_area_sqft": 44832,
+          "year_built": 1920,
+          "owner": "WEB HOLDINGS LLC",
+          "lot_area_sqft": 37800,
+          "lat": 40.7150135,
+          "lng": -73.9662432
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3024030001",
+        "address": "285 KENT AVENUE",
+        "land_use": "Commercial/office",
+        "buildings": 1,
+        "building_area_sqft": 44832,
+        "year_built": 1920,
+        "owner": "WEB HOLDINGS LLC",
+        "lot_area_sqft": 37800,
+        "lat": 40.7150135,
+        "lng": -73.9662432
+      },
+      "flags": [
+        "no image: popup falls back to a Street View link (see UPDATING.md for how to find one)"
+      ]
+    },
+    "488-leonard-street": {
+      "condition": "existing-buildings",
+      "pluto_condition": "existing-buildings",
+      "lots": [
+        {
+          "bbl": "3026980007",
+          "address": "488 LEONARD STREET",
+          "land_use": "Industrial/manufacturing",
+          "buildings": 1,
+          "building_area_sqft": 10000,
+          "year_built": 1969,
+          "owner": "488 LEONARD STREET LLC",
+          "lot_area_sqft": 10200,
+          "lat": 40.7218854,
+          "lng": -73.9486886
+        }
+      ],
+      "pin_lot": {
+        "bbl": "3026980007",
+        "address": "488 LEONARD STREET",
+        "land_use": "Industrial/manufacturing",
+        "buildings": 1,
+        "building_area_sqft": 10000,
+        "year_built": 1969,
+        "owner": "488 LEONARD STREET LLC",
+        "lot_area_sqft": 10200,
+        "lat": 40.7218854,
+        "lng": -73.9486886
+      },
+      "flags": [
+        "no image: popup falls back to a Street View link (see UPDATING.md for how to find one)"
+      ]
     }
   }
 }

@@ -1179,5 +1179,298 @@
     "last_checked": "2026-09-28",
     "changed_on": "2026-07-13",
     "change_note": "The mayor cited legal requirements and set no date to restore the protected lane."
+  },
+  {
+    "id": "domino-site-b",
+    "name": "Domino Site B",
+    "headline": "Final Domino tower rising",
+    "type": "housing",
+    "category": "parcel",
+    "status": "active",
+    "condition": "under-construction",
+    "phase": "construction-underway",
+    "neighborhood": "280 Kent Ave, between South 1st and South 2nd Sts · Williamsburg waterfront",
+    "lat": 40.71529,
+    "lng": -73.96701,
+    "bbls": [
+      "3024140003"
+    ],
+    "why": "The last empty block of the old Domino Sugar site on the Williamsburg waterfront, where two 52-story towers with about 1,260 apartments are going up. It finishes the plan that also built Domino Park and four other buildings.",
+    "history": "Part of the old Domino Sugar refinery. The city approved rebuilding the 11-acre site in 2014 and approved this building's updated design in October 2025.",
+    "now": "In May 2026 the concrete frame reached the 7th floor. About 315 apartments will be affordable, plus 105 more built elsewhere, and the developer expects people to move in about three years after work began in late 2025.",
+    "impact": "Two 591-foot towers on the waterfront, construction on Kent Ave until about 2028, and the Kent Ave protected bike lane extended south to about South 5th St.",
+    "timeline": {
+      "start": "2025-11",
+      "complete": "2028",
+      "confidence": "estimated"
+    },
+    "next_step": {
+      "date": null,
+      "what": "About 315 affordable apartments will be offered by lottery on NYC Housing Connect as the building nears opening; a free profile gets you ready.",
+      "where": "NYC Housing Connect",
+      "url": "https://housingconnect.nyc.gov/"
+    },
+    "units_total": 1262,
+    "units_affordable": 315,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "Two Trees Management (developer), which built the rest of the Domino site.",
+    "sources": [
+      {
+        "t": "Final building rising at Two Trees' Domino Sugar Refinery complex · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/two-trees-domino-sugar-refinery-complex-tower-rising/"
+      },
+      {
+        "t": "Domino Sugar 'master plan' nears completion after rezoning for final mixed-use tower · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/domino-sugar-development-plan-nears-completion/"
+      },
+      {
+        "t": "Domino Site B · NYC Zoning Application Portal",
+        "u": "https://zap.planning.nyc.gov/projects/2024K0344"
+      }
+    ],
+    "image": {
+      "url": "https://www.brooklynpaper.com/wp-content/uploads/2026/05/williamsburg-domino-site-b-construction-may012026-sdevries-1.jpg?quality=51&w=1200",
+      "credit": "Construction at 280 Kent Ave, May 2026, photo by Susan De Vries via Brooklyn Paper",
+      "isRendering": false,
+      "page": "https://www.brooklynpaper.com/two-trees-domino-sugar-refinery-complex-tower-rising/",
+      "shows": "Domino"
+    },
+    "updated": "Added Sept 28, 2026 · pin on the Site B lot (280 Kent Ave), from NYC GeoSearch",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-05-15",
+    "change_note": "The final Domino tower's concrete frame reached the 7th floor."
+  },
+  {
+    "id": "ashland-place-bike-lane",
+    "name": "Ashland Place bike lane",
+    "headline": "Missing bike lane block filled in",
+    "type": "road",
+    "category": "topic",
+    "status": "active",
+    "condition": "street",
+    "phase": "open-now",
+    "neighborhood": "Ashland Pl between Lafayette Ave and Hanson Pl · Fort Greene / Downtown Brooklyn",
+    "lat": 40.68597,
+    "lng": -73.97807,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "ASHLAND PL",
+        "between": [
+          "LAFAYETTE AVE",
+          "HANSON PL"
+        ]
+      }
+    ],
+    "why": "The one block of Ashland Place, by BAM and Atlantic Terminal, that was left out of the street's protected bike lane. Bike riders had to cross traffic and share the block with cars and trucks.",
+    "history": "The city built protected lanes on the rest of Ashland Pl and Navy St in 2023 but left this block without one after objections from BAM and a nearby building's developer.",
+    "now": "On Sept 1, 2026 the city finished a two-way protected bike lane on the block and made it one-way for cars. It closes the last gap in a 5.5-mile protected route from Sunset Park to DUMBO.",
+    "impact": "A protected two-way bike lane by BAM, one-way car traffic on the block, and a protected link on the Lafayette Ave sidewalk to the Schermerhorn St bike lane.",
+    "timeline": {
+      "start": "2026-08",
+      "complete": "2026-09",
+      "confidence": "announced"
+    },
+    "next_step": {
+      "date": null,
+      "what": "The city also plans to turn Hanson Pl by Atlantic Terminal into a shared street with more room for people walking.",
+      "where": "DOT plan, June 2026",
+      "url": "https://www.nyc.gov/html/dot/downloads/pdf/ashland-pl-lafayette-ave-hanson-pl-jun2026.pdf"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street.",
+    "sources": [
+      {
+        "t": "Goodbye to 'Crashland': Mamdani admin fills in block of Brooklyn's Ashland Place bike lane · amNewYork",
+        "u": "https://www.amny.com/news/mamdani-admin-brooklyn-ashland-place-bike-lane-completed/"
+      },
+      {
+        "t": "'Crashland' No More: Mamdani Admin. To Complete Ashland Place Bike Lane · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/08/12/crashland-no-more-mamdani"
+      },
+      {
+        "t": "DOT Reveals Plan to Fill Infamous Bike Lane Gap on Ashland Place · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/06/04/dot-reveals-plan-to-fill-infamous-bike-lane-gap-on-ashland-place"
+      },
+      {
+        "t": "Ashland Pl, Lafayette Av, and Hanson Pl · NYC DOT",
+        "u": "https://www.nyc.gov/html/dot/downloads/pdf/ashland-pl-lafayette-ave-hanson-pl-jun2026.pdf"
+      }
+    ],
+    "image": {
+      "url": "https://www.amny.com/wp-content/uploads/2026/09/55502412626_f485ab1ea7_c.jpg?quality=51&w=800&p=q",
+      "credit": "The finished lane by BAM, Sept 2026, via amNewYork",
+      "isRendering": false,
+      "page": "https://www.amny.com/news/mamdani-admin-brooklyn-ashland-place-bike-lane-completed/",
+      "shows": "Ashland Place"
+    },
+    "updated": "Added Sept 28, 2026 · pin mid-block on Ashland Pl; highlighted line is Ashland Pl from Lafayette Ave to Hanson Pl, from the city street centerline file",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-09-01",
+    "change_note": "The city finished the protected bike lane on the last block of Ashland Place."
+  },
+  {
+    "id": "sands-adams-bike-lanes",
+    "name": "Sands St & Adams St bike lanes",
+    "headline": "DUMBO bike lane upgrades proposed",
+    "type": "road",
+    "category": "topic",
+    "status": "review",
+    "condition": "street",
+    "phase": "planned",
+    "neighborhood": "Sands St from Jay to Adams St, Adams St from Sands to Front St · DUMBO / Vinegar Hill",
+    "lat": 40.70071,
+    "lng": -73.98867,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "SANDS ST",
+        "between": [
+          "JAY ST",
+          "ADAMS ST"
+        ]
+      },
+      {
+        "name": "ADAMS ST",
+        "between": [
+          "SANDS ST",
+          "FRONT ST"
+        ]
+      }
+    ],
+    "why": "Two DUMBO streets where the city wants to add and upgrade bike lanes to fill gaps in the neighborhood's mostly painted bike network, which is part of the Brooklyn waterfront greenway.",
+    "history": "DUMBO's bike lanes have mostly been painted lines. The city upgraded York St and Front St to protected lanes in summer 2026.",
+    "now": "In September 2026 the city presented a plan: protected bike lanes on Sands St from Jay to Adams St and on Adams St from Prospect to York St, and painted lanes on the rest of Adams St to Front St.",
+    "impact": "New protected bike lanes on Sands and Adams Sts, more room at the Sands St bus stop, and shorter crossings for people walking.",
+    "timeline": {
+      "start": null,
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": null,
+      "what": "No public meeting or vote scheduled yet; the plan the city presented in September is online.",
+      "where": "DOT presentation, Sept 2026",
+      "url": "https://www.nyc.gov/html/dot/downloads/pdf/sands-st-adams-st-sept2026.pdf"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the streets.",
+    "sources": [
+      {
+        "t": "Sands St & Adams St Redesign, Project Presentation, Sept 3, 2026 · NYC DOT",
+        "u": "https://www.nyc.gov/html/dot/downloads/pdf/sands-st-adams-st-sept2026.pdf"
+      }
+    ],
+    "updated": "Added Sept 28, 2026 · pin at Adams St & Prospect St; highlighted lines are the Sands St and Adams St blocks in the plan, from the city street centerline file",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-09-03",
+    "change_note": "The city proposed protected bike lanes on Sands St and Adams St in DUMBO."
+  },
+  {
+    "id": "289-kent-avenue",
+    "name": "289 Kent Avenue",
+    "headline": "Tower plan awaits City Council",
+    "type": "housing",
+    "category": "parcel",
+    "status": "review",
+    "condition": "existing-buildings",
+    "phase": "decision-coming",
+    "neighborhood": "289 Kent Ave, at South 1st St · South Williamsburg waterfront",
+    "lat": 40.715055,
+    "lng": -73.966263,
+    "bbls": [
+      "3024030001"
+    ],
+    "why": "The former Vice Media offices across Kent Ave from the Domino site, where a developer wants a zoning change to replace the low-rise building with an 18-story tower of about 280 apartments with shops.",
+    "history": "A low-rise industrial building that most recently held Vice Media's offices, until the company left after its 2023 bankruptcy.",
+    "now": "In August 2026 the City Planning Commission approved the zoning change, after Community Board 1 voted against it in June. The City Council is reviewing it now, with a decision due around mid-October.",
+    "impact": "An 18-story building with about 280 apartments, roughly 56 to 83 of them affordable, plus shops, on a corner facing the Domino towers.",
+    "timeline": {
+      "start": null,
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": "2026-10-19",
+      "what": "The City Council's decision on the zoning change is due around this date, per City Planning's schedule.",
+      "where": "City Council land use review",
+      "url": "https://zap.planning.nyc.gov/projects/2024K0240"
+    },
+    "units_total": 278,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "Web Holdings LLC (developer).",
+    "sources": [
+      {
+        "t": "289 Kent Avenue Rezoning · NYC Zoning Application Portal",
+        "u": "https://zap.planning.nyc.gov/projects/2024K0240"
+      },
+      {
+        "t": "Renderings Reveal 17-Story Plan For 289 Kent Avenue · Hoodline",
+        "u": "https://hoodline.com/2026/06/from-vice-to-high-rise-17-story-kent-avenue-tower-aims-to-shake-up-south-williamsburg/"
+      }
+    ],
+    "updated": "Added Sept 28, 2026 · pin at 289 Kent Ave, from NYC GeoSearch",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-08-12",
+    "change_note": "The City Planning Commission approved the 289 Kent Ave zoning change; the City Council decides next."
+  },
+  {
+    "id": "488-leonard-street",
+    "name": "488 Leonard Street",
+    "headline": "96 apartments proposed",
+    "type": "housing",
+    "category": "parcel",
+    "status": "review",
+    "condition": "existing-buildings",
+    "phase": "decision-coming",
+    "neighborhood": "488 Leonard St, between Driggs and Engert Aves · Williamsburg / Greenpoint border",
+    "lat": 40.721894,
+    "lng": -73.948692,
+    "bbls": [
+      "3026980007"
+    ],
+    "why": "A one-story industrial building where the owner has filed to build 96 apartments, 15 of them affordable, under a city program that lets a building be larger if it includes affordable homes.",
+    "history": "The lot holds a one-story industrial building, per city lot records.",
+    "now": "In August 2026 the owner filed plans for the new building. Community Board 1's land use committee reviews its affordable housing plan on Oct 5, 2026; the owner expects to finish by June 2027.",
+    "impact": "A new apartment building with 96 homes, 15 of them affordable, in place of the current one-story building.",
+    "timeline": {
+      "start": null,
+      "complete": "2027-06",
+      "confidence": "estimated"
+    },
+    "next_step": {
+      "date": "2026-10-05",
+      "what": "Community Board 1's land use committee reviews the building's affordable housing plan at 6 PM, 435 Graham Ave.",
+      "where": "CB1 Land Use Committee",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-notices/2026/Land-Use-ULURP-Landmarks-Subcommittee-Committee-Meeting-Notice-10-05-26.pdf"
+    },
+    "units_total": 96,
+    "units_affordable": 15,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "488 Leonard Street LLC (owner, per city lot records).",
+    "sources": [
+      {
+        "t": "Land Use, ULURP & Landmarks Committee Meeting Notice, Oct 5, 2026 · Brooklyn Community Board 1",
+        "u": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/meeting-notices/2026/Land-Use-ULURP-Landmarks-Subcommittee-Committee-Meeting-Notice-10-05-26.pdf"
+      },
+      {
+        "t": "488 Leonard Street lot · ZoLa, NYC Planning",
+        "u": "https://zola.planning.nyc.gov/l/lot/3/2698/7"
+      }
+    ],
+    "updated": "Added Sept 28, 2026 · pin at 488 Leonard St, from NYC GeoSearch",
+    "last_checked": "2026-09-28",
+    "changed_on": "2026-08-27",
+    "change_note": "The owner filed plans for a 96-apartment building at 488 Leonard St."
   }
 ]
