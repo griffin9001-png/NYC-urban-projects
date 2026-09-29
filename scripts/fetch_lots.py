@@ -5,7 +5,8 @@
 - `streets`: street lines from the city's street centerline file (CSCL). Each entry is
   an exact Brooklyn street name, or {"name": ..., "along": ...} to keep only the
   segments within 40 m of another street (e.g. Park Ave where it runs under the BQE),
-  or {"name": ..., "between": [cross1, cross2]} for the blocks between two cross streets.
+  or {"name": ..., "between": [cross1, cross2]} for the blocks between two cross streets. Add
+  "borough": "Queens" (or another borough) for a street outside Brooklyn.
 - `osm`: OpenStreetMap elements such as "way/392486579" (creeks, plazas, anything
   the city files don't cover). Closed ways become areas, open ways and relations lines.
 
@@ -47,9 +48,12 @@ def get_json(url):
         return json.load(r)
 
 
-def street_lines(name):
+BOROUGH_CODES = {"Manhattan": "1", "Bronx": "2", "Brooklyn": "3", "Queens": "4", "Staten Island": "5"}
+
+
+def street_lines(name, borough="Brooklyn"):
     q = {"$select": "the_geom", "$limit": "2000",
-         "$where": f"full_street_name='{name.upper()}' AND boroughcode='3'"}
+         "$where": f"full_street_name='{name.upper()}' AND boroughcode='{BOROUGH_CODES[borough]}'"}
     rows = get_json(CSCL + "?" + urllib.parse.urlencode(q))
     return [[[round(x, 6), round(y, 6)] for x, y in line]
             for row in rows for line in row["the_geom"]["coordinates"]]
@@ -62,26 +66,50 @@ def meters(a, b):
 def fetch_street(entry):
     """Centerline segments for a `streets` entry, merged into one MultiLineString."""
     name = entry if isinstance(entry, str) else entry["name"]
-    lines = street_lines(name)
+    boro = "Brooklyn" if isinstance(entry, str) else entry.get("borough", "Brooklyn")
+    lines = street_lines(name, boro)
     if isinstance(entry, dict) and entry.get("along"):
         guide = [(a[0] + (b[0] - a[0]) * k / 10, a[1] + (b[1] - a[1]) * k / 10)
-                 for line in street_lines(entry["along"]) for a, b in zip(line, line[1:]) for k in range(11)]
+                 for line in street_lines(entry["along"], boro) for a, b in zip(line, line[1:]) for k in range(11)]
         lines = [l for l in lines if min(meters(l[len(l) // 2], g) for g in guide) <= ALONG_M]
     if isinstance(entry, dict) and entry.get("between"):
+        # Walk the street's own segments from one cross street to the other (shortest path by length),
+        # so long or curving streets keep every block in between.
         ends = []
         for cross in entry["between"]:
-            nodes = {tuple(p) for l in street_lines(cross) for p in (l[0], l[-1])}
-            hits = [p for l in lines for p in (l[0], l[-1]) if tuple(p) in nodes]
+            nodes = {tuple(p) for l in street_lines(cross, boro) for p in (l[0], l[-1])}
+            hits = [tuple(p) for l in lines for p in (l[0], l[-1]) if tuple(p) in nodes]
             if not hits:
                 raise SystemExit(f"{name} and {cross} don't meet in CSCL")
-            ends.append(hits[0])
-        (ax, ay), (bx, by) = ends
-        def keep(line):
-            mx, my = line[len(line) // 2] if len(line) > 2 else [(line[0][i] + line[-1][i]) / 2 for i in (0, 1)]
-            dx, dy = bx - ax, by - ay
-            s = ((mx - ax) * dx + (my - ay) * dy) / (dx * dx + dy * dy)
-            return 0 <= s <= 1 and meters((mx, my), (ax + s * dx, ay + s * dy)) <= ALONG_M
-        lines = [l for l in lines if keep(l)]
+            ends.append(hits)
+        graph = {}
+        for i, l in enumerate(lines):
+            a, b, w = tuple(l[0]), tuple(l[-1]), sum(meters(p, q) for p, q in zip(l, l[1:]))
+            graph.setdefault(a, []).append((b, w, i))
+            graph.setdefault(b, []).append((a, w, i))
+        import heapq
+        dist, prev, heap = {}, {}, [(0, s) for s in ends[0]]
+        for s in ends[0]:
+            dist[s] = 0
+        goal = None
+        while heap:
+            d, u = heapq.heappop(heap)
+            if d > dist.get(u, math.inf):
+                continue
+            if u in ends[1]:
+                goal = u
+                break
+            for v, w, i in graph.get(u, []):
+                if d + w < dist.get(v, math.inf):
+                    dist[v], prev[v] = d + w, (u, i)
+                    heapq.heappush(heap, (d + w, v))
+        if goal is None:
+            raise SystemExit(f"no path along {name} between {entry['between']}")
+        keep = set()
+        while goal in prev:
+            goal, i = prev[goal]
+            keep.add(i)
+        lines = [l for i, l in enumerate(lines) if i in keep]
     return {"type": "MultiLineString", "coordinates": lines} if lines else None
 
 

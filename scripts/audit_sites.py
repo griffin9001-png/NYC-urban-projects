@@ -126,7 +126,7 @@ def check_image_page(site, img):
     flags = []
     if want not in html.unescape(heads).lower() and want not in near.lower():
         flags.append(f'image page does not name "{shows}" in its title or next to the image: check it shows this site')
-    if re.match(r"\d", shows):  # an address: it must be on one of the site's lots
+    if re.match(r"\d+[-\d]*\s", shows):  # a house address ("280 Kent Ave", not "31st Street"): it must be on the site's lots
         try:
             feats = get_json(SEARCH, {"text": shows + ", Brooklyn", "size": 1}).get("features", [])
             bbl = feats[0]["properties"]["addendum"]["pad"]["bbl"] if feats else None

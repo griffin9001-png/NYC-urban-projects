@@ -1482,5 +1482,202 @@
     "last_checked": "2026-09-28",
     "changed_on": "2026-08-27",
     "change_note": "The owner filed plans for a 96-apartment building at 488 Leonard St."
+  },
+  {
+    "id": "31st-street-astoria",
+    "name": "31st Street bike lane (Astoria)",
+    "headline": "Protected lane in, lawsuit pending",
+    "type": "road",
+    "category": "topic",
+    "status": "contested",
+    "condition": "street",
+    "phase": "partly-open",
+    "neighborhood": "31st St under the elevated train, Northern Blvd to 20th Ave · Astoria, Queens",
+    "lat": 40.764356,
+    "lng": -73.923459,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "31 ST",
+        "between": [
+          "NORTHERN BLVD",
+          "20 AVE"
+        ],
+        "borough": "Queens"
+      }
+    ],
+    "why": "Astoria's main street under the elevated subway and one of Queens' most dangerous: 502 people were hurt in crashes there from 2021 to 2025, and two people walking were killed. The city is adding protected bike lanes along its whole length.",
+    "history": "The city started a shorter protected lane in 2025, but a Queens judge halted it in December after local businesses sued. The new mayor's transportation department restarted it with a longer plan.",
+    "now": "In 2026 the city installed protected bike lanes on both sides from Northern Blvd to Newtown Ave, after the local community board backed the plan 35 to 4. Opponents filed a second lawsuit in July 2026.",
+    "impact": "Parking-protected bike lanes on both sides under the subway, less room for double parking, and a clear lane by the curb that fire trucks can use.",
+    "timeline": {
+      "start": "2026",
+      "complete": "2027",
+      "confidence": "estimated"
+    },
+    "next_step": {
+      "date": null,
+      "what": "The city plans to add the stretch from Newtown Ave to 20th Ave in 2027; a second lawsuit against the lane is pending.",
+      "where": "DOT plan, April 2026",
+      "url": "https://www.nyc.gov/html/dot/downloads/pdf/31-st-northern-blvd-20-ave-apr2026.pdf"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street.",
+    "sources": [
+      {
+        "t": "'It's a Great Bike Lane': King Souvlaki Abandons Astoria Lawsuit Fight · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/07/22/great-bike-lane-king-souvlaki"
+      },
+      {
+        "t": "Queens Civic Panel Endorses Mamdani's Super-Sized Astoria Bike Lane · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/04/22/queens-civic-panel-endorses-mamdanis-super-sized-astoria-bike-lane"
+      },
+      {
+        "t": "Mamdani's DOT Responds to Astoria Bike Lane Backlash … With an Even Longer Bike Lane · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/04/15/mamdani-astoria-all-of-31st"
+      },
+      {
+        "t": "31st Street, Northern Boulevard to 20th Avenue · NYC DOT",
+        "u": "https://www.nyc.gov/html/dot/downloads/pdf/31-st-northern-blvd-20-ave-apr2026.pdf"
+      }
+    ],
+    "image": {
+      "url": "https://nyc.streetsblog.org/wp-content/uploads/sites/9/2026/07/King-Souvlaki-Bike-Lane-e1784665023161.jpeg?w=1024",
+      "credit": "The new lane at 31st St & 31st Ave, July 2026, via Streetsblog NYC",
+      "isRendering": false,
+      "page": "https://nyc.streetsblog.org/2026/07/22/great-bike-lane-king-souvlaki",
+      "shows": "31st Street"
+    },
+    "updated": "Added Sept 29, 2026 · pin at 31st St & 31st Ave; highlighted line is 31st St from Northern Blvd to 20th Ave, from the city street centerline file",
+    "last_checked": "2026-09-29",
+    "changed_on": "2026-07-22",
+    "change_note": "Opponents sued again over the new 31st Street bike lane in Astoria."
+  },
+  {
+    "id": "kent-avenue-bike-lane",
+    "name": "Kent Avenue bike lane",
+    "headline": "Crowded bike lane, calls to widen it",
+    "type": "road",
+    "category": "topic",
+    "status": "contested",
+    "condition": "street",
+    "phase": "open-now",
+    "neighborhood": "Kent Ave from N 14th St to Clymer St · Williamsburg waterfront",
+    "lat": 40.718678,
+    "lng": -73.963493,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "KENT AVE",
+        "between": [
+          "N  14 ST",
+          "CLYMER ST"
+        ]
+      }
+    ],
+    "why": "Williamsburg's two-way waterfront bike lane, built in 2009 to link Greenpoint with the rest of Brooklyn. More than 3,500 people ride it daily, and it's now too narrow for the crowds.",
+    "history": "The protected lane opened in 2009 and has barely changed since, while Williamsburg added more new housing than any other part of the city.",
+    "now": "In July 2026 advocates and the local council member called for a wider lane or a car-free Kent Ave. The city hasn't proposed a redesign; the council member says three more traffic signals are coming.",
+    "impact": "A two-way protected bike lane crowded with riders and people crossing to the waterfront parks. Widening it would mean giving up a parking lane.",
+    "timeline": {
+      "start": null,
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": null,
+      "what": "No city plan to widen the lane yet. You can tell the city's transportation department what you think through its contact form.",
+      "where": "NYC DOT contact form",
+      "url": "https://www.nyc.gov/html/dot/html/contact/contact-form.shtml"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street.",
+    "sources": [
+      {
+        "t": "Eyes on the Street: It Is Time For Kent Avenue To Be Car-Free · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2026/07/31/eyes-on-the-street-no-kars-on-kent-edition"
+      }
+    ],
+    "image": {
+      "url": "https://nyc.streetsblog.org/wp-content/uploads/sites/9/2026/07/EOTS-Kent-5-e1785266218717.jpeg?w=1024",
+      "credit": "Kent Ave at N 4th St, July 2026, via Streetsblog NYC",
+      "isRendering": false,
+      "page": "https://nyc.streetsblog.org/2026/07/31/eyes-on-the-street-no-kars-on-kent-edition",
+      "shows": "Kent Avenue"
+    },
+    "updated": "Added Sept 29, 2026 · pin at Kent Ave & N 4th St; highlighted line is Kent Ave from N 14th St to Clymer St, from the city street centerline file",
+    "last_checked": "2026-09-29",
+    "changed_on": "2026-07-31",
+    "change_note": "Advocates and the local council member called for a wider Kent Ave bike lane."
+  },
+  {
+    "id": "meeker-avenue-bike-lane",
+    "name": "Meeker Avenue bike lane",
+    "headline": "Promised bike lane left unfinished",
+    "type": "road",
+    "category": "topic",
+    "status": "review",
+    "condition": "street",
+    "phase": "stalled",
+    "neighborhood": "Meeker Ave under the BQE, Metropolitan Ave to Vandervoort Ave · Williamsburg / Greenpoint",
+    "lat": 40.716641,
+    "lng": -73.949528,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "MEEKER AVE",
+        "between": [
+          "METROPOLITAN AVE",
+          "VANDERVOORT AVE"
+        ]
+      }
+    ],
+    "why": "Meeker Ave runs under the BQE toward the Kosciuszko Bridge. In 2021 the city planned a two-way protected bike lane here to link the Williamsburg and Kosciuszko bridges and make the space under the highway useful.",
+    "history": "From 2014 to 2020, 11 people were killed or badly hurt on this stretch. The city showed its bike lane plan to Community Board 1 in May 2021 and said it would be done by the end of 2022.",
+    "now": "As of July 2025 the lane was still unfinished, with crossings that have no signals, missing markings, and no link to the McGuinness Blvd bike lane. The city leaves it off its official bike map.",
+    "impact": "A partly built bike path under the highway that riders call confusing and dirty, and crossings under the BQE that stay hard for people walking.",
+    "timeline": {
+      "start": null,
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": null,
+      "what": "No date set to finish the lane; the city's 2021 plan is online.",
+      "where": "DOT plan, May 2021",
+      "url": "https://www.nyc.gov/html/dot/downloads/pdf/meeker%20ave-cb1-may2021.pdf"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street.",
+    "sources": [
+      {
+        "t": "Eyes on the Street: Meeker Avenue Bike Lane Is a Failure · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2025/07/18/eyes-on-the-street-meeker-avenue-bike-lane-is-a-failure"
+      },
+      {
+        "t": "Meeker Avenue, presented to Brooklyn Community Board 1, May 4, 2021 · NYC DOT",
+        "u": "https://www.nyc.gov/html/dot/downloads/pdf/meeker%20ave-cb1-may2021.pdf"
+      }
+    ],
+    "image": {
+      "url": "https://nyc.streetsblog.org/wp-content/uploads/sites/9/2025/07/dirtymeeker.png?w=710",
+      "credit": "The unfinished lane under the BQE, 2025, photo by Yoshi Omi-Jarrett via Streetsblog NYC",
+      "isRendering": false,
+      "page": "https://nyc.streetsblog.org/2025/07/18/eyes-on-the-street-meeker-avenue-bike-lane-is-a-failure",
+      "shows": "Meeker Avenue"
+    },
+    "updated": "Added Sept 29, 2026 · pin at Meeker Ave & Lorimer St; highlighted line is Meeker Ave from Metropolitan Ave to Vandervoort Ave, from the city street centerline file",
+    "last_checked": "2026-09-29",
+    "changed_on": "2025-07-18",
+    "change_note": "The Meeker Ave bike lane under the BQE was still unfinished, years past its 2022 target."
   }
 ]
