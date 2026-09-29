@@ -901,6 +901,24 @@
         "lng": -73.9494648
       },
       "flags": []
+    },
+    "berry-street-open-street": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3023270001",
+        "address": "143 BERRY STREET",
+        "land_use": "Mixed residential/commercial",
+        "buildings": 1,
+        "building_area_sqft": 5050,
+        "year_built": 1910,
+        "owner": "143 BERRY HOLDINGS LLC",
+        "lot_area_sqft": 1704,
+        "lat": 40.7180579,
+        "lng": -73.9593334
+      },
+      "flags": []
     }
   }
 }

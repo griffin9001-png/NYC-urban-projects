@@ -1679,5 +1679,73 @@
     "last_checked": "2026-09-29",
     "changed_on": "2025-07-18",
     "change_note": "The Meeker Ave bike lane under the BQE was still unfinished, years past its 2022 target."
+  },
+  {
+    "id": "berry-street-open-street",
+    "name": "Berry Street open street",
+    "headline": "Street given over to walking and biking",
+    "type": "road",
+    "category": "topic",
+    "status": "active",
+    "condition": "street",
+    "phase": "open-now",
+    "neighborhood": "Berry St from Broadway to N 12th St · Williamsburg",
+    "lat": 40.718089,
+    "lng": -73.959607,
+    "bbls": [],
+    "streets": [
+      {
+        "name": "BERRY ST",
+        "between": [
+          "BROADWAY",
+          "N  12 ST"
+        ]
+      }
+    ],
+    "why": "A 19-block stretch of Williamsburg between the Williamsburg Bridge and McCarren Park that has been semi car-free since 2020. People walk, bike and sit in the roadway, and cars are limited to local trips.",
+    "history": "The city closed Berry St to through traffic as a pandemic open street in May 2020. In November 2023 it made the changes permanent as a 'bike boulevard', a street built for biking and walking.",
+    "now": "As of April 2026 Berry St runs as an open street every day. Cars can still use it at 5 mph for local access, but the one-way direction flips at several blocks so drivers don't cut through.",
+    "impact": "A calm street shared by people walking and biking, with a two-way bike lane, wider corners with planters and boulders, and loading zones at block ends for deliveries.",
+    "timeline": {
+      "start": "2020-05",
+      "complete": "2023-11",
+      "confidence": "announced"
+    },
+    "next_step": {
+      "date": null,
+      "what": "Berry St is an open street every day; N 3rd St from Berry St to Wythe Ave is car-free on weekends, 10 AM to 10 PM.",
+      "where": "NYC DOT Open Streets",
+      "url": "https://www.nyc.gov/html/dot/html/pedestrians/openstreets.shtml"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "The city; the Department of Transportation runs the street, and the North Brooklyn Open Streets Community Coalition helped start the open street.",
+    "sources": [
+      {
+        "t": "Open Streets in our neighborhoods in 2026 · Brooklyn Bridge Parents",
+        "u": "https://brooklynbridgeparents.com/open-streets-in-our-neighborhoods-in-2026/"
+      },
+      {
+        "t": "Berry sweet: Cyclist and pedestrian-friendly bike boulevard opens on Berry Street · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/bike-boulevard-opens-berry-street/"
+      },
+      {
+        "t": "EYES ON THE STREET: Berry Street Bike Boulevard Is a Model for Low-Traffic Streets · Streetsblog NYC",
+        "u": "https://nyc.streetsblog.org/2023/11/21/eyes-on-the-street-berry-street-bike-boulevard-is-a-model-for-low-traffic-streets"
+      }
+    ],
+    "image": {
+      "url": "https://www.brooklynpaper.com/wp-content/uploads/2023/11/F_eOllyWAAIOtUd-700x467.jpg",
+      "credit": "Berry St after the 2023 redesign, NYC DOT via Brooklyn Paper",
+      "isRendering": false,
+      "page": "https://www.brooklynpaper.com/bike-boulevard-opens-berry-street/",
+      "shows": "Berry Street"
+    },
+    "updated": "Added Sept 29, 2026 · pin at Berry St & N 6th St; highlighted line is Berry St from Broadway to N 12th St, from the city street centerline file",
+    "last_checked": "2026-09-29",
+    "changed_on": "2023-11-21",
+    "change_note": "Berry Street's open street became a permanent bike boulevard with limited car traffic."
   }
 ]
