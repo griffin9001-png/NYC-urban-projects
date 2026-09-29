@@ -103,5 +103,20 @@
   "lat": 40.721868,
   "lng": -73.948968,
   "heading": 83
+ },
+ "31st-street-astoria": {
+  "lat": 40.764356,
+  "lng": -73.923459,
+  "heading": 212
+ },
+ "kent-avenue-bike-lane": {
+  "lat": 40.718678,
+  "lng": -73.963493,
+  "heading": 219
+ },
+ "meeker-avenue-bike-lane": {
+  "lat": 40.716641,
+  "lng": -73.949528,
+  "heading": 49
  }
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28",
+  "generated": "2026-09-29",
   "sites": {
     "broadway-triangle": {
       "condition": "partly-built",
@@ -847,6 +847,60 @@
       "flags": [
         "no image: popup falls back to a Street View link (see UPDATING.md for how to find one)"
       ]
+    },
+    "31st-street-astoria": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "4006150079",
+        "address": "30-97 31 STREET",
+        "land_use": "Mixed residential/commercial",
+        "buildings": 1,
+        "building_area_sqft": 3040,
+        "year_built": 1930,
+        "owner": "31 VS, LLC",
+        "lot_area_sqft": 1596,
+        "lat": 40.7644038,
+        "lng": -73.9231155
+      },
+      "flags": []
+    },
+    "kent-avenue-bike-lane": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3023410001",
+        "address": "151 KENT AVENUE",
+        "land_use": "Elevator apartments",
+        "buildings": 1,
+        "building_area_sqft": 54000,
+        "year_built": 1910,
+        "owner": "151 KENT OWNER LLC",
+        "lot_area_sqft": 25150,
+        "lat": 40.7187755,
+        "lng": -73.9629477
+      },
+      "flags": []
+    },
+    "meeker-avenue-bike-lane": {
+      "condition": "street",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "3027420002",
+        "address": "646 LORIMER STREET",
+        "land_use": "Commercial/office",
+        "buildings": 1,
+        "building_area_sqft": 4167,
+        "year_built": 1930,
+        "owner": "646 LORIMER BROOKLYN LLC",
+        "lot_area_sqft": 4885,
+        "lat": 40.7164209,
+        "lng": -73.9494648
+      },
+      "flags": []
     }
   }
 }
