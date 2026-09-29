@@ -168,6 +168,10 @@ def validate(sites):
         osm = s.get("osm", [])
         if not isinstance(osm, list) or not all(re.fullmatch(r"(way|relation)/\d+", str(x)) for x in osm):
             err('osm must be a list like ["way/123", "relation/456"]')
+        path = s.get("path", [])
+        if not isinstance(path, list) or (path and len(path) < 2) or not all(
+                isinstance(pt, list) and len(pt) == 2 and 40 < pt[0] < 41.1 and -74.3 < pt[1] < -73.6 for pt in path):
+            err('path must be two or more [lat, lng] points in NYC, e.g. [[40.739, -73.9555], [40.7398, -73.955]]')
         for key in JARGON_FIELDS:
             for pattern, plain in JARGON.items():
                 m = re.search(pattern, str(s.get(key) or ""), re.I)
@@ -258,7 +262,7 @@ def pin_distance(site, features):
     best = (math.inf, None, None)
     for f in features:
         g, props = f["geometry"], f["properties"]
-        label = props.get("bbl") and f"lot {props['bbl']}" or props.get("street") or props.get("osm")
+        label = props.get("bbl") and f"lot {props['bbl']}" or props.get("street") or props.get("osm") or (props.get("path") and "its proposed path")
         if g["type"] in ("Polygon", "MultiPolygon"):
             polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
             for poly in polys:
@@ -288,13 +292,13 @@ def check_pins(sites, lots_path):
         by_site.setdefault(f["properties"]["site"], []).append(f)
     for s in sites:
         sid, mine = s.get("id"), by_site.get(s.get("id"), [])
-        wants = s.get("bbls") or s.get("streets") or s.get("osm")
+        wants = s.get("bbls") or s.get("streets") or s.get("osm") or s.get("path")
         if not wants:
-            errors.append(f"{sid}: no bbls, streets or osm, so its pin can't be checked; give the site a shape (UPDATING.md)")
+            errors.append(f"{sid}: no bbls, streets, osm or path, so its pin can't be checked; give the site a shape (UPDATING.md)")
             continue
         have = {f["properties"].get("bbl") for f in mine} - {None}
         if set(s.get("bbls", [])) - have or have - set(s.get("bbls", [])) or \
-                (s.get("streets") or s.get("osm")) and not any("bbl" not in f["properties"] for f in mine):
+                (s.get("streets") or s.get("osm") or s.get("path")) and not any("bbl" not in f["properties"] for f in mine):
             errors.append(f"{sid}: {lots_path} is out of date for this site: run scripts/fetch_lots.py")
             continue
         d, label, kind = pin_distance(s, mine)
