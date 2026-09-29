@@ -123,5 +123,10 @@
   "lat": 40.718089,
   "lng": -73.959607,
   "heading": 219
+ },
+ "longpoint-timber-bridge": {
+  "lat": 40.739018,
+  "lng": -73.955489,
+  "heading": 24
  }
 }

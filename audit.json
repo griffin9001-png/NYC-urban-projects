@@ -919,6 +919,24 @@
         "lng": -73.9593334
       },
       "flags": []
+    },
+    "longpoint-timber-bridge": {
+      "condition": "open-space",
+      "pluto_condition": null,
+      "lots": [],
+      "pin_lot": {
+        "bbl": "4000380008",
+        "address": "53-21 VERNON BOULEVARD",
+        "land_use": "Industrial/manufacturing",
+        "buildings": 1,
+        "building_area_sqft": 7279,
+        "year_built": 1998,
+        "owner": "SCHUMAN PROPERTIES INC",
+        "lot_area_sqft": 6300,
+        "lat": 40.7399455,
+        "lng": -73.9544954
+      },
+      "flags": []
     }
   }
 }

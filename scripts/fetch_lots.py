@@ -9,9 +9,11 @@
   "borough": "Queens" (or another borough) for a street outside Brooklyn.
 - `osm`: OpenStreetMap elements such as "way/392486579" (creeks, plazas, anything
   the city files don't cover). Closed ways become areas, open ways and relations lines.
+- `path`: [[lat, lng], ...] points for something proposed that no map has yet (a bridge
+  that isn't built). Drawn dashed. Take the points from real street ends and say where in `updated`.
 
 The map draws all of them in the site's pin color, and validate_sites.py checks every
-pin sits on its site's shape. Rerun whenever `bbls`, `streets` or `osm` change.
+pin sits on its site's shape. Rerun whenever `bbls`, `streets`, `osm` or `path` change.
 
 Also writes viewpoints.json: where the popup's embedded Street View should stand and which
 way it should face. Lot sites look from the nearest ordinary street (not a highway or ramp)
@@ -223,6 +225,9 @@ def main():
                 features.append({"type": "Feature", "properties": {"site": s["id"], "osm": ref}, "geometry": geom})
             else:
                 missing_streets.append(ref)
+        if s.get("path"):
+            features.append({"type": "Feature", "properties": {"site": s["id"], "path": "proposed"},
+                             "geometry": {"type": "LineString", "coordinates": [[lng, lat] for lat, lng in s["path"]]}})
     with open(dst, "w", encoding="utf-8") as f:
         json.dump({"type": "FeatureCollection", "features": features}, f, separators=(",", ":"))
         f.write("\n")

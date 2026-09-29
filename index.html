@@ -780,10 +780,12 @@ function loadLots(){
       const color = css.getPropertyValue(`--phase-${s.phase}`).trim();   // lots match the pin's phase color
       const base = {pane: 'lots', color, weight: 1.5, opacity: 0.9, fillColor: color, fillOpacity: 0.22};
       const street = {pane: 'lots', color, weight: 7, opacity: 0.55, lineCap: 'round'};   // whole corridor, e.g. a street redesign
+      const proposed = {...street, weight: 5, opacity: 0.8, dashArray: '2 10'};   // not built yet, e.g. a proposed bridge
       const isLine = f => /LineString/.test(f.geometry.type);
-      const layer = L.geoJSON(features, {style: f => isLine(f) ? street : base})
+      const lineStyle = f => f.properties.path ? proposed : street;
+      const layer = L.geoJSON(features, {style: f => isLine(f) ? lineStyle(f) : base})
         .on('mouseover', e => e.layer.setStyle(isLine(e.layer.feature) ? {opacity: 0.85} : {fillOpacity: 0.4}))
-        .on('mouseout', e => e.layer.setStyle(isLine(e.layer.feature) ? {opacity: street.opacity} : {fillOpacity: base.fillOpacity}))
+        .on('mouseout', e => e.layer.setStyle(isLine(e.layer.feature) ? {opacity: lineStyle(e.layer.feature).opacity} : {fillOpacity: base.fillOpacity}))
         .on('click', () => markers[id].openPopup())
         .addTo(map);
       lotLayers[id] = layer;

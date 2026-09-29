@@ -1747,5 +1747,77 @@
     "last_checked": "2026-09-29",
     "changed_on": "2023-11-21",
     "change_note": "Berry Street's open street became a permanent bike boulevard with limited car traffic."
+  },
+  {
+    "id": "longpoint-timber-bridge",
+    "name": "LongPoint Timber Bridge",
+    "headline": "Proposed bridge, no money yet",
+    "type": "road",
+    "category": "topic",
+    "status": "review",
+    "condition": "open-space",
+    "phase": "stalled",
+    "neighborhood": "Manhattan Ave, Greenpoint to Vernon Blvd, Long Island City · over Newtown Creek",
+    "lat": 40.739421,
+    "lng": -73.955251,
+    "bbls": [],
+    "path": [
+      [
+        40.739018,
+        -73.955489
+      ],
+      [
+        40.739824,
+        -73.955012
+      ]
+    ],
+    "streetview": {
+      "street": "MANHATTAN AVE"
+    },
+    "why": "A proposed floating wooden bridge for walking and biking over Newtown Creek, from the end of Manhattan Ave in Greenpoint to Vernon Blvd in Long Island City. It would turn a 12-minute walk over the Pulaski Bridge into about 2 minutes.",
+    "history": "A bridge linked Manhattan Ave and Vernon Ave here from 1905 until 1954; the Pulaski Bridge later took its place. A local architect proposed the new one in 2018.",
+    "now": "In Feb 2019 the borough president and the local Assembly member backed it, and a nonprofit formed to raise the more than $32 million it would cost. It still needed money for its first engineering and environmental studies.",
+    "impact": "A short, direct crossing between Greenpoint and Long Island City for walking and biking, with green space at each end. It would rise and fall with the tide and swing open for big boats.",
+    "timeline": {
+      "start": null,
+      "complete": null,
+      "confidence": "unknown"
+    },
+    "next_step": {
+      "date": null,
+      "what": "Nothing scheduled. Backers said the first step is paying for engineering and environmental studies.",
+      "where": "6sqft, Feb 2019",
+      "url": "https://www.6sqft.com/timber-bridge-between-greenpoint-and-long-island-city-gets-support-from-local-politicians/"
+    },
+    "units_total": null,
+    "units_affordable": null,
+    "park_acres_promised": null,
+    "park_acres_delivered": null,
+    "owner": "Proposed by the design firm CRÈME (architect Jun Aizaki), with the nonprofit Friends of Timber Bridge raising money. Backed in 2019 by Borough President Eric Adams and Assembly Member Joe Lentol.",
+    "sources": [
+      {
+        "t": "Timber bridge between Greenpoint and Long Island City gets support from local politicians · 6sqft",
+        "u": "https://www.6sqft.com/timber-bridge-between-greenpoint-and-long-island-city-gets-support-from-local-politicians/"
+      },
+      {
+        "t": "Floating Timber Bridge Proposed to Span Newtown Creek · Greenpointers",
+        "u": "https://greenpointers.com/2019/02/13/floating-timber-bridge-proposed-to-span-newtown-creek/"
+      },
+      {
+        "t": "Walk This Way: Floating Bridge Proposed Between Greenpoint and LIC · Greenpointers",
+        "u": "https://greenpointers.com/2018/05/24/walk-this-way-floating-bridge-proposed-between-greenpoint-and-lic/"
+      }
+    ],
+    "image": {
+      "url": "https://thumbs.6sqft.com/wp-content/uploads/2018/05/17115754/FINAL-NIGHT-SHOT-k-e1550094369620.jpg?w=1024",
+      "credit": "Rendering of the proposed Timber Bridge over Newtown Creek, via 6sqft (CRÈME / Jun Aizaki Architecture and Design)",
+      "isRendering": true,
+      "page": "https://www.6sqft.com/timber-bridge-between-greenpoint-and-long-island-city-gets-support-from-local-politicians/",
+      "shows": "Timber Bridge"
+    },
+    "updated": "Added Sept 29, 2026 · pin mid-creek; dashed line runs from the end of Manhattan Ave to the end of Vernon Blvd in the city street centerline file, where the proposal would land",
+    "last_checked": "2026-09-29",
+    "changed_on": "2019-02-14",
+    "change_note": "The borough president and local Assembly member backed the proposed bridge."
   }
 ]
