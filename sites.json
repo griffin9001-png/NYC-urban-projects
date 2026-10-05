@@ -76,7 +76,7 @@
       "shows": "Broadway Triangle"
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Harrison Realty LLC ownership on Rabsky's two blocks in NYC PLUTO",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-03-04",
     "change_note": "The lottery for 120 affordable apartments at 11 Gerry St closed."
   },
@@ -157,7 +157,7 @@
       "shows": "Greenpoint Hospital"
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-09-24",
     "change_note": "Neighbors rallied for the delayed senior housing; the 311-apartment building's lottery is due soon."
   },
@@ -231,7 +231,7 @@
       "shows": "Monitor Point"
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (BBLs 3025900001, 3025900025)",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-07-16",
     "change_note": "The City Council approved the three towers, with half the apartments affordable."
   },
@@ -296,7 +296,7 @@
       "shows": "1958 Fulton"
     },
     "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-05-07",
     "change_note": "The city started asking neighbors what they want built here."
   },
@@ -360,7 +360,7 @@
       "shows": "River Ring"
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (River Street Partners LLC)",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-05-20",
     "change_note": "The state extended a property-tax break the developer says the project needs.",
     "streetview": {
@@ -429,7 +429,7 @@
       "shows": "Greenpoint Landing"
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Greenpoint Landing (GPLC Owner LLC) ownership in NYC PLUTO",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2025-08-19",
     "change_note": "The next phase of Greenpoint Landing was announced: three buildings and a waterfront park.",
     "address_notes": {
@@ -506,7 +506,7 @@
       "shows": "Noble Street"
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-06-09",
     "change_note": "The developer showed the local community board plans for one all-affordable and one market-rate building."
   },
@@ -583,7 +583,7 @@
       "shows": "West Street"
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025560001)",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2025-12-01",
     "change_note": "A new owner bought the site and lined up money to build.",
     "address_notes": {
@@ -675,7 +675,7 @@
       "shows": "Transmitter Park"
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-09-15",
     "change_note": "The restaurant and marina plan was dropped after neighbors objected."
   },
@@ -771,7 +771,7 @@
       "shows": "Bayside"
     },
     "updated": "Updated Sept 28, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-07-16",
     "change_note": "The mayor's office promised to finish the park as part of the Monitor Point deal.",
     "streetview": {
@@ -848,7 +848,7 @@
       "shows": "Grand Army Plaza"
     },
     "updated": "Updated Sept 25, 2026 · pin at the arch, from NYC GeoSearch; highlighted lines are the plaza's roadways, from the city street centerline file",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-06-02",
     "change_note": "The city showed five community boards a plan with 42% more public space."
   },
@@ -910,7 +910,7 @@
       }
     ],
     "updated": "Updated Sept 28, 2026 · pin at Park Ave & Adelphi St, from the city street centerline file; highlighted lines are Park Ave where it runs under the BQE",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2024-10-10",
     "change_note": "The city released long-term ideas for the streets along the BQE."
   },
@@ -980,7 +980,7 @@
       "shows": "McGuinness"
     },
     "updated": "Updated Sept 28, 2026 · pin at Nassau Ave; highlighted line is McGuinness Blvd from the Pulaski Bridge to the BQE, from the city street centerline file",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-05-27",
     "change_note": "The city broke ground on the full McGuinness Boulevard redesign."
   },
@@ -1050,18 +1050,18 @@
       "shows": "Newtown Creek"
     },
     "updated": "Updated Sept 28, 2026 · pin on the creek where the Greenpoint Ave bridge crosses it; highlighted lines are the creek and its tributaries, from OpenStreetMap",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2025-12-10",
     "change_note": "The state flagged 41 properties along the creek that may be leaking pollution into it."
   },
   {
     "id": "box-street-park",
     "name": "Box Street Park",
-    "headline": "Long-promised park due to open",
+    "headline": "Construction starts, opens 2028",
     "type": "park",
     "category": "parcel",
     "status": "active",
-    "condition": "unverified",
+    "condition": "existing-buildings",
     "phase": "construction-underway",
     "neighborhood": "65 Commercial St, between Box and Clay Sts · Greenpoint, on Newtown Creek",
     "lat": 40.73769,
@@ -1070,12 +1070,12 @@
       "3024720425"
     ],
     "why": "A former MTA lot for Access-A-Ride vans at Greenpoint's northern tip, on Newtown Creek, being turned into a waterfront park. The city promised it in 2005 when it allowed towers along the Greenpoint and Williamsburg waterfront.",
-    "history": "The MTA kept parking vans and emergency vehicles on the lot for years after the city promised the park, which held it up. By 2021 neighbors had waited 16 years.",
-    "now": "In April 2026 the city said the park would open later this year. In March 2026 the Parks Department applied for state permits to rebuild the shoreline with terraced steps down to the water.",
+    "history": "The MTA kept parking vans and emergency vehicles on the lot for years after the city promised the park, which held it up. Extra toxic cleanup found in 2025 added about $2 million to the cost.",
+    "now": "On Oct 1, 2026 the city broke ground on the 2.5-acre park after two decades of delays. Demolition and digging start in November, and it should open by the end of summer 2028. An MTA corner joins the park once the MTA moves out.",
     "impact": "A new waterfront park with a lawn, a path along the creek, two dog runs, a basketball court and a public restroom, at the end of Commercial St.",
     "timeline": {
-      "start": null,
-      "complete": "2026",
+      "start": "2026-10",
+      "complete": "2028",
       "confidence": "estimated"
     },
     "next_step": {
@@ -1090,6 +1090,18 @@
     "park_acres_delivered": null,
     "owner": "The city; the Parks Department is building the park on land the MTA used for vehicle parking.",
     "sources": [
+      {
+        "t": "City breaks ground on Box Street Park after two decades of delays · Brooklyn Paper",
+        "u": "https://www.brooklynpaper.com/city-breaks-ground-box-street-park/"
+      },
+      {
+        "t": "Box Street Park Breaks Ground in Greenpoint, More Than 20 Years Later · Greenpointers",
+        "u": "https://greenpointers.com/2026/10/01/box-street-park-breaks-ground-in-greenpoint-more-than-20-years-later/"
+      },
+      {
+        "t": "A long-promised waterfront park in Greenpoint is finally taking shape · 6sqft",
+        "u": "https://www.6sqft.com/a-long-promised-waterfront-park-in-greenpoint-is-finally-taking-shape/"
+      },
       {
         "t": "DOT's Greenpoint Greenway Project Doesn't Dream Big Enough · Streetsblog NYC",
         "u": "https://nyc.streetsblog.org/2026/04/01/dots-greenpoint-greenway-project-doesnt-dream-big-enough"
@@ -1114,10 +1126,10 @@
       "page": "https://www.brownstoner.com/development/box-street-park-65-commercial-street-greenpoint-brooklyn-delays-mta-parking-lot/",
       "shows": "Box Street Park"
     },
-    "updated": "Added Sept 28, 2026 · pin inside the park's lot (BBL 3024720425), from NYC PLUTO",
-    "last_checked": "2026-09-28",
-    "changed_on": "2026-04-01",
-    "change_note": "The city said Box Street Park would open later in 2026.",
+    "updated": "Added Sept 28, 2026; updated Oct 5, 2026 · pin inside the park's lot (BBL 3024720425), from NYC PLUTO",
+    "last_checked": "2026-10-05",
+    "changed_on": "2026-10-01",
+    "change_note": "The city broke ground on Box Street Park; it should open by the end of summer 2028.",
     "address_notes": {
       "65 Commercial St": "The state permit notice for the park gives 65 Commercial St as Block 2472, Lot 425; the city's address database puts that number on lot 415, the MTA's smaller lot next door."
     }
@@ -1186,7 +1198,7 @@
       "shows": "Bedford Ave"
     },
     "updated": "Added Sept 28, 2026 · pin at Bedford Ave & Park Ave; highlighted line is Bedford Ave from Flushing to Willoughby Aves, from the city street centerline file",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-07-13",
     "change_note": "The mayor cited legal requirements and set no date to restore the protected lane."
   },
@@ -1247,7 +1259,7 @@
       "shows": "Domino"
     },
     "updated": "Added Sept 28, 2026 · pin on the Site B lot (280 Kent Ave), from NYC GeoSearch",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-05-15",
     "change_note": "The final Domino tower's concrete frame reached the 7th floor."
   },
@@ -1319,7 +1331,7 @@
       "shows": "Ashland Place"
     },
     "updated": "Added Sept 28, 2026 · pin mid-block on Ashland Pl; highlighted line is Ashland Pl from Lafayette Ave to Hanson Pl, from the city street centerline file",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-09-01",
     "change_note": "The city finished the protected bike lane on the last block of Ashland Place."
   },
@@ -1379,7 +1391,7 @@
       }
     ],
     "updated": "Added Sept 28, 2026 · pin at Adams St & Prospect St; highlighted lines are the Sands St and Adams St blocks in the plan, from the city street centerline file",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-09-03",
     "change_note": "The city proposed protected bike lanes on Sands St and Adams St in DUMBO."
   },
@@ -1429,7 +1441,7 @@
       }
     ],
     "updated": "Added Sept 28, 2026 · pin at 289 Kent Ave, from NYC GeoSearch",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-08-12",
     "change_note": "The City Planning Commission approved the 289 Kent Ave zoning change; the City Council decides next."
   },
@@ -1479,7 +1491,7 @@
       }
     ],
     "updated": "Added Sept 28, 2026 · pin at 488 Leonard St, from NYC GeoSearch",
-    "last_checked": "2026-09-28",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-08-27",
     "change_note": "The owner filed plans for a 96-apartment building at 488 Leonard St."
   },
@@ -1552,7 +1564,7 @@
       "shows": "31st Street"
     },
     "updated": "Added Sept 29, 2026 · pin at 31st St & 31st Ave; highlighted line is 31st St from Northern Blvd to 20th Ave, from the city street centerline file",
-    "last_checked": "2026-09-29",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-07-22",
     "change_note": "Opponents sued again over the new 31st Street bike lane in Astoria."
   },
@@ -1612,7 +1624,7 @@
       "shows": "Kent Avenue"
     },
     "updated": "Added Sept 29, 2026 · pin at Kent Ave & N 4th St; highlighted line is Kent Ave from N 14th St to Clymer St, from the city street centerline file",
-    "last_checked": "2026-09-29",
+    "last_checked": "2026-10-05",
     "changed_on": "2026-07-31",
     "change_note": "Advocates and the local council member called for a wider Kent Ave bike lane."
   },
@@ -1676,7 +1688,7 @@
       "shows": "Meeker Avenue"
     },
     "updated": "Added Sept 29, 2026 · pin at Meeker Ave & Lorimer St; highlighted line is Meeker Ave from Metropolitan Ave to Vandervoort Ave, from the city street centerline file",
-    "last_checked": "2026-09-29",
+    "last_checked": "2026-10-05",
     "changed_on": "2025-07-18",
     "change_note": "The Meeker Ave bike lane under the BQE was still unfinished, years past its 2022 target."
   },
@@ -1744,7 +1756,7 @@
       "shows": "Berry Street"
     },
     "updated": "Added Sept 29, 2026 · pin at Berry St & N 6th St; highlighted line is Berry St from Broadway to N 12th St, from the city street centerline file",
-    "last_checked": "2026-09-29",
+    "last_checked": "2026-10-05",
     "changed_on": "2023-11-21",
     "change_note": "Berry Street's open street became a permanent bike boulevard with limited car traffic."
   },
@@ -1816,7 +1828,7 @@
       "shows": "Timber Bridge"
     },
     "updated": "Added Sept 29, 2026 · pin mid-creek; dashed line runs from the end of Manhattan Ave to the end of Vernon Blvd in the city street centerline file, where the proposal would land",
-    "last_checked": "2026-09-29",
+    "last_checked": "2026-10-05",
     "changed_on": "2019-02-14",
     "change_note": "The borough president and local Assembly member backed the proposed bridge."
   }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-10-05",
   "sites": {
     "broadway-triangle": {
       "condition": "partly-built",
@@ -663,7 +663,7 @@
       "flags": []
     },
     "box-street-park": {
-      "condition": "unverified",
+      "condition": "existing-buildings",
       "pluto_condition": "existing-buildings",
       "lots": [
         {
@@ -691,9 +691,7 @@
         "lat": 40.7376879,
         "lng": -73.9579033
       },
-      "flags": [
-        "condition unverified: confirm what stands on the site and set condition"
-      ]
+      "flags": []
     },
     "bedford-ave-bike-lane": {
       "condition": "street",
