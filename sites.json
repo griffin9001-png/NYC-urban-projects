@@ -76,14 +76,14 @@
       "shows": "Broadway Triangle"
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Harrison Realty LLC ownership on Rabsky's two blocks in NYC PLUTO",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-03-04",
     "change_note": "The lottery for 120 affordable apartments at 11 Gerry St closed."
   },
   {
     "id": "greenpoint-hospital",
     "name": "Greenpoint Hospital Campus",
-    "headline": "Affordable homes rising, seniors wait",
+    "headline": "Housing lottery open, seniors wait",
     "type": "housing",
     "category": "parcel",
     "status": "active",
@@ -97,7 +97,7 @@
     ],
     "why": "The old Greenpoint Hospital, closed since 1982, is being turned into about 557 affordable homes, including senior housing, plus a 200-bed homeless shelter, built in four stages.",
     "history": "Before the hospital, this was Peter Cooper's glue factory (c. 1845-1915), one of the city's largest. The hospital opened October 4, 1915, run by the city, and closed in December 1982 after 70 years.",
-    "now": "The new shelter opened in 2025 and a 311-apartment affordable building is nearly done, with its housing lottery due soon. But a temporary city shelter placed on site in March 2026 is delaying the senior housing. Neighbors rallied Sept 17.",
+    "now": "On Oct 30, 2026 the lottery opened for 217 affordable apartments in the new 18-story building, with rents from about $750 a month; apply by Nov 25. A temporary city shelter on site is still delaying the senior housing.",
     "impact": "Hundreds of new affordable neighbors and a rebuilt shelter on Jackson St; the senior housing is on hold while the city uses that building as a temporary shelter.",
     "timeline": {
       "start": "2024-09",
@@ -105,8 +105,8 @@
       "confidence": "estimated"
     },
     "next_step": {
-      "date": null,
-      "what": "The lottery for the 311 new affordable apartments is expected soon; a free NYC Housing Connect profile gets you ready to apply.",
+      "date": "2026-11-25",
+      "what": "Last day to apply for the 217 affordable apartments. A fifth are set aside for Community Board 1 residents; apply on NYC Housing Connect.",
       "where": "NYC Housing Connect",
       "url": "https://housingconnect.nyc.gov/"
     },
@@ -116,6 +116,10 @@
     "park_acres_delivered": null,
     "owner": "The city owns the site. Hudson Companies and St. Nicks Alliance are building the housing; the nonprofit Project Renewal runs the shelter.",
     "sources": [
+      {
+        "t": "217 affordable apartments available on former Williamsburg hospital campus, from $751/month · 6sqft",
+        "u": "https://www.6sqft.com/affordable-apartments-greenpoint-hospital-williamsburg/"
+      },
       {
         "t": "Officials break ground on second phase of Kingsland Commons · Brooklyn Paper",
         "u": "https://www.brooklynpaper.com/kingsland-commons-groundbreaking-greenpoint/"
@@ -156,10 +160,10 @@
       "page": "https://www.brownstoner.com/development/affordable-housing-brooklyn-greenpoint-hospital-288-jackson-street-homeless-shelter-hudson-companies/",
       "shows": "Greenpoint Hospital"
     },
-    "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-10-26",
-    "changed_on": "2026-09-24",
-    "change_note": "Neighbors rallied for the delayed senior housing; the 311-apartment building's lottery is due soon."
+    "updated": "Updated Nov 2, 2026 · exact match from NYC PAD/GeoSearch",
+    "last_checked": "2026-11-02",
+    "changed_on": "2026-10-30",
+    "change_note": "The housing lottery opened for 217 affordable apartments; applications are due Nov 25."
   },
   {
     "id": "monitor-point",
@@ -231,7 +235,7 @@
       "shows": "Monitor Point"
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (BBLs 3025900001, 3025900025)",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-07-16",
     "change_note": "The City Council approved the three towers, with half the apartments affordable."
   },
@@ -296,7 +300,7 @@
       "shows": "1958 Fulton"
     },
     "updated": "Sourced Sept 2026 · coordinates verified against US Census Bureau geocoder",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-05-07",
     "change_note": "The city started asking neighbors what they want built here."
   },
@@ -360,7 +364,7 @@
       "shows": "River Ring"
     },
     "updated": "Updated Sept 25, 2026 · lots confirmed in NYC PLUTO (River Street Partners LLC)",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-05-20",
     "change_note": "The state extended a property-tax break the developer says the project needs.",
     "streetview": {
@@ -429,7 +433,7 @@
       "shows": "Greenpoint Landing"
     },
     "updated": "Updated Sept 25, 2026 · lots inferred from Greenpoint Landing (GPLC Owner LLC) ownership in NYC PLUTO",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2025-08-19",
     "change_note": "The next phase of Greenpoint Landing was announced: three buildings and a waterfront park.",
     "address_notes": {
@@ -462,10 +466,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "Community Board 1 meets monthly and anyone can speak; its next full-board agenda isn't posted yet.",
-      "where": "Community Board 1 agendas",
-      "url": "https://www.nyc.gov/site/brooklyncb1/meetings/agendas.page"
+      "date": "2026-11-10",
+      "what": "Community Board 1 meets at 6 PM, 80 Seigel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/2026/REVISED-Combined-Public-Hearing-Board-Meeting-Notice-11-10-26.pdf"
     },
     "units_total": 1060,
     "units_affordable": 267,
@@ -506,7 +510,7 @@
       "shows": "Noble Street"
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025670001)",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-06-09",
     "change_note": "The developer showed the local community board plans for one all-affordable and one market-rate building."
   },
@@ -535,10 +539,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "Community Board 1 meets monthly and anyone can speak; its next full-board agenda isn't posted yet.",
-      "where": "Community Board 1 agendas",
-      "url": "https://www.nyc.gov/site/brooklyncb1/meetings/agendas.page"
+      "date": "2026-11-10",
+      "what": "Community Board 1 meets at 6 PM, 80 Seigel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/2026/REVISED-Combined-Public-Hearing-Board-Meeting-Notice-11-10-26.pdf"
     },
     "units_total": 590,
     "units_affordable": null,
@@ -583,7 +587,7 @@
       "shows": "West Street"
     },
     "updated": "Updated Sept 25, 2026 · lot confirmed in NYC PLUTO (BBL 3025560001)",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2025-12-01",
     "change_note": "A new owner bought the site and lined up money to build.",
     "address_notes": {
@@ -615,10 +619,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "Community Board 1 meets monthly and anyone can speak; its next full-board agenda isn't posted yet.",
-      "where": "Community Board 1 agendas",
-      "url": "https://www.nyc.gov/site/brooklyncb1/meetings/agendas.page"
+      "date": "2026-11-10",
+      "what": "Community Board 1 meets at 6 PM, 80 Seigel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/2026/REVISED-Combined-Public-Hearing-Board-Meeting-Notice-11-10-26.pdf"
     },
     "units_total": null,
     "units_affordable": null,
@@ -675,7 +679,7 @@
       "shows": "Transmitter Park"
     },
     "updated": "Updated Sept 25, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-09-15",
     "change_note": "The restaurant and marina plan was dropped after neighbors objected."
   },
@@ -715,10 +719,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "Community Board 1 meets monthly and anyone can speak; its next full-board agenda isn't posted yet.",
-      "where": "Community Board 1 agendas",
-      "url": "https://www.nyc.gov/site/brooklyncb1/meetings/agendas.page"
+      "date": "2026-11-10",
+      "what": "Community Board 1 meets at 6 PM, 80 Seigel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/2026/REVISED-Combined-Public-Hearing-Board-Meeting-Notice-11-10-26.pdf"
     },
     "units_total": null,
     "units_affordable": null,
@@ -771,7 +775,7 @@
       "shows": "Bayside"
     },
     "updated": "Updated Sept 28, 2026 · exact match from NYC PAD/GeoSearch",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-07-16",
     "change_note": "The mayor's office promised to finish the park as part of the Monitor Point deal.",
     "streetview": {
@@ -848,7 +852,7 @@
       "shows": "Grand Army Plaza"
     },
     "updated": "Updated Sept 25, 2026 · pin at the arch, from NYC GeoSearch; highlighted lines are the plaza's roadways, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-06-02",
     "change_note": "The city showed five community boards a plan with 42% more public space."
   },
@@ -910,7 +914,7 @@
       }
     ],
     "updated": "Updated Sept 28, 2026 · pin at Park Ave & Adelphi St, from the city street centerline file; highlighted lines are Park Ave where it runs under the BQE",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2024-10-10",
     "change_note": "The city released long-term ideas for the streets along the BQE."
   },
@@ -940,10 +944,10 @@
       "confidence": "unknown"
     },
     "next_step": {
-      "date": null,
-      "what": "Community Board 1 meets monthly and anyone can speak; its next full-board agenda isn't posted yet.",
-      "where": "Community Board 1 agendas",
-      "url": "https://www.nyc.gov/site/brooklyncb1/meetings/agendas.page"
+      "date": "2026-11-10",
+      "what": "Community Board 1 meets at 6 PM, 80 Seigel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/2026/REVISED-Combined-Public-Hearing-Board-Meeting-Notice-11-10-26.pdf"
     },
     "units_total": null,
     "units_affordable": null,
@@ -980,7 +984,7 @@
       "shows": "McGuinness"
     },
     "updated": "Updated Sept 28, 2026 · pin at Nassau Ave; highlighted line is McGuinness Blvd from the Pulaski Bridge to the BQE, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-05-27",
     "change_note": "The city broke ground on the full McGuinness Boulevard redesign."
   },
@@ -1050,7 +1054,7 @@
       "shows": "Newtown Creek"
     },
     "updated": "Updated Sept 28, 2026 · pin on the creek where the Greenpoint Ave bridge crosses it; highlighted lines are the creek and its tributaries, from OpenStreetMap",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2025-12-10",
     "change_note": "The state flagged 41 properties along the creek that may be leaking pollution into it."
   },
@@ -1079,10 +1083,10 @@
       "confidence": "estimated"
     },
     "next_step": {
-      "date": null,
-      "what": "Community Board 1 meets monthly and anyone can speak; its next full-board agenda isn't posted yet.",
-      "where": "Community Board 1 agendas",
-      "url": "https://www.nyc.gov/site/brooklyncb1/meetings/agendas.page"
+      "date": "2026-11-10",
+      "what": "Community Board 1 meets at 6 PM, 80 Seigel St. It's not on the agenda, but anyone can speak for 2 minutes; sign up 5:45 to 6:15 PM.",
+      "where": "Community Board 1 meeting",
+      "url": "https://www.nyc.gov/assets/brooklyncb1/downloads/pdf/2026/REVISED-Combined-Public-Hearing-Board-Meeting-Notice-11-10-26.pdf"
     },
     "units_total": null,
     "units_affordable": null,
@@ -1120,14 +1124,14 @@
       }
     ],
     "image": {
-      "url": "https://www.brownstoner.com/wp-content/uploads/2021/02/greenpoint-brooklyn-nyc-parks-box-street-park-rendering-2-1024x620.jpg",
-      "credit": "Parks Department design rendering, via Brownstoner",
+      "url": "https://www.brooklynpaper.com/wp-content/uploads/2026/10/box-street-map.jpg?quality=51&w=1024",
+      "credit": "City site plan for Box Street Park, 2026, via Brooklyn Paper (NYC Mayor's Office)",
       "isRendering": true,
-      "page": "https://www.brownstoner.com/development/box-street-park-65-commercial-street-greenpoint-brooklyn-delays-mta-parking-lot/",
+      "page": "https://www.brooklynpaper.com/city-breaks-ground-box-street-park/",
       "shows": "Box Street Park"
     },
     "updated": "Added Sept 28, 2026; updated Oct 5, 2026 · pin inside the park's lot (BBL 3024720425), from NYC PLUTO",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-10-01",
     "change_note": "The city broke ground on Box Street Park; it should open by the end of summer 2028.",
     "address_notes": {
@@ -1198,7 +1202,7 @@
       "shows": "Bedford Ave"
     },
     "updated": "Added Sept 28, 2026 · pin at Bedford Ave & Park Ave; highlighted line is Bedford Ave from Flushing to Willoughby Aves, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-07-13",
     "change_note": "The mayor cited legal requirements and set no date to restore the protected lane."
   },
@@ -1259,7 +1263,7 @@
       "shows": "Domino"
     },
     "updated": "Added Sept 28, 2026 · pin on the Site B lot (280 Kent Ave), from NYC GeoSearch",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-05-15",
     "change_note": "The final Domino tower's concrete frame reached the 7th floor."
   },
@@ -1331,7 +1335,7 @@
       "shows": "Ashland Place"
     },
     "updated": "Added Sept 28, 2026 · pin mid-block on Ashland Pl; highlighted line is Ashland Pl from Lafayette Ave to Hanson Pl, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-09-01",
     "change_note": "The city finished the protected bike lane on the last block of Ashland Place."
   },
@@ -1391,7 +1395,7 @@
       }
     ],
     "updated": "Added Sept 28, 2026 · pin at Adams St & Prospect St; highlighted lines are the Sands St and Adams St blocks in the plan, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-09-03",
     "change_note": "The city proposed protected bike lanes on Sands St and Adams St in DUMBO."
   },
@@ -1449,7 +1453,7 @@
       }
     ],
     "updated": "Added Sept 28, 2026; updated Oct 12, 2026 · pin at 289 Kent Ave, from NYC GeoSearch",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-10-08",
     "change_note": "The City Council approved the 289 Kent Ave zoning change."
   },
@@ -1499,7 +1503,7 @@
       }
     ],
     "updated": "Added Sept 28, 2026 · pin at 488 Leonard St, from NYC GeoSearch",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-08-27",
     "change_note": "The owner filed plans for a 96-apartment building at 488 Leonard St."
   },
@@ -1572,7 +1576,7 @@
       "shows": "31st Street"
     },
     "updated": "Added Sept 29, 2026 · pin at 31st St & 31st Ave; highlighted line is 31st St from Northern Blvd to 20th Ave, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-07-22",
     "change_note": "Opponents sued again over the new 31st Street bike lane in Astoria."
   },
@@ -1632,7 +1636,7 @@
       "shows": "Kent Avenue"
     },
     "updated": "Added Sept 29, 2026 · pin at Kent Ave & N 4th St; highlighted line is Kent Ave from N 14th St to Clymer St, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2026-07-31",
     "change_note": "Advocates and the local council member called for a wider Kent Ave bike lane."
   },
@@ -1696,7 +1700,7 @@
       "shows": "Meeker Avenue"
     },
     "updated": "Added Sept 29, 2026 · pin at Meeker Ave & Lorimer St; highlighted line is Meeker Ave from Metropolitan Ave to Vandervoort Ave, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2025-07-18",
     "change_note": "The Meeker Ave bike lane under the BQE was still unfinished, years past its 2022 target."
   },
@@ -1764,7 +1768,7 @@
       "shows": "Berry Street"
     },
     "updated": "Added Sept 29, 2026 · pin at Berry St & N 6th St; highlighted line is Berry St from Broadway to N 12th St, from the city street centerline file",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2023-11-21",
     "change_note": "Berry Street's open street became a permanent bike boulevard with limited car traffic."
   },
@@ -1836,7 +1840,7 @@
       "shows": "Timber Bridge"
     },
     "updated": "Added Sept 29, 2026 · pin mid-creek; dashed line runs from the end of Manhattan Ave to the end of Vernon Blvd in the city street centerline file, where the proposal would land",
-    "last_checked": "2026-10-26",
+    "last_checked": "2026-11-02",
     "changed_on": "2019-02-14",
     "change_note": "The borough president and local Assembly member backed the proposed bridge."
   }
